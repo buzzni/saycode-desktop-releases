@@ -14,7 +14,7 @@ AI 에이전트가 기획하고, 만들고, 실시간으로 보여주고, 팀에
 [![Platform](https://img.shields.io/badge/macOS-Apple%20Silicon-111?logo=apple)](https://github.com/buzzni/saycode-desktop-releases/releases/latest)
 [![Website](https://img.shields.io/badge/saycode.ai-visit-0ea5e9)](https://saycode.ai)
 
-[English](README.md) | **한국어**
+[English](README.md) | **한국어** | [日本語](README.ja.md) | [中文](README.zh.md)
 
 <br/>
 
