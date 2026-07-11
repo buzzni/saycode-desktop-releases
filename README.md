@@ -14,7 +14,7 @@ and AI agents plan it, build it, preview it live, and ship it to your team.
 [![Platform](https://img.shields.io/badge/macOS-Apple%20Silicon-111?logo=apple)](https://github.com/buzzni/saycode-desktop-releases/releases/latest)
 [![Website](https://img.shields.io/badge/saycode.ai-visit-0ea5e9)](https://saycode.ai)
 
-**English** | [한국어](README.ko.md)
+**English** | [한국어](README.ko.md) | [日本語](README.ja.md) | [中文](README.zh.md)
 
 <br/>
 
