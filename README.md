@@ -56,6 +56,25 @@ Building is table stakes. **What happens after — deploy, share, hand over — 
 <tr>
 <td width="42%" valign="middle">
 
+### 🖥️ Register your own machines — run agents where your code lives
+
+This is the heart of Saycode. Register any machine you control — your laptop, a GPU box,
+a build server, a cloud VM — and hand agent work to it. Open **Settings → Machines →
+Register machine**, click **Generate code**, and run the one-line command it gives you on
+the target machine. Seconds later it shows up **online**, and every new project can pick
+which machine it runs on. Your agents read, write, build, and run **on your infrastructure**,
+next to your code and data — not on someone else's cloud.
+
+</td>
+<td>
+<img src="docs/assets/register-machine.gif" alt="Registering a remote machine from Settings → Machines" /><br/>
+<img src="docs/assets/register-machine-code.png" alt="One-line registration command generated for the target machine (secret redacted)" />
+<sub>The generated one-line command — run it on the target machine and it comes online. (Secret + token blurred for this README.)</sub>
+</td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
 ### 🗣️ From one sentence to a working app
 
 Type (or speak) what you want in plain language. The agent picks a direction, writes real
@@ -101,6 +120,18 @@ agent, live.
 
 </td>
 <td><img src="docs/assets/multi-session-grid.gif" alt="Multi-session grid workspace" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 💻 A real terminal on the remote machine
+
+Open a live shell on any registered machine, docked right under the chat. It's a genuine
+end-to-end encrypted session on that box — run builds, tail logs, poke around — while the
+agent keeps working above it. Terminals survive tab switches and reconnect on their own.
+
+</td>
+<td><img src="docs/assets/remote-terminal.gif" alt="Remote terminal docked under the chat, connected to a registered machine" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -169,7 +200,7 @@ with Dock badges — the details add up.
 
 - 🔒 **Private by design** — chat and terminal traffic is end-to-end encrypted; code and data stay on your machines
 - 🖥️ **Standalone mode** — run 100% local with an embedded server, no account and no external infra required
-- 💻 **Remote terminal** — a real shell on the project's machine, docked next to the chat
+- 🌐 **Personal & org machines** — register machines under your own account or share them across your organization
 - 🧠 **Memory layer** — agents remember project context across sessions
 - 🏢 **Org-grade control** — org/team workspaces, machine registry, environment variables, audit-friendly ownership
 - 🔔 **Mobile push** — get notified on your phone when desktop runs finish
@@ -180,12 +211,12 @@ with Dock badges — the details add up.
 
 | | | |
 |---|---|---|
-| **01 · Say it** | **02 · Agents build** | **03 · Preview instantly** |
-| One sentence in plain language: *"Build a back-office for purchase requests."* | AI agents read and write real files, run commands, and stream every step. | The live app opens right next to the chat — click through it as it evolves. |
+| **01 · Register a machine** | **02 · Say it** | **03 · Agents build on your machine** |
+| Run the generated one-line command on your laptop, GPU box, or server — it comes online in seconds. | One sentence in plain language: *"Build a back-office for purchase requests."* | AI agents read and write real files and run commands **on the machine you chose**, streaming every step. |
 
-| |
-|---|
-| **04 · Ship it to the team** — one click deploys to an internal URL; share, hand over, and iterate together. |
+| | |
+|---|---|
+| **04 · Preview instantly** — the live app opens right next to the chat, click through it as it evolves. | **05 · Ship it to the team** — one click deploys to an internal URL; share, hand over, and iterate together. |
 
 <div align="center">
 <img src="docs/assets/live-preview-final.png" alt="Agent session on the left, the real running app in the preview sidecar on the right" width="920" />
