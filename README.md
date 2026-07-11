@@ -75,6 +75,21 @@ next to your code and data — not on someone else's cloud.
 <tr>
 <td width="42%" valign="middle">
 
+### 🔌 Standalone mode — fully local, zero setup
+
+No account? No problem. One click on **Standalone (local-only) mode** at the login screen
+and Saycode boots its **own embedded server**, registers your machine, and drops you into a
+complete workspace — in seconds. The relay, the database, and every byte of your data live
+on your Mac; nothing touches the internet. Perfect for security-sensitive teams, air-gapped
+environments, or simply test-driving everything Saycode can do within a minute of installing
+it. When you're ready for team features, just log in and keep going.
+
+</td>
+<td><img src="docs/assets/standalone-mode.gif" alt="One click on Standalone mode boots an embedded server and a fully local workspace" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
 ### 🗣️ From one sentence to a working app
 
 Type (or speak) what you want in plain language. The agent picks a direction, writes real
@@ -199,7 +214,6 @@ with Dock badges — the details add up.
 ### And more
 
 - 🔒 **Private by design** — chat and terminal traffic is end-to-end encrypted; code and data stay on your machines
-- 🖥️ **Standalone mode** — run 100% local with an embedded server, no account and no external infra required
 - 🌐 **Personal & org machines** — register machines under your own account or share them across your organization
 - 🧠 **Memory layer** — agents remember project context across sessions
 - 🏢 **Org-grade control** — org/team workspaces, machine registry, environment variables, audit-friendly ownership
