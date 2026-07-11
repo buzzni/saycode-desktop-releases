@@ -14,7 +14,7 @@ AI 智能体负责规划、构建、实时预览,并交付给你的团队。
 [![Platform](https://img.shields.io/badge/macOS-Apple%20Silicon-111?logo=apple)](https://github.com/buzzni/saycode-desktop-releases/releases/latest)
 [![Website](https://img.shields.io/badge/saycode.ai-visit-0ea5e9)](https://saycode.ai)
 
-[English](README.md) | [한국어](README.ko.md) | [日本語](README.ja.md) | **中文**
+[English](README.md) | [한국어](README.ko.md) | **中文** | [日本語](README.ja.md)
 
 <br/>
 
