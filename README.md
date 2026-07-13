@@ -18,7 +18,7 @@ and AI agents plan it, build it, preview it live, and ship it to your team.
 
 <br/>
 
-### [⬇️ Download for macOS (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.6/saycode-desktop-0.1.6-mac-arm64.dmg)
+### [⬇️ Download for macOS (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/latest/download/saycode-desktop-mac-arm64.dmg)
 
 *Signed & notarized DMG · auto-updates built in*
 
