@@ -161,10 +161,10 @@ instructions, so nothing lives in someone's head.
 
 ### 🧩 Run a whole fleet of agents
 
-Split the workspace into panes and grids with one click — **Focus / Coding / Operate /
-Monitor / Compare** presets rearrange everything instantly. Watch a Claude session think
-in one pane while a Codex session ships in another. The sidebar tracks every running
-agent, live.
+Right-click any tab to split off a new chat or terminal pane, then drag to resize — the
+workspace rearranges itself as you go. Watch a Claude session think in one pane while a
+Codex session ships in another. Fan a task out across agents and hit **Open All** to lay
+every session out in a grid at once. The sidebar tracks every running agent, live.
 
 </td>
 <td><img src="docs/assets/multi-session-grid.gif" alt="Multi-session grid workspace" /></td>
