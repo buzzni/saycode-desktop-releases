@@ -111,15 +111,15 @@ instructions, so nothing lives in someone's head.
 <tr>
 <td width="42%" valign="middle">
 
-### 🧩 Run a whole fleet of agents
+### 🧩 Track every agent from one board
 
-Split the workspace into panes and grids with one click — **Focus / Coding / Operate /
-Monitor / Compare** presets rearrange everything instantly. Watch a Claude session think
-in one pane while a Codex session ships in another. The sidebar tracks every running
-agent, live.
+The **Agent Board** puts every running session, across every project, on one kanban —
+Waiting for input, Responding, Queued, In review, Done, PR merged. Watch a Claude session
+think in one column while a Codex session ships in another, and drag a card to nudge
+what happens next.
 
 </td>
-<td><img src="docs/assets/multi-session-grid.gif" alt="Multi-session grid workspace" /></td>
+<td><img src="docs/assets/agent-board.png" alt="Agent Board kanban tracking every running session across projects" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -139,24 +139,13 @@ agent keeps working above it. Terminals survive tab switches and reconnect on th
 ### 🤖 Bring your favorite agent
 
 **Claude (Anthropic), Codex (OpenAI), and opencode** — first-class, switchable per
-session, with model and effort control. Spin up **Multi-Agent** runs to attack one task
-from several angles, or give a session its own isolated **git worktree** so experiments
-never trample main.
+session, with model and effort control. Claude sessions auto-route: easy turns get
+quietly delegated to a cheaper worker model (the **⚡ auto-route badge** shows what you
+saved), so you're not paying frontier prices for every message. Give a session its own
+isolated **git worktree** so experiments never trample main.
 
 </td>
-<td><img src="docs/assets/agent-picker.png" alt="Agent and model picker with Multi-Agent and Worktree options" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 📋 Planning that lives with the code
-
-Every project has a **Planning** tab — spec, plan, and design docs the agent reads and
-updates as it works. The "why" survives the session, so the next teammate (or the next
-agent) picks up exactly where you left off.
-
-</td>
-<td><img src="docs/assets/planning-docs.png" alt="Planning docs tab" /></td>
+<td><img src="docs/assets/agent-picker.png" alt="Agent and model picker with auto-route and Worktree options" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">

@@ -111,14 +111,14 @@ VM — 등록해서 에이전트 작업을 맡기세요. **Settings → Machines
 <tr>
 <td width="42%" valign="middle">
 
-### 🧩 에이전트 함대를 한 화면에서
+### 🧩 에이전트 함대를 한눈에, 보드 하나로
 
-클릭 한 번으로 화면을 분할하고 그리드로 배치하세요 — **Focus / Coding / Operate /
-Monitor / Compare** 프리셋이 레이아웃을 즉시 바꿉니다. 한쪽 페인에서 Claude가 생각하는
-동안 다른 페인에서 Codex가 결과를 내는 모습을 실시간으로 지켜볼 수 있습니다.
+**에이전트 보드**가 모든 프로젝트의 실행 중인 세션을 하나의 칸반에 모읍니다 — 입력 대기,
+응답 중, 대기, 리뷰 중, 완료, PR merged. 한쪽 컬럼에서 Claude가 생각하는 동안 다른 컬럼에서
+Codex가 결과를 내는 모습을 실시간으로 지켜보고, 카드를 옮겨 다음 단계를 지시하세요.
 
 </td>
-<td><img src="docs/assets/multi-session-grid.gif" alt="멀티 세션 그리드 워크스페이스" /></td>
+<td><img src="docs/assets/agent-board.png" alt="모든 프로젝트의 실행 중인 세션을 추적하는 에이전트 보드 칸반" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -138,23 +138,13 @@ Monitor / Compare** 프리셋이 레이아웃을 즉시 바꿉니다. 한쪽 페
 ### 🤖 좋아하는 에이전트를 그대로
 
 **Claude(Anthropic), Codex(OpenAI), opencode**를 세션마다 골라 쓰고, 모델과 effort까지
-제어합니다. 하나의 작업을 여러 각도로 공략하는 **Multi-Agent** 실행, 실험이 main을
-건드리지 않도록 하는 세션별 **git worktree** 격리도 지원합니다.
+제어합니다. Claude 세션은 자동 라우팅으로 쉬운 턴은 조용히 더 저렴한 워커 모델에
+위임하고(**⚡ 자동 선택 배지**로 절약된 비용을 바로 확인), 실험이 main을 건드리지 않도록
+세션별 **git worktree** 격리도 지원합니다.
 
 </td>
-<td><img src="docs/assets/agent-picker.png" alt="에이전트·모델 선택과 Multi-Agent, Worktree 옵션" /></td>
+<td><img src="docs/assets/agent-picker.png" alt="에이전트·모델 선택과 자동 라우팅, Worktree 옵션" /></td>
 </tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 📋 코드와 함께 사는 기획 문서
-
-모든 프로젝트에 **Planning** 탭이 있습니다 — 에이전트가 작업하며 직접 읽고 갱신하는
-spec·plan·design 문서입니다. "왜 이렇게 만들었는지"가 세션이 끝나도 남아, 다음 동료도
-다음 에이전트도 정확히 이어서 시작합니다.
-
-</td>
-<td><img src="docs/assets/planning-docs.png" alt="Planning 문서 탭" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">

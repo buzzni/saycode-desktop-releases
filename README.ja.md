@@ -111,15 +111,15 @@ AI エージェントが企画し、作り、ライブでプレビューし、�
 <tr>
 <td width="42%" valign="middle">
 
-### 🧩 エージェントの艦隊をひとつの画面で
+### 🧩 エージェントの艦隊をひとつのボードで
 
-ワンクリックで画面をペインやグリッドに分割 — **Focus / Coding / Operate / Monitor /
-Compare** プリセットが瞬時にレイアウトを切り替えます。あるペインで Claude が考えている間に、
-別のペインで Codex が成果を出す様子をリアルタイムで見られます。サイドバーは実行中の
-エージェントを常に追跡します。
+**エージェントボード**が、すべてのプロジェクトで実行中のセッションをひとつのかんばんに
+まとめます — 入力待ち、応答中、待機、レビュー中、完了、PRマージ済み。あるカラムで
+Claude が考えている間に、別のカラムで Codex が成果を出す様子をリアルタイムで見られ、
+カードをドラッグして次の指示を出せます。
 
 </td>
-<td><img src="docs/assets/multi-session-grid.gif" alt="マルチセッションのグリッドワークスペース" /></td>
+<td><img src="docs/assets/agent-board.png" alt="すべてのプロジェクトの実行中セッションを追跡するエージェントボードのかんばん" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -140,24 +140,13 @@ Compare** プリセットが瞬時にレイアウトを切り替えます。あ�
 ### 🤖 好きなエージェントをそのまま
 
 **Claude (Anthropic)、Codex (OpenAI)、opencode** — セッションごとに切り替えられる
-ファーストクラス対応で、モデルと effort も制御できます。ひとつのタスクを複数の角度から
-攻める **Multi-Agent** 実行や、実験が main を壊さないようにするセッション別の
-**git worktree** 分離もサポートします。
+ファーストクラス対応で、モデルと effort も制御できます。Claude セッションは自動ルーティングで
+簡単なターンを静かに安価なワーカーモデルへ委任し(**⚡ 自動選択バッジ**で節約額がすぐ分かります)、
+実験が main を壊さないようにするセッション別の **git worktree** 分離もサポートします。
 
 </td>
-<td><img src="docs/assets/agent-picker.png" alt="エージェント・モデル選択と Multi-Agent、Worktree オプション" /></td>
+<td><img src="docs/assets/agent-picker.png" alt="エージェント・モデル選択と自動ルーティング、Worktree オプション" /></td>
 </tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 📋 コードと一緒に生きる企画ドキュメント
-
-すべてのプロジェクトに **Planning** タブがあります — エージェントが作業しながら自ら読み、
-更新する spec・plan・design ドキュメントです。「なぜこう作ったのか」がセッションの後も残り、
-次の同僚も次のエージェントも、正確に続きから始められます。
-
-</td>
-<td><img src="docs/assets/planning-docs.png" alt="Planning ドキュメントタブ" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">

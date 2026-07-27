@@ -108,14 +108,14 @@ AI 智能体负责规划、构建、实时预览,并交付给你的团队。
 <tr>
 <td width="42%" valign="middle">
 
-### 🧩 在一个屏幕上指挥整支智能体舰队
+### 🧩 一块看板指挥整支智能体舰队
 
-一键把工作区分割成多个窗格和网格 — **Focus / Coding / Operate / Monitor / Compare**
-预设瞬间重排布局。在一个窗格里看 Claude 思考,另一个窗格里看 Codex 交付。
-侧边栏实时追踪每一个正在运行的智能体。
+**智能体看板**把所有项目里正在运行的会话汇聚到一块看板上 — 等待输入、响应中、排队中、
+审阅中、已完成、PR 已合并。在一列里看 Claude 思考,另一列里看 Codex 交付,拖动卡片
+就能推进下一步。
 
 </td>
-<td><img src="docs/assets/multi-session-grid.gif" alt="多会话网格工作区" /></td>
+<td><img src="docs/assets/agent-board.png" alt="追踪所有项目中运行会话的智能体看板" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -135,22 +135,12 @@ AI 智能体负责规划、构建、实时预览,并交付给你的团队。
 ### 🤖 带上你最喜欢的智能体
 
 **Claude (Anthropic)、Codex (OpenAI) 和 opencode** — 一等公民支持,每个会话可切换,
-还能控制模型与 effort。启动 **Multi-Agent** 让多个智能体从不同角度攻克同一任务,
-或者给会话分配独立的 **git worktree**,让实验永远不会破坏 main 分支。
+还能控制模型与 effort。Claude 会话会自动路由:简单的轮次悄悄委派给更便宜的工作模型
+(**⚡ 自动选择徽章**会直接显示省下的花费),也可以给会话分配独立的 **git worktree**,
+让实验永远不会破坏 main 分支。
 
 </td>
-<td><img src="docs/assets/agent-picker.png" alt="智能体与模型选择器,含 Multi-Agent 与 Worktree 选项" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 📋 与代码共存的规划文档
-
-每个项目都有 **Planning** 标签页 — spec、plan、design 文档由智能体在工作中亲自阅读并更新。
-“为什么这么做”在会话结束后依然留存,下一位同事(或下一个智能体)都能精准接续。
-
-</td>
-<td><img src="docs/assets/planning-docs.png" alt="Planning 文档标签页" /></td>
+<td><img src="docs/assets/agent-picker.png" alt="智能体与模型选择器,含自动路由与 Worktree 选项" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
