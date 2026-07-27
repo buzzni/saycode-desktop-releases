@@ -187,12 +187,13 @@ agent keeps working above it. Terminals survive tab switches and reconnect on th
 ### 🤖 Bring your favorite agent
 
 **Claude (Anthropic), Codex (OpenAI), and opencode** — first-class, switchable per
-session, with model and effort control. Spin up **Multi-Agent** runs to attack one task
-from several angles, or give a session its own isolated **git worktree** so experiments
-never trample main.
+session, with model and effort control. Claude sessions auto-route: easy turns get
+quietly delegated to a cheaper worker model (the **⚡ auto-route badge** shows what you
+saved), so you're not paying frontier prices for every message. Give a session its own
+isolated **git worktree** so experiments never trample main.
 
 </td>
-<td><img src="docs/assets/agent-picker.png" alt="Agent and model picker with Multi-Agent and Worktree options" /></td>
+<td><img src="docs/assets/agent-picker.png" alt="Agent and model picker with auto-route and Worktree options" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -220,18 +221,6 @@ like `project:web`, `role:agent`, `after:2026-07-01`, or `"exact phrase"`.
 
 </td>
 <td><img src="docs/assets/conversation-search.gif" alt="Conversation search: press Cmd+Shift+F, type, and jump to any past agent conversation" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 📋 Planning that lives with the code
-
-Every project has a **Planning** tab — spec, plan, and design docs the agent reads and
-updates as it works. The "why" survives the session, so the next teammate (or the next
-agent) picks up exactly where you left off.
-
-</td>
-<td><img src="docs/assets/planning-docs.png" alt="Planning docs tab" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">

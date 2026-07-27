@@ -181,11 +181,12 @@ AI 智能体负责规划、构建、实时预览,并交付给你的团队。
 ### 🤖 带上你最喜欢的智能体
 
 **Claude (Anthropic)、Codex (OpenAI) 和 opencode** — 一等公民支持,每个会话可切换,
-还能控制模型与 effort。启动 **Multi-Agent** 让多个智能体从不同角度攻克同一任务,
-或者给会话分配独立的 **git worktree**,让实验永远不会破坏 main 分支。
+还能控制模型与 effort。Claude 会话会自动路由:简单的轮次悄悄委派给更便宜的工作模型
+(**⚡ 自动选择徽章**会直接显示省下的花费),也可以给会话分配独立的 **git worktree**,
+让实验永远不会破坏 main 分支。
 
 </td>
-<td><img src="docs/assets/agent-picker.png" alt="智能体与模型选择器,含 Multi-Agent 与 Worktree 选项" /></td>
+<td><img src="docs/assets/agent-picker.png" alt="智能体与模型选择器,含自动路由与 Worktree 选项" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -211,17 +212,6 @@ AI 智能体负责规划、构建、实时预览,并交付给你的团队。
 
 </td>
 <td><img src="docs/assets/conversation-search.gif" alt="对话搜索:按下 Cmd+Shift+F,输入关键词,即可跳转到任意历史智能体对话" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 📋 与代码共存的规划文档
-
-每个项目都有 **Planning** 标签页 — spec、plan、design 文档由智能体在工作中亲自阅读并更新。
-“为什么这么做”在会话结束后依然留存,下一位同事(或下一个智能体)都能精准接续。
-
-</td>
-<td><img src="docs/assets/planning-docs.png" alt="Planning 文档标签页" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">

@@ -159,7 +159,7 @@ Saycode가 **자체 내장 서버**를 띄우고, 내 머신을 등록하고, �
 <tr>
 <td width="42%" valign="middle">
 
-### 🧩 에이전트 함대를 한 화면에서
+### 🧩 에이전트 함대를 한 번에
 
 탭을 우클릭해 새 채팅·터미널 페인을 나누고, 드래그로 크기를 조절하세요 — 워크스페이스가
 그때그때 원하는 모양으로 재배치됩니다. 한쪽 페인에서 Claude가 생각하는 동안 다른 페인에서
@@ -187,11 +187,12 @@ Codex가 결과를 내는 모습을 실시간으로 지켜볼 수 있습니다. 
 ### 🤖 좋아하는 에이전트를 그대로
 
 **Claude(Anthropic), Codex(OpenAI), opencode**를 세션마다 골라 쓰고, 모델과 effort까지
-제어합니다. 하나의 작업을 여러 각도로 공략하는 **Multi-Agent** 실행, 실험이 main을
-건드리지 않도록 하는 세션별 **git worktree** 격리도 지원합니다.
+제어합니다. Claude 세션은 자동 라우팅으로 쉬운 턴은 조용히 더 저렴한 워커 모델에
+위임하고(**⚡ 자동 선택 배지**로 절약된 비용을 바로 확인), 실험이 main을 건드리지 않도록
+세션별 **git worktree** 격리도 지원합니다.
 
 </td>
-<td><img src="docs/assets/agent-picker.png" alt="에이전트·모델 선택과 Multi-Agent, Worktree 옵션" /></td>
+<td><img src="docs/assets/agent-picker.png" alt="에이전트·모델 선택과 자동 라우팅, Worktree 옵션" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -219,18 +220,6 @@ Codex가 결과를 내는 모습을 실시간으로 지켜볼 수 있습니다. 
 
 </td>
 <td><img src="docs/assets/conversation-search.gif" alt="대화 검색: Cmd+Shift+F를 누르고 입력하면 과거 에이전트 대화로 바로 이동" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 📋 코드와 함께 사는 기획 문서
-
-모든 프로젝트에 **Planning** 탭이 있습니다 — 에이전트가 작업하며 직접 읽고 갱신하는
-spec·plan·design 문서입니다. "왜 이렇게 만들었는지"가 세션이 끝나도 남아, 다음 동료도
-다음 에이전트도 정확히 이어서 시작합니다.
-
-</td>
-<td><img src="docs/assets/planning-docs.png" alt="Planning 문서 탭" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
