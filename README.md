@@ -84,9 +84,11 @@ so those aren't the reason to pick one. What Saycode adds is an **operations lay
   isn't a branch waiting for review; it's a running tool your team opens today.
 - **Sharing & handover** — teammates browse, clone, refine, and merge back. Another team's
   finished project is a starting point, not something to rebuild.
-- **Cost operations** — requests are auto-routed to the cheapest capable model, escalating
-  only when a session gets stuck, with a per-message badge showing why each model was
-  chosen. You manage the company's AI spend, not just observe it.
+- **Cost operations** — requests are auto-routed to the cheapest capable model (escalating
+  only when a session gets stuck), mechanical subtasks are delegated to sub-agents on
+  lighter tiers, and it all runs on centrally managed org machines. Organizations working
+  this way have cut their overall AI token spend by close to 50% — and a per-message badge
+  shows why each model was chosen. You manage the company's AI spend, not just observe it.
 
 **When to use which:** if your goal is the deepest possible parallel-agent coding experience
 in your own repos, an agent IDE is a fine choice — and nothing stops you from using both. If
@@ -156,6 +158,9 @@ A typo fix routes to a light model (**~90% saved**), routine work to a mid-tier 
 truly stuck does it escalate to the most powerful (and most expensive) tier. Every
 message carries a transparency badge — *"⚡ Auto · Haiku 4.5 · ~90% saved"* — and the
 session header totals it up, so you always know what you saved and why a model was chosen.
+It compounds at the company level, too: delegate mechanical subtasks to sub-agents on
+lighter tiers and manage usage centrally across shared org machines, and organizations
+have cut their overall AI token bill by close to 50%.
 
 </td>
 <td><img src="docs/assets/auto-model-routing.gif" alt="Auto model routing picks a cheap model for an easy request and a top model for a hard one, with per-turn savings badges" /></td>
