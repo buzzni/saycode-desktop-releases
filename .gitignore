@@ -1,0 +1,6 @@
+# Local agent/session artifacts — never commit to this public release repo
+memory/
+.aplus/
+
+# macOS
+.DS_Store
