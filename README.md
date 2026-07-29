@@ -72,6 +72,7 @@ Saycode is aimed at a different question — the one that starts *after* the age
 | Unit of work | Repo · worktree · agent session | **Org · team · project · machine · deployment** |
 | "Deployment" means | Rolling the agent tooling out to your org, safely | **Shipping what was built to an internal URL your team opens** |
 | Typical finish line | Reviewed changes merged to Git | **A running internal service, shared and transferable** |
+| AI model cost | Usage tracking, account switching | **Difficulty-aware auto-routing + sub-agent delegation — orgs have cut total spend by ~50%** |
 | Reaches | Mostly developers | **Everyone in the company** — developers, PMs, ops |
 
 The two overlap on parallel agents, worktrees, remote execution, and local-first security —
