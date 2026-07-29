@@ -6,8 +6,8 @@
 
 ### Say it. Watch it become software.
 
-**The enterprise vibe-coding workspace** — describe what you need in plain language,
-and AI agents plan it, build it, preview it live, and ship it to your team.
+**The Enterprise Vibe Coding & Delivery Platform** — describe what you need in plain
+language, AI agents build it and preview it live — and your company deploys, shares, and owns it.
 
 [![Latest release](https://img.shields.io/github/v/release/buzzni/saycode-desktop-releases?label=Download&color=6d5df6)](https://github.com/buzzni/saycode-desktop-releases/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/buzzni/saycode-desktop-releases/total?color=22c55e)](https://github.com/buzzni/saycode-desktop-releases/releases)
@@ -51,6 +51,51 @@ vibe-coding into a **system your whole company can control, share, and build on*
 | Who can build | Developers only | **Anyone who can describe what they want** |
 
 Building is table stakes. **What happens after — deploy, share, hand over — is where Saycode is different.**
+
+---
+
+## How is this different from an agent IDE (Orca, etc.)?
+
+Tools like [Orca](https://www.onorca.dev) are **agent IDEs**, focused on the developer's
+coding loop: running many agents in parallel across worktrees, diffs, reviews, deep editor
+integration. They do that very well — several offer org-level rollout and governance too —
+and if that loop is your problem, use one.
+
+Saycode is aimed at a different question — the one that starts *after* the agent finishes:
+
+> **Agent IDEs help developers run more agents.
+> Saycode helps companies own and operate what those agents build.**
+
+| | Agent IDEs (Orca, etc.) | **Saycode** |
+|---|---|---|
+| Primary focus | The developer's coding loop | **The company's delivery loop** — build → deploy → share → hand over |
+| Unit of work | Repo · worktree · agent session | **Org · team · project · machine · deployment** |
+| "Deployment" means | Rolling the agent tooling out to your org, safely | **Shipping what was built to an internal URL your team opens** |
+| Typical finish line | Reviewed changes merged to Git | **A running internal service, shared and transferable** |
+| AI model cost | Usage tracking, account switching | **Difficulty-aware auto-routing + sub-agent delegation — orgs have cut total spend by ~50%** |
+| Reaches | Mostly developers | **Everyone in the company** — developers, PMs, ops |
+
+The two overlap on parallel agents, worktrees, remote execution, and local-first security —
+so those aren't the reason to pick one. What Saycode adds is an **operations layer** on top:
+
+- **Company ownership** — projects, sessions, planning docs, and machines belong to the org,
+  not to whoever's laptop they were built on. When someone leaves or moves teams, their work
+  is searchable and transferable, not stranded.
+- **Internal deployment** — one click ships to a stable internal URL (auto SSL). The output
+  isn't a branch waiting for review; it's a running tool your team opens today.
+- **Sharing & handover** — teammates browse, clone, refine, and merge back. Another team's
+  finished project is a starting point, not something to rebuild.
+- **Cost operations** — requests are auto-routed to the cheapest capable model (escalating
+  only when a session gets stuck), mechanical subtasks are delegated to sub-agents on
+  lighter tiers, and it all runs on centrally managed org machines. Organizations working
+  this way have cut their overall AI token spend by close to 50% — and a per-message badge
+  shows why each model was chosen. You manage the company's AI spend, not just observe it.
+
+**When to use which:** if your goal is the deepest possible parallel-agent coding experience
+in your own repos, an agent IDE is a fine choice — and nothing stops you from using both. If
+your goal is for AI-built software to become **company infrastructure** — deployed
+internally, shared across teams, survivable through handovers, with costs under control —
+that's what Saycode is for.
 
 ---
 
@@ -114,6 +159,9 @@ A typo fix routes to a light model (**~90% saved**), routine work to a mid-tier 
 truly stuck does it escalate to the most powerful (and most expensive) tier. Every
 message carries a transparency badge — *"⚡ Auto · Haiku 4.5 · ~90% saved"* — and the
 session header totals it up, so you always know what you saved and why a model was chosen.
+It compounds at the company level, too: delegate mechanical subtasks to sub-agents on
+lighter tiers and manage usage centrally across shared org machines, and organizations
+have cut their overall AI token bill by close to 50%.
 
 </td>
 <td><img src="docs/assets/auto-model-routing.gif" alt="Auto model routing picks a cheap model for an easy request and a top model for a hard one, with per-turn savings badges" /></td>
