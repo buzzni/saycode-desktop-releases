@@ -18,7 +18,7 @@ language, AI agents build it and preview it live — and your company deploys, s
 
 <br/>
 
-### [⬇️ Download for macOS (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.28/Saycode-0.1.28-arm64.dmg)
+### [⬇️ Download for macOS (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.30/Saycode-0.1.30-arm64.dmg)
 
 *Signed & notarized DMG · auto-updates built in*
 
