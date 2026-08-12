@@ -33,6 +33,13 @@
 
 </div>
 
+<!-- release-notes:start -->
+## 새로운 기능과 변경사항
+
+- [최신 릴리스 노트](docs/releases/v0.1.32.ko.md)
+- [전체 릴리스 기록](docs/releases/README.ko.md)
+<!-- release-notes:end -->
+
 ---
 
 ## 왜 Saycode인가요?
