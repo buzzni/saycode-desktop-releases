@@ -18,7 +18,7 @@ AI 智能体负责构建并实时预览;成果由公司部署、共享、拥有�
 
 <br/>
 
-### [⬇️ 下载 macOS 版 (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.36/Saycode-0.1.36-arm64.dmg)
+### [⬇️ 下载 macOS 版 (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.37/Saycode-0.1.37-arm64.dmg)
 
 *已签名并公证的 DMG · 内置自动更新*
 
