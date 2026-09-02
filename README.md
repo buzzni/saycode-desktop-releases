@@ -360,7 +360,10 @@ Everything the agent reads, writes, builds and runs happens **on your infrastruc
 to the code and data — not in someone else's cloud.
 
 </td>
-<td><img src="docs/assets/settings-machines.png" alt="Settings → Devices → Machines: registered local machine and Add machine" /></td>
+<td>
+<img src="docs/assets/settings-machines.png" alt="Settings → Devices → Machines: registered local machine and Add machine" /><br/>
+<img src="docs/assets/register-machine-panel.png" alt="Machine registration: CLI install command and Personal/Organization code" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -375,6 +378,24 @@ changes back safely. Rendered HTML documents and reports publish to a public lin
 
 </td>
 <td><img src="docs/assets/login-modal.png" alt="saycode.ai login: switch to the team workspace" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🏢 The company stays in control from an org console *(team workspace)*
+
+The organization console lets admins invite members, change roles (admin/member) or
+remove them, and read the audit log — who opened which project, when. The same console
+registers org-wide MCP servers, a GitHub PAT and shared AI accounts so teammates don't
+each manage their own keys. **Settings → Security**'s global-pause switch is a
+team-only emergency stop that immediately holds the next run of scheduled automations,
+GitHub triggers and board autopilot.
+
+</td>
+<td>
+<img src="docs/assets/org-console.png" alt="Organization console: member management and audit log" /><br/>
+<img src="docs/assets/settings-security.png" alt="Settings → Security: global pause and GitHub Personal Access Token" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">

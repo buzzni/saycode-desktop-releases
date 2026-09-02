@@ -508,6 +508,36 @@ TOTP MFA 지원):
 버튼이 추가됩니다. 배포에 성공하면 채팅에 URL과 복사 버튼이 있는 배포 카드가 남습니다.
 배포된 앱·리포트 URL을 여는 최종 이용자에게는 좌석이 필요 없습니다.
 
+**커넥터** — 환경설정 → 커넥터에서 Notion·Slack·Google Drive·Gmail·KNOI를 연결하면
+대화에서 문서·메시지·회의를 바로 찾아볼 수 있습니다. 모두 읽기 전용으로만 연결됩니다.
+
+<img src="assets/settings-connectors.png" alt="환경설정 → 커넥터: Notion·Slack·Google Drive·Gmail·KNOI 연결" width="820" />
+
+**머신 등록** — 환경설정 → 기기 → 머신에서 **Register machine**을 누르면 CLI 설치
+명령과 함께 Personal(개인) / Organization(조직) 등록 코드를 발급합니다. 대상 머신에서
+`npm i -g @buzzni/happy-cli` 후 `happy auth login`을 실행하고 코드를 입력하면 몇 초
+만에 온라인으로 뜹니다.
+
+<img src="assets/register-machine-panel.png" alt="머신 등록 패널: CLI 설치와 Personal/Organization 등록 코드 발급" width="820" />
+
+**Generate code**를 누르면 만료 시각이 표시된 1회용 코드와 붙여넣기용 curl 명령이 나타납니다 — 유출되지 않도록 코드는 몇 분 안에 만료됩니다.
+
+<img src="assets/register-machine-code.png" alt="머신 등록 코드 발급 화면" width="820" />
+
+**조직 콘솔** — 조직 워크스페이스로 전환하면 사이드바 작업공간 전환기 하단에 **조직
+관리** 메뉴가 나타납니다. 멤버 초대·역할(관리자/멤버) 변경·제거, 감사 로그(누가 언제
+어떤 프로젝트를 열었는지), 조직 전체 MCP 서버·GitHub PAT·공용 AI 계정 등록을 한곳에서
+관리합니다.
+
+<img src="assets/org-console.png" alt="조직 관리 콘솔: 멤버 관리와 감사 로그" width="820" />
+
+**전역 일시정지** — 환경설정 → 보안의 전역 일시정지 스위치를 켜면 예약 자동화 실행,
+GitHub 이벤트 트리거 발화, 보드 오토파일럿의 다음 단계가 시작되지 않습니다. 이미 진행
+중인 대화는 중단되지 않으며, 이 데스크톱 앱이 직접 실행하는 자동화에만 적용됩니다
+(머신 데몬이 소유한 실행 경로는 막지 않습니다).
+
+<img src="assets/settings-security.png" alt="환경설정 → 보안: 전역 일시정지와 GitHub Personal Access Token" width="820" />
+
 로컬 프로젝트는 로그인 후에도 그대로 남습니다.
 
 ---

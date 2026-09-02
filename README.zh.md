@@ -358,7 +358,10 @@ worktree 导入 Saycode。
 紧挨着代码和数据 —— 而不是别人的云端。
 
 </td>
-<td><img src="docs/assets/settings-machines.png" alt="偏好设置 → 设备 → 机器：已注册的本地机器与添加机器" /></td>
+<td>
+<img src="docs/assets/settings-machines.png" alt="偏好设置 → 设备 → 机器：已注册的本地机器与添加机器" /><br/>
+<img src="docs/assets/register-machine-panel.png" alt="注册机器：CLI 安装命令与 Personal/Organization 注册码" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -373,6 +376,23 @@ SSL 自动配置，每次部署都会更新同一个链接。把项目共享给�
 
 </td>
 <td><img src="docs/assets/login-modal.png" alt="saycode.ai 登录：切换到团队工作区" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🏢 组织控制台统一管控 *(团队工作区)*
+
+组织管理控制台可以邀请成员、变更角色（管理员/成员）或移除成员，还能查看
+审计日志——谁在何时打开过哪个项目。同一控制台还能注册组织级 MCP 服务器、
+GitHub PAT 和共用 AI 账号，团队成员无需各自管理密钥。**偏好设置 → 安全**
+中的全局暂停开关是团队专属的紧急停止按钮，会立即暂停下一次计划自动化、
+GitHub 触发器和看板自动驾驶的执行。
+
+</td>
+<td>
+<img src="docs/assets/org-console.png" alt="组织管理控制台：成员管理与审计日志" /><br/>
+<img src="docs/assets/settings-security.png" alt="偏好设置 → 安全：全局暂停与 GitHub Personal Access Token" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">

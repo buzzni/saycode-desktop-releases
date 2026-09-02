@@ -361,7 +361,10 @@ Open**은 프로젝트·대화·파일을 한 입력창에서 바로 열고, **�
 옆에서 이뤄집니다 — 남의 클라우드가 아니라.
 
 </td>
-<td><img src="docs/assets/settings-machines.png" alt="환경설정 → 기기 → 머신: 등록된 로컬 머신과 머신 추가" /></td>
+<td>
+<img src="docs/assets/settings-machines.png" alt="환경설정 → 기기 → 머신: 등록된 로컬 머신과 머신 추가" /><br/>
+<img src="docs/assets/register-machine-panel.png" alt="머신 등록: CLI 설치 명령과 Personal/Organization 등록 코드 발급" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -376,6 +379,23 @@ saycode.ai 계정으로 로그인하면 팀 전체가 열어볼 수 있는 **사
 
 </td>
 <td><img src="docs/assets/login-modal.png" alt="saycode.ai 로그인: 팀 워크스페이스로 전환" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🏢 조직 콘솔에서 회사가 통제합니다 *(팀 워크스페이스)*
+
+조직 관리 콘솔에서 멤버 초대·권한(관리자/멤버) 변경·제거, 감사 로그(누가 언제 어떤
+프로젝트를 열었는지)까지 한곳에서 볼 수 있습니다. 같은 콘솔에서 조직 전체 MCP 서버,
+GitHub PAT, 공용 AI 계정을 등록해 팀원들이 각자 키를 관리하지 않아도 됩니다.
+**환경설정 → 보안**의 전역 일시정지 스위치는 예약 자동화·GitHub 트리거·보드
+오토파일럿의 다음 실행을 즉시 보류시키는 팀 전용 비상 정지입니다.
+
+</td>
+<td>
+<img src="docs/assets/org-console.png" alt="조직 관리 콘솔: 멤버 관리와 감사 로그" /><br/>
+<img src="docs/assets/settings-security.png" alt="환경설정 → 보안: 전역 일시정지와 GitHub Personal Access Token" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">

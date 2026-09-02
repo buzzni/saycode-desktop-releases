@@ -533,6 +533,39 @@ button is added to the conversation header. A successful deploy leaves a deploy 
 the chat with the URL and a copy button. End users who only open the deployed app or
 report URL don't need a seat.
 
+**Connectors** — in Settings → Connectors, link Notion, Slack, Google Drive, Gmail and
+KNOI so conversations can pull in documents, messages and meetings directly. All
+connections are read-only.
+
+<img src="assets/settings-connectors.png" alt="Settings → Connectors: Notion, Slack, Google Drive, Gmail and KNOI" width="820" />
+
+**Machine registration** — in Settings → Devices → Machines, click **Register machine**
+to get a CLI install command plus a Personal or Organization registration code. On the
+target machine, run `npm i -g @buzzni/happy-cli`, then `happy auth login` and enter the
+code — it comes online within seconds.
+
+<img src="assets/register-machine-panel.png" alt="Machine registration panel: CLI install and Personal/Organization code" width="820" />
+
+Click **Generate code** and a one-time code with its expiry time appears, along with a
+ready-to-paste curl command — the code expires within minutes so it can't leak.
+
+<img src="assets/register-machine-code.png" alt="Machine registration code screen" width="820" />
+
+**Organization console** — switch to an organization workspace and an **Organization
+management** entry appears at the bottom of the sidebar workspace switcher. Invite
+members, change roles (admin/member) or remove them, review the audit log (who opened
+which project, when), and register org-wide MCP servers, a GitHub PAT and shared AI
+accounts — all from one console.
+
+<img src="assets/org-console.png" alt="Organization console: member management and audit log" width="820" />
+
+**Global pause** — the global-pause switch in Settings → Security stops the next run of
+scheduled automations, GitHub event triggers and board autopilot from starting. Chats
+already in progress aren't interrupted, and the switch only applies to automation this
+desktop app runs directly (it doesn't block execution paths owned by a machine daemon).
+
+<img src="assets/settings-security.png" alt="Settings → Security: global pause and GitHub Personal Access Token" width="820" />
+
 Local projects stay exactly as they were, even after logging in.
 
 ---

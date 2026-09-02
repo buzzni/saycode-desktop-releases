@@ -360,7 +360,10 @@ PR 作成(リモートが GitHub でない場合はその旨を知らせ、コ�
 クラウドではなく。
 
 </td>
-<td><img src="docs/assets/settings-machines.png" alt="環境設定 → デバイス → マシン: 登録済みのローカルマシンとマシンの追加" /></td>
+<td>
+<img src="docs/assets/settings-machines.png" alt="環境設定 → デバイス → マシン: 登録済みのローカルマシンとマシンの追加" /><br/>
+<img src="docs/assets/register-machine-panel.png" alt="マシン登録: CLI インストールコマンドと Personal/Organization 登録コード" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
@@ -375,6 +378,24 @@ saycode.ai アカウントでログインすると、チーム全員が開ける
 
 </td>
 <td><img src="docs/assets/login-modal.png" alt="saycode.ai ログイン: チームワークスペースへ切り替え" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🏢 組織コンソールで会社が統制します *(チームワークスペース)*
+
+組織管理コンソールでは、メンバーの招待・権限（管理者/メンバー）の変更・削除に加え、
+監査ログ（誰がいつどのプロジェクトを開いたか）まで一箇所で確認できます。同じコンソール
+から組織全体の MCP サーバー、GitHub PAT、共用 AI アカウントを登録でき、チームメンバーが
+それぞれ個別に鍵を管理する必要がありません。**環境設定 → セキュリティ**の全域一時停止
+スイッチは、予約自動化・GitHub トリガー・ボードのオートパイロットの次の実行を即座に
+保留するチーム専用の非常停止です。
+
+</td>
+<td>
+<img src="docs/assets/org-console.png" alt="組織管理コンソール: メンバー管理と監査ログ" /><br/>
+<img src="docs/assets/settings-security.png" alt="環境設定 → セキュリティ: 全域一時停止と GitHub Personal Access Token" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
