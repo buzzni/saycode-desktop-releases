@@ -4,10 +4,12 @@
 
 # Saycode Desktop
 
-### Say it. Watch it become software.
+### Say it. Ship it.
 
-**The Enterprise Vibe Coding & Delivery Platform** — describe what you need in plain
-language, AI agents build it and preview it live — and your company deploys, shares, and owns it.
+**The operations layer for every AI subscription and API your company uses.**
+Keep the frontier models your team already knows (Claude · Codex · Grok · opencode) —
+and let the company manage accounts, permissions, model routing, cost and deployment from one screen.
+**One place to manage. Half the cost.**
 
 [![Latest release](https://img.shields.io/github/v/release/buzzni/saycode-desktop-releases?label=Download&color=6d5df6)](https://github.com/buzzni/saycode-desktop-releases/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/buzzni/saycode-desktop-releases/total?color=22c55e)](https://github.com/buzzni/saycode-desktop-releases/releases)
@@ -20,309 +22,392 @@ language, AI agents build it and preview it live — and your company deploys, s
 
 ### [⬇️ Download for macOS (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.41/Saycode-0.1.41-arm64.dmg)
 
-*Signed & notarized DMG · auto-updates built in*
+*Signed & notarized DMG · auto-updates built in · no account needed to start*
 
-**New here?** Follow the **[📘 step-by-step User Guide](docs/GUIDE.md)** ([한국어](docs/GUIDE.ko.md)) — from first launch to shipping with a whole agent fleet.
+**New here?** Follow the **[📘 Step-by-step User Guide](docs/GUIDE.md)** ([한국어](docs/GUIDE.ko.md)) — from first launch to running a fleet of agents.
 
 <br/>
 
-<img src="docs/assets/build-by-chat.gif" alt="Build an app by chatting with an AI agent in Saycode" width="920" />
+<img src="docs/assets/build-by-chat.gif" alt="Building an app by chatting with an AI agent in Saycode" width="920" />
 
-*One sentence in, a working app out — a real, unedited session.*
+*Type one sentence, get a working app — a real, unedited session. Every message carries a badge showing which model was picked and why.*
 
 </div>
+
+<!-- release-notes:start -->
+## What's new
+
+- [Latest release notes](docs/releases/v0.1.41.ko.md) (Korean)
+- [Full release history](docs/releases/README.ko.md) (Korean)
+<!-- release-notes:end -->
 
 ---
 
 ## Why Saycode?
 
-Your team already uses ChatGPT and Claude to move faster — but everything they build ends up
-scattered across personal machines, invisible to the company. Saycode turns individual
-vibe-coding into a **system your whole company can control, share, and build on**:
+Your people already move fast with ChatGPT and Claude. But subscriptions and API contracts
+are scattered across teams and individuals, and nobody at the company can tell who is using
+which model, or how much it costs. **Block it and productivity stops; leave it open and you
+lose control.** The work lives on personal laptops and walks out the door with the employee.
 
-| | Typical vibe-coding tools | **Saycode** |
+Saycode **does not compete with the models.** It keeps the frontier models your team already
+knows and adds the management, security and deployment an organisation needs on top — an
+**operations layer**.
+
+| | Individual subscriptions | **Saycode** |
 |---|---|---|
-| Internal deployment | External cloud, manual work | **One-click deploy to an internal URL (auto SSL)** |
-| Team collaboration | One person, one account | **Teammates take over, edit, and review together** |
-| Sharing & handover | Stranded on personal PCs | **Managed by the company, reused by every team** |
-| Code & data | Leaves the building | **Stays in-house, end-to-end encrypted** |
-| AI token cost | Every request on the priciest model | **Difficulty-aware auto-routing cuts model cost up to ~90% per turn** |
-| Running many agents | One chat at a time, alt-tabbing | **A Kanban Agent Board that drives a whole fleet at once** |
-| Who can build | Developers only | **Anyone who can describe what they want** |
+| Accounts & cost | Per-person billing, fragmented accounts, admins can't see usage | **Same models under central management, audit and cost control** |
+| Prompts & output | Tied to personal accounts, gone when people leave | **Accumulated as company assets — survives hand-overs** |
+| Model choice | Locked to one vendor; hard to switch when a better model ships | **Best model auto-selected per request; new models usable on day one** |
+| Code & data | Leaves for someone else's cloud | **Stays on machines the company designates, end-to-end encrypted** |
+| Running many agents | Alt-tabbing between chat windows | **A kanban agent board to command the whole fleet from one screen** |
+| The finish line | A branch waiting for review | **Finish work → review → Commit & PR → deploy to an internal URL** |
 
-Building is table stakes. **What happens after — deploy, share, hand over — is where Saycode is different.**
+Solo, a personal subscription is the right call. **The moment an organisation works together, the requirements change.**
+
+### Four things a company admin actually controls
+
+| | What | How |
+|---|---|---|
+| **Who can use it** | Accounts & seats | Hand out and revoke accounts per employee. The company decides which of its AI subscriptions or APIs are attached to whom. Instant revocation on transfer or departure. |
+| **Which AI they can use** | Model & machine policy | Open up specific models per team or machine, with per-person exceptions. Single sign-on with the company account. |
+| **How much they use** | Usage & cost | See who used what and what it cost on one screen. Alerts before a budget cap, automatic stop when it is exceeded. |
+| **What happened** | Audit log | Who did what, when. Searchable and exportable. |
+
+### We adopted it first — and measured
+
+Results measured while Buzzni's own engineering organisation built and operated on Saycode.
+
+| **49%** | Simple requests **~90%** | Everyday work **~80%** |
+|:---:|:---:|:---:|
+| lower monthly AI execution cost — same workload, lower bill | Typos and copy fixes go to a light model | Features and refactors go to a mid-tier model |
+
+> Measurement: Buzzni engineering, 35 people · June–July 2026 · subscription + API execution
+> cost · workload held constant. Per-turn savings are a different metric from the overall
+> figure. No guarantee for your environment — we measure your baseline together during the
+> first month.
 
 ---
 
-## How is this different from an agent IDE (Orca, etc.)?
+## How is this different from an Agent IDE (Orca etc.)?
 
-Tools like [Orca](https://www.onorca.dev) are **agent IDEs**, focused on the developer's
-coding loop: running many agents in parallel across worktrees, diffs, reviews, deep editor
-integration. They do that very well — several offer org-level rollout and governance too —
-and if that loop is your problem, use one.
+Tools like [Orca](https://www.onorca.dev) are **Agent IDEs**: they focus on the developer's
+coding loop — parallel agents in worktrees, diffs, review, deep editor integration. They do
+that very well, and some add org-level rollout and governance. If that loop is your problem,
+they are a fine choice.
 
-Saycode is aimed at a different question — the one that starts *after* the agent finishes:
+Saycode targets a different question — the one that begins *after* the agent has written the code:
 
-> **Agent IDEs help developers run more agents.
-> Saycode helps companies own and operate what those agents build.**
+> **An Agent IDE lets a developer run more agents.
+> Saycode turns what those agents build into company assets.**
 
-| | Agent IDEs (Orca, etc.) | **Saycode** |
+| | Agent IDE (Orca etc.) | **Saycode** |
 |---|---|---|
-| Primary focus | The developer's coding loop | **The company's delivery loop** — build → deploy → share → hand over |
-| Unit of work | Repo · worktree · agent session | **Org · team · project · machine · deployment** |
-| "Deployment" means | Rolling the agent tooling out to your org, safely | **Shipping what was built to an internal URL your team opens** |
-| Typical finish line | Reviewed changes merged to Git | **A running internal service, shared and transferable** |
-| AI model cost | Usage tracking, account switching | **Difficulty-aware auto-routing + sub-agent delegation — orgs have cut total spend by ~50%** |
-| Reaches | Mostly developers | **Everyone in the company** — developers, PMs, ops |
+| Primary focus | The developer's coding loop | **The company's delivery loop** — build → review → deploy → share → hand over |
+| Unit of management | Repo · worktree · agent session | **Org · team · project · machine · seat · deployed artifact** |
+| What "deploy" means | Rolling the agent tool out safely across an org | **Serving the result at an internal URL the team opens** |
+| Typical finish line | A reviewed change merged in Git | **A live internal service that can be shared and handed over** |
+| AI model cost | Usage tracking, account switching | **Difficulty-based auto-routing + sub-agent delegation — 49% measured org-wide** |
+| Who it reaches | Mostly developers | **Everyone in the company** — developers, planners, operators |
 
-The two overlap on parallel agents, worktrees, remote execution, and local-first security —
-so those aren't the reason to pick one. What Saycode adds is an **operations layer** on top:
+The two overlap on parallel agents, worktrees, remote execution and local-first security, so
+those aren't the deciding factors. What Saycode adds on top is the **operations layer**:
 
-- **Company ownership** — projects, sessions, planning docs, and machines belong to the org,
-  not to whoever's laptop they were built on. When someone leaves or moves teams, their work
-  is searchable and transferable, not stranded.
-- **Internal deployment** — one click ships to a stable internal URL (auto SSL). The output
-  isn't a branch waiting for review; it's a running tool your team opens today.
-- **Sharing & handover** — teammates browse, clone, refine, and merge back. Another team's
-  finished project is a starting point, not something to rebuild.
-- **Cost operations** — requests are auto-routed to the cheapest capable model (escalating
-  only when a session gets stuck), mechanical subtasks are delegated to sub-agents on
-  lighter tiers, and it all runs on centrally managed org machines. Organizations working
-  this way have cut their overall AI token spend by close to 50% — and a per-message badge
-  shows why each model was chosen. You manage the company's AI spend, not just observe it.
+- **Company ownership** — projects, sessions, planning docs and machines belong to the
+  organisation, not a laptop. When someone leaves or changes teams, the work stays
+  searchable and hand-over-able.
+- **Internal deployment** — one click to a fixed internal URL with automatic SSL. The result
+  is a tool the team opens today, not a branch waiting for review.
+- **Sharing & hand-over** — colleagues browse, clone, refine and merge changes back.
+  A project another team finished is a starting point, not something to rebuild.
+- **Cost operations** — route every request to the cheapest adequate model (escalating only
+  when a session is genuinely stuck), delegate mechanical sub-tasks to lighter sub-agents,
+  and run it all on centrally managed shared machines. Every message shows which model was
+  chosen and why. Company-wide AI cost is *operated*, not just *observed*.
 
-**When to use which:** if your goal is the deepest possible parallel-agent coding experience
-in your own repos, an agent IDE is a fine choice — and nothing stops you from using both. If
-your goal is for AI-built software to become **company infrastructure** — deployed
-internally, shared across teams, survivable through handovers, with costs under control —
-that's what Saycode is for.
+**When to use which:** if the goal is the deepest parallel-agent coding experience in your
+own repo, an Agent IDE is a great pick — and nothing stops you using both. If the goal is
+AI-built software becoming **company infrastructure** — deployed internally, shared across
+teams, surviving hand-overs, with cost under control — that's the problem Saycode solves.
 
 ---
 
-## Features
+## Highlights
 
 <table>
 <tr>
 <td width="42%" valign="middle">
 
-### 🖥️ Register your own machines — run agents where your code lives
+### 🧭 Install and go — no account, no setup
 
-This is the heart of Saycode. Register any machine you control — your laptop, a GPU box,
-a build server, a cloud VM — and hand agent work to it. Open **Settings → Machines →
-Register machine**, click **Generate code**, and run the one-line command it gives you on
-the target machine. Seconds later it shows up **online**, and every new project can pick
-which machine it runs on. Your agents read, write, build, and run **on your infrastructure**,
-next to your code and data — not on someone else's cloud.
+Open the DMG, pick a language, done. Saycode **starts its embedded server, registers this
+Mac as a local machine and drops you into a Guest local workspace** — no login screen, no
+demo buttons. A **3-step wizard** then checks the Saycode CLI (the runtime bundled in the
+app), your Claude Code / Codex login state and notification sounds, and leads straight into
+adding your first project. Relay, database and every byte of data live on your Mac; nothing
+leaves for the internet. Log in later, when you need team features.
+
+</td>
+<td><img src="docs/assets/first-run-onboarding.gif" alt="First run: language → embedded server boots → 3-step wizard → add first project" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🗣️ One sentence becomes a working app
+
+Describe what you want in plain language (voice input too). The agent plans, writes real
+code on a real machine, and streams every file edit, terminal command and test run as
+transparent cards. When the turn ends, the composer **suggests what to ask next** —
+*"Add a GitHub remote and open a PR"*, for example.
+
+</td>
+<td><img src="docs/assets/build-by-chat.gif" alt="Build by chat" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🧱 Template gallery — start from an app that already runs
+
+In **New project → Templates**, pick a proven Vite + React + TypeScript starter: internal
+dashboard, survey form, API back-office. As the project is created, the **first prompt is
+pre-filled in the composer**, and the agent carries on through `npm install` → `npm run dev`
+→ checking it in the browser. Blank projects, Git URL clone and ZIP/folder import live in
+the same dialog.
 
 </td>
 <td>
-<img src="docs/assets/register-machine.gif" alt="Registering a remote machine from Settings → Machines" /><br/>
-<img src="docs/assets/register-machine-code.png" alt="One-line registration command generated for the target machine (secret redacted)" />
-<sub>The generated one-line command — run it on the target machine and it comes online. (Secret + token blurred for this README.)</sub>
+<img src="docs/assets/template-gallery.png" alt="Template gallery in the new-project dialog" /><br/>
+<img src="docs/assets/template-run.gif" alt="Right after creating a template project the pre-filled first prompt runs the agent through install and dev server" />
 </td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 🔌 Standalone mode — fully local, zero setup
+### 💸 Auto model selection — up to ~90% cheaper per request
 
-No account? No problem. One click on **Standalone (local-only) mode** at the login screen
-and Saycode boots its **own embedded server**, registers your machine, and drops you into a
-complete workspace — in seconds. The relay, the database, and every byte of your data live
-on your Mac; nothing touches the internet. Perfect for security-sensitive teams, air-gapped
-environments, or simply test-driving everything Saycode can do within a minute of installing
-it. When you're ready for team features, just log in and keep going.
+Leave the model on **Default** and Saycode picks the right brain every turn. Typo fixes go
+to a light model (**~90% saved**), everyday work to a mid-tier one (**~80% saved**), genuinely
+hard problems to a top model — and only when a session is truly stuck does it escalate to
+the strongest tier. Every message gets a transparency badge like *"⚡ Auto · Sonnet 5 ·
+medium · ~80% saved"*, and the session header rolls it up: *"Auto 2 turns · avg ~65% saved"*.
+Prefer control? Pin Fable 5 · Opus 5 · Sonnet 5 · Haiku 4.5 and set the effort yourself.
 
 </td>
-<td><img src="docs/assets/standalone-mode.gif" alt="One click on Standalone mode boots an embedded server and a fully local workspace" /></td>
+<td><img src="docs/assets/auto-route-badges.png" alt="Same session: an easy turn routed to Sonnet 5 (~80% saved), a review/commit turn to Opus 5 (~50% saved)" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 🗣️ From one sentence to a working app
+### 🗂️ Agent Board — command your fleet as a kanban
 
-Type (or speak) what you want in plain language. The agent picks a direction, writes real
-code on a real machine, and narrates every step — file edits, terminal commands, test runs —
-as streaming, inspectable cards. Watch your idea become software in minutes, not sprints.
+Every agent session across every project on one board: **Awaiting input → Responding →
+Waiting → In review → Done → PR Merged**. Responding cards stream what the agent is saying
+right now. **Drag a card** to send the next instruction, request a code review or archive a
+session — **Commit & PR**, **Merge PR** and **auto-fix first if CI fails** run straight from
+the card. What auto-routing saved is rolled up in daily / weekly / monthly widgets.
 
 </td>
-<td><img src="docs/assets/build-by-chat.gif" alt="Chat-driven build" /></td>
+<td>
+<img src="docs/assets/agent-board.gif" alt="Agent Board kanban: sessions move between columns as they progress" /><br/>
+<img src="docs/assets/board-drag-review.gif" alt="Dragging a card to In review opens a code-review request confirmation" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 💸 Auto model routing — up to ~90% cheaper per request
+### 👀 Browser panel — pick an element on screen, fix it in chat
 
-Leave the model on **Default** and Saycode picks the right brain for every single turn.
-A typo fix routes to a light model (**~90% saved**), routine work to a mid-tier one
-(**~80% saved**), genuinely hard problems to a top model — and only when a session is
-truly stuck does it escalate to the most powerful (and most expensive) tier. Every
-message carries a transparency badge — *"⚡ Auto · Haiku 4.5 · ~90% saved"* — and the
-session header totals it up, so you always know what you saved and why a model was chosen.
-It compounds at the company level, too: delegate mechanical subtasks to sub-agents on
-lighter tiers and manage usage centrally across shared org machines, and organizations
-have cut their overall AI token bill by close to 50%.
+Split a **browser panel** next to the chat and the app running on your machine shows up as
+is. Switch desktop / tablet / mobile viewport presets, then enter **element-select mode** and
+click a button or card — its selector is attached to the chat. *"Make this button blue"* is
+enough: the agent fixes it and HMR shows the result in the same panel.
 
 </td>
-<td><img src="docs/assets/auto-model-routing.gif" alt="Auto model routing picks a cheap model for an easy request and a top model for a hard one, with per-turn savings badges" /></td>
+<td>
+<img src="docs/assets/browser-panel.png" alt="Browser panel beside the chat showing the localhost:5173 app" /><br/>
+<img src="docs/assets/element-to-chat.gif" alt="Select element → selector attached to chat → fix → HMR update" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 🗂️ Agent Board — run your agent fleet like a Kanban team
+### 🧩 Shape the workspace your way
 
-Every agent session across every project, on one board: **Waiting for input → Responding
-→ Idle → In review → Done → PR merged**. Streaming cards show what each agent is saying
-right now. **Drag a card** to send the next instruction, request a code review, or
-archive the session — and fire **Commit & PR** or **merge the PR** straight from a card.
-A savings widget tracks what auto-routing saved you by day, week, or month.
-
-</td>
-<td><img src="docs/assets/agent-board.gif" alt="Agent Board Kanban: drag a session card into the review column to request a code review" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 👀 Live preview, right next to the chat
-
-Click **Run preview** and your app opens in a sidecar panel — running on the project's
-machine, not a mock. Keep chatting on the left, click around your real product on the
-right. When the agent changes code, you see it immediately.
+Use the **Split** button next to the tabs or shortcuts (⌘⌥T terminal, ⌘⌥C chat) to open a
+new chat, terminal, browser or file pane beside any panel, and drag to resize. Watch Claude
+think in one pane while Codex delivers in another. **Fan out** a task to several agents, or
+**hand off** a session to a different agent.
 
 </td>
-<td><img src="docs/assets/live-preview.gif" alt="Live preview sidecar" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### ⚡ A new project in seconds
-
-Blank, Git-cloned, or an existing folder — pick a machine, name it, done. Every project
-carries its own chat sessions, planning docs, preview, environment variables, and agent
-instructions, so nothing lives in someone's head.
-
-</td>
-<td><img src="docs/assets/new-project.gif" alt="New project flow" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 🧩 Run a whole fleet of agents
-
-Right-click any tab to split off a new chat or terminal pane, then drag to resize — the
-workspace rearranges itself as you go. Watch a Claude session think in one pane while a
-Codex session ships in another. Fan a task out across agents and hit **Open All** to lay
-every session out in a grid at once. The sidebar tracks every running agent, live.
-
-</td>
-<td><img src="docs/assets/multi-session-grid.gif" alt="Multi-session grid workspace" /></td>
+<td><img src="docs/assets/workspace-split-terminal.png" alt="Three-way split: chat + browser + terminal" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
 ### 💻 A real terminal on the remote machine
 
-Open a live shell on any registered machine, docked right under the chat. It's a genuine
-end-to-end encrypted session on that box — run builds, tail logs, poke around — while the
-agent keeps working above it. Terminals survive tab switches and reconnect on their own.
+Dock a real shell under the chat on any registered machine. It's a genuine end-to-end
+encrypted session on that box — run builds, tail logs, check git status — while the agent
+keeps working above. Terminals survive tab switches and reconnect on their own.
 
 </td>
-<td><img src="docs/assets/remote-terminal.gif" alt="Remote terminal docked under the chat, connected to a registered machine" /></td>
+<td><img src="docs/assets/remote-terminal.gif" alt="Running git commands in a remote terminal attached to the session's worktree" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 🤖 Bring your favorite agent
+### 🤖 Your favourite agents, one worktree per session
 
-**Claude (Anthropic), Codex (OpenAI), and opencode** — first-class, switchable per
-session, with model and effort control. Claude sessions auto-route: easy turns get
-quietly delegated to a cheaper worker model (the **⚡ auto-route badge** shows what you
-saved), so you're not paying frontier prices for every message. Give a session its own
-isolated **git worktree** so experiments never trample main.
+Choose **Claude Code (Anthropic), Codex (OpenAI), Grok (xAI) or opencode** per session,
+with control over model and effort. Turn on **Worktree** when starting a conversation and
+the session gets its own branch and isolated folder, so experiments never touch main — the
+branch chip in the session header always shows where you are. Start a session from an
+existing PR, or adopt a worktree created outside Saycode.
 
 </td>
-<td><img src="docs/assets/agent-picker.png" alt="Agent and model picker with auto-route and Worktree options" /></td>
+<td>
+<img src="docs/assets/new-session-options.png" alt="New conversation: agent, model and effort" /><br/>
+<img src="docs/assets/new-session-worktree.png" alt="Per-session git worktree isolation" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### ✅ Finish work properly — review first, then Commit & PR
+### ✅ Finish work — review first, then Commit & PR
 
-One **Work completion** button wraps up a session the right way. Have the current agent
-review its own changes, or hand a **read-only snapshot to an independent reviewer** —
-another agent (Claude, Codex, and more) that only reports findings and can't touch your
-code. Apply the fixes you accept, then continue straight to **Commit & PR**. Review
-history and findings stay attached to the session.
+One **Finish work** button closes a session properly. Have the current agent review its own
+changes, or hand a **read-only snapshot to an independent reviewer** — a separate agent
+(Claude, Codex, …) that cannot touch the code and only reports what it finds. Apply the
+fixes you accept, then go straight to **Commit & PR**: review → tests → commit → push → PR
+in a single turn (if the remote isn't GitHub it says so and stops after commit + push).
 
 </td>
-<td><img src="docs/assets/work-completion-hub.png" alt="Work completion hub: review with the current agent, ask an independent reviewer, or continue to Commit &amp; PR" /></td>
+<td>
+<img src="docs/assets/work-completion-hub.png" alt="Finish-work hub: current-agent review, independent reviewer, straight to Commit &amp; PR" /><br/>
+<img src="docs/assets/commit-pr.gif" alt="Commit &amp; PR in one turn: review → commit → push → PR" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 🔎 Full-text search across every conversation
+### 🔎 Full-text search across every conversation, ⌘P to jump anywhere
 
-Press **⌘⇧F** and search everything you and your agents ever said — titles, prompts,
-and replies — powered by a local SQLite FTS5 index that never leaves your machine.
-Scope it to *My conversations* or the *whole organization*, and narrow with filters
-like `project:web`, `role:agent`, `after:2026-07-01`, or `"exact phrase"`.
+**⌘⇧F** searches everything you and your agents have said — titles, prompts, responses —
+backed by a local SQLite FTS5 index that never leaves your machine. Narrow with
+`project:web`, `role:agent`, `after:2026-07-01` or `"exact phrase"`. **⌘P Quick Open** opens
+projects, conversations and files from one box; **⌘K** searches across projects,
+conversations and machines.
 
 </td>
-<td><img src="docs/assets/conversation-search.gif" alt="Conversation search: press Cmd+Shift+F, type, and jump to any past agent conversation" /></td>
+<td>
+<img src="docs/assets/conversation-search.png" alt="Conversation search (⌘⇧F)" /><br/>
+<img src="docs/assets/quick-open.png" alt="Quick Open (⌘P)" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 🚀 Deploy and share in one click
+### 📊 Usage at a glance, accounts swapped in one click
 
-Ship to an internal URL your whole team can open — SSL handled, same link updated on
-every deploy. Share projects to your team or the company community; teammates can browse,
-clone, refine, and safely merge changes back.
+Click the usage chip in the session header to see remaining **Claude · Codex · Grok** quota
+per machine (5-hour / 7-day windows). Connect several Claude accounts and **switch with one
+click** — when one hits its limit, work doesn't stop. Polling happens once per machine every
+five minutes, so provider APIs are never hammered.
 
 </td>
-<td><img src="docs/assets/deploy-share.png" alt="Deployed project with internal URL" /></td>
+<td><img src="docs/assets/machine-usage.png" alt="Per-machine Claude/Codex usage and account switching popover" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 📱 Take it with you
+### 🧠 System prompt · Memory · Extensions
 
-The Saycode mobile app keeps the same workspace in your pocket: watch agent sessions
-stream in real time, open a remote terminal, check previews, and get a push the moment a
-long run finishes.
+**Settings → AI → System prompt** lets you toggle each Saycode default instruction (child
+agent calls, internal delegation, plan-first workflow, commit credits, inline artifact
+preview) and layer presets (TypeScript · Tailwind · Korean · Minimal · Full-stack) or your
+own text on top. The **Memory** tab is the layer agents use to remember project context
+across sessions; **Extensions** manages template packs and skills.
 
 </td>
-<td><img src="docs/assets/mobile-companion.png" alt="Saycode mobile companion app" /></td>
+<td>
+<img src="docs/assets/settings-system-prompt.png" alt="System prompt settings: per-item default instruction toggles and presets" /><br/>
+<img src="docs/assets/settings-extensions.png" alt="Extension management" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 🌙 A workspace you'll want to live in
+### 📱 Continues in your pocket
 
-Aurora-glass design with Auto / Light / Dark themes, information-dense but calm. Voice
-input, ⌘K search across chats, projects, and machines, native completion notifications
-with Dock badges — the details add up.
+Scan the QR code in **Settings → Devices → Mobile** with the Saycode mobile app and the same
+workspace opens on your phone — on the same network in local mode, or through a tunnel from
+anywhere. Watch agent sessions live, open a remote terminal, and get a push the moment a
+long task finishes.
 
 </td>
-<td><img src="docs/assets/workspace-home-dark.png" alt="Dark mode workspace home" /></td>
+<td><img src="docs/assets/mobile-companion.png" alt="Mobile connection: open the same workspace on a phone via QR code" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🖥️ Register your machines — run agents where the code lives
+
+This Mac is registered automatically on first run. Add any machine you manage — a GPU
+server, a build box, a cloud VM — and hand agent work to it. In **Settings → Devices →
+Machines** create a registration code, run the one-liner on the target, and it shows up
+**Online** within seconds. From then on every project lets you choose where it runs.
+Everything the agent reads, writes, builds and runs happens **on your infrastructure**, next
+to the code and data — not in someone else's cloud.
+
+</td>
+<td><img src="docs/assets/settings-machines.png" alt="Settings → Devices → Machines: registered local machine and Add machine" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🚀 Deploy & share in one click *(team workspace)*
+
+Signed in with a saycode.ai account, you can deploy to an **internal URL** the whole team
+can open — SSL is automatic and the same link is refreshed on every deploy. Share a project
+with your team or the internal community so colleagues can browse, clone, refine and merge
+changes back safely. Rendered HTML documents and reports publish to a public link.
+**End users who only open deployed apps and reports don't need a seat.**
+
+</td>
+<td><img src="docs/assets/login-modal.png" alt="saycode.ai login: switch to the team workspace" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🌙 A workspace you'll want to stay in
+
+Aurora-glass design in Auto / Light / Dark — dense with information, calm on the eyes.
+Notification centre, every shortcut rebindable, Dock badges and native completion
+notifications, sounds for input requests and finished work. The details add up.
+
+</td>
+<td>
+<img src="docs/assets/workspace-home-dark.png" alt="Workspace home in dark mode" /><br/>
+<img src="docs/assets/chat-dark.png" alt="Chat in dark mode" />
+</td>
 </tr>
 </table>
 
-### And more
+### Also in the box
 
-- 🧭 **Guided first-run onboarding** — a checklist that verifies the embedded server, detects your Claude/Codex sign-ins, and walks you to your first session
-- 🔔 **Notification center** — completion notices survive restarts, unread/read tabs, click to jump straight into the chat that finished
-- 📊 **AI usage dashboard** — remaining Claude/Codex quota (5-hour & 7-day windows) per machine, with one-click Claude account switching
-- ⌨️ **Custom shortcuts & one-click splits** — rebind every key; split a terminal (⌘⌥T) or another chat (⌘⌥C) next to any panel, or right-click a tab
-- 🎙️ **Live voice input & attachments** — realtime speech-to-text in the composer, drag in files and images
-- 📄 **Rich file viewer** — markdown, HTML, PDF, and DOCX render right in the app
-- 🔗 **GitHub / GitLab import** — connect an account and pick a repository from a list when creating a project
+- 🔔 **Notification centre & outbound webhooks** — completion notices persist across restarts and jump to the chat; turn-completed / waiting-input / stalled events posted to your endpoint with an HMAC-SHA256 signature
+- 💬 **Diff line comments** — comment on changed lines and send them to the agent as a bundled follow-up
+- ⌨️ **Slash commands & attach menu** — `/` commands in the composer; drag in files, images and folders
+- 🎙️ **Live voice input** — real-time transcription as you speak
+- 📄 **Rich file viewer** — Markdown, HTML, PDF and DOCX rendered in-app, inline artifact previews
+- 🔗 **GitHub / GitLab import & connectors** — pick repos from a list; attach Google Drive, Slack, Notion and other connectors to a session *(team workspace)*
 - 🧩 **MCP servers & env-var groups** — per-project MCP connections and org-managed environment variable groups
-- 🔒 **Private by design** — chat and terminal traffic is end-to-end encrypted; code and data stay on your machines
-- 🌐 **Personal & org machines** — register machines under your own account or share them across your organization
-- 🧠 **Memory layer** — agents remember project context across sessions
-- 🏢 **Org-grade control** — org/team workspaces, machine registry, environment variables, audit-friendly ownership
-- 📱 **Mobile push** — get notified on your phone when desktop runs finish
+- 🛑 **Global pause & quality gates** — hold scheduled automations, GitHub triggers and board autopilot with one switch; self-review rounds and quality gates for autonomous runs *(team workspace)*
+- 🔐 **Passkey MFA** — WebAuthn passkeys or TOTP for team accounts
+- 📉 **Network data saver** — heavy sync backs off automatically on tethered / metered connections
+- 🔒 **Privacy by design** — chat and terminal traffic end-to-end encrypted; code and data stay on your machines
+- 🏢 **Org-level control** — org/team workspaces, seat, machine, env-var and ownership management, audit log *(team workspace)*
+- 🔄 **Staged auto-updates** — new versions roll out gradually, so a bad build never reaches everyone at once
 
 ---
 
@@ -330,79 +415,157 @@ with Dock badges — the details add up.
 
 | | | |
 |---|---|---|
-| **01 · Register a machine** | **02 · Say it** | **03 · Agents build on your machine** |
-| Run the generated one-line command on your laptop, GPU box, or server — it comes online in seconds. | One sentence in plain language: *"Build a back-office for purchase requests."* | AI agents read and write real files and run commands **on the machine you chose**, streaming every step. |
+| **01 · Install, ready** | **02 · Add a project** | **03 · Ask in plain words** |
+| Open the DMG, pick a language; the embedded server starts and this Mac is registered as a local machine. A 3-step wizard checks CLI, AI tools and notifications. | Open a folder, pick a template, start blank, clone a Git URL or import a ZIP — choose a machine and a name. | One sentence is enough: *"Add an assignee column to the requests table and fill in dummy data"* |
 
 | | |
 |---|---|
-| **04 · Preview instantly** — the live app opens right next to the chat, click through it as it evolves. | **05 · Ship it to the team** — one click deploys to an internal URL; share, hand over, and iterate together. |
+| **04 · AI builds on your machine** — the agent reads and writes real files, runs commands and streams the whole process. Click through it in the browser panel; pick an element to fix. | **05 · Finish and ship to the team** — Finish work runs review → Commit & PR. In a team workspace one button issues an internal URL. Share, hand over, keep improving together. |
 
 <div align="center">
-<img src="docs/assets/live-preview-final.png" alt="Agent session on the left, the real running app in the preview sidecar on the right" width="920" />
+<img src="docs/assets/first-session-done.png" alt="First session: the agent added an assignee column and reported back" width="920" />
 
-*The agent works on the left — your real app runs on the right.*
+*First session — one request, and the agent edits files, runs the type-check and reports back.*
 </div>
 
 ---
 
-## Install
+## Install & first run
 
 ### macOS (Apple Silicon)
 
 1. Download the latest DMG from **[Releases](https://github.com/buzzni/saycode-desktop-releases/releases/latest)**
-2. Open the DMG and drag **Saycode** into Applications
-3. Launch, pick your language, and choose how to start:
-   - **Log in** with your saycode.ai account (team workspace)
-   - **Demo workspace** — explore instantly, no account needed
-   - **Standalone (local-only) mode** — a fully local setup with an embedded server
-4. A **first-run checklist** verifies your setup (server, Claude/Codex sign-in) and takes you to your first session.
+2. Open it and drag **Saycode** to Applications
+3. Launch and pick a **language** (English · 한국어 · 中文 · 日本語)
+4. That's it. Saycode starts its embedded server, registers this Mac and opens the **Guest
+   local workspace** (about 10 seconds). There is no login screen — when you want team
+   features, use **Guest menu → Log in** any time.
 
-The app is Developer-ID signed, notarized, and updates itself in place.
-For a full walkthrough with screenshots of every step, see the **[User Guide](docs/GUIDE.md)**.
+### Getting ready for your first task — the 3-step wizard
 
-> **Windows / Linux / Intel Mac** — not available yet. Watch [Releases](https://github.com/buzzni/saycode-desktop-releases/releases) for platform updates.
+<table>
+<tr>
+<td width="33%"><img src="docs/assets/onboarding-step1-cli.png" alt="① Saycode CLI" /></td>
+<td width="33%"><img src="docs/assets/onboarding-step2-ai-tools.png" alt="② AI tools" /></td>
+<td width="33%"><img src="docs/assets/onboarding-step3-notifications.png" alt="③ Notifications" /></td>
+</tr>
+<tr>
+<td valign="top"><b>① Saycode CLI</b> — checks the local runtime bundled with the app. The standalone build shows <i>Installed</i> with nothing extra to install.</td>
+<td valign="top"><b>② AI tools</b> — detects Claude Code and Codex login state. If not yet logged in, run <code>claude</code> → <code>/login</code> and <code>codex login</code> in a terminal, then press <b>Check again</b>.</td>
+<td valign="top"><b>③ Notifications</b> — choose input-request and task-complete sounds and press <b>Send test notification</b>. The final button leads straight into adding your first project.</td>
+</tr>
+</table>
+
+Every step can be skipped with **Later**, and the wizard can be reopened any time from
+**Settings → Devices → Machines → Resume setup**.
+
+### First project, first conversation
+
+<table>
+<tr>
+<td width="50%"><img src="docs/assets/first-project-dialog.png" alt="Add project dialog" /></td>
+<td width="50%"><img src="docs/assets/system-prompt-choice.png" alt="Use Saycode default instructions?" /></td>
+</tr>
+<tr>
+<td valign="top">When the wizard finishes, <b>Add project</b> opens. Pick a host (machine) and <b>Open existing folder</b> — or choose New project · Clone from Git URL · Import ZIP. New projects can start from the template gallery.</td>
+<td valign="top">Opening the first conversation asks whether to use <b>Saycode default instructions</b>. Keep them on and the agent follows Saycode workflows such as child-agent delegation, commit credits and inline artifact previews. Each item can be changed later in Settings.</td>
+</tr>
+</table>
+
+The app is Developer ID signed and notarized, and updates itself automatically.
+For every step with screenshots, see the **[User Guide](docs/GUIDE.md)**.
+
+### Local workspace vs. team workspace
+
+| | Guest local workspace (default) | Team workspace (saycode.ai login) |
+|---|---|---|
+| Requirements | None — just install | Organisation account (SSO · passkey/TOTP MFA) |
+| Where data lives | Entirely on this Mac | Code & data on designated machines; metadata & audit log in the org console |
+| Agents · auto model selection · Agent Board · worktrees · Finish work · browser panel · terminal · templates · search · memory | ✅ | ✅ |
+| Remote machine registration · mobile connection | ✅ (mobile on the same network or via tunnel) | ✅ |
+| Internal URL deployment · project sharing & hand-over · community | — | ✅ |
+| Org console (seats · permissions · model policy · cost · audit log) · connectors · personal memory sync · project export | — | ✅ |
+
+Start local, log in when you need to. Local projects stay where they are.
+
+> **Windows / Linux / Intel Mac** — coming soon. Watch [Releases](https://github.com/buzzni/saycode-desktop-releases/releases).
+
+---
+
+## Adoption scenarios — you choose where to start
+
+Three scenarios, not a sequence. Start with one or combine them.
+
+| 💬 Chat & documents | ⚙️ Personal workflow automation | 🚀 App building & deployment |
+|---|---|---|
+| Meeting summaries, drafts of plans and reports, search and summarise. Only approved users and models, model limits per group, usage and cost rolled up. | Connect internal collaboration tools and document stores to automate recurring reports, request/approval flows and other repetitive work. | Business teams build their own internal tools and deploy them to an internal URL, with review and approval built in. |
+
+**Non-developers use it from week one** — business support (minutes, monthly report drafts,
+policy Q&A), sales & marketing (proposal drafts, VOC classification), commerce operations
+(product / price / inventory check reports), HR & general affairs (policy guidance,
+request/approval flows, onboarding material). Start with whatever is done by hand, in
+spreadsheets or over chat today. Results are shared as links, so review ends without
+attachments flying around.
 
 ---
 
 ## Saycode for teams
 
-Saycode is built for companies that want vibe coding **with** control — permissions and
-ownership at the organization level, registered execution machines, internal-only
-deployment, and reviewable collaboration.
+### A free one-month PoC — see the numbers first
 
-| Plan | For | |
+We measure usage, cost, policy and audit for the scenario you choose and write the results
+report with you. **The PoC includes every Premium feature.**
+
+| Week 1 · Baseline | Weeks 2–3 · Real use | Week 4 · Report |
 |---|---|---|
-| **Free PoC** | Validate before you adopt — sample project support included | [Contact us](mailto:soo@buzzni.com) |
-| **Enterprise** | Team collaboration, on-prem install, org/audit/deploy controls | [Contact us](mailto:soo@buzzni.com) |
+| Measure current AI usage and cost baseline, pick the target team and PoC scenario | Apply to real work, measure usage and cost, validate policy and permission settings | Summarise activation, cost and policy results; produce a rollout quote |
 
-- 🌐 Website: **[saycode.ai](https://saycode.ai)**
+The PoC month is free. Model usage during the PoC follows your own contracts.
+
+### Pricing — seats only for the people who build
+
+Saycode does not resell AI models. Connect the AI contracts you already have and pay a seat
+fee only for management and the execution environment.
+
+| Plan | Price | For | Includes |
+|---|---|---|---|
+| **Office** | $10 / user · month | Everyone — chat & documents | Chat and document work · viewing, reviewing and approving results · usage dashboard |
+| **Premium** ⭐ | $40 / user · month | People who build and deploy | Everything in Office + app building & agent execution · internal URL deployment · SSO |
+| **Volume** | Negotiated | Company-wide rollout, special requirements | Volume pricing · on-premise / air-gapped installation · dedicated support & SLA |
+
+- **0% markup on AI models** — connect your existing Anthropic, OpenAI, Azure, Bedrock or Vertex contracts. Monthly total = seats + external AI subscriptions + API usage.
+- **End users who only open deployed apps and reports don't need a seat.** Seats are named; no account sharing.
+- Budget caps and threshold alerts, with automatic stop when a cap is exceeded.
+- No setup fee during the current launch period.
+
+- 🌐 Website: **[saycode.ai](https://saycode.ai)** · Deck: **[saycodepoc.apps.saycode.ai](https://saycodepoc.apps.saycode.ai/)**
 - 💼 Sales: [soo@buzzni.com](mailto:soo@buzzni.com)
 - 🛠 Technical: [ryan@buzzni.com](mailto:ryan@buzzni.com)
 - 🤝 Support: [ernie@buzzni.com](mailto:ernie@buzzni.com)
 
 ---
 
-## Open-source acknowledgements
+## Open-source notice
 
-Saycode Desktop is proudly built on open source. It bundles and gratefully uses the
-following projects (licenses noted; full license texts ship inside the packaged app):
+Saycode Desktop is built on open source. It bundles or uses the following projects (licences
+noted); full licence texts ship inside the packaged app:
 
-| Project | Use | License |
+| Project | Used for | Licence |
 |---|---|---|
-| [Happy](https://github.com/slopus/happy) (via the [buzzni fork](https://github.com/buzzni/happy)) | Encrypted agent-session relay engine (`happy-cli` / `happy-server`) bundled for standalone mode | MIT |
-| [Electron](https://www.electronjs.org/) | Desktop application shell | MIT |
+| [Happy](https://github.com/slopus/happy) (via the [buzzni fork](https://github.com/buzzni/happy)) | Encrypted agent-session relay engine bundled in standalone mode (`happy-cli` / `happy-server`) | MIT |
+| [Electron](https://www.electronjs.org/) | Desktop app shell | MIT |
 | [React](https://react.dev/) | UI framework | MIT |
 | [xterm.js](https://xtermjs.org/) (+ fit / web-links / WebGL addons) | Remote terminal rendering | MIT |
-| [socket.io-client](https://socket.io/) | Realtime transport | MIT |
-| [react-markdown](https://github.com/remarkjs/react-markdown) + [remark-gfm](https://github.com/remarkjs/remark-gfm) | Chat markdown rendering | MIT |
+| [socket.io-client](https://socket.io/) | Real-time transport | MIT |
+| [react-markdown](https://github.com/remarkjs/react-markdown) + [remark-gfm](https://github.com/remarkjs/remark-gfm) | Chat Markdown rendering | MIT |
 | [electron-updater](https://www.electron.build/) | In-app auto-updates | MIT |
 | [buffer](https://github.com/feross/buffer) | Binary utilities | MIT |
 | [lucide-react](https://lucide.dev/) | Icon set | ISC |
 | [TweetNaCl.js](https://tweetnacl.js.org/) | End-to-end encryption primitives | Unlicense (public domain) |
 
-Special thanks to **[slopus/happy](https://github.com/slopus/happy)** (MIT) by Kirill
-Dubovitskiy and contributors — the open-source foundation of Saycode's encrypted
-session-sync architecture.
+Special thanks to Kirill Dubovitskiy and the contributors of
+**[slopus/happy](https://github.com/slopus/happy)** (MIT), the foundation of Saycode's
+encrypted session-sync architecture.
 
 ---
 
@@ -410,6 +573,6 @@ session-sync architecture.
 
 **© 2026 [Buzzni](https://buzzni.com) · [saycode.ai](https://saycode.ai)**
 
-*Built so that anyone in your company can say it — and ship it.*
+*So that anyone in the company can build, just by saying it.*
 
 </div>
