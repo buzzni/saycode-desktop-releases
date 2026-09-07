@@ -20,7 +20,7 @@ and let the company manage accounts, permissions, model routing, cost and deploy
 
 <br/>
 
-### [⬇️ Download for macOS (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.41/Saycode-0.1.41-arm64.dmg)
+### [⬇️ Download for macOS (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.42/Saycode-0.1.42-arm64.dmg)
 
 *Signed & notarized DMG · auto-updates built in · no account needed to start*
 
