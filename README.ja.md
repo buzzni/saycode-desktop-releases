@@ -20,7 +20,7 @@
 
 <br/>
 
-### [⬇️ macOS 版をダウンロード (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.42/Saycode-0.1.42-arm64.dmg)
+### [⬇️ macOS 版をダウンロード (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.43/Saycode-0.1.43-arm64.dmg)
 
 *署名・公証済み DMG · 自動アップデート内蔵 · アカウント不要ですぐ開始*
 
