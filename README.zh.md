@@ -29,9 +29,9 @@
 
 <br/>
 
-<img src="docs/assets/hero-en.gif" alt="Saycode Desktop 介绍 —— 一句话构建应用、智能体面板、工作完成" width="960" />
+https://github.com/user-attachments/assets/9eea6cbb-bf4d-4d10-a86d-dc4011a8d9dc
 
-*由未经剪辑的 v0.1.50 真实画面用 Blender 串联而成的 14 秒导览。 · [▶ 高清视频（MP4）](docs/assets/hero-en.mp4)*
+*🔊 请打开声音 —— 用真实 v0.1.50 画面在 Blender 中制作的 92 秒介绍视频（英文字幕·背景音乐） · [下载 MP4](docs/assets/saycode-intro-en.mp4) · [字幕 SRT](docs/assets/saycode-intro-en.srt)*
 
 </div>
 

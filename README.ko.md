@@ -28,9 +28,9 @@
 
 <br/>
 
-<img src="docs/assets/hero-ko.gif" alt="Saycode Desktop 소개 — 한 문장으로 앱 만들기, 에이전트 보드, 작업 마무리" width="960" />
+https://github.com/user-attachments/assets/2c62fec6-5402-4edf-b86b-4a53a55f05e0
 
-*편집 없는 실제 v0.1.50 화면을 Blender로 엮은 14초 투어입니다. · [▶ 고화질 영상(MP4)](docs/assets/hero-ko.mp4)*
+*🔊 소리를 켜고 보세요 — 실제 v0.1.50 화면으로 만든 92초 소개 영상(자막·배경음악, Blender 제작) · [MP4 다운로드](docs/assets/saycode-intro-ko.mp4) · [자막 SRT](docs/assets/saycode-intro-ko.srt)*
 
 </div>
 
