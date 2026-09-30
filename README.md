@@ -28,9 +28,9 @@ and let the company manage accounts, permissions, model routing, cost and deploy
 
 <br/>
 
-<img src="docs/assets/hero-en.gif" alt="Saycode Desktop tour — build an app from one sentence, the Agent Board, and Finish work" width="960" />
+https://github.com/user-attachments/assets/9eea6cbb-bf4d-4d10-a86d-dc4011a8d9dc
 
-*A 14-second tour stitched together in Blender from real, unedited v0.1.50 screens. · [▶ Watch in high quality (MP4)](docs/assets/hero-en.mp4)*
+*🔊 Sound on — a 92-second intro built in Blender from real v0.1.50 screens, with subtitles and music · [Download MP4](docs/assets/saycode-intro-en.mp4) · [Subtitles (SRT)](docs/assets/saycode-intro-en.srt)*
 
 </div>
 

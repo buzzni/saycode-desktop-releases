@@ -28,9 +28,9 @@
 
 <br/>
 
-<img src="docs/assets/hero-en.gif" alt="Saycode Desktop の紹介 — 一文でアプリを作る、エージェントボード、作業の仕上げ" width="960" />
+https://github.com/user-attachments/assets/9eea6cbb-bf4d-4d10-a86d-dc4011a8d9dc
 
-*編集なしの実際の v0.1.50 画面を Blender でつないだ 14 秒のツアーです。 · [▶ 高画質動画(MP4)](docs/assets/hero-en.mp4)*
+*🔊 音声をオンにしてご覧ください — 実際の v0.1.50 画面から Blender で制作した 92 秒の紹介動画（英語字幕・BGM） · [MP4 をダウンロード](docs/assets/saycode-intro-en.mp4) · [字幕 SRT](docs/assets/saycode-intro-en.srt)*
 
 </div>
 

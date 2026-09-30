@@ -1,0 +1,63 @@
+1
+00:00:04,042 --> 00:00:08,083
+Install, pick 'Personal use'
+
+2
+00:00:08,250 --> 00:00:12,292
+and Saycode finishes onboarding for you
+
+3
+00:00:12,792 --> 00:00:17,708
+Describe what you want in one sentence
+
+4
+00:00:17,875 --> 00:00:22,792
+the agent writes real code on your Mac
+
+5
+00:00:22,958 --> 00:00:27,875
+and opens the dev server and preview for you
+
+6
+00:00:28,375 --> 00:00:34,250
+Pick an element on screen and send it to chat
+
+7
+00:00:34,417 --> 00:00:40,292
+one line of request — live in 14 seconds
+
+8
+00:00:40,792 --> 00:00:46,750
+No project needed
+
+9
+00:00:46,917 --> 00:00:52,875
+create a DOCX report and open it right in the app
+
+10
+00:00:53,375 --> 00:00:58,750
+Conversation in the center, tools on the right
+
+11
+00:00:58,917 --> 00:01:04,292
+diff · terminal · file content search in one screen
+
+12
+00:01:04,792 --> 00:01:10,417
+Command Claude and Codex conversations on one kanban
+
+13
+00:01:10,583 --> 00:01:16,208
+drop a card to request a review
+
+14
+00:01:16,708 --> 00:01:21,750
+One click on Finish work
+
+15
+00:01:21,917 --> 00:01:26,958
+self-review → build check → commit → done
+
+16
+00:01:27,458 --> 00:01:31,792
+saycode.ai  ·  github.com/buzzni/saycode-desktop-releases
