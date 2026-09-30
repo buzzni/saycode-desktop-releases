@@ -29,9 +29,9 @@
 
 <br/>
 
-<img src="docs/assets/build-by-chat.gif" alt="在 Saycode 中通过与 AI 智能体对话构建应用" width="920" />
+<img src="docs/assets/hero-en.gif" alt="Saycode Desktop 介绍 —— 一句话构建应用、智能体面板、工作完成" width="960" />
 
-*输入一句话，就能得到一个能运行的应用 —— 真实、未经剪辑的会话画面。每条消息都会用徽章标明选择了哪个模型、为什么选择它。*
+*由未经剪辑的 v0.1.50 真实画面用 Blender 串联而成的 14 秒导览。 · [▶ 高清视频（MP4）](docs/assets/hero-en.mp4)*
 
 </div>
 
@@ -41,6 +41,20 @@
 - [最新发布说明](docs/releases/v0.1.41.ko.md)（韩文）
 - [完整发布记录](docs/releases/README.ko.md)（韩文）
 <!-- release-notes:end -->
+
+---
+
+## 30 秒速览
+
+| 🗣️ **一句话就能变成应用** | 🗂️ **在一块面板上指挥智能体舰队** | ✅ **评审 → 提交 → 完成，一气呵成** |
+|:---|:---|:---|
+| 说出你想要的，智能体就会**在你的 Mac 上**编写真正的代码、启动开发服务器，并**自动打开预览**。 | 用**看板**同时指挥多个 Claude · Codex · Grok · opencode 对话。拖放卡片，下一条指令或评审请求就会自动发出。 | 只需一次**工作完成**，自评审、构建验证、提交全部搞定，对话会归入面板的**已完成**列。 |
+
+> **v0.1.50 —— 焕然一新的界面。** 首次启动改为*选择个人 / 组织使用 → 自动引导*；
+> 主页重新设计为 **Chat · Build · Develop** 三个按目的划分的起点；项目界面则改为**中间是对话标签页 +
+> 右侧是文件 · 变更 · 终端 · 浏览器工作区**。无需项目即可直接制作文档的 **Chat（Work）与文档模板**、
+> 侧边栏的**任务看板 · 外部集成**，以及输入框中的**智能体 · 模型选择与 ↑ 提示词历史** ——
+> 下方的视频全部是 v0.1.50 的真实画面。
 
 ---
 
@@ -132,266 +146,216 @@ Agent IDE 也是不错的选择 —— 而且没有理由不能两者兼用。�
 
 ## 核心功能
 
+*截图为韩文界面；应用同样支持 English、中文 和 日本語。*
+
 <table>
 <tr>
 <td width="42%" valign="middle">
 
-### 🧭 安装即可开始 —— 无需账号，无需配置
+### 🧭 安装后即可开始 —— 选一下，稍等片刻就好
 
-打开 DMG，选择语言，就完成了。Saycode 会**自动启动内置服务器，把这台 Mac
-注册为本地机器，并直接带你进入 Guest 本地工作区** —— 没有登录界面，也没有
-演示按钮。随后的**三步向导**会检查 Saycode CLI（应用内置的本地运行时）、
-Claude Code / Codex 的登录状态和通知声音，并直接引导你添加第一个项目。
-中继、数据库，乃至每一个字节的数据都留在你的 Mac 上，不会有任何内容
-发往互联网。需要团队功能时，再登录即可。
+打开 DMG，选择语言，然后在**个人使用 / 组织使用**中点选其一即可。选择个人使用时，
+Saycode 会**自行启动内置服务器，把这台 Mac 注册为本地机器**，并**自动推进**引导清单 ——
+检查 Saycode CLI、检测 Claude Code · Codex 登录状态、设置通知声音。某一步卡住时，
+就地重试即可，已完成的步骤会原样保留。数据一个字节也不会离开你的 Mac。
 
 </td>
-<td><img src="docs/assets/first-run-onboarding.gif" alt="首次启动：选择语言 → 内置服务器自动启动 → 三步向导 → 添加第一个项目" /></td>
+<td><img src="docs/assets/first-run.gif" alt="首次启动：选择语言 → 个人使用 → 自动引导 → 添加第一个项目" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🏠 在主页按目的出发 —— Chat · Build · Develop
+
+以 *"○○，你好"* 开头的全新主页分为三条路径。
+**Chat** 无需项目即可直接提问、制作文档；**Build** 通过预览卡片挑选新规划或新项目；
+**Develop** 则从新项目 · 代码仓库 · ZIP · 机器文件夹开始开发，并以详细列表浏览所有项目。
+切换标签页后 Chat 草稿依然保留，下次打开主页时也会记住上次停留的标签页。
+
+</td>
+<td>
+<img src="docs/assets/home-build.png" alt="主页 Build 标签页：从新规划开始、开始新项目、最近项目卡片" /><br/>
+<img src="docs/assets/home-develop.png" alt="主页 Develop 标签页：从新项目、代码仓库、ZIP、机器文件夹开始" />
+</td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
 ### 🗣️ 一句话，就能变成能运行的应用
 
-用语言（也支持语音输入）描述你想要的东西。智能体会确定方向，
-在真实机器上编写真正的代码，并把文件修改、终端命令、测试运行等每一步
-都以流式卡片透明地展示出来。一轮结束后，输入框会**主动建议下一步可以做的请求** ——
-比如 *"添加 GitHub 远程仓库并创建 PR"*。
+*"做一个公司设备借用情况仪表盘"* —— 就这一句，智能体便会搭建 Vite + React 应用脚手架、
+安装依赖，并在 5173 端口启动开发服务器。文件修改、终端命令、构建验证都以**流式卡片**
+透明呈现，智能体的回答也是边写边显示。服务器启动的那一刻，右侧会**自动检测并打开预览**，
+直接点点看就行。（视频中的应用正是这样做出来的。）
 
 </td>
-<td><img src="docs/assets/build-by-chat.gif" alt="对话式构建" /></td>
+<td><img src="docs/assets/build-by-chat.gif" alt="新建项目 → 一句话请求 → 智能体工作 → 自动检测预览" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 🧱 模板库 —— 从已经能运行的应用开始
+### 📄 无需项目，直接开工 —— Chat 与文档模板
 
-在**新建项目 → 模板**中选择内网仪表盘、问卷表单、API 后台管理等
-经过验证的 Vite + React + TypeScript 模板。项目创建的同时，**第一条提示词
-会自动填入输入框**，智能体会接着执行 `npm install` → `npm run dev` →
-在浏览器中查看。空白项目、Git URL 克隆、ZIP/文件夹导入也都在同一个对话框中完成。
+没有代码也没关系。在主页的 **Chat** 中说一句 *"把第三季度设备借用情况报告做成 DOCX"*，
+就会生成包含表格和改进建议的 Word 文档，并**直接在应用内渲染**。在**文档选择**中挑选
+文档 · 电子表格 · 演示文稿 · PDF 格式，以及*设计报告*、*基础信笺*等模板；也可以用自己的
+Office 文件创建**我的模板**，之后就能沿用同样的格式持续撰写。还可以选中已有文件夹，
+就地开始工作。
 
 </td>
 <td>
-<img src="docs/assets/template-gallery.png" alt="新建项目对话框中的模板库" /><br/>
-<img src="docs/assets/template-run.gif" alt="创建模板项目后，预填的第一条提示词让智能体一路执行到运行起来" />
+<img src="docs/assets/work-docs.gif" alt="在 Chat 中用一句话生成 DOCX 报告，并直接在应用内查看" /><br/>
+<img src="docs/assets/doc-templates.png" alt="文档格式与模板库：设计报告、基础信笺、创建我的模板" />
 </td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 💸 模型自动选择 —— 单次请求最多节省 ~90%
+### 🧩 全新工作界面 —— 对话居中，工具在右
 
-把模型设为 **Default**，Saycode 就会在每一轮对话中挑选最合适的大脑。
-修正错别字交给轻量模型（**节省 ~90%**），日常工作交给中等模型（**节省 ~80%**），
-真正棘手的问题交给顶级模型 —— 只有当会话真正卡住时，才会升级到最强的档位。
-每条消息都带有 *"⚡ 自动选择 · Sonnet 5 · medium · 节省 ~80%"* 这样的透明度徽章，
-会话头部则会汇总累计节省率，如 *"自动选择 2 轮 · 平均节省 ~65%"*。
-如果你更希望自己掌控，也可以直接锁定 Fable 5 · Opus 5 · Sonnet 5 · Haiku 4.5，
-并自行指定 effort。
-
-</td>
-<td><img src="docs/assets/auto-route-badges.png" alt="同一会话中，简单轮次自动路由到 Sonnet 5(节省 ~80%)，评审/提交轮次路由到 Opus 5(节省 ~50%)的徽章" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 🗂️ 智能体面板 —— 用看板指挥你的智能体舰队
-
-所有项目的所有智能体会话都汇总在一块面板上：**等待输入 → 响应中 → 等待
-→ 评审中 → 已完成 → PR Merged**。响应中的卡片会实时显示智能体正在说的内容。
-**拖动卡片**即可发送下一条指令、请求代码评审、归档会话 —— **Commit & PR**、
-**合并 PR**，以及 CI 失败时的**先自动修复**都能直接在卡片上执行。
-自动选择帮你节省的成本会按日/周/月汇总在小组件中。
+打开项目后，**中间是对话标签页**，**右侧是文件 · 变更 · 终端 · 浏览器**工作区，两者并排而立。
+智能体修改过的文件会以**左右对比 diff** 直接呈现，还可以把工作区**全屏**放大仔细检查。
+文件面板除了文件名过滤，还支持在整个项目 · worktree 范围内进行**内容搜索**，点击结果即可
+打开对应的行。聊天旁的真实终端在切换标签页后依然存活。
 
 </td>
 <td>
-<img src="docs/assets/agent-board.gif" alt="智能体面板看板：会话随着进展在各列之间移动" /><br/>
-<img src="docs/assets/board-drag-review.gif" alt="把卡片拖到评审中列，会弹出代码评审请求确认对话框" />
+<img src="docs/assets/workspace.gif" alt="终端 → 变更 diff → 工作区全屏 → 文件内容搜索" /><br/>
+<img src="docs/assets/workspace-diff.png" alt="工作区全屏：左右对比 diff 与已变更文件列表" />
 </td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 👀 浏览器面板 —— 选中界面元素，直接修改
+### 👀 边看边改 —— 选中界面元素，直接发到聊天
 
-在聊天旁边分屏打开**浏览器面板**，就能看到在你机器上真实运行的应用。
-切换桌面 / 平板 / 移动端视口预设，进入**元素选择模式**后点击界面上的
-按钮或卡片，该元素的选择器就会附加到聊天中 —— 只需一句
-*"把这个按钮改成蓝色"*，智能体就会修改代码，并通过 HMR 在同一个面板中
-立刻看到结果。
+在工作区中打开**浏览器**，你机器上运行的应用就会原样呈现。
+点击**选择元素并发送到聊天**，再点一下界面上的卡片，选择器 · 尺寸 · 文本和截图就会
+自动附加到聊天中。只需一句 *"把逾期卡片用红色背景突出显示，并加上'立即回收'徽标"* ——
+视频中的实际修改仅用 **14 秒**就完成了，并通过 HMR 立即反映在同一个面板中。
+视口预设以及控制台 · 网络错误收集也都在同一条工具栏上。
+
+</td>
+<td><img src="docs/assets/element-to-chat.gif" alt="选择元素 → 选择器与截图附加到聊天 → 修改 → 通过 HMR 立即生效" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🤖 沿用你喜欢的智能体，模型交给它来选
+
+在输入框中从 **Claude Code · Codex · Opencode · Grok** 中任选其一。模型保持 **Default** 时，
+Saycode 会在每一轮根据请求难度自动挑选合适的模型和推理强度，并在每条消息上用
+*"⚡ 自动选择 · Opus 5.5 · low"* 徽章记录选了什么、为什么选。需要时也可以直接锁定
+**Fable 5.1 · Opus 5.5 · Opus 5 · Sonnet 5 · Haiku 4.5**（Codex 为 GPT-6 Sol · Luna ·
+Astra）；常用的 AI · 模型 · 工作环境组合，可以保存为 **AI 配置文件**。
 
 </td>
 <td>
-<img src="docs/assets/browser-panel.png" alt="在聊天旁的浏览器面板中查看 localhost:5173 应用" /><br/>
-<img src="docs/assets/element-to-chat.gif" alt="选择元素 → 选择器附加到聊天 → 修改 → 通过 HMR 立即生效" />
+<img src="docs/assets/agent-picker.png" alt="输入框中的 AI 选择：Claude Code、Codex、Opencode、Grok 与 AI 配置文件" /><br/>
+<img src="docs/assets/model-picker.png" alt="模型选择：Default、Fable 5.1、Opus 5.5、Opus 5、Sonnet 5、Haiku 4.5" /><br/>
+<img src="docs/assets/auto-route-badge.png" alt="消息下方的自动选择徽章：自动选择 · Opus 5.5 · low" />
 </td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 🧩 按你想要的方式布局工作区
+### 🗂️ 智能体面板 —— 用看板指挥你的舰队
 
-使用标签页旁的**分屏**按钮或快捷键（⌘⌥T 打开终端，⌘⌥C 打开聊天），
-在任意面板旁分出新的聊天、终端、浏览器或文件窗格，并通过拖动调整大小。
-你可以实时看到 Claude 在一个窗格里思考，Codex 在另一个窗格里给出结果。
-还可以把任务**扇出**给多个智能体，或把会话**交接**给另一个智能体。
+所有项目的所有对话都汇聚在一块面板上：**等待输入 → 响应中 → 等待 → 评审中 → 已完成 →
+PR 已合并**。每张卡片都显示项目 · 智能体 · 模型 · 已用时间 · worktree，响应中的卡片会
+实时滚动智能体正在写的内容。视频中两个 Claude 和两个 Codex 同时工作；把完成的卡片拖到
+**评审中**，就弹出评审请求对话框；拖到**已完成**，就弹出完成确认。**Commit & PR**、
+自动驾驶乃至变更验证，都能直接在卡片上执行。
 
 </td>
-<td><img src="docs/assets/workspace-split-terminal.png" alt="聊天 + 浏览器 + 终端三分屏工作区" /></td>
+<td><img src="docs/assets/agent-board.gif" alt="智能体面板：Claude · Codex 对话在各列之间移动，卡片被拖到评审中 · 已完成" /></td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 💻 远程机器上的真实终端
+### ✅ 工作完成 —— 评审、提交、完成一次搞定
 
-在任意已注册的机器上，将真实的 Shell 停靠在聊天正下方打开。这是连接到
-那台机器的真正端到端加密会话 —— 你可以照常运行构建、查看日志、检查 git 状态，
-而上方的智能体仍在继续工作。终端在切换标签页后依然存活，并会自动重连。
-
-</td>
-<td><img src="docs/assets/remote-terminal.gif" alt="在连接到会话 worktree 的远程终端中执行 git 命令" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 🤖 保留你喜欢的智能体，每个会话独立 worktree
-
-在每个会话中自由选择 **Claude Code(Anthropic)、Codex(OpenAI)、Grok(xAI)、opencode**，
-并控制模型和 effort。打开新对话时开启 **Worktree** 选项，就会创建会话专属的
-分支和隔离的工作文件夹，让实验不会影响 main 分支 —— 会话头部的分支徽章
-始终显示你正在哪里工作。也可以从已有的 PR 启动会话，或把在外部创建的
-worktree 导入 Saycode。
+输入框中的一个**工作完成**按钮，就能把一段对话妥善收尾：**让当前智能体检查**（若仍有
+问题，最多自动重复 7 次）、**交给独立评审者**（由另一个智能体只审阅只读快照）、
+**Commit & PR**（没有远程仓库时只执行到提交）、**移至已完成**。视频中的智能体在自查改动时
+发现了潜在的端口冲突并加以修复，通过 `npm ci` · 构建 · `git diff --check` 之后，
+报告了提交哈希。
 
 </td>
 <td>
-<img src="docs/assets/new-session-options.png" alt="新建对话：选择智能体、模型和 effort" /><br/>
-<img src="docs/assets/new-session-worktree.png" alt="按会话隔离的 git worktree 选项" />
+<img src="docs/assets/finish-work.gif" alt="工作完成 → 请求 Commit & PR → 智能体评审 · 构建 · 提交 → 移至已完成" /><br/>
+<img src="docs/assets/work-completion-hub.png" alt="工作完成中心：让当前智能体检查、独立评审者、Commit & PR、标记为已完成" />
 </td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### ✅ 工作完成 —— 先评审，再 Commit & PR
+### 📊 在头部一眼看清 AI 余量与机器状态
 
-一个**工作完成**按钮就能妥善收尾一个会话。可以让当前智能体自行评审改动，
-也可以把**只读快照交给独立评审者** —— 一个无法接触代码、只负责报告发现问题的
-独立智能体（Claude、Codex 等）。采纳你认可的修复后，直接继续 **Commit & PR**：
-评审 → 测试 → 提交 → push → 创建 PR（如果远程不是 GitHub，会提示这一点，
-并只执行到提交和 push）一轮之内全部完成。
+对话头部的标签上会显示 **Claude · Codex · Grok 剩余用量**以及执行机器的 **CPU · 内存**。
+点开即可查看各机器 5 小时 / 7 天窗口的余量；连接多个 Codex · Claude 账号后，可以
+**一键切换**，额度用完时也会自动切换 —— 即使某个账号受限，工作也不会中断。
+
+</td>
+<td><img src="docs/assets/machine-usage.png" alt="按机器显示的 Codex 账号列表与 5 小时 / 7 天剩余用量，点击即可切换" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🔌 外部集成 —— 扩展，以及在即时通讯中调度智能体
+
+在侧边栏的**外部集成**中可以直接安装官方扩展：项目模板、插件管理器、公开链接，以及
+**Telegram · Slack · Discord 频道适配器**。连接频道后，就能在即时通讯工具中发起 Saycode
+对话、接收进度更新，并且只控制你允许的项目 · 机器 · 任务。权限按扩展逐一批准，
+你随时都清楚自己允许了什么。
+
+</td>
+<td><img src="docs/assets/integrations.png" alt="外部集成：安装官方扩展与 Telegram · Slack · Discord 频道适配器" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🧠 会记忆、会学习的智能体
+
+智能体会把工作中验证过的方法作为**经验候选**提出，你只需在回答下方的卡片上点击**批准 /
+拒绝**。批准的经验会从下一次对话起自动生效，并在记忆界面中集中管理。在**系统提示词**
+设置中，可以逐项开关 Saycode 默认指令（子智能体调用、内部任务委派、先从规划开始、
+提交署名、产出内联预览）。
+
+</td>
+<td><img src="docs/assets/settings-system-prompt.png" alt="偏好设置 → 系统提示词：Saycode 默认指令与单项指令选择" /></td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 🖥️ 我的机器，我的手机
+
+这台 Mac 会在首次启动时自动注册；GPU 服务器 · 构建服务器 · 云端 VM 也可以通过**偏好设置 →
+机器 → 注册机器**添加进来。在机器详情中可以查看状态，甚至直接执行 CLI 更新。
+用 Saycode 移动应用扫描**移动连接**中的二维码，同一个工作区就会在手机上打开，
+长任务完成的那一刻便会推送通知给你。
 
 </td>
 <td>
-<img src="docs/assets/work-completion-hub.png" alt="工作完成中心：当前智能体评审、委派给独立评审者、直接进行 Commit &amp; PR" /><br/>
-<img src="docs/assets/commit-pr.gif" alt="一轮完成 Commit &amp; PR：评审 → 提交 → push → PR" />
+<img src="docs/assets/settings-machines.png" alt="偏好设置 → 机器：已注册本地机器的状态与 CPU · 内存" /><br/>
+<img src="docs/assets/mobile-companion.png" alt="偏好设置 → 移动连接：通过二维码在手机上打开同一个工作区" />
 </td>
 </tr>
 <tr>
 <td width="42%" valign="middle">
 
-### 🔎 全文搜索所有对话，⌘P 跳转到任意位置
+### 🏢 团队工作区 —— 部署、共享、组织管控 *(需登录)*
 
-按下 **⌘⇧F**，即可搜索你和智能体之间的所有对话 —— 标题、提示词、回复 ——
-搜索基于永不离开你机器的本地 SQLite FTS5 索引。可以用 `project:web`、
-`role:agent`、`after:2026-07-01`、`"精确短语"` 等过滤条件缩小范围。
-**⌘P Quick Open** 可以在一个输入框中直接打开项目、对话和文件；
-**⌘K** 则可以跨项目、对话和机器进行搜索。
-
-</td>
-<td>
-<img src="docs/assets/conversation-search.png" alt="对话搜索 (⌘⇧F)" /><br/>
-<img src="docs/assets/quick-open.png" alt="Quick Open (⌘P)" />
-</td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 📊 用量一目了然，账号一键切换
-
-点击会话头部的用量徽章，即可查看按机器划分的 **Claude · Codex · Grok**
-剩余用量（5 小时 / 7 天窗口）。连接多个 Claude 账号后，在列表中
-**点一下即可切换** —— 即使某个账号额度用完，工作也不会中断。查询每台机器
-每 5 分钟才进行一次，不会给服务商的 API 带来负担。
-
-</td>
-<td><img src="docs/assets/machine-usage.png" alt="按机器显示的 Claude/Codex 用量与账号切换弹窗" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 🧠 系统提示词 · 记忆 · 扩展
-
-在**偏好设置 → AI → 系统提示词**中，可以逐项开关 Saycode 的默认指令
-（子智能体调用、内部任务委派、先规划后执行的工作流、提交积分、
-产出内联预览），也可以叠加预设（TypeScript · Tailwind · Korean · Minimal · Full-stack）
-或你自己的指令。**Memory** 标签页管理智能体跨会话记住项目上下文的记忆层，
-**扩展** 标签页管理模板包等扩展和技能。
-
-</td>
-<td>
-<img src="docs/assets/settings-system-prompt.png" alt="系统提示词设置：默认指令逐项开关与预设" /><br/>
-<img src="docs/assets/settings-extensions.png" alt="扩展管理" />
-</td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 📱 装进口袋也能继续使用
-
-用 Saycode 移动端应用扫描**偏好设置 → 设备 → 移动连接**中的二维码，
-同一个工作区就会原样在手机上打开 —— 本地模式在同一网络内，跨网络则通过隧道连接。
-你可以实时观看智能体会话、打开远程终端，并在长任务完成的瞬间收到推送通知。
-
-</td>
-<td><img src="docs/assets/mobile-companion.png" alt="移动连接：通过二维码在手机上打开同一个工作区" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 🖥️ 注册你的机器，在代码所在之处运行智能体
-
-这台 Mac 在首次启动时会自动注册。你还可以在这里注册任何自己管理的
-机器 —— GPU 服务器、构建服务器、云端 VM —— 把智能体的工作交给它们。
-在**偏好设置 → 设备 → 机器**中生成注册码，在目标机器上运行显示出来的
-一行命令，几秒钟后它就会显示为**在线**。此后，每个项目都能选择
-在哪台机器上运行。智能体的读、写、构建、运行全部发生在**你自己的基础设施上**，
-紧挨着代码和数据 —— 而不是别人的云端。
-
-</td>
-<td>
-<img src="docs/assets/settings-machines.png" alt="偏好设置 → 设备 → 机器：已注册的本地机器与添加机器" /><br/>
-<img src="docs/assets/register-machine-panel.png" alt="注册机器：CLI 安装命令与 Personal/Organization 注册码" />
-</td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 🚀 一键部署与共享 *(团队工作区)*
-
-使用 saycode.ai 账号登录后，可以部署到整个团队都能打开的**内网 URL** ——
-SSL 自动配置，每次部署都会更新同一个链接。把项目共享给团队或内部社区后，
-同事可以浏览、克隆并打磨，再安全地把改动合并回原项目。渲染后的 HTML 文档 /
-报告可直接发布为公开链接。**只需打开已部署应用或报告 URL 的最终使用者，
-不需要坐席。**
-
-</td>
-<td><img src="docs/assets/login-modal.png" alt="saycode.ai 登录：切换到团队工作区" /></td>
-</tr>
-<tr>
-<td width="42%" valign="middle">
-
-### 🏢 组织控制台统一管控 *(团队工作区)*
-
-组织管理控制台可以邀请成员、变更角色（管理员/成员）或移除成员，还能查看
-审计日志——谁在何时打开过哪个项目。同一控制台还能注册组织级 MCP 服务器、
-GitHub PAT 和共用 AI 账号，团队成员无需各自管理密钥。**偏好设置 → 安全**
-中的全局暂停开关是团队专属的紧急停止按钮，会立即暂停下一次计划自动化、
-GitHub 触发器和看板自动驾驶的执行。
+使用 saycode.ai 账号登录后，可以**部署到团队可访问的内网 URL**（自动 SSL，每次部署都更新
+同一个链接），以**协作**方式邀请同事加入项目或按团队共享，并用标签分类。在组织控制台中
+可以管理成员 · 团队 · 权限 · 审计日志，以及组织共用的 MCP · GitHub PAT · AI 账号，还能把
+Notion · Slack · Google Drive 等**连接器**接入对话。**只需打开已部署应用或报告的
+最终使用者，不需要坐席。**
 
 </td>
 <td>
 <img src="docs/assets/org-console.png" alt="组织管理控制台：成员管理与审计日志" /><br/>
-<img src="docs/assets/settings-security.png" alt="偏好设置 → 安全：全局暂停与 GitHub Personal Access Token" />
+<img src="docs/assets/settings-connectors.png" alt="连接器：连接 Notion · Slack · Google Drive · Gmail · KNOI" />
 </td>
 </tr>
 <tr>
@@ -399,33 +363,31 @@ GitHub 触发器和看板自动驾驶的执行。
 
 ### 🌙 让你想一直留下来的工作区
 
-Auto / Light / Dark 主题下的极光玻璃设计 —— 信息密度高，画面却很沉静。
-通知中心、可重新绑定的所有快捷键、Dock 角标与原生完成通知，
-还有输入请求、任务完成的提示音。细节的积累，成就了体验。
+在个人资料菜单中即可切换浅色 · 深色 · 自动主题。信息密度高，画面却很沉静。
+可重新绑定的快捷键（⌘K 搜索、⌘⇧F 对话搜索、⌘P Quick Open、⌘⇧A 智能体面板）、
+侧边栏中的最近通知、Dock 角标，以及输入请求 · 任务完成提示音 —— 细节的积累，
+成就了体验。
 
 </td>
 <td>
-<img src="docs/assets/workspace-home-dark.png" alt="深色模式下的工作区主页" /><br/>
-<img src="docs/assets/chat-dark.png" alt="深色模式下的聊天" />
+<img src="docs/assets/home-build-dark.png" alt="深色模式下的主页" /><br/>
+<img src="docs/assets/project-dark.png" alt="深色模式下的项目界面：对话与代码编辑器" />
 </td>
 </tr>
 </table>
 
-### 还有更多
+### 还有这些
 
-- 🔔 **通知中心与出站 Webhook** —— 完成通知在重启后依然保留，点击即可跳转到对应对话。会话完成、等待输入、卡住等事件会带上 HMAC-SHA256 签名发送到你的端点
-- 💬 **diff 行内评论** —— 直接在改动的代码行上评论，并整理成后续指令发送给智能体
-- ⌨️ **斜杠命令与附加菜单** —— 在输入框中用 `/` 调用命令，拖拽文件、图片、文件夹即可附加
-- 🎙️ **实时语音输入** —— 边说边实时转写
-- 📄 **富文件预览** —— Markdown、HTML、PDF、DOCX 直接在应用内渲染，支持产出内联预览
-- 🔗 **GitHub / GitLab 导入与连接器** —— 从列表中选择仓库，把 Google Drive、Slack、Notion 等连接器连接到会话 *(团队工作区)*
-- 🧩 **MCP 服务器与环境变量分组** —— 按项目管理 MCP 连接，挂载组织统一管理的环境变量分组
-- 🛑 **全局暂停与质量门禁** —— 一个开关即可暂停定时自动化、GitHub 触发器和面板自动驾驶，为自主执行套用自评审轮次与质量门禁 *(团队工作区)*
-- 🔐 **通行密钥 MFA** —— 团队账号登录支持 WebAuthn 通行密钥或 TOTP
-- 📉 **网络流量节省** —— 在热点或按流量计费的网络下自动降低繁重同步
-- 🔒 **隐私优先设计** —— 聊天与终端流量端到端加密，代码和数据保留在你的机器上
-- 🏢 **组织级管控** —— 组织/团队工作区，坐席、机器、环境变量、所有权管理，审计日志 *(团队工作区)*
-- 🔄 **分阶段自动更新** —— 新版本从部分安装实例开始逐步发布，即使出问题也不会波及所有人
+- ⌨️ **输入框效率** —— 在空输入框中按 **↑** 调出并搜索之前的提示词，用图钉按钮中的 **Quick Command** 保存常用提示词，用 `+` 附加文件 · 图片 · 文件夹
+- 🛟 **文件检查点保护** —— 在新对话中开启后，智能体修改文件前会保存原始状态，经过逐文件预览与冲突判定后安全恢复
+- 🌿 **每个对话独立 worktree 隔离** —— 开启`工作副本（worktree）`后，在对话专属分支上工作，即使在面板上并行运行也互不冲突
+- 🧭 **项目中枢** —— 把一个对话指定为中枢后，其他对话的完成与提问会以消息形式送达，智能体还能查询并指挥同一项目中的其他对话
+- 🔁 **换个智能体接着做** —— 在对话头部的 ⋯ 中选择模型与推理强度，在 Claude ↔ Codex 之间交接
+- 🔎 **对话全文搜索与文件内容搜索** —— 用 ⌘⇧F 通过本地 FTS 索引搜索所有对话，在文件面板中搜索项目内容
+- 🤖 **自动驾驶与自动质量验证** —— 自评审循环、任务完成前自动验证、PR 检查通过后预约自动合并、合并后验证循环
+- 🔔 **通知与 Webhook** —— 完成通知在重启后依然保留，会话事件以 HMAC 签名的 Webhook 发送到你的端点
+- 📄 **富文件查看器** —— Markdown · HTML · PDF · DOCX 直接在应用内渲染，新生成的产出会显示在文件面板中
+- 🔐 **安全默认值** —— 聊天 · 终端端到端加密、通行密钥/TOTP MFA、全局暂停开关 *(团队)*，代码与数据都留在你的机器上
 
 ---
 
@@ -433,80 +395,60 @@ Auto / Light / Dark 主题下的极光玻璃设计 —— 信息密度高，画�
 
 | | | |
 |---|---|---|
-| **01 · 安装即可就绪** | **02 · 添加项目** | **03 · 用语言提出请求** |
-| 打开 DMG，选择语言，内置服务器随即启动，这台 Mac 会被注册为本地机器。三步向导会检查 CLI、AI 工具和通知。 | 打开已有文件夹、使用模板、新建空白项目、克隆 Git URL、导入 ZIP —— 选台机器、起个名字即可。 | 一句自然语言就够了：*"给请求表添加负责人列，并填入测试数据"* |
+| **01 · 安装并选择** | **02 · 按目的出发** | **03 · 用语言提出请求** |
+| 打开 DMG，选择语言和使用方式，内置服务器随即启动，引导流程自动进行。 | 在主页从 Chat（文档 · 提问）、Build（新规划 · 项目）、Develop（仓库 · ZIP · 文件夹）中选择。 | 一句自然语言就够了：*"给逾期卡片加上'立即回收'徽标"* |
 
 | | |
 |---|---|
-| **04 · AI 在你的机器上构建** —— 智能体读写真实文件、执行命令，并将整个过程流式展示。在浏览器面板中直接点击体验，选中元素即可修改。 | **05 · 收尾并部署给团队** —— 用工作完成执行评审 → Commit & PR。团队工作区下，一个按钮即可签发内网 URL。共享、交接、一起持续改进。 |
-
-<div align="center">
-<img src="docs/assets/first-session-done.png" alt="首个会话：智能体添加了负责人列并汇报结果的界面" width="920" />
-
-*首个会话 —— 一句请求，智能体就修改文件、运行类型检查并汇报结果。*
-</div>
+| **04 · AI 在你的机器上构建** —— 智能体读写真实文件、执行命令。在右侧工作区通过 diff · 终端 · 预览直接确认，多个对话则用面板统一指挥。 | **05 · 收尾并共享** —— 用工作完成执行评审 → 提交 → 完成。如果是团队工作区，还可以部署到内网 URL，并通过协作完成交接。 |
 
 ---
 
 ## 安装与首次启动
 
-### macOS (Apple Silicon)
+### macOS
 
-1. 从 **[Releases](https://github.com/buzzni/saycode-desktop-releases/releases/latest)** 下载最新 DMG
+1. 从 **[Releases](https://github.com/buzzni/saycode-desktop-releases/releases/latest)** 下载最新 DMG（Apple Silicon —— 适用于 Intel Mac 的 x64 DMG 也在同一页面）
 2. 打开 DMG，把 **Saycode** 拖入 Applications
 3. 启动后选择**语言**（한국어 · English · 中文 · 日本語）
-4. 就这么简单。Saycode 会启动内置服务器并注册这台 Mac，打开 **Guest 本地工作区**
-   （大约 10 秒）。没有登录界面 —— 需要团队功能时，随时通过 **Guest 菜单 →
-   登录**即可。
-
-### 一起为第一个任务做好准备 —— 三步向导
+4. 在**你打算如何使用？**中进行选择
+   - **个人使用** —— 无需登录，直接以 Guest 本地工作区开始
+   - **组织使用** —— 接着进行 saycode.ai 登录并注册这台电脑（只有一个组织时会自动选择）
 
 <table>
 <tr>
-<td width="33%"><img src="docs/assets/onboarding-step1-cli.png" alt="① Saycode CLI" /></td>
-<td width="33%"><img src="docs/assets/onboarding-step2-ai-tools.png" alt="② AI 工具" /></td>
-<td width="33%"><img src="docs/assets/onboarding-step3-notifications.png" alt="③ 通知" /></td>
+<td width="33%"><img src="docs/assets/language-select.png" alt="语言选择" /></td>
+<td width="33%"><img src="docs/assets/onboarding-checklist.png" alt="自动引导清单" /></td>
+<td width="33%"><img src="docs/assets/first-project-dialog.png" alt="添加项目" /></td>
 </tr>
 <tr>
-<td valign="top"><b>① Saycode CLI</b> — 检查应用内置的本地运行时。Standalone 应用无需额外安装，会直接显示为<i>已安装</i>。</td>
-<td valign="top"><b>② AI 工具</b> — 检测 Claude Code 和 Codex 的登录状态。如果尚未登录，请在终端中依次执行 <code>claude</code> → <code>/login</code>、<code>codex login</code>，然后点击<b>重新检查状态</b>。</td>
-<td valign="top"><b>③ 通知</b> — 选择输入请求提示音和任务完成提示音，并通过<b>发送测试通知</b>确认。最后一个按钮会直接带你进入添加第一个项目。</td>
+<td valign="top"><b>① 语言</b> — 在第一个界面选择 UI 语言。之后可以在偏好设置 → 语言中更改。</td>
+<td valign="top"><b>② 自动引导</b> — 按 Saycode CLI → AI 工具（检测 Claude Code · Codex 登录）→ 通知的顺序自行推进。如需登录，请在终端中完成 <code>claude</code> → <code>/login</code>、<code>codex login</code> 后再重新检查。</td>
+<td valign="top"><b>③ 第一个项目</b> — 确认主机（这台电脑），然后在打开已有文件夹 · 新建项目 · 克隆 Git URL · 导入 ZIP 中选择。</td>
 </tr>
 </table>
 
-每个步骤都可以用**稍后再说**跳过，并可以随时通过**偏好设置 → 设备 → 机器 →
-继续启动设置**重新打开。
-
-### 第一个项目与第一次对话
-
-<table>
-<tr>
-<td width="50%"><img src="docs/assets/first-project-dialog.png" alt="添加项目对话框" /></td>
-<td width="50%"><img src="docs/assets/system-prompt-choice.png" alt="是否使用 Saycode 默认指令" /></td>
-</tr>
-<tr>
-<td valign="top">向导结束后会打开<b>添加项目</b>。选择主机（机器）并<b>打开已有文件夹</b> —— 或者选择新建项目 · 从 Git URL 克隆 · 导入 ZIP。新项目可以从模板库开始。</td>
-<td valign="top">打开第一次对话时会询问是否使用<b>Saycode 默认指令</b>。开启后，智能体会遵循子智能体委派、提交积分、产出内联预览等 Saycode 工作流。之后也可以在偏好设置中逐项调整。</td>
-</tr>
-</table>
+引导可以用**稍后再说**跳过，也可以随时通过**偏好设置 → 引导清单 → 从此步骤开始自动进行**
+继续。在第一次对话之前，会询问是否使用 **Saycode 默认指令** —— 开启后，智能体会遵循
+子智能体委派、产出内联预览等 Saycode 工作流。
 
 应用已通过 Developer ID 签名并公证，会自动更新。
 若想查看每一步的详细截图，请参阅**[用户指南](docs/GUIDE.md)**（[한국어](docs/GUIDE.ko.md)）。
 
 ### 本地工作区与团队工作区
 
-| | Guest 本地工作区（默认） | 团队工作区（saycode.ai 登录） |
+| | 个人使用 · Guest 本地工作区 | 组织使用 · 团队工作区（saycode.ai 登录） |
 |---|---|---|
 | 所需条件 | 无 —— 安装即可 | 组织账号（SSO · 通行密钥/TOTP MFA） |
 | 数据位置 | 全部在这台 Mac 上 | 代码与数据在指定机器上，元数据与审计日志在组织控制台 |
-| 智能体 · 模型自动选择 · 智能体面板 · worktree · 工作完成 · 浏览器面板 · 终端 · 模板 · 搜索 · 记忆 | ✅ | ✅ |
+| 智能体 · 模型自动选择 · Chat 与文档模板 · 任务看板 · worktree · 工作完成 · 浏览器 · 终端 · 搜索 · 经验/记忆 · 扩展 | ✅ | ✅ |
 | 远程机器注册 · 移动连接 | ✅（移动端需同一网络或通过隧道） | ✅ |
-| 内网 URL 部署 · 项目共享与交接 · 社区 | — | ✅ |
-| 组织控制台（坐席 · 权限 · 模型策略 · 成本 · 审计日志） · 连接器 · 个人记忆同步 · 项目导出 | — | ✅ |
+| 内网 URL 部署 · 协作 · 团队共享 · 项目标签 | — | ✅ |
+| 组织控制台（坐席 · 团队 · 权限 · 模型策略 · 成本 · 审计日志） · 连接器 | — | ✅ |
 
 先从本地开始，需要时再登录即可。本地项目会原样保留。
 
-> **Windows / Linux / Intel Mac** —— 目前仍在准备中。请关注 [Releases](https://github.com/buzzni/saycode-desktop-releases/releases) 获取最新消息。
+> **Windows / Linux** —— 目前仍在准备中。请关注 [Releases](https://github.com/buzzni/saycode-desktop-releases/releases) 获取最新消息。
 
 ---
 

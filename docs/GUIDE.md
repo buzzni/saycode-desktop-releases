@@ -4,7 +4,8 @@
 
 # Saycode Desktop User Guide
 
-**From first launch to running a whole agent fleet — just follow along, in order.**
+**From first launch to running an agent fleet — just follow along, in order.**
+*Based on the v0.1.50 UI*
 
 **English** | [한국어](GUIDE.ko.md)
 
@@ -14,605 +15,479 @@
 
 ## Contents
 
-1. [Install & first run](#1-install--first-run)
-2. [Getting ready for your first task — the 3-step wizard](#2-getting-ready-for-your-first-task--the-3-step-wizard)
-3. [Add a project](#3-add-a-project)
-4. [Your first conversation — putting the agent to work](#4-your-first-conversation--putting-the-agent-to-work)
-5. [Save on token costs with Auto model selection](#5-save-on-token-costs-with-auto-model-selection)
-6. [Browser panel — see it, fix it](#6-browser-panel--see-it-fix-it)
-7. [Terminal, splits, and shortcuts](#7-terminal-splits-and-shortcuts)
-8. [Agent Board — command your fleet](#8-agent-board--command-your-fleet)
-9. [Finish work — review and Commit & PR](#9-finish-work--review-and-commit--pr)
-10. [Conversation search and Quick Open](#10-conversation-search-and-quick-open)
-11. [Notification centre and webhooks](#11-notification-centre-and-webhooks)
-12. [AI usage and account switching](#12-ai-usage-and-account-switching)
-13. [A tour of Settings](#13-a-tour-of-settings)
-14. [Adding machines and mobile connection](#14-adding-machines-and-mobile-connection)
-15. [Team workspace — login, deploy, share](#15-team-workspace--login-deploy-share)
-16. [Tips and troubleshooting](#16-tips-and-troubleshooting)
+1. [Install and first run](#1-install-and-first-run)
+2. [Onboarding checklist](#2-onboarding-checklist)
+3. [A look around — the sidebar and Home](#3-a-look-around--the-sidebar-and-home)
+4. [Add a project](#4-add-a-project)
+5. [Your first conversation — putting an agent to work](#5-your-first-conversation--putting-an-agent-to-work)
+6. [Working without a project — Chat and document templates](#6-working-without-a-project--chat-and-document-templates)
+7. [The workspace — files, changes, terminal, browser](#7-the-workspace--files-changes-terminal-browser)
+8. [See it, fix it — pick an element and send it to chat](#8-see-it-fix-it--pick-an-element-and-send-it-to-chat)
+9. [Choosing agents and models, AI usage](#9-choosing-agents-and-models-ai-usage)
+10. [Agent Board — command your fleet](#10-agent-board--command-your-fleet)
+11. [Finish work — review, commit, done](#11-finish-work--review-commit-done)
+12. [Lessons, memory and the system prompt](#12-lessons-memory-and-the-system-prompt)
+13. [Integrations — extensions and messenger channels](#13-integrations--extensions-and-messenger-channels)
+14. [A tour of Settings](#14-a-tour-of-settings)
+15. [Machines and mobile connection](#15-machines-and-mobile-connection)
+16. [Team workspace — login, deploy, share](#16-team-workspace--login-deploy-share)
+17. [Tips and troubleshooting](#17-tips-and-troubleshooting)
+
+*Screenshots show the Korean UI; the app also runs in English, 中文 and 日本語.*
 
 ---
 
-## 1. Install & first run
+## 1. Install and first run
 
 **[Download the latest DMG](https://github.com/buzzni/saycode-desktop-releases/releases/latest)**,
-open it, and drag **Saycode** into the Applications folder. The app is signed and
-notarized, and updates itself automatically.
+open it, and drag **Saycode** into the Applications folder (DMGs are available for both
+Apple Silicon and Intel Macs, x64). The app is signed and notarized, and updates itself
+automatically.
 
-On first launch you pick a **language** (한국어 / English / 中文 / 日本語):
+On first launch you make just two choices.
 
-<img src="assets/language-select.png" alt="First-run language selection screen" width="820" />
+1. **Language** — 한국어 / English / 中文 / 日本語
+2. **How will you use Saycode?**
+   - **Personal use** — build and manage your own projects with AI. You go straight into the
+     **Guest local workspace**, no login required.
+   - **Organization use** — share projects with your teammates. This continues to a
+     saycode.ai login and registering this computer; if you belong to a single organization,
+     it is selected automatically.
 
-That's it. There's no login screen, and no screen asking how you want to start. Saycode
-handles the rest automatically:
+<img src="assets/language-select.png" alt="First-run language selection screen" width="480" />
 
-1. Boots the **embedded server** (relay · database) inside this Mac
-2. Registers this Mac as a **local machine**
-3. Opens the **Guest local workspace** — about 10 seconds
+If you choose Personal use, Saycode starts the **embedded server** (relay · database) inside
+this Mac on its own, registers this Mac as a **local machine**, and opens the workspace. In
+this state, not a single byte of data leaves the Mac.
 
-<img src="assets/first-run-onboarding.gif" alt="First run: language selection → embedded server auto-boot → 3-step wizard → add first project" width="920" />
-
-<img src="assets/workspace-home.png" alt="Guest local workspace home" width="920" />
-
-In this state, not a single byte of data leaves the Mac. When you need team features
-(deploy, share, org console), log into your saycode.ai account via **Guest → Log in** at
-the bottom of the sidebar ([Chapter 15](#15-team-workspace--login-deploy-share)).
+<img src="assets/first-run.gif" alt="First run: language → Personal use → automatic onboarding → add first project → Home" width="920" />
 
 ---
 
-## 2. Getting ready for your first task — the 3-step wizard
+## 2. Onboarding checklist
 
-Once the workspace opens, the **"Let's get your first task ready"** wizard appears. It's
-three steps: check the embedded server and local machine, then check the login state of
-the agents you'll use.
+When the workspace opens, the **"Let's get ready for your first task"** checklist **runs
+automatically**.
 
-### ① Saycode CLI
+<img src="assets/onboarding-checklist.png" alt="Automatic onboarding checklist — Saycode CLI, AI tools, notifications" width="760" />
 
-<img src="assets/onboarding-step1-cli.png" alt="Wizard step 1 — Saycode CLI" width="820" />
-
-This checks the local runtime the agents actually run on. The standalone app bundles the
-runtime, so it shows straight away as **Installed · "Using the local runtime bundled with
-the standalone app"**. There's nothing extra to install — just click **Continue**.
-
-### ② AI tools — Claude Code and Codex
-
-<img src="assets/onboarding-step2-ai-tools.png" alt="Wizard step 2 — AI tool login state" width="820" />
-
-Saycode runs the agent CLIs you already use, as-is. This step detects each tool's login
-state and shows **Connected**. If you haven't logged in yet, in a terminal:
-
-| Tool | How to log in |
+| Step | What it does |
 |---|---|
-| **Claude Code** | Run `claude` in a terminal, then `/login` |
-| **Codex** | `codex login` — opens a browser to log in with your OpenAI account |
+| **① Saycode CLI** | Checks the local runtime your agents actually run on. It is bundled with the app, so it shows as *Installed* right away, and the multi-account tools (codex-multi-auth, claude-swap) are prepared as well. If you want to use the `saycode` CLI from a terminal, you can choose a global install. |
+| **② AI tools** | Detects whether Claude Code and Codex are installed and logged in. If not yet, finish `claude` → `/login` and `codex login` in a terminal, then press **Check status again**. Having either one is enough to get started. |
+| **③ Notifications** | Choose whether to play a sound when an agent **asks for input** and when it **finishes a task**, and confirm with **Send test notification**. |
 
-Once you've logged in, click **Check again**. You can get started with just one of the two
-connected.
+The final **Add first project** button leads to [Chapter 4](#4-add-a-project). If an error
+occurs along the way, just retry the same step — steps already completed are kept. If you
+closed it with **Later**, go to **Settings → Onboarding checklist**, pick a step and press
+**Run automatically from this step**.
 
-### ③ Notification settings
-
-<img src="assets/onboarding-step3-notifications.png" alt="Wizard step 3 — Notification settings" width="820" />
-
-Choose whether to play a sound when the agent **asks for input** and when it **finishes a
-task** (you can also turn everything off). Use **Send test notification** to confirm it
-actually plays. Sound playback currently only works on macOS.
-
-The last button leads straight into the **Add project** dialog ([Chapter 3](#3-add-a-project)).
-
-> Each step can be skipped with **Later**, and you can reopen the wizard any time via
-> **Settings → Devices → Machines → Resume setup**.
+<img src="assets/settings-onboarding.png" alt="Settings → Onboarding checklist" width="820" />
 
 ---
 
-## 3. Add a project
+## 3. A look around — the sidebar and Home
 
-When the wizard finishes, the **"Add a project to get started with Saycode"** dialog
-opens. After that, you can open it any time with the **New project** button (folder icon)
-at the top of the sidebar.
+### Sidebar
 
-<img src="assets/first-project-dialog.png" alt="Add project dialog — choose a host, open existing folder, new project, Git, ZIP" width="820" />
-
-First pick a **host** (the machine the agent will work on). At first it's just this Mac.
-Then:
-
-| Option | When to use it |
+| Area | What's there |
 |---|---|
-| **Open existing folder** (default, ↵) | Connect an existing codebase as-is. If it's a git repository, branches, worktrees, and Commit & PR are all available |
-| **New project** | Start from the template gallery or a blank project |
-| **Clone from Git URL** | Start by cloning a repository |
-| **Import ZIP** | Start by uploading an archive or a set of files |
+| **Saycode Home** | The start screen with Chat · Build · Develop tabs |
+| **Agent Board** | The agent board showing every conversation as a kanban ([Chapter 10](#10-agent-board--command-your-fleet)) |
+| **Integrations** | Install extensions and messenger channel adapters ([Chapter 13](#13-integrations--extensions-and-messenger-channels)) |
+| **Chat / Project tabs** | Conversations held without a project / projects and the conversations inside them. Switching tabs keeps the open screen as it is, and the search icon under each list lets you search only when you need to |
+| **Recent notifications** | Completion and input-request notifications. Click one to jump to that conversation |
+| **Account area** | Workspace and machine indicator, notifications, ⋯ menu. Click your name for organization and machine selection, login, **Settings**, and theme (Auto · Light · Dark) |
 
-### Template gallery
+From the ⋯ menu you can toggle **Show AI usage remaining**, **Show CPU · memory**, open a new
+window, and more.
 
-Click **New project** and a form opens with **Template / Blank project / Git / Zip · file
-import / Folder** tabs:
+### Home — three paths depending on your goal
 
-<img src="assets/new-project-dialog.png" alt="New project form — Template · Blank project · Git · Zip · Folder tabs, machine and project name" width="820" />
+<img src="assets/home-chat.png" alt="Home Chat tab — What can I help you with?" width="920" />
 
-The **Template** tab has ready-to-run Vite + React + TypeScript starting points:
-
-<img src="assets/template-gallery.png" alt="Template gallery — internal dashboard, survey form, API back-office" width="820" />
-
-| Template | What it is |
+| Tab | Use it when |
 |---|---|
-| **Internal dashboard** | An admin screen with charts and tables |
-| **Survey form** | A form app with response collection and validation |
-| **API back-office** | A CRUD back-office with list, detail, and edit flows |
+| **Chat** | You want to ask something right away without a project, or make documents, spreadsheets and presentations ([Chapter 6](#6-working-without-a-project--chat-and-document-templates)) |
+| **Build** | You want to **Start from a new plan** or **Start a new project**, or skim recent projects as preview cards |
+| **Develop** | You want to start development with **New project · Import code repository · Import ZIP/files · Use a machine folder**, and see projects as a detailed list |
 
-Each template comes with a **first prompt**. Pick a machine and project name, create it,
-and the first conversation opens with that prompt **pre-filled** in the composer — just
-hit send, and the agent carries on through `npm install` → `npm run dev` → checking it in
-the browser:
+<img src="assets/home-build.png" alt="Home Build tab" width="920" />
 
-<img src="assets/template-run.gif" alt="Right after creating a template project, the agent runs through install and dev-server startup using the pre-filled first prompt" width="920" />
+<img src="assets/home-develop.png" alt="Home Develop tab" width="920" />
 
-On the **Git tab** you can paste a URL, or — if you've connected a GitHub/GitLab account
-in the team workspace — pick from your list of repositories:
-
-<img src="assets/new-project-git-tab.png" alt="New project Git tab" width="820" />
-
-Pick a machine, name it, click **Create project** — done.
-
-<img src="assets/new-project.gif" alt="New project creation flow" width="920" />
-
-### Project settings
-
-The **Settings** button in the project header (or the ⋯ menu on the project row) manages
-**Project info / Machine & path / Run / Environment variables**. The **Run** tab has the
-dev server command and port, whether to use 1st-party skill packs, and **GitHub
-triggers** that react to PR and issue events.
-
-<img src="assets/project-settings-run.png" alt="Project settings → Run: dev server command/port, skill packs, GitHub triggers" width="920" />
+Your Chat draft survives switching tabs, and the last tab is restored when you come back by
+clicking Home or the logo.
 
 ---
 
-## 4. Your first conversation — putting the agent to work
+## 4. Add a project
 
-Enter the project and click **New conversation** to open the session-start options:
+Open it from the last onboarding button, **New project** in the sidebar, or a start card on
+Home.
 
-<img src="assets/new-session-options.png" alt="New conversation — choosing agent, model, effort" width="820" />
+<img src="assets/first-project-dialog.png" alt="Add project — host selection, open existing folder, new project, Git, ZIP" width="480" />
 
-- **Agent** — choose Claude Code (Anthropic) / Codex (OpenAI) / Grok (xAI) / opencode. Your most recent choice is remembered as the default
-- **Model** — leaving it on **Default** is recommended. The right model is auto-selected for the difficulty ([Chapter 5](#5-save-on-token-costs-with-auto-model-selection)). Pick a specific model and you can also set the effort (low · medium · high · xhigh)
-- **Worktree** — turn this on for experimental work. It creates a session-only branch and an isolated working folder so main is never touched
+First, check the **host** (the machine the agent will work on). Your own computer is shown as
+**This computer**, and only online machines can be selected. Then:
 
-<img src="assets/new-session-worktree.png" alt="New conversation — per-session git worktree isolation option" width="820" />
-
-Opening your first conversation asks **"Use Saycode default instructions?"**:
-
-<img src="assets/system-prompt-choice.png" alt="Choosing whether to use Saycode default instructions" width="820" />
-
-Keep it on and the agent follows Saycode workflows such as child-agent delegation,
-plan-first workflow, commit credits, and inline artifact previews. You can change each
-item later in **Settings → AI → System prompt** ([Chapter 13](#13-a-tour-of-settings)).
-
-Now write what you want — in plain language, like you're talking. *"Add an assignee
-column to the requests table and fill in dummy data"* is enough. Send it, and the agent
-works while showing file edits, terminal commands, and test runs as **streaming cards**;
-the conversation title is also generated automatically:
-
-<img src="assets/first-session-done.png" alt="A completed first conversation — tool cards, agent reply, auto-selection badge" width="920" />
-
-When the work finishes, you get a **Response complete · elapsed time** marker along with
-the [Notification centre](#11-notification-centre-and-webhooks), a Dock badge, and (if you
-use the mobile app) a push notification. When the turn ends, the composer **suggests what
-to ask next** — something like *"Add a GitHub remote and open a PR"*.
-
-Above the composer there are **Continue development** (hand the next step to the agent)
-and **Finish work · Commit & PR** buttons ([Chapter 9](#9-finish-work--review-and-commit--pr)).
-
-> 💬 You can write and queue your next instruction in the composer even while a response
-> is still in progress. Type `/` to open slash commands, and the **+** button opens the
-> file/image/folder attachment menu.
-
----
-
-## 5. Save on token costs with Auto model selection
-
-This is Saycode's quietest feature, and its biggest money-saver. Leave the model on
-**Default**, and every turn is analyzed for difficulty and routed to the **cheapest model
-that can do the job**:
-
-| Difficulty | Claude session | Codex session | Saved (vs top tier) |
-|---|---|---|---|
-| Trivial (typo/label fixes, etc.) | Haiku 4.5 · low | GPT-5.6 Luna · low | **~90%** |
-| Routine (feature add/fix) | Sonnet 5 · medium | GPT-5.6 Terra · medium | **~80%** |
-| Hard (refactoring, performance, debugging) | Opus 5 · high | GPT-5.6 Sol · high | **~50%** |
-| Stuck (escalation) | Fable 5 · xhigh | GPT-5.6 Sol · high | — |
-
-*(Savings percentages are for the Claude lineup. For Codex: Luna ~85%, Terra ~60%.)*
-
-<img src="assets/auto-route-badges.png" alt="Badges in the same session: easy turns routed to Sonnet 5 (~80% saved), review/commit turns to Opus 5 (~50% saved)" width="920" />
-
-Good to know how it behaves:
-
-- **Every turn gets a transparency badge** — every message sent shows something like *"⚡
-  Auto model selection · Sonnet 5 · medium · ~80% saved"*, so you always see which model
-  was picked and why. When the difficulty is hard to judge, a lightweight classifier model
-  makes the call
-- **Top tier only when stuck** — if three hard turns happen in a row, or a signal like
-  "still not working" is detected, the top-tier model kicks in with an explicit *"promoted
-  to top performance because the session is stuck"* badge. Expensive turns always come
-  with a reason
-- **Only goes up within a session** — to protect the prompt cache, the model is never
-  downgraded mid-session. It resets after more than an hour idle
-- **Cumulative savings** — next to the composer, *"⚡ Auto model selection · 2 turns · avg
-  ~65% saved"* accumulates, and the [Agent Board](#8-agent-board--command-your-fleet)'s top
-  widget shows estimated **daily / weekly / monthly** savings
-- **Prefer to choose yourself?** — the moment you pick any model from the model dropdown,
-  that session switches to manual pinned mode
-
----
-
-## 6. Browser panel — see it, fix it
-
-Click **Open preview** in the conversation header (or **New browser** in the split menu)
-and a **Browser panel** opens next to the chat. It's not a mock-up — it's the real dev
-server running on the project's machine. Chat on the left, click around on the right.
-
-<img src="assets/browser-panel.png" alt="Browser panel next to the chat checking the localhost:5173 app" width="920" />
-
-Type an address like `localhost:5173` into the address bar, or pick one from the
-**address suggestions**. Check responsiveness right away with desktop / tablet / mobile
-**viewport presets**:
-
-<img src="assets/browser-viewport-presets.png" alt="Browser panel viewport presets" width="920" />
-
-### Pick an element, send it to chat
-
-Turn on **element-select mode** in the panel toolbar and click a button or card on
-screen — that element's selector is attached to the chat composer. One line like *"Make
-this button blue"* is enough: the agent fixes it, and you see the result reflected
-instantly via HMR in the same panel:
-
-<img src="assets/element-to-chat.gif" alt="Select element → selector attached to chat → fix → instant HMR update" width="920" />
-
-<img src="assets/element-to-chat.png" alt="The selected element's selector attached to the chat" width="920" />
-
-> If you've set the dev server command and port in Project settings → Run, you can also
-> open it with **Run preview** in the project header.
-
----
-
-## 7. Terminal, splits, and shortcuts
-
-**Terminal** — use **Open terminal** in the conversation header (or ⌘⌥T / ⌘⌥⇧T) to dock a
-real shell next to or below the chat. If the session is running in a worktree, the
-terminal opens in that same worktree. It's an end-to-end encrypted session attached to the
-registered machine, so you can run builds and check logs while the agent keeps working. It
-stays alive across tab switches and reconnects on its own if it drops.
-
-<img src="assets/remote-terminal.gif" alt="Running git commands in a remote terminal attached to the session's worktree" width="920" />
-
-**Splits** — the split tools live in the **⋯** menu on the right of the conversation
-header. Click a split icon to choose whether to open **New conversation / New terminal /
-New browser** in that direction, and use **New layout** to apply grid presets like 2×2 all
-at once. The same menu also has Agent Board shortcuts (finish, duplicate, hand off),
-**Memory**, and machine status.
-
-<img src="assets/split-panel-picker.png" alt="⋯ menu — split direction and new conversation/terminal/browser choices" width="920" />
-
-<img src="assets/workspace-split-terminal.png" alt="Three-way split workspace: chat + browser + terminal" width="920" />
-
-**Shortcuts** — every one of these can be rebound in **Settings → Shortcuts**:
-
-| Action | Default key |
+| Method | Use it when |
 |---|---|
-| Search projects · conversations · machines | ⌘K |
-| Conversation search (full-text) | ⌘⇧F |
-| Quick Open (projects · conversations · files) | ⌘P |
-| Agent Board | ⌘⇧A |
-| Save file (file editor) | ⌘S |
-| Usage popover | ⌘U |
-| New window / new tab | ⌘N / ⌘T |
-| Collapse sidebar | ⌘B |
-| Settings | ⌘, |
-| Split terminal right / down | ⌘⌥T / ⌘⌥⇧T |
-| Split chat right / down | ⌘⌥C / ⌘⌥⇧C |
+| **Open existing folder** (default, ↵) | Connect an existing codebase as is. If it's a git repository, branches, worktrees and Commit & PR are all available |
+| **Create new project** | Just give it a name and start in an empty folder (initialized as a Git repository). If you install the template extension, you can also pick templates such as an internal dashboard |
+| **Clone from Git URL** | Clone a remote repository onto the selected machine |
+| **Import from ZIP** | Create a local project from an archive |
 
-<img src="assets/settings-shortcuts.png" alt="Settings → Shortcuts" width="820" />
+Open **Project settings** (basic info · tags · run · automation) from the ⋯ next to the
+project title or the ⚙ in the conversation header.
 
 ---
 
-## 8. Agent Board — command your fleet
+## 5. Your first conversation — putting an agent to work
 
-Even a handful of sessions makes hopping between chat tabs tiring fast. Click **Agent
-Board** (⌘⇧A) in the sidebar and **every session across every project** unfolds as a
-Kanban board:
+When you open a project, you see *"What should we build in rental-dashboard?"* along with the
+start cards **Understand the code · Build a feature · Code review · Fix a bug**. The first
+time you open a conversation, you are asked once whether to use the **Saycode default
+instructions**.
 
-<img src="assets/agent-board.gif" alt="Agent Board — sessions move between columns as they progress" width="920" />
+<img src="assets/system-prompt-choice.png" alt="Whether to use the Saycode default instructions" width="520" />
+
+### Anatomy of the input box
+
+| Element | Description |
+|---|---|
+| **+** | Attach files, photos (⌘U) or folders, or start from an existing path |
+| **AI picker** | Claude Code · Codex · Opencode · Grok, plus AI profiles ([Chapter 9](#9-choosing-agents-and-models-ai-usage)) |
+| **Model** | Default (automatic selection) or pin a specific model |
+| **⚡ / ⋯** | Additional run options |
+| **Pin (Quick Commands)** | Save frequently used prompts and fill them in with one click |
+| **↑ key** | When the input box is empty, step through and search prompts you sent before |
+| **Working copy (worktree)** | Work in isolation on a branch and working folder dedicated to the conversation |
+| **File checkpoint protection** | (macOS conversations with worktree off) Saves the state before the agent changes files so you can restore safely |
+
+### Build an app in one sentence
+
+> *"Build an internal equipment-rental dashboard. Use Vite + React with summary cards by
+> status, search and status filters, and a rental list table (20 rows of dummy data), in a
+> clean light theme. Keep the dev server running on port 5173 so I can see it in the
+> preview."*
+
+<img src="assets/build-by-chat.gif" alt="New project → one-sentence request → agent works → preview auto-detected" width="920" />
+
+The agent creates files on the real machine, runs `npm install` and the build, and starts the
+dev server. Every tool call shows up as a card, and the answer appears on screen as it is
+written. Once the dev server is up, the **preview is detected automatically** and opens in the
+workspace on the right. HTML output can also be previewed inline in the chat.
+
+> If you want a dev server, be sure to include *"keep the dev server running so I can see it
+> in the preview"* in your request. Otherwise the agent may finish with a single HTML file.
+
+---
+
+## 6. Working without a project — Chat and document templates
+
+The **Chat** tab on Home (or sidebar Chat → **Start new chat**) is where you work right away
+without a project. Conversations are saved and can be continued even in a local workspace
+without logging in.
+
+<img src="assets/work-docs.gif" alt="Create a DOCX report in Chat and view it right inside the app" width="920" />
+
+- Ask something like *"Create a Q3 internal equipment-rental status report as a DOCX file"*
+  and the resulting file lands in the **working folder** and opens right away in the in-app
+  viewer (DOCX · PDF · HTML · Markdown rendering).
+- In **Choose document** (or `+`), pick a format — **Document (DOCX) · Spreadsheet (XLSX) ·
+  Presentation (PPTX) · PDF** — to open the template list. Built-in templates such as
+  *Design report* and *Basic letterhead*, or Office files and writing guidelines you saved
+  with **Create my template**, are passed on to the actual task.
+- Choose `+` → **Start from an existing path** to use an existing folder on this computer as
+  the working path.
+
+<img src="assets/doc-templates.png" alt="Document format selection and template gallery" width="820" />
+
+---
+
+## 7. The workspace — files, changes, terminal, browser
+
+The project screen is split into the **conversation in the middle** and the **workspace on the
+right**. Use the tabs at the top of the middle to move between conversations, and the tabs on
+the right to use tools. Drag the divider to adjust the width.
+
+<img src="assets/workspace.gif" alt="Terminal → changes diff → workspace full screen → file content search" width="920" />
+
+| Tab | What you can do |
+|---|---|
+| **Changes** | The list of files changed in this conversation (worktree) and a **side-by-side diff**. Leave review comments on changed lines and send them to the agent |
+| **Files** | Browse the file tree, filter by file name, and run **content search** (Enter) across the whole project or worktree. Click a result to open that line; new outputs are marked |
+| **Terminal** | A real shell attached to that machine. It stays alive when you switch tabs and reconnects on its own |
+| **Browser / Preview** | Open the running app, pick elements, viewport presets ([Chapter 8](#8-see-it-fix-it--pick-an-element-and-send-it-to-chat)) |
+
+Use **+ (Add work panel)** at the top right to add Files · Terminal · Browser · Review · Run
+preview, and **Full-screen work panel** to see it large or **Restore split view** to go back.
+
+<img src="assets/workspace-diff.png" alt="Workspace full screen — side-by-side diff" width="920" />
+
+---
+
+## 8. See it, fix it — pick an element and send it to chat
+
+Open an address such as `http://localhost:5173` in the workspace **Browser** and the app
+running on your machine appears as is. Press **Pick an element and send it to chat** in the
+toolbar and click an element on the page — its selector, size, text, ancestor path and a
+screenshot are attached to the chat input.
+
+<img src="assets/element-to-chat.gif" alt="Pick element → attached to chat → edit → applied instantly via HMR" width="920" />
+
+Just add one line on top — *"Highlight the overdue card with a light red background and add
+a 'Recover now' badge."* When the agent edits the code, HMR applies it immediately in the same
+panel.
+
+<img src="assets/browser-panel.png" alt="The result reflected in the browser panel next to the chat" width="920" />
+
+The toolbar also has **console · network error collection**, **viewport** (desktop · tablet ·
+mobile), cookie import, and open in a new window.
+
+---
+
+## 9. Choosing agents and models, AI usage
+
+### Agents
+
+<img src="assets/agent-picker.png" alt="AI picker — Claude Code, Codex, Opencode, Grok, AI profiles" width="670" />
+
+Use the AI button in the input box to choose **Claude Code · Codex · Opencode · Grok**. Your
+choice carries over to the next new conversation. An **AI profile** is a saved combination
+that switches AI, model and working environment all at once. You can hand an ongoing
+conversation over with **Continue with another agent** in the header ⋯, choosing the model and
+reasoning effort.
+
+### Automatic model selection
+
+<img src="assets/model-picker.png" alt="Model picker — Default, Fable 5.1, Opus 5.5, Opus 5, Sonnet 5, Haiku 4.5" width="670" />
+
+Leave the model on **Default** and Saycode looks at each turn's difficulty to choose the model
+and reasoning effort — light for fixing a typo, moderate for implementing a feature, and the
+top models only for genuinely hard problems. Hover over a message to see which choice was made
+as a badge.
+
+<img src="assets/auto-route-badge.png" alt="Automatic selection badge under a message" width="670" />
+
+If you need a specific model, pin **Fable 5.1 · Opus 5.5 · Opus 5 · Sonnet 5 · Haiku 4.5**
+(for Codex, GPT-6 Sol · Luna · Astra and others) directly.
+
+### AI usage and account switching
+
+Click the chip in the conversation header (e.g. `✱ 71%/17% · ◎ —/56% · Grok installed`) to
+see the remaining usage per service on that machine.
+
+<img src="assets/machine-usage.png" alt="Codex account list and remaining usage per machine" width="320" />
+
+- Remaining percentage of the 5-hour and 7-day windows for **Claude / Codex / Grok**
+- If you connected multiple accounts with `codex-multi-auth` · `claude-swap`, **switch with
+  one click**, or switch automatically when a limit is hit — work doesn't stop even if one
+  account is blocked
+- Turn on **Show AI usage remaining / Show CPU · memory** in the ⋯ menu to always show them in
+  the header
+
+---
+
+## 10. Agent Board — command your fleet
+
+Click **Agent Board** (⌘⇧A) in the sidebar and **every conversation in every project** is laid
+out as a kanban. Collapse the sidebar and all six columns fit on one screen.
+
+<img src="assets/agent-board.gif" alt="Agent Board — Claude and Codex conversations moving between columns, cards dragged to In review and Done" width="920" />
 
 | Column | Meaning |
 |---|---|
-| **Awaiting input** | The agent is waiting for a question or permission response — check here first |
-| **Responding** | Working right now. The card streams the agent's latest reply live |
-| **Waiting** | Waiting for the next instruction |
-| **In review** | A code review is running |
-| **Done** | Archived sessions (green "Done" badge) |
-| **PR Merged** | The PR merged and the session is fully finished |
+| **Waiting for input** | Conversations that need an answer to a question or permission — look here first |
+| **Responding** | Working right now. The latest response streams live on the card. *Drop a card here to send an instruction* |
+| **Idle** | Waiting for the next instruction |
+| **In review** | *Drop a card here to request a review* — a confirmation dialog opens with the model and prompt pre-filled |
+| **Done** | *Drop a card here to move the conversation to Done* — hidden from the default list; bring it back with **Unmark done** |
+| **PR merged** | Conversations finished because their PR was merged |
 
-What you can do from the board:
+Cards show the project, agent, model, elapsed time and worktree name, and you can run
+**Commit & PR**, **Autopilot** and **Verify changes** directly from a card. Click a card to
+preview the last request and latest response, and **Go to conversation**. Use the search box
+at the top right to filter by title or prompt.
 
-- **Drag a card into Responding** → an instruction box opens, and whatever you type is sent to that session
-- **Drag a card into In review** → a confirmation dialog opens with a pre-filled review-request prompt
-- **Drag a card into Done** → archives the session
-- **Click a card** → preview the last request and latest reply, then jump straight in with **Go to chat**
-- **Search box** — instantly filter sessions by title or prompt
-- **Commit & PR / merge PR / auto-fix on CI failure** — right from the card, for GitHub-connected projects
-- **Un-complete** — reopen an archived session and keep going (a deleted worktree is restored from its branch too)
-
-<img src="assets/board-drag-review.gif" alt="Dragging a card into In review opens a code-review request confirmation dialog" width="920" />
-
-<img src="assets/board-review-request.png" alt="Review request confirmation dialog" width="820" />
-
-The **savings widget** at the top totals what auto model selection has saved you, by day,
-week, and month.
-
-<img src="assets/agent-board.png" alt="Agent Board with real sessions and the savings widget" width="920" />
+<img src="assets/agent-board.png" alt="Agent Board — Idle, In review and Done columns" width="920" />
 
 ---
 
-## 9. Finish work — review and Commit & PR
+## 11. Finish work — review, commit, done
 
-Done with the work? Click the **Finish work · Commit & PR** button above the composer:
+Press the **Finish work** (code review · Commit & PR) button in the input box.
 
-<img src="assets/work-completion-hub.png" alt="Finish-work hub" width="920" />
+<img src="assets/work-completion-hub.png" alt="Finish work hub" width="820" />
 
-There are three paths:
+1. **Check with the current agent** — the agent that did the work reviews the changes and fixes
+   problems itself. If findings of medium or higher come up, the review continues
+   automatically up to the **iteration count** (default 7), and stops once only low or nit
+   findings remain.
+2. **Hand off to an independent reviewer** — another agent reviews a **read-only snapshot** and
+   only reports the results. A reviewer different from the model that wrote the code is
+   suggested first.
+3. **Commit & PR** — review → test → commit → push → PR creation in a single turn. If there's
+   no remote repository, it tells you it will request *commit only*. (Used in worktree
+   conversations)
+4. **Mark done** — moves the conversation to **Done** on the board. The worktree is kept.
 
-1. **Review with the current agent** — the agent that did the work reviews its own
-   changes and fixes confirmed issues right away
-2. **Hand it to an independent reviewer** — a **different agent** (Claude/Codex and more,
-   with model and review-profile choices: general / bugs & regressions / security)
-   inspects a **read-only snapshot**. It can't touch the code, only reports findings —
-   which cuts down on self-review blind spots. From the results, pick just the items you
-   want and request fixes; the review history stays with the session
-3. **Straight to Commit & PR** — if the changes are already confirmed, skip the review and
-   go straight to committing and opening a PR
-
-**Commit & PR** runs review → test → commit → push → PR creation, all in a single turn:
-
-<img src="assets/commit-pr-request.png" alt="Commit &amp; PR request — pre-filled prompt" width="920" />
-
-<img src="assets/commit-pr.gif" alt="Commit &amp; PR in one turn: review → commit → push → PR" width="920" />
-
-<img src="assets/commit-pr-result.png" alt="Commit &amp; PR result — commit and push done; if the remote isn't GitHub, it reports that" width="920" />
-
-If the remote isn't GitHub, or there's no remote, the agent tells you so and stops after
-committing (and pushing). Review scope includes changes inside submodules too.
+<img src="assets/finish-work.gif" alt="Finish work → Commit & PR → review, build, commit → moved to Done" width="920" />
 
 ---
 
-## 10. Conversation search and Quick Open
+## 12. Lessons, memory and the system prompt
 
-**⌘⇧F** alone full-text searches every conversation you've ever had — session titles, the
-prompts you sent, the agent's replies. The index is stored only in a local SQLite (FTS5)
-database on your machine.
+- **Lesson candidates** — when an agent proposes a method it confirmed during work as a project
+  lesson, a card appears under that answer. Only lessons you **Approve** are used in later
+  conversations; **Reject** discards them.
+- **Memory** — in Settings → Memory, see lessons and review candidates in one place, and
+  exclude them so they aren't recalled in later conversations.
+- **System prompt** — turn the Saycode default instructions on or off as a whole, or adjust
+  individual items: child Agent calls · internal task delegation · start-from-planning
+  workflow · commit credits · inline preview of outputs.
 
-<img src="assets/conversation-search.png" alt="⌘⇧F conversation search" width="920" />
+<img src="assets/settings-system-prompt.png" alt="Settings → System prompt" width="820" />
 
-| Filter | Example |
+---
+
+## 13. Integrations — extensions and messenger channels
+
+Under **Integrations** in the sidebar, install only the features you need as official
+extensions.
+
+<img src="assets/integrations.png" alt="Integrations — official extensions and channel adapters" width="920" />
+
+| Extension | What it does |
 |---|---|
-| Limit to a project | `project:commerce payment error` |
-| Limit by speaker | `role:user deploy`, `role:agent root cause` |
-| Agent type | `agent:claude refactor` |
-| Date range | `after:2026-07-01 before:2026-07-20 login` |
-| Exact phrase | `"epoch milliseconds"` |
+| **Project templates** | Start new projects from proven templates such as internal dashboards and survey forms |
+| **Plugin manager** | Manage skills and plugins |
+| **Public links** | Publish rendered HTML documents and reports as links |
+| **Telegram · Slack · Discord channel adapters** | Start Saycode conversations from a messenger, get progress updates, and control only the projects, machines and tasks you allow |
 
-Turn the feature on/off or delete the index in **Settings → AI → Conversation search**.
-
-**⌘P Quick Open** opens projects, conversations, and files straight from one input box:
-
-<img src="assets/quick-open.png" alt="⌘P Quick Open" width="920" />
-
-> ⌘K is **navigation search** for finding projects, conversations, and machines; ⌘⇧F is
-> **full-text search** that digs through conversation content; ⌘P is **Quick Open** for
-> jumping straight anywhere.
+When you install an extension, review each requested permission (e.g. `channels.receive`,
+`sessions.control`) and press **Approve permissions and activate**. For messenger channels,
+connect the bot in two steps under **Messenger channels** in settings; if you like, move it to
+**Run on another machine** instead of Desktop so it keeps receiving even when the app is
+closed. Turn on **Developer mode** to also load unpacked local extension folders.
 
 ---
 
-## 11. Notification centre and webhooks
+## 14. A tour of Settings
 
-Kick off a long task and go do something else — Saycode will tell you when it's done.
+Open **Settings** (⌘,) from your name (or Guest) in the account area. Type a setting name in
+the search box at the top left to jump straight to it.
 
-<img src="assets/notification-center.png" alt="Notification centre — unread/read tabs and completion notices" width="820" />
-
-- Open the notification centre with the **bell icon** at the bottom of the sidebar. **Unread / Read** tabs — acknowledged notifications stay on record too
-- Clicking a notification opens that chat **in a new tab**
-- Notifications survive restarts, and sync with Dock badges, native notifications, and mobile push (if you use the mobile app)
-
-In **Settings → Notifications** you can set sounds (input requests · task complete)
-alongside **outbound webhooks** — send `session.turn-completed`, `session.waiting-input`,
-and `session.stalled` events, HMAC-SHA256 signed (`X-Saycode-Signature-256`), to your own
-endpoint to connect Slack or an internal bot.
-
-<img src="assets/settings-notifications.png" alt="Settings → Notifications: sounds and outbound webhooks" width="820" />
-
----
-
-## 12. AI usage and account switching
-
-Click the **usage chip** in the conversation header (e.g. `✱ Claude 57%/91% · Codex
-—/38% · Grok installed`, ⌘U) and the remaining usage per service on that machine opens up:
-
-<img src="assets/machine-usage.png" alt="Remaining Claude/Codex usage per machine and the account-switching popover" width="920" />
-
-- Shows the remaining share of the 5-hour and 7-day windows, per **Claude / Codex / Grok**
-- If you've connected **multiple Claude accounts**, **click to switch** between them in the list — work doesn't stop even if one account hits its limit
-- Numbers refresh once every 5 minutes, per machine
-
-Running low on quota? That's when [Auto model selection](#5-save-on-token-costs-with-auto-model-selection)
-earns its keep even more — it keeps easy work from burning expensive quota.
-
----
-
-## 13. A tour of Settings
-
-Open **Guest (or your name) → Settings** (⌘,) at the bottom of the sidebar. Type a
-setting's name into the search box at the top to jump straight to it.
-
-| Group | Tabs | What's there |
+| Group | Tabs | Contents |
 |---|---|---|
-| Preferences | Notifications · Visual effects · Language · Shortcuts | Sounds/webhooks, animations, UI language, rebinding every shortcut |
-| AI | System prompt · Memory · Conversation search | Default instructions/presets, the memory layer, the search index |
-| Devices | Machines · Mobile connection · Network data saver | Machine registration/status, QR connection, handling metered networks |
-| App | Extensions · About | Managing extensions/skills, version and updates |
+| — | Onboarding checklist | Continue the startup setup automatically |
+| Account | Security | Anonymous usage statistics, auto-stop sessions on loop detection, autopilot quality gate, global pause *(team)* |
+| Preferences | Notifications · Visual effects · Language · Shortcuts | Mobile push, notification sounds, webhooks; theme and animations; UI language; rebind every shortcut |
+| AI | System prompt · Memory · Conversation search | Default instructions, lessons and memory, conversation search index |
+| Devices | Machines · Mobile connection · Network data saver | Machine registration, details and updates; QR connection; metered network handling |
+| App | Extensions · About | Install and manage extensions, version |
 
-### System prompt
+<img src="assets/settings-shortcuts.png" alt="Settings → Shortcuts" width="820" />
 
-<img src="assets/settings-system-prompt.png" alt="Settings → AI → System prompt" width="920" />
+<img src="assets/settings-notifications.png" alt="Settings → Notifications — mobile push, notification sounds, webhooks" width="820" />
 
-Toggle **Saycode default instructions** wholesale, or adjust individual instructions
-(calling child agents · internal task delegation · plan-first workflow · commit credits ·
-inline artifact previews) item by item. Below that you can layer TypeScript · Tailwind ·
-Korean · Minimal · Full-stack presets, or your own instructions.
-
-### Memory
-
-<img src="assets/settings-memory.png" alt="Settings → AI → Memory" width="920" />
-
-This is the memory layer that lets the agent remember project context — decisions,
-conventions, lessons — across sessions. Use the **Memory** button in the conversation
-header's ⋯ menu to see what the current session remembers.
-
-### Extensions
-
-<img src="assets/settings-extensions.png" alt="Settings → App → Extensions" width="920" />
-
-Install and update extensions and skills, such as the template pack
-(`buzzni.project-templates`). Turn on **Use 1st-party skill packs** in Project settings →
-Run and work instructions (SKILL.md) are deployed to the project's `.claude/skills/` at
-session start.
+Key shortcuts: **⌘K** project search · **⌘⇧F** full-text conversation search · **⌘P** Quick
+Open · **⌘⇧A** Agent Board · **⌘S** save file · **⌘U** add files/photos · **⌘N** new window ·
+**⌘T** new tab · **⌘B** collapse/expand sidebar · **⌘,** Settings.
 
 ---
 
-## 14. Adding machines and mobile connection
+## 15. Machines and mobile connection
 
 ### Machines
 
-This Mac is registered automatically on first run. Check its status in **Settings →
-Devices → Machines**, and add other computers (GPU servers, build servers, cloud VMs) with
-**Add machine**:
+This Mac is registered automatically on first launch. In **Settings → Machines** you can see
+its status (CPU · memory · storage, daemon status), and from **Details** run a Saycode CLI
+update or **Rename / Delete** it.
 
-<img src="assets/settings-machines.png" alt="Settings → Devices → Machines" width="920" />
+<img src="assets/settings-machines.png" alt="Settings → Machines" width="820" />
 
-1. Click **Add machine** to generate a one-line registration command
-2. Run that command in a terminal on the target machine, and within seconds it shows up as **Online**
-3. From then on, pick that machine as the **host** when creating a project, and the agent works there
-
-Use **Resume setup** on the same screen to reopen the 3-step wizard.
+Press **Register machine** to get a registration command and a one-time code to run on the
+target machine (GPU server, build server, cloud VM). Once it shows up as **Online** a few
+seconds later, pick that machine as the **host** when creating a project — the agent works
+right next to your code and data.
 
 ### Mobile connection
 
-<img src="assets/mobile-companion.png" alt="Settings → Devices → Mobile connection — QR code" width="920" />
+<img src="assets/mobile-companion.png" alt="Settings → Mobile connection — QR code (blurred)" width="820" />
 
-Scan the QR code in **Settings → Devices → Mobile connection** with the Saycode mobile
-app, and the same workspace opens on your phone. A local workspace connects directly on
-the same network, and over a tunnel on a different network. Watch agent sessions live,
-open a remote terminal, and get a push notification the moment a long task finishes.
-
----
-
-## 15. Team workspace — login, deploy, share
-
-The local workspace alone already gives you agents, the board, worktrees, finish work, the
-terminal, and the browser panel. Log in once you need:
-
-- **Deploying to an internal URL** the team can open (automatic SSL, the same link refreshed on every deploy)
-- **Sharing, cloning, and handing over** projects, and the internal community
-- The **org console** — seats, permissions, model policy, cost, audit log, SSO
-- **Connectors** like Google Drive, Slack, and Notion, personal memory sync, project export
-
-Click **Guest → Log in** at the bottom of the sidebar and the saycode.ai login window
-opens (passkey or TOTP MFA supported):
-
-<img src="assets/login-modal.png" alt="saycode.ai login — switching to the team workspace" width="820" />
-
-Once logged in, **team shared projects** appear on the workspace home, and a **Deploy**
-button is added to the conversation header. A successful deploy leaves a deploy card in
-the chat with the URL and a copy button. End users who only open the deployed app or
-report URL don't need a seat.
-
-**Connectors** — in Settings → Connectors, link Notion, Slack, Google Drive, Gmail and
-KNOI so conversations can pull in documents, messages and meetings directly. All
-connections are read-only.
-
-<img src="assets/settings-connectors.png" alt="Settings → Connectors: Notion, Slack, Google Drive, Gmail and KNOI" width="820" />
-
-**Machine registration** — in Settings → Devices → Machines, click **Register machine**
-to get a CLI install command plus a Personal or Organization registration code. On the
-target machine, run `npm i -g @buzzni/happy-cli`, then `happy auth login` and enter the
-code — it comes online within seconds.
-
-<img src="assets/register-machine-panel.png" alt="Machine registration panel: CLI install and Personal/Organization code" width="820" />
-
-Click **Generate code** and a one-time code with its expiry time appears, along with a
-ready-to-paste curl command — the code expires within minutes so it can't leak.
-
-<img src="assets/register-machine-code.png" alt="Machine registration code screen" width="820" />
-
-**Organization console** — switch to an organization workspace and an **Organization
-management** entry appears at the bottom of the sidebar workspace switcher. Invite
-members, change roles (admin/member) or remove them, review the audit log (who opened
-which project, when), and register org-wide MCP servers, a GitHub PAT and shared AI
-accounts — all from one console.
-
-<img src="assets/org-console.png" alt="Organization console: member management and audit log" width="820" />
-
-**Global pause** — the global-pause switch in Settings → Security stops the next run of
-scheduled automations, GitHub event triggers and board autopilot from starting. Chats
-already in progress aren't interrupted, and the switch only applies to automation this
-desktop app runs directly (it doesn't block execution paths owned by a machine daemon).
-
-<img src="assets/settings-security.png" alt="Settings → Security: global pause and GitHub Personal Access Token" width="820" />
-
-Local projects stay exactly as they were, even after logging in.
+Scan the QR code with the Saycode mobile app and the same workspace opens on your phone. A
+local workspace connects directly on the same network, or through a tunnel you turn on from a
+different network. Watch conversations in real time and get a push notification the moment a
+long task finishes.
 
 ---
 
-## 16. Tips and troubleshooting
+## 16. Team workspace — login, deploy, share
 
-**See session status at a glance** — sidebar and board badges:
-*Responding* · *Waiting* (waiting for the next instruction / reclaimed after idling) ·
-*Awaiting input* (needs a question or permission answered — the agent isn't stuck, it's
-waiting for you) · *Done* (archived).
+The local workspace alone gives you agents, the board, worktrees, Finish work, the workspace,
+and Chat with document templates. When you need the following, go to the account area →
+**Log in** (or choose **Organization use** on first launch):
 
-**Resume a finished session** — even archived (Done) sessions can be brought back with
-**Un-complete** on the Agent Board or in the conversation header's ⋯ menu. Even if the
-session's worktree was deleted, it's restored from the branch.
+- **Deploy to an internal URL** your team can open (automatic SSL, the same link updated on
+  every deploy)
+- **Work together** invitations and acceptance, team-level project sharing, and project
+  **tags** for organizing and filtering
+- **Organization management** — members, teams, permissions, model policies, costs, audit
+  logs, SSO
+- Organization-wide MCP servers, GitHub PATs and AI accounts, and **connectors** such as
+  Notion, Slack and Google Drive
 
-**Using Worktree** — turning on Worktree in a new conversation creates an isolated branch
-workspace per session. There's also an option to reuse an existing worktree, and your last
-choice is remembered. Archiving or deleting a session automatically cleans up its linked
-worktree too. Worktree and Commit & PR only work when the project is a git repository, so
-for templates or blank projects, start your first conversation with *"git init and make
-the first commit"*.
+<img src="assets/org-console.png" alt="Organization management console — member management and audit log" width="820" />
 
-**If an AI tool shows "Check failed"** — in step 2 of the wizard, run `claude` → `/login`
-and `codex login` in a terminal, then click **Check again**. You can get started with just
-one of the two connected.
+<img src="assets/settings-connectors.png" alt="Connectors — Notion, Slack, Google Drive, Gmail, KNOI" width="820" />
 
-**Missed a question card?** — agent questions and permission requests are safely
-re-delivered when the session resumes. Just check the board's **Awaiting input** column
-periodically.
+The project list in the sidebar is split into **My projects / Working together / Shared with
+me**, and shared projects can be found under **Project view options**. End users who open a
+deployed app or report URL don't need a seat. Local projects stay as they are after you log
+in.
 
-**If a pager opens in the terminal** — for commands like `git log` that open a pager,
-press `q` to exit, or run it as `git --no-pager log`.
+**Global pause** — turn on the switch in Settings → Security and scheduled automations, GitHub
+event triggers, and the next steps of board autopilot won't start. Conversations already in
+progress are not interrupted.
 
-**When it feels stuck** — if auto selection has shown *"promoted to top performance
-because the session is stuck"*, the top-tier model is already on the case. Still not
-resolved? Break the problem into smaller requests, or ask the Work-completion hub's
-**independent reviewer** for a fresh perspective.
+<img src="assets/settings-security.png" alt="Settings → Security — global pause, auto-stop on loop detection, autopilot quality gate" width="820" />
 
-**To halt all automation at once** *(team workspace)* — turn on **Global pause** in
-Settings → Security, and scheduled automations, GitHub triggers, and the board
-autopilot's next steps won't start. Conversations already in progress aren't interrupted.
+---
+
+## 17. Tips and troubleshooting
+
+**Conversation status at a glance** — *Responding* · *Idle* (waiting for the next
+instruction) · *Waiting for input* (needs an answer to a question or permission — the agent
+isn't stuck, it's waiting for you) · *Done* (archived).
+
+**Continuing a finished conversation** — bring it back with **Unmark done** on the board or in
+the conversation header.
+
+**Using worktrees** — when running several conversations at once, turn on
+`Working copy (worktree)`. Each conversation works on an isolated branch so they don't collide.
+Worktrees and Commit & PR are available when the project is a git repository, and new projects
+start initialized as a Git repository.
+
+**If an AI tool shows "Installation required" or "Check failed"** — finish `claude` →
+`/login` and `codex login` in a terminal, then press **Check status again** in the onboarding
+checklist.
+
+**If a pager opened in the terminal** — press `q` to exit, or run commands like
+`git --no-pager log`.
+
+**If you stopped a response** — a stopped AI response can be retried. The conversation also
+carries on after you hit a model usage limit.
+
+**When you feel stuck** — break the problem into smaller requests, or ask the **independent
+reviewer** in Finish work for a fresh perspective.
 
 ---
 
 <div align="center">
 
-Have more questions? [saycode.ai](https://saycode.ai) · Technical contact [ryan@buzzni.com](mailto:ryan@buzzni.com)
+Have more questions? [saycode.ai](https://saycode.ai) · Technical inquiries [ryan@buzzni.com](mailto:ryan@buzzni.com)
 
 **© 2026 [Buzzni](https://buzzni.com)**
 
