@@ -20,7 +20,7 @@
 
 <br/>
 
-### [⬇️ macOS용 다운로드 (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.61/Saycode-0.1.61-arm64.dmg)
+### [⬇️ macOS용 다운로드 (Apple Silicon)](https://github.com/buzzni/saycode-desktop-releases/releases/download/v0.1.62/Saycode-0.1.62-arm64.dmg)
 
 *서명·공증된 DMG · 자동 업데이트 내장 · 계정 없이 바로 시작*
 
@@ -37,7 +37,7 @@ https://github.com/user-attachments/assets/2c62fec6-5402-4edf-b86b-4a53a55f05e0
 <!-- release-notes:start -->
 ## 새로운 기능과 변경사항
 
-- [최신 릴리스 노트](docs/releases/v0.1.61.ko.md)
+- [최신 릴리스 노트](docs/releases/v0.1.62.ko.md)
 - [전체 릴리스 기록](docs/releases/README.ko.md)
 <!-- release-notes:end -->
 
