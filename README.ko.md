@@ -32,7 +32,7 @@
 
 https://github.com/user-attachments/assets/2c62fec6-5402-4edf-b86b-4a53a55f05e0
 
-*🔊 소리를 켜고 보세요 — v0.1.50 화면으로 만든 92초 소개 영상(자막·배경음악, Blender 제작)입니다. 이후 UI가 바뀌어 지금과 다른 장면이 있습니다 — 아래 스크린샷은 모두 v0.1.81 기준입니다 · [MP4 다운로드](docs/assets/saycode-intro-ko.mp4) · [자막 SRT](docs/assets/saycode-intro-ko.srt)*
+*🔊 소리를 켜고 보세요 — 실제 v0.1.81 화면으로 만든 92초 소개 영상(자막·배경음악)입니다 · [MP4 다운로드](docs/assets/saycode-intro-ko.mp4) · [자막 SRT](docs/assets/saycode-intro-ko.srt)*
 
 </div>
 
