@@ -1,10 +1,10 @@
 1
-00:00:04,040 --> 00:00:08,080
+00:00:04,040 --> 00:00:08,600
 Install, then just press 'Personal use'
 
 2
-00:00:08,250 --> 00:00:12,290
-Saycode finishes the setup for you
+00:00:08,850 --> 00:00:12,290
+No paid AI account? Start free with free models
 
 3
 00:00:12,790 --> 00:00:17,700

@@ -54,6 +54,7 @@ https://github.com/user-attachments/assets/7cc4d7d2-a02c-433d-afc0-d6b6bf5c81e1
 > **v0.1.81 — 始めやすく、画面の構造は Web と同じに。** v0.1.50 以降の 31 リリースでの主な変化:
 >
 > - **アカウントなしですぐ開始** — 最初の画面で**個人で使う**を一度押すだけで**初期設定**が自動で進み、有料の AI アカウントがなくても**無料モデル**で会話を始められます。
+> - **💸 有料アカウントなしで無料スタート** — 有料の AI アカウントがなくても **無料モデル(opencode)** ですぐに始められます。無料モデルは OpenCode が期間限定で提供しており、モデルごとにデータの扱いが異なります([ガイドブック](https://buzzni.github.io/saycode-desktop-releases/guidebook/en/#205-how-much-can-i-use-free-models)、英語)。
 > - **新しいサイドバーと自分の設定** — ホームのタブの代わりに **Chat · Project**、プロフィールメニュー、**自分の設定(一般 · 開発)**、ひとつにまとまった**プロジェクトを作成**画面、**作業PC**・**作業ボード**といった整理された用語。
 > - **より賢い入力欄** — **AI · モデル · 作業強度をひとつのボタン(AI 自動)**に、入力欄の下に **AI 残量**、応答中の**キュー**、**会話の要約**、アーカイブと一時的に非表示。
 > - **直してから仕上げるまで** — 要素を**注釈トレイ**にためて送れるブラウザ、**ブランチ全体 / ターン別**の変更・ファイルパネル、入力欄の上の**作業を完了**メニュー、フィルターと先行作業が加わった**作業ボード**、ログインすれば**予約**。
@@ -272,6 +273,23 @@ Agent IDE も良い選択です — 両方を併用しない理由もありま�
 <img src="docs/assets/composer-ai-menu.png" alt="入力欄の下の AI 自動メニュー: Claude Code、Codex、Opencode、Grok、モデル一覧、AI プロファイル" /><br/>
 <img src="docs/assets/auto-route-badge.png" alt="メッセージ上の自動選択バッジ: 自動 · Sonnet 5.5 · medium" /><br/>
 <img src="docs/assets/ai-usage-popover.png" alt="AI 使用量ウィンドウ: Claude タブ、アカウント別の5時間・7日の使用率" />
+</td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 💸 有料アカウントなしで無料スタート — 無料モデル(opencode)
+
+Claude や ChatGPT の有料アカウントがなくても、**初期設定 → 無料モデルで始める**を一度押すだけで opencode をこの PC に
+インストールして、すぐに会話できます。インストール前にインストール先と無料モデルの条件を表示し、確認してからインストールします。
+入力欄の下の AI メニューで **Opencode** を選ぶと無料モデルに「無料」「おすすめ無料」の表示が付き、モデルを選ばない場合は
+メッセージごとにおすすめの無料モデルが使われます。無料モデルは OpenCode が**期間限定で提供**しており、**モデルごとに入力の保持・学習
+ポリシーが異なります。** 社内・機密コードには、有料または組織の AI をつなぐか、提供元が保持・学習をしないと明記したモデルだけを使ってください。
+→ [ガイドブック FAQ: How much can I use free models?(英語)](https://buzzni.github.io/saycode-desktop-releases/guidebook/en/#205-how-much-can-i-use-free-models)
+
+</td>
+<td>
+<img src="docs/assets/composer-ai-menu-free.png" alt="入力欄の下の AI メニューにある Opencode の無料モデル一覧。無料・おすすめ無料の表示付き" />
 </td>
 </tr>
 <tr>

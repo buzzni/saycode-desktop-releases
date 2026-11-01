@@ -211,7 +211,7 @@ If no AI is connected, you see **Connect your AI account.** with the buttons bel
 
 This picker window opens in the same form from **My settings** → **General** → **AI Models** → **Connect**.
 
-If you have no paid AI account, use **Start with free models**.
+If you have no paid AI account, use **Start with free models**. It is the way to begin chatting right away without a paid account. (More details are in [7.5](#75-start-with-free-models-opencode).)
 
 1. Click **Start with free models**.
 2. On the confirmation screen, read the install location and the conditions (offered for a limited time, a retention and training policy that differs by model, and performance that may be lower than paid models).
@@ -222,6 +222,9 @@ If you have no paid AI account, use **Start with free models**.
 
 > [!IMPORTANT]
 > **Free model conditions**: You can install it only when this computer is your own machine and it is online. If your organization limits the AI you can use, installation is blocked, and it does not appear in Windows trial builds. When you hit a free-model limit, Saycode switches automatically to another free model up to 3 times, and it never moves on to a paid model.
+
+> [!WARNING]
+> **Be careful with company or customer code and confidential material.** The retention and training policy for your input (prompts and code) differs from one free model to another. Some models state that during the free period your input may be used to improve the model. For confidential material, use only free models whose provider states that they **do not retain input and do not train on it**, or connect a paid or organization AI ([7.5](#75-start-with-free-models-opencode)).
 
 The **AI shown in chat** switch in the same step hides AIs you do not use from the selection list (at least one stays). With an organization account, the AI step shows the **Connect organization accounts**, **Verify encryption key** and **Test message** buttons; check them together with your admin.
 
@@ -237,7 +240,7 @@ The **AI shown in chat** switch in the same step hides AIs you do not use from t
 > On Windows, Node.js, uv and Git are installed for you automatically. If automatic installation is difficult, choose **I'll install them myself**. If an error appears, click **Error details → Next steps → Installation guide**, and if you need a diagnostic log, copy it with **Copy log** and send it to your admin or support contact.
 
 > [!TIP]
-> You can manage AI accounts later in **My settings** → **General** → **AI Models** with **Connect**, and with the **…** menu on a row → **Disconnect** / **Reconnect to Saycode** / **Add account**. For free models, use **…** on the Opencode row → **Install** ([Chapter 7](#7-ai-models-effort-and-usage)).
+> You can manage AI accounts later in **My settings** → **General** → **AI Models** with **Connect**, and with the **…** menu on a row → **Disconnect** / **Reconnect to Saycode** / **Add account**. For free models, use **…** on the Opencode row → **Install** ([7.5](#75-start-with-free-models-opencode)).
 
 ---
 
@@ -561,7 +564,7 @@ When the AI asks a question with choices, **the composer turns into a question f
 <img src="assets/composer-ai-menu.png" alt="The menu of the AI Auto button under the composer — AI Auto, the model lists under Claude Code, Codex, Opencode and Grok (Auto, Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5, Legacy models), AI profiles" />
 
 1. In a new conversation, click **AI Auto** (or the button that shows the current model name and effort) in the lower row of the composer.
-2. If you choose **AI Auto**, Saycode looks at how hard the request is and picks the AI, model and effort. To choose yourself, hover over one of **Claude Code / Codex / Opencode / Grok** and pick a **model** in the submenu (choosing **Auto** makes only the model automatic). Older models are in the **Legacy models** group.
+2. If you choose **AI Auto**, Saycode looks at how hard the request is and picks the AI, model and effort. To choose yourself, hover over one of **Claude Code / Codex / Opencode / Grok** and pick a **model** in the submenu (choosing **Auto** makes only the model automatic). Older models are in the **Legacy models** group. To work without a paid AI, pick a free model under **Opencode** ([7.5](#75-start-with-free-models-opencode)).
 3. After you choose a model yourself, reopening the same button shows an **Effort** submenu (it does not appear while in AI Auto). Depending on the model there are Low · Medium · High · Xhigh · Max (and Ultra for some).
 
 4. In a conversation in progress after sending, the same button opens straight to the **model list**.
@@ -588,6 +591,7 @@ Set the following in **My settings** → **General** → **AI Models**.
 <img src="assets/settings-ai-models.png" alt="My settings → AI Models — connection status of Claude, ChatGPT and opencode, Connect, and checking the connected AIs" />
 
 - **Connect** — Connect your own Claude or ChatGPT account through the browser. In the row's **…** menu, choose **Disconnect**, **Reconnect to Saycode** or **Add account**.
+- **Opencode row … → Install** — Install the free models that work without a paid account ([7.5](#75-start-with-free-models-opencode)).
 - **AI shown in chat** — Hide AIs you do not use from the selection list (at least 1 stays shown).
 - **New conversation defaults** — Set the default agent, Model and Effort for new Chat and Project conversations separately.
 
@@ -609,6 +613,31 @@ Click the **AI remaining usage** button under the composer to see the AI account
 > The machine must be online to see real values. As you near a limit, the **usage and the time left until reset** are shown automatically under the composer, along with the number of accounts you can switch to. [Signed in] Organization account selection and the all-PCs summary appear in signed-in, multi-PC environments.
 
 For your usage history, use [Signed in] **My settings** → **General** → **Token usage** to see an overview and breakdowns by project, model and source, and compare the last 7, 30 and 90 days.
+
+### 7.5 Start with free models (Opencode)
+
+**Even without a paid Claude or ChatGPT account**, you can install opencode on this computer and chat right away with free models (v0.1.80 and later). If you do have a paid AI, you can install it alongside and pick per conversation.
+
+> [!NOTE]
+> **Requirements**: You can install it only when this computer is your own machine and it is online. If your organization limits AI models, you cannot install it, and it does not appear in Windows trial builds.
+
+1. Start from whichever of these is handiest.
+   - **Start with free models** in the AI step of [Getting started](#22-connect-an-ai)
+   - **Free models (opencode)** in the **Connect my AI account** window (or **My settings** → **General** → **AI Models** → **Connect**)
+   - **My settings** → **General** → **AI Models**, **…** menu on the Opencode row → **Install**
+2. Before installing, Saycode shows the **install location** and the **conditions of free models** (offered for a limited time, a retention and training policy that differs by model, and performance that may be lower than paid models). It installs only after you read and confirm.
+3. When "Ready to start with free models." appears, you are done. In a new conversation, choose **Opencode** on the AI button below the composer (it is already selected if you started without a paid AI).
+4. In the model list, free models are marked `Free` and the suggested one `Recommended free`. **If you do not choose a model**, a recommended free model is used for each message.
+
+<img src="assets/composer-ai-menu-free.png" alt="The AI menu below the composer showing the Opencode model list — free models marked Free and Recommended free" />
+
+If no free model is available, Saycode does not send the message and asks you to check again. Check again a little later, or connect another AI.
+
+> [!WARNING]
+> **Check what you send to a free model.** Free models are offered by OpenCode for a limited time, and **each model has its own data policy**. As of November 1, 2026, the OpenCode Zen documentation says GLM-5.3-Flash Free and DeepSeek V4.1 Flash Free do not retain input and do not train on it, that some models such as Big Pickle may use input to improve the model during the free period, and that the NVIDIA Nemotron endpoints are for trial use only, so you should not submit personal or confidential data. The list and policies can change, so check them yourself in the [OpenCode Zen docs](https://opencode.ai/docs/zen/).
+> For company or customer code and confidential material, use only free models whose provider states that they do not retain or train on input, or connect a paid or organization AI.
+
+For how much you can use per day, see [20.5](#205-how-much-can-i-use-free-models).
 
 ---
 
@@ -1339,7 +1368,7 @@ The organization admin console opens on the web and consists of the menus for me
 A. It means there is no online machine or no connected AI. Click **Open machine settings** / **Connect my AI** in the notice, or reopen [Getting started](#2-getting-started). The text and attachments you were writing are kept as they are.
 
 **Q. I cannot connect an AI / I do not have a paid AI account.**
-A. Connect Claude or ChatGPT with **Connect** in **My settings** → **General** → **AI Models**, or use **Start with free models** (Opencode). For a ChatGPT that has been logged out, first try **… → Restore from account pool** on the row.
+A. Connect Claude or ChatGPT with **Connect** in **My settings** → **General** → **AI Models**, or use **Start with free models** (Opencode) ([7.5](#75-start-with-free-models-opencode)). For how much the free models allow, see [20.5](#205-how-much-can-i-use-free-models). For a ChatGPT that has been logged out, first try **… → Restore from account pool** on the row.
 
 **Q. Menus like Work board and CPU & memory do not show.**
 A. You need to turn on the matching switch in profile menu → **Developer feature settings** ([3.4](#34-developer-feature-settings)).
@@ -1358,6 +1387,28 @@ A. The reason shows in the notice line, and clicking **Continue** (**Try again**
 
 **Q. I deleted a worktree / the AI stopped after repeating the same thing / it seems stuck.**
 A. Restore a deleted worktree from **Snapshot archive → Restore** in the worktree window ([11.6](#116-worktree-safety-net)). If it stopped because of loop detection (**Stop the session automatically on loop detection** under **Development automation**), split your request into smaller ones or get another AI's view with <strong>Request independent review…</strong>.
+
+### 20.5 How much can I use free models?
+
+**What is officially confirmed**: The OpenCode Zen documentation (checked November 1, 2026) describes most free models as "free for a limited time" and **does not publish limits such as a daily token count or number of requests.** Free models work only through OpenCode, and which model stays free, and for how long, can change.
+
+**Rough figures (unofficial)**: Users have reported the following in GitHub issues such as [anomalyco/opencode#15585](https://github.com/anomalyco/opencode/issues/15585).
+
+- The limit looks **daily** and **resets at local midnight**.
+- Many estimate daily usage at **about $0.30 worth (roughly 300K–500K tokens)**.
+- If you send many requests in a short time, people report a brief throttle at **around 15–20 requests per minute**.
+
+> [!NOTE]
+> These numbers are **only user observations and estimates.** OpenCode has not published or confirmed official limits, and they **can change at any time** by model and over time. This guide does not guarantee them, so do not base your plans on them.
+
+**When you go over**: The response may show a notice such as `Free usage exceeded`. When a free model hits its limit, Saycode switches automatically to another free model **up to 3 times** and never moves on to a paid model. If you are still blocked, pick one of these.
+
+1. **Wait for the reset.** Try again after the next local midnight.
+2. **Switch to another free model.** In the AI menu below the composer, pick a different `Free` model under Opencode ([7.5](#75-start-with-free-models-opencode)).
+3. **Connect a paid AI.** In **My settings** → **General** → **AI Models** → **Connect**, connect Claude or ChatGPT to carry on without worrying about the limit ([2.2](#22-connect-an-ai)).
+
+> [!WARNING]
+> For company or customer code and confidential material, use only free models whose provider states that they **do not retain input and do not train on it**, or connect a paid or organization AI. Check each model's policy in the [OpenCode Zen docs](https://opencode.ai/docs/zen/).
 
 ---
 
@@ -1404,7 +1455,7 @@ The left menu of My settings (profile menu → **My settings**, ⌘,). Menus mar
 |---|---|
 | Account | **Getting started** ([Chapter 2](#2-getting-started)) · **Profile** [Signed in] (display name, team) · **Conversation archive** ([Chapter 10](#10-manage-conversations)) · **Mobile link** ([Chapter 17](#17-machines-and-mobile)) · **Security** ([Chapter 14](#14-permissions-approvals-and-security)) · **Join another organization** [Signed in] · **Token usage** [Signed in] (overview, by-project, by-model and by-source usage and estimated cost) · **Connectors** [Signed in] · **Messenger channels** [Signed in] ([Chapter 16](#16-integrations-extensions-and-messenger-channels)) · **Skills** [Signed in] |
 | Preferences | **Notifications** ([Chapter 14](#14-permissions-approvals-and-security)) · **Visual effects** (dark mode, screen effects Auto / Full effects / Reduced effects) · **Language** |
-| AI | **AI Models** ([Chapter 7](#7-ai-models-effort-and-usage)) · **System Prompt** and **Personal memory** ([Chapter 15](#15-memory-lessons-and-the-system-prompt)) · **Conversation search** ([Chapter 10](#10-manage-conversations)) |
+| AI | **AI Models** ([Chapter 7](#7-ai-models-effort-and-usage); free models in [7.5](#75-start-with-free-models-opencode)) · **System Prompt** and **Personal memory** ([Chapter 15](#15-memory-lessons-and-the-system-prompt)) · **Conversation search** ([Chapter 10](#10-manage-conversations)) |
 | Desktop app | **Shortcuts** ([Chapter 19](#19-keyboard-shortcuts)) · **Network data saver** (reduce background data on tethering and metered networks) · **About** (version, **Check for updates**, **Troubleshooting**, [Chapter 20](#20-troubleshooting-and-faq)) |
 
 #### B.2 Develop area menus
