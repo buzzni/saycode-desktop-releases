@@ -10,3 +10,6 @@ memory/
 
 # auto-added by aplus-dev-studio (block env secrets)
 .env.*
+
+# Node
+node_modules/

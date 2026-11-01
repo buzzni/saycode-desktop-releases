@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saycode Desktop Guidebook</title>
+<meta name="description" content="Saycode Desktop 사용자 가이드 · The Saycode Desktop user guide — web and PDF, Korean and English.">
+<link rel="icon" href="../assets/icon.png">
+<script>(function(){try{var t=localStorage.getItem('saycode-guidebook-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+<style>
+{{css}}
+.page { word-break: keep-all; overflow-wrap: break-word; max-width: 880px; margin: 0 auto; padding: clamp(2.5rem, 9vh, 6rem) 1.4rem 3rem; text-align: center; }
+.page > img { width: 84px; height: 84px; border-radius: 21px; box-shadow: var(--shadow); }
+.page h1 { font-size: clamp(2rem, 6vw, 3rem); letter-spacing: -0.03em; line-height: 1.15; margin: 1.5rem 0 0.9rem; font-weight: 800; }
+.page h1 em { font-style: normal; color: var(--accent); }
+.lead { color: var(--text-soft); font-size: 1.1rem; line-height: 1.7; margin: 0 auto 0.3rem; max-width: 36em; }
+.lead.sub { color: var(--muted); font-size: 0.98rem; }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; margin: 2.6rem 0 0; text-align: left; }
+.card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 1.5rem 1.5rem 1.3rem; box-shadow: var(--shadow); }
+.card .lang { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-strong); }
+.card h2 { font-size: 1.3rem; line-height: 1.35; margin: 0.4rem 0 0.5rem; letter-spacing: -0.015em; }
+.card p { color: var(--muted); font-size: 0.93rem; line-height: 1.65; margin: 0 0 1.2rem; flex: 1; }
+.card .row { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.card .stamp { margin-top: 0.9rem; font-size: 0.78rem; color: var(--muted); }
+.foot { margin-top: 3rem; color: var(--muted); font-size: 0.85rem; display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.foot a { color: var(--muted); }
+.theme-toggle { position: fixed; top: 1rem; right: 1rem; padding: 0.55rem; }
+@media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<button type="button" class="btn theme-toggle" aria-label="Toggle theme" title="Toggle theme"><span class="i-moon">{{icons.moon}}</span><span class="i-sun">{{icons.sun}}</span></button>
+<div class="page">
+  <img src="../assets/icon.png" alt="">
+  <h1><em>Saycode</em> Desktop<br>Guidebook</h1>
+  <p class="lead">Saycode Desktop 사용자 가이드 — 설치부터 에이전트 운영까지, 웹과 PDF로 읽어보세요.</p>
+  <p class="lead sub">The Saycode Desktop user guide, from first launch to running your agents — read it on the web or as a PDF.</p>
+  <div class="cards">
+{{cards}}
+  </div>
+  <div class="foot"><span>{{stamp}}</span><a href="{{repo}}" target="_blank" rel="noopener">GitHub &rarr;</a></div>
+</div>
+<script>
+document.querySelector('.theme-toggle').addEventListener('click', function () {
+  var r = document.documentElement, cur = r.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  var next = cur === 'dark' ? 'light' : 'dark'; r.dataset.theme = next;
+  try { localStorage.setItem('saycode-guidebook-theme', next); } catch (e) {}
+});
+</script>
+</body>
+</html>
