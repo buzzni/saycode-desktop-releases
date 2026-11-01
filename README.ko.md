@@ -30,7 +30,7 @@
 
 <br/>
 
-https://github.com/user-attachments/assets/2c62fec6-5402-4edf-b86b-4a53a55f05e0
+https://github.com/user-attachments/assets/ac240d54-1df2-404f-9efe-c9954435b150
 
 *🔊 소리를 켜고 보세요 — 실제 v0.1.81 화면으로 만든 92초 소개 영상(자막·배경음악)입니다 · [MP4 다운로드](docs/assets/saycode-intro-ko.mp4) · [자막 SRT](docs/assets/saycode-intro-ko.srt)*
 
