@@ -30,9 +30,9 @@
 
 <br/>
 
-https://github.com/user-attachments/assets/9eea6cbb-bf4d-4d10-a86d-dc4011a8d9dc
+https://github.com/user-attachments/assets/7cc4d7d2-a02c-433d-afc0-d6b6bf5c81e1
 
-*🔊 音声をオンにしてご覧ください — Blender で制作した 92 秒の紹介動画（英語字幕・BGM）。v0.1.50 の画面で作ったため、その後 UI は変わっています — 以下のスクリーンショットはすべて v0.1.81 です · [MP4 をダウンロード](docs/assets/saycode-intro-en.mp4) · [字幕 SRT](docs/assets/saycode-intro-en.srt)*
+*🔊 音声をオンにしてご覧ください — 実際の v0.1.81 の画面で作った 92 秒の紹介動画（英語字幕・BGM） · [MP4 をダウンロード](docs/assets/saycode-intro-en.mp4) · [字幕 SRT](docs/assets/saycode-intro-en.srt)*
 
 </div>
 

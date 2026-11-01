@@ -30,9 +30,9 @@ and let the company manage accounts, permissions, model routing, cost and deploy
 
 <br/>
 
-https://github.com/user-attachments/assets/9eea6cbb-bf4d-4d10-a86d-dc4011a8d9dc
+https://github.com/user-attachments/assets/7cc4d7d2-a02c-433d-afc0-d6b6bf5c81e1
 
-*🔊 Sound on — a 92-second intro built in Blender, with subtitles and music. It was made with the v0.1.50 screens and the UI has changed since — the screenshots below are v0.1.81 · [Download MP4](docs/assets/saycode-intro-en.mp4) · [Subtitles (SRT)](docs/assets/saycode-intro-en.srt)*
+*🔊 Sound on — a 92-second intro made from real v0.1.81 screens, with subtitles and music · [Download MP4](docs/assets/saycode-intro-en.mp4) · [Subtitles SRT](docs/assets/saycode-intro-en.srt)*
 
 </div>
 

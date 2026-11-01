@@ -30,9 +30,9 @@
 
 <br/>
 
-https://github.com/user-attachments/assets/9eea6cbb-bf4d-4d10-a86d-dc4011a8d9dc
+https://github.com/user-attachments/assets/7cc4d7d2-a02c-433d-afc0-d6b6bf5c81e1
 
-*🔊 请打开声音 —— 在 Blender 中制作的 92 秒介绍视频（英文字幕·背景音乐），使用的是 v0.1.50 的界面。此后界面已有变化 —— 下方截图均为 v0.1.81 · [下载 MP4](docs/assets/saycode-intro-en.mp4) · [字幕 SRT](docs/assets/saycode-intro-en.srt)*
+*🔊 请打开声音 —— 使用真实 v0.1.81 界面制作的 92 秒介绍视频（英文字幕·背景音乐） · [下载 MP4](docs/assets/saycode-intro-en.mp4) · [字幕 SRT](docs/assets/saycode-intro-en.srt)*
 
 </div>
 
