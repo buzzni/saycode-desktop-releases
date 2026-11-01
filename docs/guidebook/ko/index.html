@@ -1,0 +1,2471 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saycode Desktop 사용자 가이드</title>
+<meta name="description" content="설치부터 프로젝트 작업, 작업 마무리까지 — 순서대로 따라오면 됩니다.">
+<meta property="og:title" content="Saycode Desktop 사용자 가이드">
+<meta property="og:description" content="설치부터 프로젝트 작업, 작업 마무리까지 — 순서대로 따라오면 됩니다.">
+<link rel="icon" href="../../assets/icon.png">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('saycode-guidebook-theme');if(t==='light'||t==='dark')r.dataset.theme=t;}catch(e){}})();</script>
+<style>
+/* ---- Tokens ---------------------------------------------------------- */
+:root {
+  --accent: #5b5bf6;
+  --accent-strong: #4646dd;
+  --accent-soft: rgba(91, 91, 246, 0.1);
+  --bg: #f7f7fa;
+  --surface: #ffffff;
+  --surface-2: #f1f1f6;
+  --text: #1d1d2a;
+  --text-soft: #3b3b4d;
+  --muted: #6d6d80;
+  --border: #e5e5ee;
+  --code-bg: #f1f1f7;
+  --shadow: 0 1px 2px rgba(20, 20, 50, 0.05), 0 12px 28px -16px rgba(20, 20, 50, 0.22);
+  --c-note: #2f7de1;
+  --c-tip: #16a05a;
+  --c-important: #7c4dff;
+  --c-warning: #d98306;
+  --c-caution: #dc3a3a;
+  --font: Pretendard, "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "D2Coding", "Noto Sans Mono CJK KR", monospace;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --accent: #8d8dff;
+  --accent-strong: #a9a9ff;
+  --accent-soft: rgba(141, 141, 255, 0.14);
+  --bg: #0e0f14;
+  --surface: #16171e;
+  --surface-2: #1d1e27;
+  --text: #ececf4;
+  --text-soft: #cfcfdc;
+  --muted: #9494a8;
+  --border: #292a35;
+  --code-bg: #1d1e28;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 28px -16px rgba(0, 0, 0, 0.7);
+  --c-note: #5aa2ff;
+  --c-tip: #3ccf84;
+  --c-important: #a58bff;
+  --c-warning: #f0a636;
+  --c-caution: #ff6b6b;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --accent: #8d8dff;
+    --accent-strong: #a9a9ff;
+    --accent-soft: rgba(141, 141, 255, 0.14);
+    --bg: #0e0f14;
+    --surface: #16171e;
+    --surface-2: #1d1e27;
+    --text: #ececf4;
+    --text-soft: #cfcfdc;
+    --muted: #9494a8;
+    --border: #292a35;
+    --code-bg: #1d1e28;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 28px -16px rgba(0, 0, 0, 0.7);
+    --c-note: #5aa2ff;
+    --c-tip: #3ccf84;
+    --c-important: #a58bff;
+    --c-warning: #f0a636;
+    --c-caution: #ff6b6b;
+    color-scheme: dark;
+  }
+}
+
+/* ---- Base ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.8 var(--font); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent-strong); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+img { max-width: 100%; }
+hr { border: 0; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+/* ---- Prose ----------------------------------------------------------- */
+.content { overflow-wrap: break-word; }
+html[lang="ko"] .content { word-break: keep-all; }
+.content h2, .content h3, .content h4 { line-height: 1.35; letter-spacing: -0.01em; color: var(--text); position: relative; }
+.content h2 { font-size: 1.75rem; font-weight: 750; margin: 4.5rem 0 1.25rem; padding-top: 2.25rem; border-top: 1px solid var(--border); }
+.content h2:first-child, .content > hr + h2 { border-top: 0; }
+.content h3 { font-size: 1.28rem; font-weight: 700; margin: 2.6rem 0 0.8rem; }
+.content h4 { font-size: 1.05rem; font-weight: 700; margin: 2rem 0 0.5rem; }
+.content p, .content ul, .content ol { margin: 1em 0; color: var(--text-soft); }
+.content li { margin: 0.35em 0; }
+.content li > p { margin: 0.4em 0; }
+.content strong { color: var(--text); font-weight: 650; }
+.content ul, .content ol { padding-left: 1.4em; }
+.content li::marker { color: var(--muted); }
+.anchor { margin-left: 0.4em; font-weight: 400; text-decoration: none; color: var(--accent); opacity: 0; transition: opacity 0.15s; }
+h2:hover > .anchor, h3:hover > .anchor, h4:hover > .anchor, .anchor:focus { opacity: 0.8; }
+@media (hover: none) { .anchor { opacity: 0.35; } }
+
+.content .center { text-align: center; }
+
+code, kbd { font-family: var(--mono); font-size: 0.88em; }
+:not(pre) > code { background: var(--code-bg); border: 1px solid var(--border); padding: 0.1em 0.38em; border-radius: 6px; color: var(--text); word-break: normal; }
+kbd { background: var(--surface); border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 6px; padding: 0.05em 0.4em; }
+pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.15rem; overflow-x: auto; margin: 1.4em 0; line-height: 1.65; font-size: 0.875rem; }
+pre code { background: none; border: 0; padding: 0; font-size: inherit; color: var(--text); white-space: pre; word-break: normal; }
+
+/* Tables */
+.table-wrap { margin: 1.6em 0; overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; line-height: 1.6; }
+th, td { padding: 0.7em 1em; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+th { background: var(--surface-2); font-weight: 650; color: var(--text); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td { color: var(--text-soft); }
+td:first-child { color: var(--text); }
+
+/* Blockquote + callouts */
+blockquote { margin: 1.6em 0; padding: 0.2em 1.2em; border-left: 3px solid var(--border); color: var(--muted); }
+blockquote p { color: inherit; }
+.callout { margin: 1.6em 0; padding: 0.95rem 1.2rem 0.95rem 1.3rem; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--c) 28%, var(--border)); border-left: 4px solid var(--c); background: color-mix(in srgb, var(--c) 7%, var(--surface)); }
+.callout > :last-child { margin-bottom: 0; }
+.callout p { margin: 0.5em 0; }
+.callout .callout-title + p { margin-top: 0.15em; }
+.callout-title { display: flex; align-items: center; gap: 0.5em; font-weight: 700; font-size: 0.92rem; color: var(--c); margin: 0 0 0.3em; }
+.callout-title svg { width: 1.15em; height: 1.15em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.callout-note { --c: var(--c-note); } .callout-tip { --c: var(--c-tip); } .callout-important { --c: var(--c-important); }
+.callout-warning { --c: var(--c-warning); } .callout-caution { --c: var(--c-caution); }
+
+/* Figures */
+figure.fig { margin: 2.2rem auto; width: min(100%, var(--w, 100%)); background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 0.55rem; box-shadow: var(--shadow); }
+figure.fig .imgs { display: flex; gap: 0.55rem; flex-wrap: wrap; }
+figure.fig img { display: block; flex: 1 1 0; min-width: 0; width: 100%; height: auto; border-radius: 9px; background: var(--surface-2); }
+figure.fig figcaption { padding: 0.65rem 0.6rem 0.3rem; text-align: center; font-size: 0.85rem; line-height: 1.55; color: var(--muted); }
+figure.fig .anim-note { display: block; margin-top: 0.15rem; font-size: 0.78rem; opacity: 0.85; }
+p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: middle; border-radius: 6px; }
+
+/* Web guidebook layout */
+.layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 100vh; }
+.sidebar { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; background: var(--surface); border-right: 1px solid var(--border); }
+.brand { display: flex; align-items: center; gap: 0.7rem; padding: 1.3rem 1.3rem 1rem; text-decoration: none; color: var(--text); font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; flex: none; }
+.brand span { font-size: 0.95rem; }
+.toc { flex: 1; overflow-y: auto; padding: 0.3rem 0.8rem 1rem; overscroll-behavior: contain; }
+.toc ul { list-style: none; margin: 0; padding: 0; }
+.toc a { display: block; padding: 0.38rem 0.7rem; border-radius: 8px; font-size: 0.86rem; line-height: 1.45; color: var(--muted); text-decoration: none; word-break: keep-all; overflow-wrap: anywhere; }
+.toc a:hover { color: var(--text); background: var(--surface-2); }
+.js .toc li.sub { display: none; }
+.toc li.sub a { padding-left: 1.5rem; font-size: 0.82rem; }
+.js .toc li.sub.show { display: block; }
+.toc a.active { color: var(--accent-strong); background: var(--accent-soft); font-weight: 600; }
+.sidebar-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.9rem 1.1rem 1.1rem; border-top: 1px solid var(--border); }
+.sidebar-tools .btn { flex: 1 1 auto; justify-content: center; }
+.sidebar-tools .btn-primary { flex-basis: 100%; }
+.sidebar-tools .theme-toggle { flex: 0 0 auto; }
+.sidebar-tools .btn[hreflang] { flex: 1 1 0; }
+
+.btn { display: inline-flex; align-items: center; gap: 0.45em; padding: 0.5rem 0.95rem; font: 600 0.84rem/1.2 var(--font); border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); text-decoration: none; cursor: pointer; transition: background 0.15s, border-color 0.15s, transform 0.1s; }
+.btn:hover { background: var(--surface-2); text-decoration: none; }
+.btn:active { transform: translateY(1px); }
+.btn svg { width: 1.1em; height: 1.1em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }
+:root[data-theme="dark"] .btn-primary { color: #0e0f14; }
+:root[data-theme="dark"] .btn-primary:hover { color: #0e0f14; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn-primary, :root:not([data-theme="light"]) .btn-primary:hover { color: #0e0f14; } }
+.btn:focus-visible, .toc a:focus-visible, .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.theme-toggle .i-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .i-sun { display: inline; }
+:root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .i-sun { display: inline; }
+  :root:not([data-theme="light"]) .theme-toggle .i-moon { display: none; }
+}
+
+.topbar { display: none; }
+.main { min-width: 0; padding: 3.5rem clamp(1.5rem, 5vw, 4.5rem) 3rem; }
+.content, .hero, .footer { max-width: 820px; margin-inline: auto; }
+.hero { padding-bottom: 2.2rem; }
+.hero-icon { width: 76px; height: 76px; border-radius: 19px; box-shadow: var(--shadow); }
+.hero h1 { font-size: clamp(2rem, 4.2vw, 2.7rem); line-height: 1.2; letter-spacing: -0.025em; margin: 1.3rem 0 0.8rem; font-weight: 800; }
+.hero .subtitle { font-size: 1.15rem; line-height: 1.65; color: var(--text-soft); margin: 0 0 0.6rem; }
+.hero .note { color: var(--muted); font-size: 0.92rem; margin: 0.2rem 0; }
+.hero .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.3rem 0 1.4rem; }
+.chip { font-size: 0.78rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent-strong); }
+.hero .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.hero .actions .btn { padding: 0.62rem 1.15rem; font-size: 0.9rem; }
+
+.content figure.fig img { cursor: zoom-in; }
+.footer { margin-top: 5rem; padding-top: 1.6rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; justify-content: space-between; }
+.footer a { color: var(--muted); }
+.footer a:hover { color: var(--accent-strong); }
+.content > h2:first-child { padding-top: 0; }
+.content h2, .content h3 { scroll-margin-top: 1.2rem; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; padding: 2.5rem 1rem 1.2rem; background: rgba(8, 8, 14, 0.88); backdrop-filter: blur(6px); cursor: zoom-out; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: min(96vw, 1800px); max-height: calc(100vh - 6.5rem); object-fit: contain; border-radius: 10px; background: #fff; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+.lightbox p { margin: 0; color: #d6d6e2; font-size: 0.9rem; text-align: center; max-width: 80ch; }
+.lightbox button { position: absolute; top: 0.8rem; right: 1rem; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, 0.14); color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer; }
+.lightbox button:hover { background: rgba(255, 255, 255, 0.26); }
+
+@media (max-width: 860px) {
+  .layout { display: block; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; position: sticky; top: 0; z-index: 50; height: 54px; padding: 0 0.9rem; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .topbar .brand { padding: 0; min-width: 0; }
+  .topbar .brand img { width: 28px; height: 28px; border-radius: 8px; }
+  .topbar .brand span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.9rem; }
+  .topbar .btn { padding: 0.45rem 0.8rem; flex: none; }
+  .sidebar .brand { display: none; }
+  .sidebar { position: fixed; z-index: 40; top: 54px; left: 0; right: 0; height: auto; max-height: calc(100vh - 54px); max-height: calc(100dvh - 54px); transform: translateY(-110%); visibility: hidden; transition: transform 0.22s ease, visibility 0.22s; border-right: 0; border-bottom: 1px solid var(--border); box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.35); }
+  .sidebar { padding-top: 0.5rem; }
+  body.menu-open .sidebar { transform: none; visibility: visible; }
+  .toc a { padding: 0.55rem 0.7rem; font-size: 0.92rem; }
+  .main { padding: 2rem 1.1rem 2rem; }
+  .hero { padding-bottom: 1rem; }
+  .content h2 { font-size: 1.45rem; margin-top: 3.2rem; padding-top: 1.7rem; }
+  .content h2, .content h3 { scroll-margin-top: 70px; }
+  .footer { margin-top: 3rem; }
+  figure.fig { margin: 1.6rem 0; padding: 0.4rem; border-radius: 12px; }
+}
+
+</style>
+</head>
+<body id="top">
+<header class="topbar">
+  <a class="brand" href="#top"><img src="../../assets/icon.png" alt=""><span>Saycode Desktop 사용자 가이드</span></a>
+  <button type="button" class="btn menu-toggle" aria-expanded="false" aria-controls="sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>목차</button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#top"><img src="../../assets/icon.png" alt=""><span>Saycode Desktop 사용자 가이드</span></a>
+    <nav class="toc" aria-label="목차">
+      <ul>
+<li class="h2"><a href="#이-가이드-읽는-법">이 가이드 읽는 법</a></li>
+<li class="sub"><a href="#이-가이드가-기준으로-삼는-것">이 가이드가 기준으로 삼는 것</a></li>
+<li class="sub"><a href="#표기-규칙">표기 규칙</a></li>
+<li class="h2"><a href="#0-saycode-한눈에-보기">0. Saycode 한눈에 보기</a></li>
+<li class="sub"><a href="#핵심-용어">핵심 용어</a></li>
+<li class="sub"><a href="#chat과-project-무엇이-다른가요">Chat과 Project, 무엇이 다른가요?</a></li>
+<li class="sub"><a href="#작업의-한-바퀴">작업의 한 바퀴</a></li>
+<li class="h2"><a href="#1-설치와-첫-실행">1. 설치와 첫 실행</a></li>
+<li class="sub"><a href="#11-설치">1.1 설치</a></li>
+<li class="sub"><a href="#12-시작-화면-살펴보기">1.2 시작 화면 살펴보기</a></li>
+<li class="sub"><a href="#13-방법-①-개인-사용--계정-없이-시작">1.3 방법 ① 개인 사용 — 계정 없이 시작</a></li>
+<li class="sub"><a href="#14-방법-②-로그인--계정으로-시작">1.4 방법 ② 로그인 — 계정으로 시작</a></li>
+<li class="sub"><a href="#15-방법-③-셀프호스트-서버에-연결">1.5 방법 ③ 셀프호스트 서버에 연결</a></li>
+<li class="h2"><a href="#2-시작준비">2. 시작준비</a></li>
+<li class="sub"><a href="#21-단계-구성">2.1 단계 구성</a></li>
+<li class="sub"><a href="#22-ai-연결하기">2.2 AI 연결하기</a></li>
+<li class="sub"><a href="#23-나중에-다시-열기">2.3 나중에 다시 열기</a></li>
+<li class="h2"><a href="#3-화면-둘러보기">3. 화면 둘러보기</a></li>
+<li class="sub"><a href="#31-사이드바">3.1 사이드바</a></li>
+<li class="sub"><a href="#32-프로필-메뉴">3.2 프로필 메뉴</a></li>
+<li class="sub"><a href="#33-내-설정의-일반과-개발">3.3 내 설정의 일반과 개발</a></li>
+<li class="sub"><a href="#34-개발자-기능-설정">3.4 개발자 기능 설정</a></li>
+<li class="h2"><a href="#4-chat으로-프로젝트-없이-일하기">4. Chat으로 프로젝트 없이 일하기</a></li>
+<li class="sub"><a href="#41-첫-질문-보내기">4.1 첫 질문 보내기</a></li>
+<li class="sub"><a href="#42-문서-형식과-템플릿">4.2 문서 형식과 템플릿</a></li>
+<li class="sub"><a href="#43-결과-파일-보기저장공유">4.3 결과 파일 보기·저장·공유</a></li>
+<li class="sub"><a href="#44-chat에서-쓸-수-있는-입력-기능">4.4 Chat에서 쓸 수 있는 입력 기능</a></li>
+<li class="h2"><a href="#5-프로젝트-만들기">5. 프로젝트 만들기</a></li>
+<li class="sub"><a href="#51-project-메뉴-build와-develop">5.1 Project 메뉴: Build와 Develop</a></li>
+<li class="sub"><a href="#52-프로젝트-만들기-창">5.2 프로젝트 만들기 창</a></li>
+<li class="sub"><a href="#53-프로젝트-설정">5.3 프로젝트 설정</a></li>
+<li class="h2"><a href="#6-프로젝트-대화와-입력창">6. 프로젝트 대화와 입력창</a></li>
+<li class="sub"><a href="#61-첫-대화--한-문장으로-앱-만들기">6.1 첫 대화 — 한 문장으로 앱 만들기</a></li>
+<li class="sub"><a href="#62-화면-구성">6.2 화면 구성</a></li>
+<li class="sub"><a href="#63-입력창에서-먼저-알아-둘-것">6.3 입력창에서 먼저 알아 둘 것</a></li>
+<li class="sub"><a href="#64-입력창-메뉴와-특수-입력">6.4 입력창 메뉴와 특수 입력</a></li>
+<li class="sub"><a href="#65-내-프롬프트--자주-쓰는-요청-저장">6.5 내 프롬프트 — 자주 쓰는 요청 저장</a></li>
+<li class="sub"><a href="#66-대기열--답하는-동안-다음-요청-쌓기">6.6 대기열 — 답하는 동안 다음 요청 쌓기</a></li>
+<li class="sub"><a href="#67-ai의-질문에-답하기">6.7 AI의 질문에 답하기</a></li>
+<li class="sub"><a href="#68-답변이-끝난-뒤">6.8 답변이 끝난 뒤</a></li>
+<li class="h2"><a href="#7-ai모델작업-강도와-사용량">7. AI·모델·작업 강도와 사용량</a></li>
+<li class="sub"><a href="#71-ai모델작업-강도-고르기">7.1 AI·모델·작업 강도 고르기</a></li>
+<li class="sub"><a href="#72-ai-프로필--자주-쓰는-조합-저장">7.2 AI 프로필 — 자주 쓰는 조합 저장</a></li>
+<li class="sub"><a href="#73-ai-목록과-기본값-정하기">7.3 AI 목록과 기본값 정하기</a></li>
+<li class="sub"><a href="#74-ai-사용량-창">7.4 AI 사용량 창</a></li>
+<li class="h2"><a href="#8-작업-영역">8. 작업 영역</a></li>
+<li class="sub"><a href="#81-열기와-패널-추가">8.1 열기와 패널 추가</a></li>
+<li class="sub"><a href="#82-파일-탭">8.2 파일 탭</a></li>
+<li class="sub"><a href="#83-변경-탭">8.3 변경 탭</a></li>
+<li class="sub"><a href="#84-터미널-탭">8.4 터미널 탭</a></li>
+<li class="sub"><a href="#85-브라우저와-미리보기">8.5 브라우저와 미리보기</a></li>
+<li class="sub"><a href="#86-pr-보기">8.6 PR 보기</a></li>
+<li class="h2"><a href="#9-보면서-고치기">9. 보면서 고치기</a></li>
+<li class="sub"><a href="#91-요소를-집어-주석-트레이에-담기">9.1 요소를 집어 주석 트레이에 담기</a></li>
+<li class="sub"><a href="#92-디자인-조정--직접-값을-바꿔-보기">9.2 디자인 조정 — 직접 값을 바꿔 보기</a></li>
+<li class="sub"><a href="#93-브라우저-도구-막대">9.3 브라우저 도구 막대</a></li>
+<li class="h2"><a href="#10-대화-관리">10. 대화 관리</a></li>
+<li class="sub"><a href="#101-대화-요약과-메시지-이동-레일">10.1 대화 요약과 메시지 이동 레일</a></li>
+<li class="sub"><a href="#102-열린-대화-탭">10.2 열린 대화 탭</a></li>
+<li class="sub"><a href="#103-고정">10.3 고정</a></li>
+<li class="sub"><a href="#104-보관하기--지금-안-보이게-정리">10.4 보관하기 — 지금 안 보이게 정리</a></li>
+<li class="sub"><a href="#105-잠시-숨기기">10.5 잠시 숨기기</a></li>
+<li class="sub"><a href="#106-대화-보관함과-자동-보관">10.6 대화 보관함과 자동 보관</a></li>
+<li class="sub"><a href="#107-대화-이어가기와-갈래">10.7 대화 이어가기와 갈래</a></li>
+<li class="sub"><a href="#108-찾기--대화-검색과-빠른-열기">10.8 찾기 — 대화 검색과 빠른 열기</a></li>
+<li class="h2"><a href="#11-작업-마무리">11. 작업 마무리</a></li>
+<li class="sub"><a href="#111-작업-마무리-메뉴">11.1 작업 마무리 메뉴</a></li>
+<li class="sub"><a href="#112-작업-리뷰하기">11.2 작업 리뷰하기</a></li>
+<li class="sub"><a href="#113-독립-리뷰-요청">11.3 독립 리뷰 요청</a></li>
+<li class="sub"><a href="#114-pr-올리기">11.4 PR 올리기</a></li>
+<li class="sub"><a href="#115-보관완료">11.5 보관&amp;완료</a></li>
+<li class="sub"><a href="#116-작업트리-안전망">11.6 작업트리 안전망</a></li>
+<li class="sub"><a href="#117-파일-복원지점과-변경기록">11.7 파일 복원지점과 변경기록</a></li>
+<li class="h2"><a href="#12-작업보드">12. 작업보드</a></li>
+<li class="sub"><a href="#121-칸의-의미">12.1 칸의 의미</a></li>
+<li class="sub"><a href="#122-필터와-선행-작업">12.2 필터와 선행 작업</a></li>
+<li class="sub"><a href="#123-카드의-도구">12.3 카드의 도구</a></li>
+<li class="h2"><a href="#13-예약">13. 예약</a></li>
+<li class="sub"><a href="#131-새-예약-만들기">13.1 새 예약 만들기</a></li>
+<li class="sub"><a href="#132-고급-설정">13.2 고급 설정</a></li>
+<li class="sub"><a href="#133-예약-확인과-관리">13.3 예약 확인과 관리</a></li>
+<li class="h2"><a href="#14-권한승인보안">14. 권한·승인·보안</a></li>
+<li class="sub"><a href="#141-데이터는-어디에-저장되나요">14.1 데이터는 어디에 저장되나요?</a></li>
+<li class="sub"><a href="#142-승인-카드-다루기">14.2 승인 카드 다루기</a></li>
+<li class="sub"><a href="#143-알림과-플로팅-승인-패널">14.3 알림과 플로팅 승인 패널</a></li>
+<li class="sub"><a href="#144-ai-도구-사용-규칙">14.4 AI 도구 사용 규칙</a></li>
+<li class="sub"><a href="#145-ai-심사로-권한-요청-처리">14.5 AI 심사로 권한 요청 처리</a></li>
+<li class="sub"><a href="#146-자동-작업-일시정지와-조직-정책">14.6 자동 작업 일시정지와 조직 정책</a></li>
+<li class="h2"><a href="#15-메모리교훈시스템-프롬프트">15. 메모리·교훈·시스템 프롬프트</a></li>
+<li class="sub"><a href="#151-시스템-프롬프트--항상-따를-기본-지시">15.1 시스템 프롬프트 — 항상 따를 기본 지시</a></li>
+<li class="sub"><a href="#152-내-채팅-개인화">15.2 내 채팅 개인화</a></li>
+<li class="sub"><a href="#153-교훈--프로젝트에서-얻은-방법-쌓기">15.3 교훈 — 프로젝트에서 얻은 방법 쌓기</a></li>
+<li class="sub"><a href="#154-메모리-설정">15.4 메모리 설정</a></li>
+<li class="h2"><a href="#16-외부-연동확장메신저-채널">16. 외부 연동·확장·메신저 채널</a></li>
+<li class="sub"><a href="#161-외부-연동-화면">16.1 외부 연동 화면</a></li>
+<li class="sub"><a href="#162-확장-설치하기">16.2 확장 설치하기</a></li>
+<li class="sub"><a href="#163-메신저-채널">16.3 메신저 채널</a></li>
+<li class="h2"><a href="#17-작업pc와-모바일">17. 작업PC와 모바일</a></li>
+<li class="sub"><a href="#171-작업pc">17.1 작업PC</a></li>
+<li class="sub"><a href="#172-모바일-연결">17.2 모바일 연결</a></li>
+<li class="h2"><a href="#18-팀과-조직">18. 팀과 조직</a></li>
+<li class="sub"><a href="#181-로그인이-필요한-기능">18.1 로그인이 필요한 기능</a></li>
+<li class="h2"><a href="#19-단축키-모음">19. 단축키 모음</a></li>
+<li class="h2"><a href="#20-문제-해결과-faq">20. 문제 해결과 FAQ</a></li>
+<li class="sub"><a href="#201-대화-상태-읽는-법">20.1 대화 상태 읽는 법</a></li>
+<li class="sub"><a href="#202-업데이트하기">20.2 업데이트하기</a></li>
+<li class="sub"><a href="#203-도움-요청하기">20.3 도움 요청하기</a></li>
+<li class="sub"><a href="#204-자주-묻는-질문">20.4 자주 묻는 질문</a></li>
+<li class="h2"><a href="#부록-a-바뀐-용어표">부록 A. 바뀐 용어표</a></li>
+<li class="h2"><a href="#부록-b-메뉴설정-지도">부록 B. 메뉴·설정 지도</a></li>
+<li class="sub"><a href="#b1b2-내-설정의-메뉴">B.1~B.2 내 설정의 메뉴</a></li>
+<li class="sub"><a href="#b3-입력창-아래-줄과-위-줄">B.3 입력창 아래 줄과 위 줄</a></li>
+<li class="sub"><a href="#b4-입력창의--메뉴와--메뉴">B.4 입력창의 + 메뉴와 ⋯ 메뉴</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-tools">
+      <a class="btn btn-primary" href="../saycode-guidebook-ko.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>PDF 다운로드</a>
+      <a class="btn" href="../en/index.html" hreflang="en">English</a>
+      <button type="button" class="btn theme-toggle" aria-label="테마 전환" title="테마 전환"><span class="i-moon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg></span><span class="i-sun"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span></button>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="hero">
+      <img class="hero-icon" src="../../assets/icon.png" alt="">
+      <h1>Saycode Desktop 사용자 가이드</h1>
+      <p class="subtitle">설치부터 프로젝트 작업, 작업 마무리까지 — 순서대로 따라오면 됩니다.</p>
+      <p class="note"><em>v0.1.81 화면 기준 · 2026년 11월</em></p>
+      <div class="chips"><span class="chip">v0.1.81</span><span class="chip">2026-11-01</span></div>
+      <div class="actions">
+        <a class="btn btn-primary" href="../saycode-guidebook-ko.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>PDF 다운로드</a>
+        <a class="btn" href="../index.html">가이드 홈</a>
+      </div>
+    </header>
+    <main class="content">
+<!-- guidebook: version=v0.1.81 date=2026-11-01 --><h2 id="이-가이드-읽는-법">이 가이드 읽는 법<a class="anchor" href="#이-가이드-읽는-법" aria-label="Link">#</a></h2>
+<p>Saycode Desktop은 내 컴퓨터(또는 연결한 다른 컴퓨터)에서 AI가 실제로 파일을 만들고 코드를 고치고 명령을 실행하도록 맡기는 데스크톱 앱입니다. 이 가이드는 <strong>처음 쓰는 분이 위에서 아래로 읽으며 따라 할 수 있게</strong> 순서를 잡았습니다. 이미 앱을 쓰고 있다면 필요한 장만 골라 읽어도 됩니다. 예전 버전(v0.1.50 전후) 화면에 익숙하다면 맨 끝의 <a href="#%EB%B6%80%EB%A1%9D-a-%EB%B0%94%EB%80%90-%EC%9A%A9%EC%96%B4%ED%91%9C">바뀐 용어표</a>부터 보세요.</p>
+<h3 id="이-가이드가-기준으로-삼는-것">이 가이드가 기준으로 삼는 것<a class="anchor" href="#이-가이드가-기준으로-삼는-것" aria-label="Link">#</a></h3>
+<ul>
+<li><strong>버전</strong>: Saycode Desktop <strong>v0.1.81</strong> (2026년 11월). 이후 업데이트에서 화면 이름이나 위치가 조금 달라질 수 있습니다.</li>
+<li><strong>운영체제</strong>: macOS 화면을 기준으로 설명합니다. 단축키는 <strong>⌘</strong> 대신 Windows에서는 <strong>Ctrl</strong>을 쓰며, Windows에서 제한되는 기능은 해당 위치에 따로 적었습니다.</li>
+<li><strong>UI 언어</strong>: 한국어 화면의 이름을 그대로 적었습니다. 영어 화면에서는 이름이 다를 수 있습니다.</li>
+</ul>
+<h3 id="표기-규칙">표기 규칙<a class="anchor" href="#표기-규칙" aria-label="Link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>표기</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>굵은 글씨</strong></td>
+<td>화면에 보이는 버튼·메뉴·탭 이름 그대로입니다.</td>
+</tr>
+<tr>
+<td>프로필 메뉴 → <strong>내 설정</strong> → <strong>일반</strong></td>
+<td>차례대로 누르는 경로입니다.</td>
+</tr>
+<tr>
+<td><code>코드 모양 글씨</code></td>
+<td>직접 입력하거나 키보드로 누르는 값입니다.</td>
+</tr>
+<tr>
+<td><strong>[로그인]</strong></td>
+<td>Saycode 계정으로 로그인했을 때만 보이는 기능입니다. 로그인 없이 쓰는 <strong>개인 사용</strong>에서는 보이지 않습니다.</td>
+</tr>
+<tr>
+<td><strong>[조직]</strong></td>
+<td>조직(팀)에 속해 있어야 쓰는 기능입니다.</td>
+</tr>
+<tr>
+<td><strong>[개발자]</strong></td>
+<td>프로필 메뉴의 <strong>개발자 기능 설정</strong>에서 먼저 켜야 보이는 기능입니다.</td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>각 장은 &quot;무엇을 할 수 있나 → 조건 → 따라 하기 → 팁&quot; 순서입니다. <strong>조건</strong>(로그인, 조직, 개발자 기능 설정, 서버 지원, macOS/Windows)은 따라 하기 앞에 적었으니 메뉴가 안 보이면 조건부터 확인하세요. 화면 예시는 로그인 없이 쓰는 <strong>개인 사용</strong> 기준이며, 로그인 계정에서만 달라지는 부분은 따로 표시했습니다. 화면 예시는 [개발자] <strong>작업보드 메뉴 보이기</strong>와 <strong>CPU·메모리 보이기</strong>를 켠 상태로 찍었습니다. 처음 설치한 앱에는 사이드바에 <strong>작업보드</strong>가 없고 입력창 아래에 CPU·메모리도 보이지 않습니다(<a href="#34-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EA%B8%B0%EB%8A%A5-%EC%84%A4%EC%A0%95">3.4</a>).</p>
+</div>
+<h2 id="0-saycode-한눈에-보기">0. Saycode 한눈에 보기<a class="anchor" href="#0-saycode-한눈에-보기" aria-label="Link">#</a></h2>
+<p><strong>Saycode는 &quot;내 작업PC에서 AI도구가 일하고, 나는 화면에서 지켜보며 이끄는&quot; 앱입니다.</strong> 먼저 앞으로 계속 나올 말 몇 가지만 익히면 이후 장이 훨씬 쉬워집니다.</p>
+<h3 id="핵심-용어">핵심 용어<a class="anchor" href="#핵심-용어" aria-label="Link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>용어</th>
+<th>쉬운 설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>작업PC</strong></td>
+<td>AI가 실제로 파일을 만들고 명령을 실행하는 컴퓨터입니다. 처음에는 지금 쓰는 이 컴퓨터가 자동으로 작업PC가 되고, 서버나 다른 PC를 더 등록할 수도 있습니다. 예전 이름은 &quot;머신&quot;입니다.</td>
+</tr>
+<tr>
+<td><strong>AI도구</strong></td>
+<td>실제로 일하는 AI 프로그램입니다. <strong>Claude Code</strong>, <strong>Codex</strong>, <strong>Opencode</strong>, <strong>Grok</strong> 등이 있고, 무엇을 쓸지 <strong>AI 자동</strong>에 맡기거나 직접 고릅니다. Chat 화면에서는 Claude·ChatGPT로 표시되기도 하고, 시작준비의 단계 이름은 &quot;AI 도구&quot;로 띄어 씁니다(같은 뜻입니다).</td>
+</tr>
+<tr>
+<td><strong>실행기(런타임)</strong></td>
+<td>작업PC에서 AI를 실제로 돌리는 Saycode 프로그램입니다. 오래되면 일부 기능이 회색으로 비활성이 되며, 사유가 함께 표시됩니다.</td>
+</tr>
+<tr>
+<td><strong>조직 정책</strong></td>
+<td>조직 관리자가 정한 사용 제한(허용 모델, 도구 규칙 등)입니다. 개인 사용에는 없습니다.</td>
+</tr>
+<tr>
+<td><strong>모델</strong></td>
+<td>AI도구 안에서 고르는 두뇌의 종류입니다. 가볍고 빠른 모델부터 어려운 문제용 상위 모델까지 있습니다.</td>
+</tr>
+<tr>
+<td><strong>작업 강도</strong></td>
+<td>AI가 얼마나 깊이 생각하고 답할지 정하는 단계입니다(예: Low ~ Max). 높을수록 오래 생각합니다.</td>
+</tr>
+<tr>
+<td><strong>Chat</strong></td>
+<td>프로젝트 없이 바로 질문하고 문서·표·발표자료를 만드는 곳입니다.</td>
+</tr>
+<tr>
+<td><strong>Project(프로젝트)</strong></td>
+<td>폴더 하나(대개 Git 저장소)를 연결해 두고 그 안에서 여러 대화로 코드를 만들고 고치는 단위입니다.</td>
+</tr>
+<tr>
+<td><strong>대화</strong></td>
+<td>AI와 주고받는 한 번의 작업 흐름입니다. 프로젝트 안에서는 대화마다 따로 진행·보관됩니다.</td>
+</tr>
+<tr>
+<td><strong>작업트리</strong></td>
+<td>한 대화만을 위한 <strong>복사본 작업 폴더</strong>(브랜치)입니다. 여러 대화를 동시에 돌려도 서로 파일이 섞이지 않습니다. 새 대화의 체크박스에는 <strong>워크트리</strong>라고 표시됩니다.</td>
+</tr>
+<tr>
+<td><strong>변경기록</strong></td>
+<td>Git 커밋입니다. <strong>변경기록 남기기</strong>로 지금까지의 수정을 저장합니다.</td>
+</tr>
+<tr>
+<td><strong>작업물</strong></td>
+<td>AI가 대화 중에 만든 문서·이미지·HTML 같은 결과 파일입니다. 예전 이름은 &quot;산출물&quot;입니다.</td>
+</tr>
+<tr>
+<td><strong>내 설정</strong></td>
+<td>앱의 모든 설정 화면입니다. 예전 이름은 &quot;환경설정&quot;이며 단축키는 그대로 <strong>⌘,</strong> 입니다.</td>
+</tr>
+</tbody></table></div>
+<h3 id="chat과-project-무엇이-다른가요">Chat과 Project, 무엇이 다른가요?<a class="anchor" href="#chat과-project-무엇이-다른가요" aria-label="Link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Chat</strong></th>
+<th><strong>Project</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>용도</td>
+<td>질문, 글쓰기, 문서·표·발표자료 만들기</td>
+<td>앱·코드를 만들고 고치기</td>
+</tr>
+<tr>
+<td>작업 위치</td>
+<td>대화마다 자동으로 만들어지는 작업 폴더</td>
+<td>내가 연결한 프로젝트 폴더</td>
+</tr>
+<tr>
+<td>파일·변경·터미널·브라우저 패널</td>
+<td>결과 파일 열람 중심</td>
+<td>모두 사용</td>
+</tr>
+<tr>
+<td>작업트리·PR·작업 마무리</td>
+<td>없음</td>
+<td>사용(Git 프로젝트일 때)</td>
+</tr>
+<tr>
+<td>대화 요약 레일·자동 보관</td>
+<td>없음</td>
+<td>사용</td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>처음이라면 <strong>Chat에서 가볍게 질문</strong>해 보고 익숙해지면 <strong>Project</strong>로 넘어가는 순서를 권합니다.</p>
+</div>
+<h3 id="작업의-한-바퀴">작업의 한 바퀴<a class="anchor" href="#작업의-한-바퀴" aria-label="Link">#</a></h3>
+<ol>
+<li><strong>준비</strong> — 앱 설치, 시작 화면에서 <strong>개인 사용</strong>, <a href="#2-%EC%8B%9C%EC%9E%91%EC%A4%80%EB%B9%84">시작준비</a>에서 AI 연결</li>
+<li><strong>시작</strong> — <a href="#4-chat%EC%9C%BC%EB%A1%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%97%86%EC%9D%B4-%EC%9D%BC%ED%95%98%EA%B8%B0">Chat</a>에서 질문하거나 <a href="#5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">프로젝트를 만들고</a> 대화 열기</li>
+<li><strong>지시</strong> — <a href="#6-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%8C%80%ED%99%94%EC%99%80-%EC%9E%85%EB%A0%A5%EC%B0%BD">입력창</a>에 한 문장으로 요청, AI·모델은 <strong>AI 자동</strong>에 맡겨도 됩니다</li>
+<li><strong>확인</strong> — <a href="#8-%EC%9E%91%EC%97%85-%EC%98%81%EC%97%AD">작업 영역</a>에서 파일·변경·미리보기를 보고, <a href="#9-%EB%B3%B4%EB%A9%B4%EC%84%9C-%EA%B3%A0%EC%B9%98%EA%B8%B0">보면서 고치기</a>로 수정 요청</li>
+<li><strong>마무리</strong> — <a href="#11-%EC%9E%91%EC%97%85-%EB%A7%88%EB%AC%B4%EB%A6%AC">작업 마무리</a> 메뉴에서 리뷰 → PR 올리기 → 보관&amp;완료</li>
+</ol>
+<h2 id="1-설치와-첫-실행">1. 설치와 첫 실행<a class="anchor" href="#1-설치와-첫-실행" aria-label="Link">#</a></h2>
+<p><strong>앱을 설치하고, 첫 화면에서 &quot;어떻게 시작할지&quot;를 고릅니다.</strong> 계정 없이 바로 쓰는 <strong>개인 사용</strong>, 계정으로 <strong>로그인</strong>, 직접 운영하는 서버에 붙는 <strong>셀프호스트 서버에 연결</strong> 세 가지가 있습니다.</p>
+<h3 id="11-설치">1.1 설치<a class="anchor" href="#11-설치" aria-label="Link">#</a></h3>
+<ol>
+<li><strong><a href="https://github.com/buzzni/saycode-desktop-releases/releases/latest" target="_blank" rel="noopener">최신 설치 파일을 내려받으세요.</a></strong> macOS는 Apple Silicon용과 Intel Mac용(x64) DMG가 따로 있습니다. Windows는 설치 프로그램을 받습니다.</li>
+<li>macOS는 DMG를 열어 <strong>Saycode</strong>를 Applications 폴더로 끌어다 놓습니다. Windows는 설치 마법사를 따라 진행하고, 마지막 화면에서 <strong>완료</strong>를 누르면 앱이 열립니다(바로 열고 싶지 않다면 실행 항목의 체크를 해제하세요).</li>
+<li>앱은 서명·공증되어 있고 새 버전이 나오면 업데이트를 안내합니다(<a href="#20-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0%EA%B3%BC-faq">업데이트하기</a> 참고).</li>
+</ol>
+<h3 id="12-시작-화면-살펴보기">1.2 시작 화면 살펴보기<a class="anchor" href="#12-시작-화면-살펴보기" aria-label="Link">#</a></h3>
+<p>로그인하지 않은 상태로 앱을 열면 아래 화면이 나옵니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/start-screen.png" alt="시작 화면 — 이메일·비밀번호 로그인, 개인 사용, 셀프호스트 서버에 연결, 하단 언어 선택" loading="lazy" decoding="async"></div><figcaption>시작 화면 — 이메일·비밀번호 로그인, 개인 사용, 셀프호스트 서버에 연결, 하단 언어 선택</figcaption></figure>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>위치</th>
+<th>이름</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>위쪽</td>
+<td><strong>이메일</strong> · <strong>비밀번호</strong> · <strong>로그인</strong></td>
+<td>Saycode 계정으로 로그인합니다. 조직(팀)을 쓴다면 이 방법입니다.</td>
+</tr>
+<tr>
+<td>로그인 아래</td>
+<td><strong>비밀번호 찾기</strong> · <strong>계정 만들기</strong></td>
+<td>앱 안에서 가입하거나 비밀번호를 다시 정합니다.</td>
+</tr>
+<tr>
+<td>가운데</td>
+<td><strong>개인 사용</strong></td>
+<td>계정 없이 내 PC에서 바로 시작합니다.</td>
+</tr>
+<tr>
+<td>맨 아래</td>
+<td><strong>셀프호스트 서버에 연결</strong></td>
+<td>직접 운영하는 Saycode 서버에 연결 코드로 접속합니다.</td>
+</tr>
+<tr>
+<td>화면 하단</td>
+<td><strong>한국어 / English / 中文 / 日本語</strong></td>
+<td>앱 언어. 누르면 바로 바뀌고, 나중에 <strong>내 설정 → 일반 → 언어</strong>에서도 바꿉니다.</td>
+</tr>
+</tbody></table></div>
+<h3 id="13-방법-①-개인-사용--계정-없이-시작">1.3 방법 ① 개인 사용 — 계정 없이 시작<a class="anchor" href="#13-방법-①-개인-사용--계정-없이-시작" aria-label="Link">#</a></h3>
+<p><strong>조건</strong>: 없음. 로그인하지 않은 첫 화면에서만 보입니다. 이 방식에서는 대화와 프로젝트가 <strong>이 PC에만</strong> 저장됩니다.</p>
+<ol>
+<li>시작 화면에서 <strong>개인 사용</strong>을 누릅니다.</li>
+<li>&quot;개인 사용 (내 PC 연결)&quot; 창이 나오면 안내를 읽고 <strong>확인</strong>을 누릅니다. 취소하려면 <strong>취소</strong>를 누르세요.</li>
+<li>Saycode가 이 PC에서 작업공간을 준비합니다. 처음에는 10~30초쯤 걸릴 수 있습니다.</li>
+<li>준비가 끝나면 <strong>&quot;첫 작업까지 함께 준비해요&quot;</strong> 창이 자동으로 열립니다 → <a href="#2-%EC%8B%9C%EC%9E%91%EC%A4%80%EB%B9%84">2장 시작준비</a>로 이어집니다.</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/first-run.gif" alt="첫 실행 흐름 — 로그인 화면에서 개인 사용 확인, 작업공간 준비, 시작준비 단계, 완료 후 Chat 시작 화면" loading="lazy" decoding="async"></div><figcaption>첫 실행 흐름 — 로그인 화면에서 개인 사용 확인, 작업공간 준비, 시작준비 단계, 완료 후 Chat 시작 화면</figcaption></figure>
+<figure class="fig"><div class="imgs"><img src="../../assets/personal-use-confirm.png" alt="개인 사용 확인 창 — 계정 없이 내 PC에서 바로 시작" loading="lazy" decoding="async"></div><figcaption>개인 사용 확인 창 — 계정 없이 내 PC에서 바로 시작</figcaption></figure>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>창에 보이는 &quot;조직 유저는 로그인을 사용해주세요&quot;는 <strong>조직에 속한 분은 개인 사용이 아니라 로그인으로 들어와야 한다</strong>는 뜻입니다.</p>
+</div>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>나중에 계정이 생기면 사이드바 맨 아래 프로필 버튼 → <strong>로그인</strong>으로 바꿔 팀 기능을 쓸 수 있습니다. 개인 사용에서 만든 로컬 프로젝트는 로그인 후에도 그대로 남습니다.</p>
+</div>
+<h3 id="14-방법-②-로그인--계정으로-시작">1.4 방법 ② 로그인 — 계정으로 시작<a class="anchor" href="#14-방법-②-로그인--계정으로-시작" aria-label="Link">#</a></h3>
+<p><strong>조건</strong>: Saycode 계정이 필요합니다. 계정이 없다면 아래 순서로 앱 안에서 만듭니다.</p>
+<ol>
+<li><p><strong>계정 만들기</strong>를 누릅니다.</p>
+</li>
+<li><p><strong>이메일</strong>을 입력해 인증 코드를 받습니다. 받은 편지함(스팸함 포함)에 <strong>6자리 인증코드</strong>가 오며, 이를 입력합니다(화면에 따라 &quot;인증 코드&quot;로 띄어 쓰기도 합니다).</p>
+</li>
+<li><p><strong>비밀번호</strong>와 <strong>비밀번호 확인</strong>을 입력해 가입을 마칩니다.</p>
+</li>
+<li><p>가입한 계정으로 <strong>이메일</strong>·<strong>비밀번호</strong>를 입력하고 <strong>로그인</strong>을 누릅니다.</p>
+</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/login-signup.png" alt="계정 만들기 화면 — 이메일 입력과 인증 코드 받기" loading="lazy" decoding="async"></div><figcaption>계정 만들기 화면 — 이메일 입력과 인증 코드 받기</figcaption></figure>
+<p>비밀번호를 잊었다면 <strong>비밀번호 찾기</strong> → <strong>이메일</strong> 입력 → <strong>인증코드 보내기</strong> → 6자리 코드 입력 → <strong>새 비밀번호</strong>·<strong>비밀번호 확인</strong> → <strong>비밀번호 변경</strong> → <strong>로그인으로 돌아가기</strong> 순서입니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>비밀번호 재설정 코드는 <strong>10분 동안</strong> 유효하고 최대 5번까지 확인할 수 있습니다. <strong>다시 보내기</strong>는 60초 뒤에 누를 수 있으며, 새 코드를 받으면 이전 코드는 쓸 수 없습니다. 변경 뒤에는 자동으로 로그인되지 않으니 다시 로그인하세요.</p>
+</div>
+<h4 id="조직에서-시작하기-조직">조직에서 시작하기 [조직]<a class="anchor" href="#조직에서-시작하기-조직" aria-label="Link">#</a></h4>
+<p>로그인 후 조직 계정이라면 <strong>&quot;어느 조직에서 작업할까요?&quot;</strong> 화면이 나옵니다.</p>
+<ol>
+<li>목록에서 작업할 조직을 고릅니다. 소속된 조직이 없으면 <strong>작업공간 만들기</strong>로 직접 만들거나, 받은 초대를 수락하거나, <strong>초대 코드로 참여</strong>에 코드를 넣고 <strong>조직에 참여</strong>를 누릅니다.</li>
+<li><strong>다음</strong>을 누르면 필요한 도구를 준비하고 이 컴퓨터를 조직의 작업PC로 등록한 뒤 AI 연결을 확인합니다.</li>
+<li>준비가 끝나면 <strong>완료</strong>를 누릅니다.</li>
+</ol>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>컴퓨터 준비가 막혔거나 지금 등록하고 싶지 않다면 <strong>이 PC 나중에 등록</strong>을 누르세요. 앱에는 바로 들어갈 수 있고, 등록은 나중에 <strong>내 설정 → 개발 → 작업PC → 내 컴퓨터 등록</strong>에서 할 수 있습니다. 조직에 다른 온라인 작업PC가 있다면 그 PC에서 대화할 수 있습니다.</p>
+</div>
+<h3 id="15-방법-③-셀프호스트-서버에-연결">1.5 방법 ③ 셀프호스트 서버에 연결<a class="anchor" href="#15-방법-③-셀프호스트-서버에-연결" aria-label="Link">#</a></h3>
+<p><strong>조건</strong>: 직접 운영하는 Saycode 서버(<code>saycode server</code>로 띄운 서버)와 서버에서 만든 <strong>소유자 연결 코드</strong>가 필요합니다. 일반 사용자는 건너뛰어도 됩니다.</p>
+<ol>
+<li>시작 화면에서 <strong>셀프호스트 서버에 연결</strong>을 누릅니다.</li>
+<li>서버에서 <code>saycode server connect</code>로 발급한 연결 코드를 <strong>연결 코드</strong> 칸에 붙여넣습니다.</li>
+<li><strong>연결</strong>을 누릅니다.</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/login-selfhost.png" alt="셀프호스트 서버에 연결 창 — 연결 코드 입력과 연결 버튼" loading="lazy" decoding="async"></div><figcaption>셀프호스트 서버에 연결 창 — 연결 코드 입력과 연결 버튼</figcaption></figure>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>회사가 따로 운영하는 서버에 연결하면 <strong>시작준비</strong>, <strong>모바일 연결</strong> 같은 일부 설정 메뉴가 보이지 않고, 작업PC 등록은 &quot;새 작업PC에서 로그인 명령을 실행해 나온 연결 코드를 서버에서 승인&quot;하는 방식이 됩니다.</p>
+</div>
+<h2 id="2-시작준비">2. 시작준비<a class="anchor" href="#2-시작준비" aria-label="Link">#</a></h2>
+<p><strong>AI가 일할 수 있도록 이 컴퓨터를 준비하고 AI 계정을 연결하는 첫 설정입니다.</strong> 개인 사용으로 처음 들어오면 <strong>&quot;첫 작업까지 함께 준비해요&quot;</strong> 창이 자동으로 열립니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 로그인한 계정은 처음에 이 창 대신 조직 시작 화면이 나옵니다. 회사가 따로 운영하는 서버에 연결했다면 <strong>시작준비</strong> 메뉴가 보이지 않습니다. 시작준비는 닫아도 언제든 다시 열 수 있습니다.</p>
+</div>
+<figure class="fig"><div class="imgs"><img src="../../assets/onboarding-checklist.png" alt="첫 작업까지 함께 준비해요 — 필수 설정(Saycode CLI)과 추가 설정 목록, AI 연결 확인 단계에서 연결됨으로 표시된 AI와 채팅에 표시할 AI" loading="lazy" decoding="async"></div><figcaption>첫 작업까지 함께 준비해요 — 필수 설정(Saycode CLI)과 추가 설정 목록, AI 연결 확인 단계에서 연결됨으로 표시된 AI와 채팅에 표시할 AI</figcaption></figure>
+<h3 id="21-단계-구성">2.1 단계 구성<a class="anchor" href="#21-단계-구성" aria-label="Link">#</a></h3>
+<p>왼쪽 목록은 <strong>필수 설정</strong>과 <strong>추가 설정 — 선택</strong>으로 나뉩니다. 필수 설정이 끝나면 &quot;필수 설정 완료&quot;가 표시되고, 나머지는 나중에 해도 됩니다. 다만 <strong>대화를 시작하려면 사용 가능한 AI 연결이 하나는 있어야</strong> 합니다. 단계 순서는 <strong>Saycode CLI → Saycode 지시 사용 → AI 도구 → 알림</strong>입니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>단계</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>필수</td>
+<td><strong>Saycode CLI</strong></td>
+<td>AI가 실제로 일하는 런타임을 준비합니다. 앱에 포함돼 있어 보통 곧바로 <strong>설치됨</strong>으로 표시되고, <strong>터미널에서도 Saycode CLI 사용하기</strong>(업데이트 실행)와 <strong>추가 도구</strong> 설치 상태(<strong>다시 확인</strong>)가 함께 보입니다. 이 컴퓨터를 작업PC로 등록하는 과정도 여기에 포함됩니다.</td>
+</tr>
+<tr>
+<td>추가</td>
+<td><strong>Saycode 지시 사용</strong></td>
+<td>Saycode 기본 지시를 쓸지 정합니다. 나중에 <strong>내 설정 → 일반 → 시스템 프롬프트</strong>에서도 바꿀 수 있습니다(<a href="#15-%EB%A9%94%EB%AA%A8%EB%A6%AC%EA%B5%90%ED%9B%88%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8">15장</a>).</td>
+</tr>
+<tr>
+<td>추가</td>
+<td><strong>AI 도구</strong></td>
+<td>이 컴퓨터에 연결된 AI(Claude Code, Codex, Opencode 등)를 확인합니다.</td>
+</tr>
+<tr>
+<td>추가</td>
+<td><strong>알림</strong></td>
+<td>AI가 <strong>입력을 요청할 때</strong>와 <strong>작업을 마쳤을 때</strong> 소리로 알릴지 정하고 <strong>테스트 알림 보내기</strong>로 확인합니다.</td>
+</tr>
+</tbody></table></div>
+<p>아래쪽 버튼은 <strong>이전</strong> / <strong>계속</strong> / <strong>완료</strong>, 그리고 왼쪽의 <strong>나중에 하기</strong>입니다. 마지막 알림 단계에는 <strong>첫 프로젝트 추가</strong>와 <strong>완료</strong>가 나란히 있으며, <strong>완료</strong>를 누르면 닫힙니다. <strong>이 단계부터 자동 진행</strong> 버튼은 설치할 도구가 남아 있을 때 나타나며, 필요한 도구를 내려받아 설치합니다.</p>
+<h3 id="22-ai-연결하기">2.2 AI 연결하기<a class="anchor" href="#22-ai-연결하기" aria-label="Link">#</a></h3>
+<p><strong>AI 도구</strong> 단계는 열 때 연결 정보를 한 번 확인하고(<strong>연결 정보를 확인 중입니다.</strong>) <strong>연결된 AI만</strong> 보여 줍니다. 이 컴퓨터에 이미 로그인된 Claude·ChatGPT는 따로 등록하지 않아도 <strong>연결됨</strong>으로 표시되고 그대로 사용됩니다.</p>
+<p>연결된 AI가 없으면 <strong>내 AI 계정을 연결해 주세요.</strong> 안내와 함께 아래 버튼이 나옵니다. (이미 연결돼 있다면 이 안내 대신 연결된 AI 목록이 보입니다.)</p>
+<ol>
+<li><strong>내 AI 계정 연결하기</strong>를 누르고 <strong>ChatGPT</strong> 또는 <strong>Claude</strong>를 고릅니다(같은 창의 <strong>무료 모델 (opencode)</strong>은 아래 무료 모델 절차와 같습니다).</li>
+<li>브라우저가 열리면 로그인합니다. 안내에 따라 링크 버튼을 누르고 <strong>인증 코드</strong>를 입력합니다.</li>
+<li>돌아오면 연결 상태가 한 번 더 확인되어 <strong>연결됨</strong>으로 바뀝니다.</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/ai-connect-picker.png" alt="연결할 AI를 선택해 주세요 — ChatGPT, Claude, 무료 모델(opencode) 선택 창" loading="lazy" decoding="async"></div><figcaption>연결할 AI를 선택해 주세요 — ChatGPT, Claude, 무료 모델(opencode) 선택 창</figcaption></figure>
+<p>이 선택 창은 <strong>내 설정 → 일반 → AI Models → 연결하기</strong>에서도 같은 모양으로 열립니다.</p>
+<p>유료 AI 계정이 없다면 <strong>무료 모델로 시작하기</strong>를 쓰세요.</p>
+<ol>
+<li><strong>무료 모델로 시작하기</strong>를 누릅니다.</li>
+<li>확인 화면에서 설치 위치와 조건(기간 한정 제공, 모델마다 다른 보관·학습 정책, 유료 모델보다 낮을 수 있는 성능)을 읽습니다.</li>
+<li><strong>설치하고 시작하기</strong>를 누릅니다. 이미 opencode가 설치되어 있으면 &quot;이미 설치된 opencode를 사용해요&quot;가 나오고 버튼은 <strong>확인하고 시작하기</strong>입니다.</li>
+<li>&quot;무료 모델로 시작할 준비가 됐어요&quot;가 나오면 새 대화의 AI도구에서 <strong>Opencode</strong>를 고르면 됩니다. 모델을 따로 고르지 않으면 메시지마다 추천 무료 모델이 자동으로 선택됩니다.</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/onboarding-free-model.png" alt="무료 모델로 시작하기 안내 — 알아 두세요 4항목과 뒤로·확인하고 시작하기 버튼(opencode가 이미 설치된 경우)" loading="lazy" decoding="async"></div><figcaption>무료 모델로 시작하기 안내 — 알아 두세요 4항목과 뒤로·확인하고 시작하기 버튼(opencode가 이미 설치된 경우)</figcaption></figure>
+<div class="callout callout-important"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M12 8v3M12 13.5h.01"/></svg><span>중요</span></p>
+<p><strong>무료 모델의 조건</strong>: 이 컴퓨터가 내 작업PC이고 온라인일 때만 설치할 수 있습니다. 조직이 쓸 AI를 제한했다면 설치가 막히고, Windows 시험판에서는 보이지 않습니다. 무료 모델 한도에 걸리면 다른 무료 모델로 최대 3번까지 자동 전환되며 유료 모델로는 절대 넘어가지 않습니다.</p>
+</div>
+<p>같은 단계의 <strong>채팅에 표시할 AI</strong> 스위치로는 쓰지 않는 AI를 선택 목록에서 숨깁니다(최소 하나는 남습니다). 조직 계정이라면 AI 단계에 <strong>조직 계정 연결하기</strong>, <strong>암호화키 확인</strong>, <strong>메시지 테스트</strong> 버튼이 보이며 관리자와 함께 확인하세요.</p>
+<h3 id="23-나중에-다시-열기">2.3 나중에 다시 열기<a class="anchor" href="#23-나중에-다시-열기" aria-label="Link">#</a></h3>
+<ol>
+<li>사이드바 맨 아래 <strong>프로필 버튼</strong>을 누릅니다.</li>
+<li><strong>내 설정</strong> → <strong>일반</strong> → <strong>시작준비</strong>를 엽니다.</li>
+<li>설치할 도구가 남아 있으면 <strong>이 단계부터 자동 진행</strong>을 누릅니다. 모두 설치됐다면(<strong>추가 도구 7/7 설치됨</strong>) 상태만 확인하고 <strong>완료</strong>로 닫습니다.</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/settings-onboarding.png" alt="내 설정 → 일반 → 시작준비 — 필수 설정 완료, Saycode CLI 설치됨, 추가 설정 단계와 추가 도구 7/7 설치됨" loading="lazy" decoding="async"></div><figcaption>내 설정 → 일반 → 시작준비 — 필수 설정 완료, Saycode CLI 설치됨, 추가 설정 단계와 추가 도구 7/7 설치됨</figcaption></figure>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>Windows에서는 Node.js·uv·Git을 자동으로 설치해 줍니다. 자동 설치가 어렵다면 <strong>직접 설치할게요</strong>를 고르세요. 오류가 나면 <strong>오류 상세 → 다음 조치 → 설치 안내</strong>를 누르고, 진단 로그가 필요하면 <strong>로그 복사</strong>로 복사해 관리자나 지원 담당자에게 전달하세요.</p>
+</div>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>AI 계정은 나중에 <strong>내 설정 → 일반 → AI Models</strong>에서 <strong>연결하기</strong>, 행의 <strong>…</strong> 메뉴 → <strong>연결 해제</strong> / <strong>Saycode에 다시 연결</strong> / <strong>계정 추가</strong>로 관리합니다. 무료 모델은 Opencode 행 <strong>…</strong> → <strong>설치하기</strong>입니다(<a href="#7-ai%EB%AA%A8%EB%8D%B8%EC%9E%91%EC%97%85-%EA%B0%95%EB%8F%84%EC%99%80-%EC%82%AC%EC%9A%A9%EB%9F%89">7장</a>).</p>
+</div>
+<h2 id="3-화면-둘러보기">3. 화면 둘러보기<a class="anchor" href="#3-화면-둘러보기" aria-label="Link">#</a></h2>
+<p><strong>Saycode는 왼쪽 사이드바에서 시작하고, 설정은 왼쪽 아래 프로필 버튼에서 엽니다.</strong> 이 장에서는 화면의 큰 길잡이 세 가지를 익힙니다.</p>
+<h3 id="31-사이드바">3.1 사이드바<a class="anchor" href="#31-사이드바" aria-label="Link">#</a></h3>
+<figure class="fig" style="--w:280px"><div class="imgs"><img src="../../assets/sidebar-crop.png" alt="사이드바 — Chat·Project·작업보드·예약·외부 연동 메뉴, Chat/Project 탭과 새 프로젝트 버튼, 프로젝트와 대화 목록, 하단 프로필과 종 아이콘" data-w="280" loading="lazy" decoding="async"></div><figcaption>사이드바 — Chat·Project·작업보드·예약·외부 연동 메뉴, Chat/Project 탭과 새 프로젝트 버튼, 프로젝트와 대화 목록, 하단 프로필과 종 아이콘</figcaption></figure>
+<p>위에서 아래로 다음과 같이 구성됩니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Chat</strong></td>
+<td>프로젝트 없이 대화하는 시작 화면(<code>어떤 작업을 도와드릴까요?</code>) → <a href="#4-chat%EC%9C%BC%EB%A1%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%97%86%EC%9D%B4-%EC%9D%BC%ED%95%98%EA%B8%B0">4장</a></td>
+</tr>
+<tr>
+<td><strong>Project</strong></td>
+<td>프로젝트 홈. 안에 <strong>Build</strong>(말로 기획 시작)와 <strong>Develop</strong>(저장소·폴더로 시작) 모드가 있습니다 → <a href="#5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">5장</a></td>
+</tr>
+<tr>
+<td><strong>작업보드</strong></td>
+<td>모든 대화를 칸반으로 보는 화면. [개발자] 기본은 숨김 → <a href="#12-%EC%9E%91%EC%97%85%EB%B3%B4%EB%93%9C">12장</a></td>
+</tr>
+<tr>
+<td><strong>예약</strong></td>
+<td>정해진 시간마다 AI에게 일을 맡기는 화면 → <a href="#13-%EC%98%88%EC%95%BD">13장</a></td>
+</tr>
+<tr>
+<td><strong>외부 연동</strong></td>
+<td>서비스 연결, 확장 설치 → <a href="#16-%EC%99%B8%EB%B6%80-%EC%97%B0%EB%8F%99%ED%99%95%EC%9E%A5%EB%A9%94%EC%8B%A0%EC%A0%80-%EC%B1%84%EB%84%90">16장</a></td>
+</tr>
+<tr>
+<td><strong>Chat / Project 탭</strong></td>
+<td>아래 목록을 내 채팅 목록과 프로젝트 목록 사이에서 전환합니다. 탭을 바꿔도 가운데 화면은 그대로입니다. 탭 오른쪽 버튼은 Project에서는 새 프로젝트(큐브+), Chat에서는 새 대화(연필)입니다.</td>
+</tr>
+<tr>
+<td>프로젝트·대화 목록</td>
+<td>프로젝트를 누르면 대화 목록이 펼쳐집니다. 프로젝트 목록은 30개씩, 프로젝트당 대화는 10개씩 보이고 <strong>더보기</strong>로 더 불러옵니다. 대화 줄에는 작업트리 아이콘, PR 번호, 주황색 질문 아이콘(답을 기다리는 중), 응답 중 아이콘이 표시됩니다.</td>
+</tr>
+<tr>
+<td>맨 아래 <strong>프로필 버튼</strong></td>
+<td>이름을 누르면 <a href="#32-%ED%94%84%EB%A1%9C%ED%95%84-%EB%A9%94%EB%89%B4">프로필 메뉴</a>가 열립니다. 개인 사용에서는 &quot;개인 작업공간 · 게스트&quot;로 표시됩니다.</td>
+</tr>
+<tr>
+<td><strong>종 아이콘</strong></td>
+<td><strong>최근 알림</strong>. 누르면 알림 영역이 켜지고, 알림을 누르면 해당 대화로 이동하며 <strong>전체보기</strong>로 알림 센터(<strong>미확인 / 확인함</strong> 탭)를 엽니다.</td>
+</tr>
+</tbody></table></div>
+<p><strong>목록 검색</strong>: 목록 맨 위에서 <strong>위로 스크롤</strong>하면 검색창이 나타납니다(⌘K). Project 목록에서는 검색창 오른쪽 점 세 개 버튼으로 <strong>전체 / 내 프로젝트 / 함께 작업 / 공유받은 프로젝트</strong> 보기 범위를 고를 수 있습니다.</p>
+<p><strong>사이드바 접기·너비</strong>: <strong>⌘B</strong>로 접고 펼칩니다. 접으면 왼쪽에 펼치기 / Chat / Project / 예약 / 톱니바퀴(내 설정) 아이콘만 남습니다. 펼친 상태에서는 오른쪽 경계를 끌어 너비를 바꿉니다.</p>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>프로젝트 줄에 마우스를 올리면 점 세 개(⋮) 메뉴에서 <strong>고정</strong>, <strong>프로젝트 설정</strong>, <strong>모든 대화</strong>를 고릅니다. 대화 줄의 메뉴는 <a href="#10-%EB%8C%80%ED%99%94-%EA%B4%80%EB%A6%AC">10장</a>에서 설명합니다.</p>
+</div>
+<h3 id="32-프로필-메뉴">3.2 프로필 메뉴<a class="anchor" href="#32-프로필-메뉴" aria-label="Link">#</a></h3>
+<p>사이드바 맨 아래 <strong>프로필 버튼</strong>을 누르면 열립니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/profile-menu-crop.png" alt="프로필 메뉴(개인 사용) — 조직, 작업PC, 로그인, 새 창 열기, 내 설정, 개발자 기능 설정, 다크 모드, 카카오톡 문의, 로그아웃" loading="lazy" decoding="async"></div><figcaption>프로필 메뉴(개인 사용) — 조직, 작업PC, 로그인, 새 창 열기, 내 설정, 개발자 기능 설정, 다크 모드, 카카오톡 문의, 로그아웃</figcaption></figure>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>조직</strong></td>
+<td>작업할 조직을 바꿉니다. 개인 사용에서는 &quot;개인 작업공간&quot;으로 표시되고, 여러 조직에 속한 계정이라면 목록에서 고릅니다.</td>
+</tr>
+<tr>
+<td><strong>작업PC</strong></td>
+<td>새 작업을 실행할 기본 작업PC를 고릅니다. 내가 등록한 작업PC와 <strong>공용 PC</strong>로 나뉘며, 켜져 있는 PC만 보입니다.</td>
+</tr>
+<tr>
+<td><strong>로그인</strong> / <strong>로그아웃</strong></td>
+<td>개인 사용 중에는 <strong>로그인</strong>으로 계정에 로그인하고, 로그인 중에는 <strong>로그아웃</strong>(확인 창에서 한 번 더 누름)을 씁니다.</td>
+</tr>
+<tr>
+<td><strong>새 창 열기</strong></td>
+<td>앱 창을 하나 더 엽니다(⌘N).</td>
+</tr>
+<tr>
+<td><strong>내 설정</strong></td>
+<td>모든 설정(⌘,). <a href="#33-%EB%82%B4-%EC%84%A4%EC%A0%95%EC%9D%98-%EC%9D%BC%EB%B0%98%EA%B3%BC-%EA%B0%9C%EB%B0%9C">3.3</a>에서 설명합니다.</td>
+</tr>
+<tr>
+<td><strong>개발자 기능 설정</strong></td>
+<td>숨겨진 기능을 켜는 스위치 모음 → <a href="#34-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EA%B8%B0%EB%8A%A5-%EC%84%A4%EC%A0%95">3.4</a></td>
+</tr>
+<tr>
+<td><strong>다크 모드</strong></td>
+<td>어두운 테마를 켜고 끄는 스위치입니다. 메뉴가 열린 채로 남아 바로 바꿔 볼 수 있습니다.</td>
+</tr>
+<tr>
+<td><strong>카카오톡 문의</strong> (로그인하면 <strong>사용 문의</strong>)</td>
+<td>로그인하면 <strong>사용 문의</strong>(화면 이미지 3장까지 첨부 가능), 개인 사용 중에는 <strong>카카오톡 문의</strong>로 오픈채팅방이 열립니다.</td>
+</tr>
+<tr>
+<td><strong>조직 관리</strong> [조직]</td>
+<td>조직 소유자·관리자에게만 보입니다(보이는 경우 메뉴 맨 위). 비밀번호로 한 번 더 인증한 뒤 관리 창을 엽니다 → <a href="#18-%ED%8C%80%EA%B3%BC-%EC%A1%B0%EC%A7%81">18장</a></td>
+</tr>
+<tr>
+<td><strong>업데이트 확인</strong></td>
+<td>정식 설치본에서 보입니다. <strong>업데이트 내려받기</strong> → <strong>재시작해서 업데이트</strong> 순서로 새 버전을 설치합니다.</td>
+</tr>
+</tbody></table></div>
+<h3 id="33-내-설정의-일반과-개발">3.3 내 설정의 일반과 개발<a class="anchor" href="#33-내-설정의-일반과-개발" aria-label="Link">#</a></h3>
+<p>프로필 메뉴 → <strong>내 설정</strong>(⌘,)을 열면 왼쪽 위에서 <strong>일반</strong>과 <strong>개발</strong> 두 영역을 오갑니다. 일반의 왼쪽 메뉴는 <strong>계정 / 환경설정 / AI / 데스크톱 앱</strong> 묶음으로 나뉩니다. 왼쪽 위 <strong>설정 검색</strong>에 <code>다크</code>, <code>알림음</code>, <code>예약</code>, <code>자동 작업</code>처럼 찾는 기능을 입력하면 해당 메뉴만 추려 줍니다(옛 이름으로도 검색됩니다. 예: <code>머신</code> → 작업PC). 검색 결과 메뉴를 눌러야 오른쪽 본문이 바뀝니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/settings-search-alias.png" alt="내 설정 — 설정 검색에 옛 이름 머신을 입력하면 작업PC 메뉴가 검색됩니다(일반·개발 탭과 왼쪽 메뉴 묶음)" loading="lazy" decoding="async"></div><figcaption>내 설정 — 설정 검색에 옛 이름 머신을 입력하면 작업PC 메뉴가 검색됩니다(일반·개발 탭과 왼쪽 메뉴 묶음)</figcaption></figure>
+<p>메뉴 전체 지도는 <a href="#%EB%B6%80%EB%A1%9D-b-%EB%A9%94%EB%89%B4%EC%84%A4%EC%A0%95-%EC%A7%80%EB%8F%84">부록 B.1·B.2</a>에 있습니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>[로그인] 표시가 있는 메뉴는 개인 사용에서는 보이지 않습니다. 또한 조직 관리자가 끈 설정은 잠기고 &quot;조직 정책으로 정해진 설정&quot;이라는 안내가 붙습니다.</p>
+</div>
+<h3 id="34-개발자-기능-설정">3.4 개발자 기능 설정<a class="anchor" href="#34-개발자-기능-설정" aria-label="Link">#</a></h3>
+<p>프로필 메뉴 → <strong>개발자 기능 설정</strong>을 누르면 내 설정의 <strong>개발</strong> 탭에서 아래 스위치가 열립니다. 기본은 모두 꺼져 있습니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/dev-features-toggle-on.png" alt="개발자 기능 설정 — 스위치 5개 중 CPU·메모리 보이기와 작업보드 메뉴 보이기를 켠 상태(기본은 모두 꺼짐)" loading="lazy" decoding="async"></div><figcaption>개발자 기능 설정 — 스위치 5개 중 CPU·메모리 보이기와 작업보드 메뉴 보이기를 켠 상태(기본은 모두 꺼짐)</figcaption></figure>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>스위치</th>
+<th>켜면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CPU·메모리 보이기</strong></td>
+<td>입력창 아래에 작업PC의 CPU·메모리 표시. 누르면 디스크·부하 등 상세</td>
+</tr>
+<tr>
+<td><strong>작업PC 상세 정보 보이기</strong></td>
+<td>작업PC 화면에 상세 정보</td>
+</tr>
+<tr>
+<td><strong>작업보드 메뉴 보이기</strong></td>
+<td>사이드바에 <strong>작업보드</strong> 메뉴 (<a href="#12-%EC%9E%91%EC%97%85%EB%B3%B4%EB%93%9C">12장</a>)</td>
+</tr>
+<tr>
+<td><strong>AI 브라우저 메뉴 보이기</strong></td>
+<td>AI가 쓰는 브라우저 관련 메뉴(입력창 <strong>+</strong> → <strong>이번 요청에 브라우저 사용</strong>)</td>
+</tr>
+<tr>
+<td><strong>standalone 모드 같이 사용하기</strong></td>
+<td>로그인 계정을 쓰면서 이 컴퓨터의 <strong>개인 사용</strong>도 병행. 켠 뒤 프로필 메뉴에 <strong>이 컴퓨터에서 개인 사용</strong>, 돌아올 때 <strong>계정으로 돌아가기</strong>가 생깁니다.</td>
+</tr>
+<tr>
+<td><strong>조직 검색 설정</strong> [조직]</td>
+<td>조직 소유자·관리자가 조직 전체 대화 검색 서버를 연결</td>
+</tr>
+</tbody></table></div>
+<h2 id="4-chat으로-프로젝트-없이-일하기">4. Chat으로 프로젝트 없이 일하기<a class="anchor" href="#4-chat으로-프로젝트-없이-일하기" aria-label="Link">#</a></h2>
+<p><strong>프로젝트를 만들지 않고 바로 질문하고, 문서·표·발표자료를 만드는 곳입니다.</strong> 개인 사용에서도 대화가 저장되고 이어집니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 대화를 시작하려면 <strong>온라인 작업PC</strong>와 <strong>연결된 AI</strong>가 하나씩 필요합니다. 없으면 입력창 아래에 &quot;작업PC 설정 열기&quot; 또는 파란 <strong>내 AI 연결</strong> 안내가 나옵니다(<a href="#2-%EC%8B%9C%EC%9E%91%EC%A4%80%EB%B9%84">2장</a>). 준비되기 전에는 입력창이 비활성으로 보이지만 쓰던 글은 보존됩니다.</p>
+</div>
+<h3 id="41-첫-질문-보내기">4.1 첫 질문 보내기<a class="anchor" href="#41-첫-질문-보내기" aria-label="Link">#</a></h3>
+<figure class="fig"><div class="imgs"><img src="../../assets/home-chat.png" alt="Chat 시작 화면 — 어떤 작업을 도와드릴까요? 입력창과 시작 예시 카드 5개" loading="lazy" decoding="async"></div><figcaption>Chat 시작 화면 — 어떤 작업을 도와드릴까요? 입력창과 시작 예시 카드 5개</figcaption></figure>
+<ol>
+<li>사이드바에서 <strong>Chat</strong>을 누릅니다.</li>
+<li>가운데 입력창(<code>어떤 작업을 도와드릴까요?</code>)에 요청을 적습니다.</li>
+<li>입력창 오른쪽의 <strong>전송 버튼</strong>(종이비행기)이나 Enter로 보냅니다.</li>
+<li>대화가 열리면 사이드바 <strong>Chat 탭</strong>의 목록에 쌓이고, 같은 화면에서 이어서 물어볼 수 있습니다.</li>
+</ol>
+<p>입력창 아래 오른쪽의 <strong>작업PC 이름</strong>을 누르면 이 Chat을 실행할 작업PC를 바꿀 수 있습니다(온라인인 PC만 보입니다). 새 대화 이후에는 바꿀 수 없습니다.</p>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>입력창 아래의 <strong>시작 예시 카드</strong>(<strong>PDF로 만들기 · 발표 자료 만들기 · 서류 작성/수정하기 · 문서 검토하기 · 리서치</strong>)를 누르면 예시 요청이 채워집니다. <strong>내 파일 올리기</strong>로 내 자료를 올려 시작할 수도 있습니다.</p>
+</div>
+<h3 id="42-문서-형식과-템플릿">4.2 문서 형식과 템플릿<a class="anchor" href="#42-문서-형식과-템플릿" aria-label="Link">#</a></h3>
+<p>DOCX·XLSX·PPTX·PDF 같은 Office 문서를 만들 때는 형식과 양식을 먼저 고르면 결과가 훨씬 안정적입니다.</p>
+<ol>
+<li>새 Chat 입력창 왼쪽 <strong>+</strong>(<strong>추가</strong>)를 누릅니다.</li>
+<li>메뉴에서 만들 문서 형식을 고릅니다 — <strong>문서(DOCX) / 스프레드시트(XLSX) / 프레젠테이션(PPTX) / PDF 문서(PDF)</strong>. 같은 메뉴에는 <strong>파일 또는 사진 추가</strong>(⌘U), <strong>폴더 추가</strong>, <strong>기존 경로에서 시작</strong>(이 컴퓨터의 기존 폴더를 작업 경로로 사용)도 있습니다.</li>
+<li>입력창 위에 <strong>템플릿 갤러리</strong>가 열립니다. 기본 양식(<strong>Design Report</strong>, <strong>Minimal Letterhead</strong>)이나 내가 저장한 개인 양식을 고릅니다. 고른 형식은 입력창 위의 칩에 표시되며 칩의 ✕로 해제합니다.</li>
+<li>양식을 따로 저장하고 싶다면 <strong>내 템플릿 만들기</strong>로 Office 파일과 작성 지침을 등록합니다.</li>
+<li>입력창에 만들 내용을 적고 보냅니다. 예: <em>&quot;3분기 장비 대여 현황 보고서를 만들어줘.&quot;</em></li>
+</ol>
+<figure class="fig" style="--w:280px"><div class="imgs"><img src="../../assets/chat-plus-menu-crop.png" alt="Chat 입력창 + 메뉴 — 파일 또는 사진 추가, 폴더 추가, 기존 경로에서 시작, 문서(DOCX)·스프레드시트(XLSX)·프레젠테이션(PPTX)·PDF 문서" data-w="280" loading="lazy" decoding="async"></div><figcaption>Chat 입력창 + 메뉴 — 파일 또는 사진 추가, 폴더 추가, 기존 경로에서 시작, 문서(DOCX)·스프레드시트(XLSX)·프레젠테이션(PPTX)·PDF 문서</figcaption></figure>
+<figure class="fig"><div class="imgs"><img src="../../assets/doc-templates.png" alt="문서 형식을 고르면 열리는 템플릿 갤러리 — Design Report, Minimal Letterhead, 내 템플릿 만들기" loading="lazy" decoding="async"></div><figcaption>문서 형식을 고르면 열리는 템플릿 갤러리 — Design Report, Minimal Letterhead, 내 템플릿 만들기</figcaption></figure>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>기본 양식은 확장 설치 없이 쓸 수 있습니다. 개인 템플릿 원본은 허용된 <strong>개인 작업PC</strong>에서만 사용할 수 있습니다.</p>
+</div>
+<h3 id="43-결과-파일-보기저장공유">4.3 결과 파일 보기·저장·공유<a class="anchor" href="#43-결과-파일-보기저장공유" aria-label="Link">#</a></h3>
+<p>AI가 만든 파일은 답변 안에 <strong>파일 카드</strong>로 나타납니다.</p>
+<figure class="fig" style="--w:620px"><div class="imgs"><img src="../../assets/result-file-card.png" alt="결과 파일 카드 — 미리보기, PC에 저장, 공개 링크 버튼" data-w="620" loading="lazy" decoding="async"></div><figcaption>결과 파일 카드 — 미리보기, PC에 저장, 공개 링크 버튼</figcaption></figure>
+<figure class="fig"><div class="imgs"><img src="../../assets/chat-result-html-panel.png" alt="HTML 보고서 결과 — 왼쪽 대화의 파일 카드와 오른쪽 패널에 열린 보고서" loading="lazy" decoding="async"></div><figcaption>HTML 보고서 결과 — 왼쪽 대화의 파일 카드와 오른쪽 패널에 열린 보고서</figcaption></figure>
+<ol>
+<li>답변 속 <strong>파일 이름</strong>을 누르면 오른쪽 작업 도구 패널에서 문서가 열립니다(DOCX·PDF·HTML·마크다운·이미지 지원). HTML 결과는 채팅 안에서 인라인 미리보기가 나오고, 완료 직후 오른쪽 패널에 자동으로 열리기도 합니다.</li>
+<li>파일 카드의 <strong>PC에 저장</strong>을 누르면 내 컴퓨터의 원하는 위치에 저장합니다.</li>
+<li><strong>공개 링크</strong> — 개인 사용에서도 HTML 결과 카드에 버튼이 보이지만, 링크를 만들어 공개하려면 [로그인] 계정이 필요합니다. <strong>PC에 저장</strong> 옆의 <strong>공개 링크</strong> 버튼을 누르면 공개 창이 열립니다.<ol>
+<li>처음 누르면 <strong>설치 진행</strong>이 나옵니다. 한 번 누르면 공개 링크 기능이 설치·활성화되고 링크 만들기까지 이어집니다.</li>
+<li><strong>공개 범위</strong>를 고릅니다. 기본은 링크가 있는 <strong>누구나</strong>, <strong>조직만</strong>을 고르면 조직 구성원이 로그인해야 열립니다.</li>
+<li><strong>만료</strong>를 1일·3일·7일·30일 중에서 고릅니다.</li>
+<li><strong>링크 복사</strong>로 주소를 복사합니다. 공개를 멈추려면 같은 창에서 공개를 중지합니다.</li>
+</ol>
+</li>
+</ol>
+<div class="callout callout-important"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M12 8v3M12 13.5h.01"/></svg><span>중요</span></p>
+<p><strong>공개 링크 만들기는 로그인한 계정에서 동작합니다.</strong> 개인 사용에서는 <strong>PC에 저장</strong>과 앱 안 열람을 쓰세요. AI가 답변 중일 때는 공개 링크를 누를 수 없습니다.</p>
+</div>
+<h3 id="44-chat에서-쓸-수-있는-입력-기능">4.4 Chat에서 쓸 수 있는 입력 기능<a class="anchor" href="#44-chat에서-쓸-수-있는-입력-기능" aria-label="Link">#</a></h3>
+<p>Chat 입력창에서도 프로젝트 대화와 같은 기능 대부분을 쓸 수 있습니다. 자세한 사용법은 <a href="#6-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%8C%80%ED%99%94%EC%99%80-%EC%9E%85%EB%A0%A5%EC%B0%BD">6장</a>을 참고하세요.</p>
+<ul>
+<li><strong>+</strong>: <strong>파일 또는 사진 추가</strong>(⌘U), <strong>폴더 추가</strong>, <strong>기존 경로에서 시작</strong>(이 컴퓨터의 기존 폴더를 작업 경로로 사용)</li>
+<li>AI가 답하는 동안 다음 요청을 <strong>대기열</strong>에 넣을 수 있고, AI의 질문은 <strong>질문 폼</strong>으로 답합니다.</li>
+<li><code>/btw</code>(곁질문), <code>/recap</code>(요약), <code>/usage</code>(AI 사용량), 코드 상자·표·<code>[!NOTE]</code> 강조 상자 렌더링, 긴 붙여넣기 카드</li>
+<li>[로그인] &quot;매일 오전 9시에 요약해줘&quot;처럼 말로 <strong>예약</strong>을 만들 수 있습니다(<a href="#13-%EC%98%88%EC%95%BD">13장</a>).</li>
+</ul>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>사용법이 궁금할 때는 Chat에서 *&quot;다크 모드는 어디서 켜?&quot;*처럼 물어보세요. Saycode AI가 앱 안내로 답하고 해당 설정 화면을 바로 열어 줍니다. 이 기능은 <strong>내 설정 → 일반 → 시스템 프롬프트</strong>의 <strong>Saycode 사용 안내</strong> 스위치로 끌 수 있습니다.</p>
+</div>
+<h2 id="5-프로젝트-만들기">5. 프로젝트 만들기<a class="anchor" href="#5-프로젝트-만들기" aria-label="Link">#</a></h2>
+<p><strong>내 폴더나 저장소를 프로젝트로 연결해 두면, 그 안에서 여러 대화로 코드를 만들고 고칠 수 있습니다.</strong> 한 창에서 네 가지 방법을 고릅니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 프로젝트를 만들 <strong>온라인 작업PC</strong>가 필요합니다. <strong>Git 저장소</strong> 탭은 [로그인] GitHub 또는 GitLab 연결이 필요하며(<strong>내 설정 → 개발 → 저장소</strong>), 나머지 방식은 계정 없이도 됩니다.</p>
+</div>
+<h3 id="51-project-메뉴-build와-develop">5.1 Project 메뉴: Build와 Develop<a class="anchor" href="#51-project-메뉴-build와-develop" aria-label="Link">#</a></h3>
+<p>사이드바 <strong>Project</strong>를 누르면 두 가지 시작 모드가 있습니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>모드</th>
+<th>이런 때</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Build</strong></td>
+<td>만들고 싶은 것을 <strong>말로 설명</strong>해 기획부터 시작합니다. 입력창(<code>만들고싶은 내용을 입력해주세요</code>)에 적어 보내면 됩니다. 아래에는 <strong>최근 프로젝트</strong> 카드가 나옵니다.</td>
+</tr>
+<tr>
+<td><strong>Develop</strong></td>
+<td>코드 저장소나 폴더로 개발을 시작하는 개발자용입니다. <strong>프로젝트 만들기</strong> · <strong>코드 저장소 가져오기</strong> · <strong>Zip/파일 가져오기</strong> · <strong>머신 폴더 사용하기</strong> 카드와 프로젝트 목록이 있습니다.</td>
+</tr>
+</tbody></table></div>
+<figure class="fig"><div class="imgs"><img src="../../assets/home-develop.png" alt="Project → Develop — 프로젝트 만들기, 코드 저장소 가져오기, Zip/파일 가져오기, 머신 폴더 사용하기 카드와 최근 프로젝트 목록" loading="lazy" decoding="async"></div><figcaption>Project → Develop — 프로젝트 만들기, 코드 저장소 가져오기, Zip/파일 가져오기, 머신 폴더 사용하기 카드와 최근 프로젝트 목록</figcaption></figure>
+<figure class="fig"><div class="imgs"><img src="../../assets/home-build.png" alt="Project → Build — 만들고 싶은 내용을 적는 입력창과 최근 프로젝트 카드" loading="lazy" decoding="async"></div><figcaption>Project → Build — 만들고 싶은 내용을 적는 입력창과 최근 프로젝트 카드</figcaption></figure>
+<p>두 모드 모두 입력창 아래 오른쪽의 <strong>작업PC 이름</strong>을 눌러 어느 PC에서 시작할지 고를 수 있습니다.</p>
+<h3 id="52-프로젝트-만들기-창">5.2 프로젝트 만들기 창<a class="anchor" href="#52-프로젝트-만들기-창" aria-label="Link">#</a></h3>
+<ol>
+<li><p>사이드바 <strong>Project</strong> → <strong>Develop</strong> → <strong>프로젝트 만들기</strong>를 누르면 제목이 <strong>새 프로젝트</strong>인 창이 열립니다(이 가이드에서는 &quot;프로젝트 만들기 창&quot;이라고 부릅니다). (사이드바 목록 탭 오른쪽의 큐브+ 버튼이나, Develop의 <strong>코드 저장소 가져오기 / Zip/파일 가져오기 / 머신 폴더 사용하기</strong> 카드로 해당 방식을 바로 열 수도 있습니다.)</p>
+</li>
+<li><p>창 위쪽의 탭에서 방식을 고릅니다. 탭을 바꿔도 입력한 내용은 유지됩니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>탭</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>새 프로젝트</strong></td>
+<td>이름만 정하면 빈 폴더에서 시작합니다.</td>
+</tr>
+<tr>
+<td><strong>Git 저장소</strong></td>
+<td>원격 저장소 주소로 작업PC에 복제합니다.</td>
+</tr>
+<tr>
+<td><strong>ZIP·파일</strong></td>
+<td>압축 파일이나 파일에서 프로젝트를 만듭니다.</td>
+</tr>
+<tr>
+<td><strong>기존 폴더</strong></td>
+<td>이미 있는 코드베이스를 그대로 연결합니다.</td>
+</tr>
+</tbody></table></div>
+</li>
+<li><p><strong>기존 폴더</strong>에서는 선택한 작업PC의 사용자 홈부터 폴더를 탐색합니다. 숨김 폴더(<code>.</code>으로 시작)가 먼저 나열되므로, 경로를 <strong>직접 입력하고 Enter</strong>로 확인하는 편이 빠릅니다. 내 컴퓨터라면 <strong>새로운 경로에서 시작</strong>으로 운영체제 폴더 선택 창을 열 수 있습니다.</p>
+</li>
+<li><p>창 맨 아래 왼쪽의 <strong>작업PC: 이름</strong>을 누르면 <strong>작업PC 선택 창</strong>이 열려 프로젝트가 만들어질 PC를 바꿀 수 있습니다(온라인 PC만 표시, Esc로 닫으면 선택은 그대로).</p>
+</li>
+<li><p>이름을 확인하고 <strong>프로젝트 만들기</strong>(가져오는 방식에서는 <strong>프로젝트 가져오기</strong>)를 누릅니다.</p>
+</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/create-project-modal-new.png" alt="프로젝트 만들기 창의 새 프로젝트 탭 — 프로젝트 이름과 작업PC 선택" loading="lazy" decoding="async"></div><figcaption>프로젝트 만들기 창의 새 프로젝트 탭 — 프로젝트 이름과 작업PC 선택</figcaption></figure>
+<figure class="fig"><div class="imgs"><img src="../../assets/create-project-modal.png" alt="프로젝트 만들기 창의 기존 폴더 탭 — 경로 입력, 폴더 목록, 새로운 경로에서 시작, 프로젝트 가져오기" loading="lazy" decoding="async"></div><figcaption>프로젝트 만들기 창의 기존 폴더 탭 — 경로 입력, 폴더 목록, 새로운 경로에서 시작, 프로젝트 가져오기</figcaption></figure>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p><strong>새 프로젝트</strong>는 만든 뒤 Develop 목록에서 폴더 위치를 확인할 수 있습니다. 처음이라면 <strong>기존 폴더</strong>로 내가 쓰던 코드 폴더를 열거나, <strong>새 프로젝트</strong>로 빈 폴더에서 시작해 보세요. <strong>Git 저장소 프로젝트</strong>여야 작업트리, 브랜치, PR 올리기가 모두 동작합니다.</p>
+</div>
+<h3 id="53-프로젝트-설정">5.3 프로젝트 설정<a class="anchor" href="#53-프로젝트-설정" aria-label="Link">#</a></h3>
+<p>프로젝트를 연 상태에서 대화 위 프로젝트 이름 옆 <strong>설정</strong> 버튼(또는 사이드바 프로젝트 ⋮ → <strong>프로젝트 설정</strong>)으로 엽니다. <strong>일반</strong>과 <strong>개발</strong> 두 묶음으로 나뉩니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>묶음</th>
+<th>항목</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>일반</strong></td>
+<td><strong>프로젝트 정보</strong>(이름·설명·썸네일·태그·시작 패널), <strong>데스크탑 설정</strong>, <strong>코드 저장소</strong>, <strong>작업PC</strong></td>
+</tr>
+<tr>
+<td><strong>개발</strong></td>
+<td><strong>실행</strong>(개발 서버 명령·포트 → <strong>실행 설정 저장</strong>), <strong>환경변수</strong>, <strong>개발 정보</strong>, <strong>프로젝트 삭제</strong></td>
+</tr>
+</tbody></table></div>
+<p>로그인한 조직 프로젝트에는 <strong>함께 작업</strong>, <strong>프로젝트 공유</strong>, <strong>MCP 서버</strong> 같은 항목이 더 있습니다(<a href="#18-%ED%8C%80%EA%B3%BC-%EC%A1%B0%EC%A7%81">18장</a>).</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>값을 바꾸려면 <strong>프로젝트 소유자</strong>여야 하는 항목이 많습니다. 프로젝트 이름 옆 <strong>태그</strong>로 분류하고 사이드바에서 태그로 걸러 볼 수도 있습니다.</p>
+</div>
+<h2 id="6-프로젝트-대화와-입력창">6. 프로젝트 대화와 입력창<a class="anchor" href="#6-프로젝트-대화와-입력창" aria-label="Link">#</a></h2>
+<p><strong>프로젝트를 열고 대화를 시작하면, 가운데는 대화, 오른쪽은 작업 영역으로 나뉩니다.</strong> 이 장은 대화를 시작하고 입력창을 다루는 법을 설명합니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 온라인 작업PC와 연결된 AI(또는 <a href="#22-ai-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0">무료 모델</a>)가 있어야 합니다.</p>
+</div>
+<h3 id="61-첫-대화--한-문장으로-앱-만들기">6.1 첫 대화 — 한 문장으로 앱 만들기<a class="anchor" href="#61-첫-대화--한-문장으로-앱-만들기" aria-label="Link">#</a></h3>
+<ol>
+<li><p>사이드바에서 프로젝트 이름 옆 <strong>연필 아이콘(새 대화)</strong> 을 누르거나, 프로젝트를 연 뒤 화면 맨 위 오른쪽의 <strong>+ 새 대화</strong>를 누릅니다. 새 대화 화면에 *&quot;어떤 작업을 도와드릴까요?&quot;*와 입력창(<code>메시지를 입력하세요</code>)이 나옵니다.</p>
+</li>
+<li><p>입력창에 요청을 적습니다.</p>
+<blockquote>
+<p><em>&quot;사내 장비 대여 현황 대시보드를 만들어줘. Vite + React로 상태별 요약 카드, 검색·상태 필터, 대여 목록 표(더미 데이터 20건)를 넣고 라이트 테마로. 개발 서버를 5173 포트로 켜두고 미리보기로 볼 수 있게 해줘.&quot;</em></p>
+</blockquote>
+</li>
+<li><p>전송 버튼(원형)이나 Enter로 보냅니다.</p>
+</li>
+<li><p>AI가 파일을 만들고 <code>npm install</code>·빌드·개발 서버 실행을 진행합니다. 도구 호출은 한 줄 행으로 접혀 보이고, 길게 생각한 내용(Thinking)은 기본으로 접혀 있습니다. 5줄이 넘는 코드는 <strong>펼치기 (코드 N줄)</strong> 로 펼칩니다.</p>
+</li>
+<li><p>개발 서버가 뜨면 오른쪽 작업 영역에 브라우저·미리보기 탭이 열리는 경우가 많습니다. 열리지 않으면 <a href="#85-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%99%80-%EB%AF%B8%EB%A6%AC%EB%B3%B4%EA%B8%B0">8.5</a>를 보세요.</p>
+</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/project-new-chat.png" alt="프로젝트 새 대화 화면 — 열린 대화 탭, 어떤 작업을 도와드릴까요?, 저장소 줄(main·저장소 연결하기·워크트리), 입력창과 AI 자동 버튼" loading="lazy" decoding="async"></div><figcaption>프로젝트 새 대화 화면 — 열린 대화 탭, 어떤 작업을 도와드릴까요?, 저장소 줄(main·저장소 연결하기·워크트리), 입력창과 AI 자동 버튼</figcaption></figure>
+<figure class="fig"><div class="imgs"><img src="../../assets/build-by-chat.gif" alt="새 프로젝트에서 랜딩 페이지를 한 문장으로 요청하고 AI 작업 후 미리보기 탭에서 확인하는 과정" loading="lazy" decoding="async"></div><figcaption>새 프로젝트에서 랜딩 페이지를 한 문장으로 요청하고 AI 작업 후 미리보기 탭에서 확인하는 과정</figcaption></figure>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>개발 서버가 필요하다면 요청에 *&quot;개발 서버를 켜두고 미리보기로 볼 수 있게&quot;*를 꼭 넣으세요. 그렇지 않으면 AI가 HTML 파일 하나로 끝낼 수 있습니다.</p>
+</div>
+<h3 id="62-화면-구성">6.2 화면 구성<a class="anchor" href="#62-화면-구성" aria-label="Link">#</a></h3>
+<figure class="fig"><div class="imgs"><img src="../../assets/project-chat.png" alt="프로젝트 대화 화면 — 열린 대화 탭, 오른쪽 메시지 이동 레일, 입력창 위 줄(브랜치·저장소 연결하기·작업 마무리)과 아래 줄(Claude Code · 자동, AI 잔여량, 컨텍스트, CPU·메모리)" loading="lazy" decoding="async"></div><figcaption>프로젝트 대화 화면 — 열린 대화 탭, 오른쪽 메시지 이동 레일, 입력창 위 줄(브랜치·저장소 연결하기·작업 마무리)과 아래 줄(Claude Code · 자동, AI 잔여량, 컨텍스트, CPU·메모리)</figcaption></figure>
+<ul>
+<li><strong>열린 대화 탭 줄</strong>: 위쪽의 <strong>열린 대화</strong> 영역에 대화가 탭으로 열립니다. <strong>+ 새 대화</strong>(⌘T)로 같은 프로젝트에서 새 대화를 열고, 앱을 다시 켜도 프로젝트별로 복원됩니다.</li>
+<li><strong>헤더</strong>: 프로젝트 이름, <strong>설정</strong> 아이콘, 오른쪽 <strong>프로젝트 도구(⋮)</strong></li>
+<li><strong>오른쪽 가장자리</strong>: 메시지 이동 레일(점)과 <strong>대화 요약</strong> 버튼(<a href="#101-%EB%8C%80%ED%99%94-%EC%9A%94%EC%95%BD%EA%B3%BC-%EB%A9%94%EC%8B%9C%EC%A7%80-%EC%9D%B4%EB%8F%99-%EB%A0%88%EC%9D%BC">10장</a>)</li>
+<li><strong>입력창</strong>: 위 줄(저장소·브랜치·목표·작업 마무리)과 아래 줄(AI·모델·AI 잔여량)이 있습니다.</li>
+</ul>
+<p><strong>프로젝트 도구(⋮)</strong> 는 위쪽에 작업 패널(<strong>파일 · 터미널 · 브라우저 · 변경 · 미리보기</strong>, <a href="#8-%EC%9E%91%EC%97%85-%EC%98%81%EC%97%AD">8장</a>), 가운데에 이 대화의 기능(검색, 고정, 알림 소리 끄기, <strong>대화 이어가기</strong>, <strong>예약 작업</strong>, <strong>자식 AI도구 N개</strong>), 아래에 프로젝트 기능(<strong>Git 작업</strong>, <strong>자동화</strong>(GitHub 트리거·스크립트 자동화), <strong>에디터로 열기…</strong>, 프로젝트 공유)이 모여 있습니다.</p>
+<h3 id="63-입력창에서-먼저-알아-둘-것">6.3 입력창에서 먼저 알아 둘 것<a class="anchor" href="#63-입력창에서-먼저-알아-둘-것" aria-label="Link">#</a></h3>
+<p>입력창은 <strong>위 줄</strong>(저장소·브랜치)과 <strong>아래 줄</strong>(AI·사용량)로 나뉩니다. 처음에는 다음 네 가지만 알면 됩니다.</p>
+<ul>
+<li><strong>AI 자동</strong>(아래 줄 왼쪽 버튼): AI·모델·작업 강도를 한 버튼에서 고릅니다. 새 대화의 기본은 <strong>AI 자동</strong>이며, 보낸 뒤에는 <code>Claude Code · 자동</code>처럼 고른 AI와 모델이 표시됩니다 → <a href="#7-ai%EB%AA%A8%EB%8D%B8%EC%9E%91%EC%97%85-%EA%B0%95%EB%8F%84%EC%99%80-%EC%82%AC%EC%9A%A9%EB%9F%89">7장</a></li>
+<li><strong>AI 잔여량</strong>(아래 줄, 예: <code>86%/72%</code>): 누르면 계정별 남은 사용량 창이 열립니다 → <a href="#74-ai-%EC%82%AC%EC%9A%A9%EB%9F%89-%EC%B0%BD">7.4</a>. 옆의 <code>컨텍스트 N%</code>는 Claude 대화가 컨텍스트 창을 채운 정도이며 80% 이상이면 새 대화나 <code>/compact</code>를 권합니다.</li>
+<li><strong>워크트리</strong> 체크박스(위 줄 오른쪽): 켜면 이 대화만의 <strong>작업트리</strong>(복사본 작업 폴더)에서 일합니다. Git 저장소 프로젝트의 <strong>아직 보내지 않은 새 대화</strong>에서만 설정할 수 있으니, 보내기 전에 체크 상태를 한 번 확인하세요(이전 대화의 선택이 남아 있을 수 있습니다).</li>
+<li><strong>작업 마무리</strong>(위 줄 오른쪽 끝, 대화를 시작한 뒤 나타남): 리뷰·PR·보관을 한 메뉴에서 → <a href="#11-%EC%9E%91%EC%97%85-%EB%A7%88%EB%AC%B4%EB%A6%AC">11장</a></li>
+</ul>
+<p>저장소 줄, 브랜치·PR 칩, 목표, <strong>+</strong> 와 <strong>⋯</strong> 메뉴의 항목은 <a href="#%EB%B6%80%EB%A1%9D-b-%EB%A9%94%EB%89%B4%EC%84%A4%EC%A0%95-%EC%A7%80%EB%8F%84">부록 B.3·B.4</a>에 정리했습니다.</p>
+<h3 id="64-입력창-메뉴와-특수-입력">6.4 입력창 메뉴와 특수 입력<a class="anchor" href="#64-입력창-메뉴와-특수-입력" aria-label="Link">#</a></h3>
+<p><strong>+</strong>(파일·사진·폴더 첨부, ⌘U)와 <strong>⋯</strong>(프롬프트 검색, 파일 복원지점, 동시작업 등) 메뉴의 항목은 <a href="#%EB%B6%80%EB%A1%9D-b-%EB%A9%94%EB%89%B4%EC%84%A4%EC%A0%95-%EC%A7%80%EB%8F%84">부록 B.4</a>에 있습니다. 입력창에서는 다음 입력도 쓸 수 있습니다.</p>
+<ul>
+<li><code>@</code> + 파일 이름 → 프로젝트 파일을 요청에 넣습니다.</li>
+<li><code>@</code> + 대화 제목 → <strong>대화</strong> 묶음에서 같은 프로젝트의 다른 대화를 칩으로 붙여, AI가 그 대화를 읽고 답하게 합니다. 보관된 대화는 흐리게 표시됩니다.</li>
+<li><code>/</code> → 명령 목록(위·아래 + Enter/Tab). 목록은 대화 AI에 맞춰 달라집니다.</li>
+<li><code>/btw 질문</code>(곁질문): 진행 중인 작업을 멈추지 않고 지금 대화를 바탕으로 짧게 답한 카드가 입력창 위에 뜨며 기록에는 남지 않습니다. 이미 시작한 <strong>Claude 대화</strong>에서만 됩니다.</li>
+<li><code>/recap</code>: &quot;지금까지&quot;와 &quot;다음 행동&quot;을 요약한 카드를 보여 줍니다. 내 메시지가 3개 이상인 <strong>Claude 대화</strong>에서만 됩니다. 뒤에 다른 글을 붙이면 일반 메시지로 보내집니다.</li>
+<li>긴 텍스트를 붙여넣으면 <code>붙여넣은 텍스트 · N줄</code> 카드가 되고, 답변 속 글을 선택하거나 우클릭하면 <strong>인용</strong>할 수 있습니다.</li>
+</ul>
+<h3 id="65-내-프롬프트--자주-쓰는-요청-저장">6.5 내 프롬프트 — 자주 쓰는 요청 저장<a class="anchor" href="#65-내-프롬프트--자주-쓰는-요청-저장" aria-label="Link">#</a></h3>
+<ol>
+<li>입력창에 자주 쓰는 문장을 적습니다.</li>
+<li>입력창의 <strong>책갈피 아이콘</strong>(<strong>내 프롬프트</strong>)을 누릅니다.</li>
+<li><strong>입력 저장</strong>을 누르면 저장됩니다.</li>
+<li>다음부터는 같은 책갈피 메뉴에서 문장을 눌러 입력창에 바로 넣습니다.</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>[로그인] 로그인 계정에 저장되어 다른 PC에서도 같은 목록이 보이고, 한 문장은 10,000자까지입니다. 저장한 문장은 모든 프로젝트에서 보입니다. 입력창이 비어 있을 때 <strong>↑</strong> 키는 <em>현재 대화</em>에서 보낸 요청만 차례로 불러옵니다.</p>
+</div>
+<h3 id="66-대기열--답하는-동안-다음-요청-쌓기">6.6 대기열 — 답하는 동안 다음 요청 쌓기<a class="anchor" href="#66-대기열--답하는-동안-다음-요청-쌓기" aria-label="Link">#</a></h3>
+<p>AI가 답하는 중에도 입력창에 다음 요청을 적어 둘 수 있습니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/composer-queue.png" alt="응답 중 입력창 위에 쌓인 대기열 카드 — 드래그 핸들과 보내기·편집(연필)·삭제(휴지통) 아이콘" loading="lazy" decoding="async"></div><figcaption>응답 중 입력창 위에 쌓인 대기열 카드 — 드래그 핸들과 보내기·편집(연필)·삭제(휴지통) 아이콘</figcaption></figure>
+<ol>
+<li>답하는 동안 입력창에 요청을 적고 Enter(또는 <strong>대기열에 추가</strong>)를 누릅니다. 대기열은 <strong>최대 3개</strong>이며 답이 끝나면 오래된 것부터 차례로 보냅니다. 카드의 드래그 핸들로 순서를 바꿀 수 있습니다.</li>
+<li>지금 답에 바로 전달하려면 대기 줄의 <strong>즉시 요청</strong>(보내기 아이콘, 또는 ⌘Enter)을 누릅니다.</li>
+<li>내용을 고치려면 줄의 <strong>연필 아이콘(편집)</strong> → 수정 → <strong>체크 아이콘(저장)</strong> 또는 <strong>X 아이콘(편집 취소)</strong> 으로 제자리에서 고칩니다. <strong>휴지통 아이콘</strong>은 대기 요청을 지웁니다.</li>
+<li>응답을 <strong>중단</strong>하면 대기열은 지워지지 않지만 <strong>자동으로 보내지 않습니다.</strong> 대기열 위 <strong>중단됨</strong> 줄의 <strong>이어서 보내기</strong>(재생 아이콘)를 누르거나 직접 새 메시지를 보내면 이어서 보냅니다.</li>
+</ol>
+<h3 id="67-ai의-질문에-답하기">6.7 AI의 질문에 답하기<a class="anchor" href="#67-ai의-질문에-답하기" aria-label="Link">#</a></h3>
+<p>AI가 선택지를 주며 질문하면 <strong>입력창 자리가 질문 폼으로 바뀝니다.</strong> 사이드바에서는 해당 대화 줄에 <strong>주황색 질문 아이콘</strong>이 붙습니다.</p>
+<ol>
+<li>선택지를 누르거나 <strong>숫자 키(1~9)</strong> 로 고릅니다. 직접 쓰고 싶으면 입력란에 적습니다.</li>
+<li>질문이 여러 개면 <strong>이전 질문 / 다음 질문</strong>(또는 <strong>다음</strong>)으로 넘어갑니다. 하나만 고르는 질문은 고르면 잠시 뒤 자동으로 다음으로 넘어갑니다.</li>
+<li>마지막에 <strong>보내기</strong>를 누릅니다. 답하지 않고 넘어가려면 <strong>건너뛰기</strong>를 누릅니다.</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>질문에 답하지 않고 있어도 AI가 멈춘 것은 아닙니다. <strong>여러분의 답을 기다리는 중</strong>입니다. 대기열은 질문이 열려 있는 동안 전송되지 않습니다.</p>
+</div>
+<h3 id="68-답변이-끝난-뒤">6.8 답변이 끝난 뒤<a class="anchor" href="#68-답변이-끝난-뒤" aria-label="Link">#</a></h3>
+<ul>
+<li><strong>다음 단계 카드</strong>: 파일을 바꾸거나 여러 단계 작업을 마친 답 끝에 &quot;무엇이 됐고 무엇이 남았는지&quot;와 함께 <strong>커밋 요청 / PR 만들기 / PR 머지 / AI로 CI 수정 / 셀프 리뷰 / 완료로 보관</strong> 같은 버튼이 나옵니다. 지금 할 수 있을 때만 보이며 <a href="#11-%EC%9E%91%EC%97%85-%EB%A7%88%EB%AC%B4%EB%A6%AC">작업 마무리</a>와 같은 동작을 합니다. 작업PC의 Saycode CLI가 이 기능을 지원하는 버전이어야 하고, 데스크톱 앱에서 보낸 메시지의 답에만 붙습니다.</li>
+<li><strong>답변이 끊겼을 때</strong>: AI가 중간에 멈췄다면 원인과 함께 <strong>이어서 하기</strong>가 나옵니다(직접 중단했다면 <strong>다시 시도</strong>). 일시적인 오류는 자동 재시도 카운트다운과 <strong>취소</strong> 버튼이, 사용 한도에 걸리면 &quot;{시각}에 다시 시도&quot;가 표시됩니다.</li>
+<li><strong>자식 AI도구</strong>(서브 에이전트): AI가 자식 대화를 만들면 프로젝트 도구(⋮)에 <strong>자식 AI도구 N개</strong>가 나타나며 <strong>지시 전달</strong>·<strong>중단</strong>을 할 수 있습니다.</li>
+<li><strong>내 메시지 위에 마우스를 올리면</strong> 연필 아이콘 <strong>여기서 다시 쓰기</strong>로 그 메시지 직전까지의 대화에서 새 대화를 만들어 고쳐 보낼 수 있습니다(<a href="#10-%EB%8C%80%ED%99%94-%EA%B4%80%EB%A6%AC">10장</a>).</li>
+</ul>
+<h2 id="7-ai모델작업-강도와-사용량">7. AI·모델·작업 강도와 사용량<a class="anchor" href="#7-ai모델작업-강도와-사용량" aria-label="Link">#</a></h2>
+<p><strong>어떤 AI가 얼마나 깊이 생각해 일할지 정하고, AI 계정의 남은 사용량을 확인합니다.</strong> 대부분의 경우 <strong>AI 자동</strong>에 맡겨도 됩니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 쓸 수 있는 AI와 모델만 목록에 보입니다. 새 대화에서는 모두 바꿀 수 있고, 진행 중인 대화에서는 <strong>모델과 작업 강도만</strong> 바꿀 수 있습니다(AI가 답하는 중에는 불가). 모델 목록은 업데이트로 바뀌므로 앱에 보이는 목록을 기준으로 하세요.</p>
+</div>
+<h3 id="71-ai모델작업-강도-고르기">7.1 AI·모델·작업 강도 고르기<a class="anchor" href="#71-ai모델작업-강도-고르기" aria-label="Link">#</a></h3>
+<figure class="fig"><div class="imgs"><img src="../../assets/composer-ai-menu.png" alt="입력창 아래 AI 자동 버튼의 메뉴 — AI 자동 / Claude Code·Codex·Opencode·Grok 하위 모델 목록(자동, Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5, 이전 모델), AI 프로필" loading="lazy" decoding="async"></div><figcaption>입력창 아래 AI 자동 버튼의 메뉴 — AI 자동 / Claude Code·Codex·Opencode·Grok 하위 모델 목록(자동, Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5, 이전 모델), AI 프로필</figcaption></figure>
+<ol>
+<li><p>새 대화에서 입력창 아래 줄의 <strong>AI 자동</strong>(또는 현재 모델명·강도가 보이는 버튼)을 누릅니다.</p>
+</li>
+<li><p><strong>AI 자동</strong>을 고르면 Saycode가 요청 난이도를 보고 AI와 모델·강도를 정합니다. 직접 고르려면 <strong>Claude Code / Codex / Opencode / Grok</strong> 중 하나에 마우스를 올려 하위 메뉴에서 <strong>모델</strong>을 고릅니다(<strong>자동</strong>을 고르면 모델만 자동입니다). 오래된 모델은 <strong>이전 모델</strong> 묶음에 있습니다.</p>
+</li>
+<li><p>모델을 직접 고른 뒤 같은 버튼을 다시 열면 <strong>작업 강도</strong> 하위 메뉴가 나타납니다(AI 자동 상태에서는 보이지 않습니다). 모델에 따라 Low · Medium · High · Xhigh · Max(일부는 Ultra까지)가 있습니다.</p>
+</li>
+<li><p>보낸 뒤 진행 중인 대화에서는 같은 버튼이 곧바로 <strong>모델 목록</strong>으로 열립니다.</p>
+</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/composer-ai-menu-effort.png" alt="모델을 고른 뒤의 AI 메뉴 — 작업 강도(Low·Medium·High·Xhigh·Max) 하위 메뉴, 현재 설정 저장, AI 프로필 관리" loading="lazy" decoding="async"></div><figcaption>모델을 고른 뒤의 AI 메뉴 — 작업 강도(Low·Medium·High·Xhigh·Max) 하위 메뉴, 현재 설정 저장, AI 프로필 관리</figcaption></figure>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p><strong>모델을 자동으로 두면</strong> Saycode가 매 턴 난이도에 따라 모델을 정합니다. 오타 수정은 가볍게, 기능 구현은 적정하게, 정말 어려운 문제만 상위 모델로 보냅니다. 응답 위에 &quot;자동 · 모델 · 실행 설정&quot; 한 줄 배지(예: <code>자동 · Sonnet 5.5 · medium</code>)가 남아 어떻게 골랐는지 알 수 있습니다.</p>
+</div>
+<figure class="fig" style="--w:640px"><div class="imgs"><img src="../../assets/auto-route-badge.png" alt="응답 위의 자동 선택 배지 — 자동 · Sonnet 5.5 · medium" data-w="640" loading="lazy" decoding="async"></div><figcaption>응답 위의 자동 선택 배지 — 자동 · Sonnet 5.5 · medium</figcaption></figure>
+<p><strong>바로가기</strong>: 입력창에 포커스를 두고 <strong>⌘⇧M</strong>은 다음 모델로, <strong>⌘⇧E</strong>는 다음 작업 강도로 바꿉니다(응답 중이거나 선택지가 하나면 동작하지 않음).</p>
+<h3 id="72-ai-프로필--자주-쓰는-조합-저장">7.2 AI 프로필 — 자주 쓰는 조합 저장<a class="anchor" href="#72-ai-프로필--자주-쓰는-조합-저장" aria-label="Link">#</a></h3>
+<ol>
+<li>새 대화에서 특정 AI를 고르고 모델·강도를 정합니다.</li>
+<li>AI 버튼 메뉴에서 <strong>현재 설정 저장</strong>을 눌러 프로필로 저장합니다.</li>
+<li>다음부터 같은 메뉴의 <strong>AI 프로필</strong> 목록에서 골라 한 번에 적용합니다. 고치거나 지우려면 <strong>AI 프로필 관리</strong>를 누릅니다.</li>
+</ol>
+<h3 id="73-ai-목록과-기본값-정하기">7.3 AI 목록과 기본값 정하기<a class="anchor" href="#73-ai-목록과-기본값-정하기" aria-label="Link">#</a></h3>
+<p><strong>내 설정 → 일반 → AI Models</strong>에서 다음을 설정합니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/settings-ai-models.png" alt="내 설정 → AI Models — Claude·ChatGPT·opencode 연결 상태, 연결하기, 연결된 AI 확인하기" loading="lazy" decoding="async"></div><figcaption>내 설정 → AI Models — Claude·ChatGPT·opencode 연결 상태, 연결하기, 연결된 AI 확인하기</figcaption></figure>
+<ul>
+<li><strong>연결하기</strong> — 브라우저로 내 Claude·ChatGPT 계정을 연결합니다. 행의 <strong>…</strong> 메뉴에서 <strong>연결 해제</strong>, <strong>Saycode에 다시 연결</strong>, <strong>계정 추가</strong>를 고릅니다.</li>
+<li><strong>채팅에 표시할 AI</strong> — 안 쓰는 AI를 선택 목록에서 숨깁니다(최소 1개는 표시).</li>
+<li><strong>새 대화 기본값</strong> — Chat과 Project 새 대화의 AI도구·Model·Effort 기본값을 각각 정합니다.</li>
+</ul>
+<p>진행 중인 프로젝트 대화를 다른 AI로 넘기려면 프로젝트 도구(⋮) → <strong>대화 이어가기</strong> → <strong>다른 AI도구로 이어가기</strong>를 사용하세요(<a href="#107-%EB%8C%80%ED%99%94-%EC%9D%B4%EC%96%B4%EA%B0%80%EA%B8%B0%EC%99%80-%EA%B0%88%EB%9E%98">10.7</a>).</p>
+<h3 id="74-ai-사용량-창">7.4 AI 사용량 창<a class="anchor" href="#74-ai-사용량-창" aria-label="Link">#</a></h3>
+<p>입력창 아래 <strong>AI 잔여량</strong> 버튼을 누르면 이 작업PC에 연결된 AI 계정과 남은 사용량이 열립니다.</p>
+<figure class="fig" style="--w:430px"><div class="imgs"><img src="../../assets/ai-usage-popover-crop.png" alt="AI 사용량 창 — 작업PC 이름과 조회 주기, AI 탭(Claude·Codex·Grok), 이 PC의 계정별 5시간·7일 사용률" data-w="430" loading="lazy" decoding="async"></div><figcaption>AI 사용량 창 — 작업PC 이름과 조회 주기, AI 탭(Claude·Codex·Grok), 이 PC의 계정별 5시간·7일 사용률</figcaption></figure>
+<ol>
+<li>맨 위 <strong>AI 탭</strong>(<strong>Claude / Codex / Grok</strong>)에서 볼 AI를 고릅니다. 창을 열 때마다 지금 입력창에서 고른 AI 탭이 먼저 열립니다.</li>
+<li><strong>모든 PC</strong> 줄에서 지금 쓸 수 있는지(<strong>여유 있어요 / 얼마 안 남았어요 / 모두 다 썼어요</strong>)를 봅니다. 내 PC가 두 대 이상일 때 보입니다.</li>
+<li><strong>이 PC의 계정</strong>에서 계정별 5시간·7일 사용률과 초기화까지 남은 시간을 봅니다. <strong>계정별 사용량</strong>을 펼치면 막대와 다음 초기화 뒤 평균을 보여 줍니다. 계정이 하나뿐인 개인 사용에서는 <strong>모든 PC</strong> 줄과 <strong>계정별 사용량</strong>이 없고 계정 한 줄만 보일 수 있습니다.</li>
+<li><strong>자동순환계정</strong>을 켜면 한 계정이 한도에 걸려도 다른 계정으로 자동 전환해 작업이 멈추지 않습니다(계정을 여러 개 연결했을 때).</li>
+<li>상단 <strong>새로고침</strong> 아이콘으로 최신 값을 다시 읽습니다. 입력창에 <code>/usage</code>만 보내도 같은 요약이 대화에 붙습니다(Claude 대화는 Claude가 직접 처리).</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>작업PC가 온라인이어야 실제 값이 보입니다. 한도에 가까워지면 입력창 아래에 <strong>사용률과 초기화까지 남은 시간</strong>이 자동으로 표시되고, 전환할 수 있는 계정 수도 알려 줍니다. [로그인] 조직 계정 선택, 모든 PC 요약은 로그인·여러 PC 환경에서 보입니다.</p>
+</div>
+<p>사용 기록은 [로그인] <strong>내 설정 → 일반 → 토큰 사용량</strong>에서 개요·프로젝트별·모델별·출처별로 확인하고 최근 7·30·90일을 비교합니다.</p>
+<h2 id="8-작업-영역">8. 작업 영역<a class="anchor" href="#8-작업-영역" aria-label="Link">#</a></h2>
+<p><strong>프로젝트 화면의 오른쪽에서 파일·변경·터미널·브라우저·미리보기를 보며 AI의 작업을 확인합니다.</strong> 가운데 대화와 나란히 놓여 대화와 작업 결과를 함께 볼 수 있습니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 프로젝트에 <strong>온라인 작업PC</strong>가 연결되어 있어야 합니다. <strong>변경</strong> 탭은 Git 프로젝트에서만 쓸 수 있습니다.</p>
+</div>
+<h3 id="81-열기와-패널-추가">8.1 열기와 패널 추가<a class="anchor" href="#81-열기와-패널-추가" aria-label="Link">#</a></h3>
+<figure class="fig"><div class="imgs"><img src="../../assets/workspace-add-panel.png" alt="도구 펼치기 후 작업 패널 추가 목록 — 파일, 터미널, 브라우저, 변경, 미리보기" loading="lazy" decoding="async"></div><figcaption>도구 펼치기 후 작업 패널 추가 목록 — 파일, 터미널, 브라우저, 변경, 미리보기</figcaption></figure>
+<ol>
+<li>프로젝트 대화 오른쪽 위의 <strong>도구 펼치기</strong>(접을 때는 <strong>도구 접기</strong>, 단축키 <strong>⌘⇧B</strong>)를 누르면 <strong>파일 · 터미널 · 브라우저 · 변경 · 미리보기</strong> 목록이 바로 나옵니다. 열 도구를 고르세요.</li>
+<li>패널이 이미 열려 있으면 탭 줄 오른쪽의 <strong>작업 패널 추가</strong> 아이콘으로 다른 도구를 더 엽니다. 작업트리에 PR이 있으면 <strong>PR 보기</strong>도 있고, 설치한 확장이 더하는 도구(예: <strong>Moai</strong>)도 같은 메뉴에 나옵니다.</li>
+<li>탭을 끌어 순서를 바꾸고, <strong>⌘W</strong>로 닫습니다. 닫은 탭은 ⋮ 메뉴에서 다시 열 수 있고, 대화별로 열어 둔 도구가 복원됩니다.</li>
+<li>중간 경계를 끌어 너비를 조절하고, <strong>패널 추가</strong>로 터미널·브라우저·대화를 <strong>오른쪽 또는 아래에 나란히</strong> 열 수 있습니다(⌘⌥T / ⌘⌥B / ⌘⌥C). 작업 영역 오른쪽 위의 확대 아이콘으로 작업 영역을 넓게 펼칠 수 있습니다.</li>
+</ol>
+<h3 id="82-파일-탭">8.2 파일 탭<a class="anchor" href="#82-파일-탭" aria-label="Link">#</a></h3>
+<figure class="fig"><div class="imgs"><img src="../../assets/files-panel.png" alt="파일 탭 — 폴더 트리, 작업물 모아보기 줄, 파일 필터, 추가 디렉터리" loading="lazy" decoding="async"></div><figcaption>파일 탭 — 폴더 트리, 작업물 모아보기 줄, 파일 필터, 추가 디렉터리</figcaption></figure>
+<ol>
+<li><strong>도구 펼치기</strong> → <strong>파일</strong>을 엽니다. 폴더 아이콘으로 파일 목록을 접고 펼치며, 파일을 누르면 내용이 열립니다(방향키·Enter로도 이동).</li>
+<li><strong>파일 필터…</strong> 칸에 이름을 입력하면 목록이 바로 걸러지고, <strong>Enter</strong>를 누르면 <em>프로젝트 전체 파일 이름</em>을 검색합니다.</li>
+<li>파일 <strong>안의 내용</strong>으로 찾으려면 검색창 옆 <strong>내용 검색</strong> 버튼을 켜고 검색어를 적은 뒤 Enter를 누릅니다. (작업PC가 지원할 때만 됩니다.)</li>
+<li>AI가 만든 문서·이미지·HTML은 <strong>작업물 모아보기</strong>에서 한곳에 모아 봅니다. 범위를 <strong>이 대화 / 이 프로젝트</strong>로 고르고 열 작업물을 누릅니다.</li>
+<li>파일 행의 ⋮ → <strong>Finder에서 보기</strong>, <code>.csv</code>/<code>.tsv</code> 파일은 <strong>표로 보기</strong>(표 아이콘)로 열립니다. HTML·DOCX 뷰어는 앱의 다크 모드를 따릅니다.</li>
+<li>파일 패널의 ⋮ 메뉴에는 <strong>새 파일 / 새 폴더 / 파일 업로드 / 파일 새로고침 / 폴더 접기</strong>가 있습니다. 앱 밖에서 만든 파일이 목록에 안 보이면 <strong>파일 새로고침</strong>을 누르세요.</li>
+</ol>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>답변에 파일 이름이 나왔다고 패널이 저절로 열리지는 않습니다(작업물 파일은 완료 시 자동으로 열립니다). 파일 이름을 눌러 직접 여세요.</p>
+</div>
+<h3 id="83-변경-탭">8.3 변경 탭<a class="anchor" href="#83-변경-탭" aria-label="Link">#</a></h3>
+<p>AI가 바꾼 파일과 바뀐 줄을 한눈에 확인합니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/workspace-diff.png" alt="변경 탭(브랜치 전체) — 기록 안 한 변경·브랜치 전체·턴별 탭, 기준 브랜치와 파일 검색, 좌우 비교 diff" loading="lazy" decoding="async"></div><figcaption>변경 탭(브랜치 전체) — 기록 안 한 변경·브랜치 전체·턴별 탭, 기준 브랜치와 파일 검색, 좌우 비교 diff</figcaption></figure>
+<ol>
+<li><strong>작업 패널 추가</strong> → <strong>변경</strong>을 엽니다.</li>
+<li>위쪽 탭에서 범위를 고릅니다 — <strong>기록 안 한 변경 / 브랜치 전체 / 턴별</strong>.<ul>
+<li><strong>브랜치 전체</strong> — 작업트리 브랜치가 갈라진 뒤의 모든 변경기록과 아직 기록하지 않은 변경을 한 목록으로 봅니다. 아래 변경기록 목록에서 하나를 누르면 그 변경기록만 읽기 전용으로 보이고, <strong>전체로 돌아가기</strong>로 복귀합니다.</li>
+<li><strong>턴별</strong> — AI가 한 번 답한 단위(턴)로 봅니다. <strong>이 턴 / 직전 턴 이후 / 대화 시작 대비</strong> 중에서 고릅니다.</li>
+</ul>
+</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/workspace-diff-turns.png" alt="변경 탭의 턴별 보기 — 이 턴·직전 턴 이후·대화 시작 대비 선택과 이 턴의 diff" loading="lazy" decoding="async"></div><figcaption>변경 탭의 턴별 보기 — 이 턴·직전 턴 이후·대화 시작 대비 선택과 이 턴의 diff</figcaption></figure>
+<ol start="3">
+<li>파일을 누르면 <strong>좌우 비교</strong> diff(또는 <strong>한 줄 비교</strong>)가 열립니다. 바뀐 줄에 리뷰 코멘트를 달아 AI에게 보낼 수 있습니다.</li>
+<li><strong>파일명·바뀐 내용으로 찾기</strong>로 목록을 거르고, diff 안에서는 <strong>⌘F</strong>로 찾습니다.</li>
+<li>목록 끝의 <strong>잠금 파일 / 생성된 파일 / 빌드 산출물</strong> 그룹은 기본으로 접혀 있으니 누르면 펼쳐집니다.</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>턴별</strong>은 이 기능 이후에 시작한 턴부터, 내가 만든 대화에서 기록되며 macOS·Linux 로컬 Git 환경에서 지원됩니다. <strong>브랜치 전체</strong>는 작업트리에서 연 대화에서만 보입니다. 끝난 턴과 변경기록 단건 보기는 읽기 전용이라 줄 코멘트를 달 수 없습니다.</p>
+</div>
+<h3 id="84-터미널-탭">8.4 터미널 탭<a class="anchor" href="#84-터미널-탭" aria-label="Link">#</a></h3>
+<p>작업PC에 붙은 실제 셸입니다. 탭을 바꿔도 살아 있고 연결이 끊기면 스스로 재연결하며 출력을 이어받습니다.</p>
+<ul>
+<li><strong>⌘F</strong>: 터미널 안에서 찾기(<code>3/12</code>처럼 위치 표시)</li>
+<li>링크 클릭: <strong>앱 브라우저에서 열기 / 외부 브라우저에서 열기 / 주소 복사</strong></li>
+<li>키보드 스크롤은 Shift+PageUp/PageDown, 우클릭 메뉴로 복사·붙여넣기</li>
+<li>글꼴·글자 크기, <strong>입력 미리 표시</strong>는 <strong>내 설정 → 개발 → 터미널</strong>에서 바꿉니다.</li>
+<li>터미널에서 pager가 열리면 <code>q</code>로 빠져나오거나 <code>git --no-pager log</code>처럼 실행하세요.</li>
+</ul>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>작업PC의 실행기가 다시 시작되면 &quot;이 터미널이 닫혀요&quot;라는 안내와 함께 터미널이 닫힐 수 있습니다.</p>
+</div>
+<h3 id="85-브라우저와-미리보기">8.5 브라우저와 미리보기<a class="anchor" href="#85-브라우저와-미리보기" aria-label="Link">#</a></h3>
+<ul>
+<li><strong>브라우저</strong> 패널에서 주소창에 <code>http://localhost:5173</code> 같은 주소를 입력하면 내 작업PC에서 돌아가는 앱이 바로 열립니다. 탭 줄·도구 막대·주소창이 한 창처럼 이어지고, 로그인·쿠키는 앱을 다시 켜도 남습니다(로그아웃이나 계정·조직을 바꾸면 지워집니다). → 고치는 방법은 <a href="#9-%EB%B3%B4%EB%A9%B4%EC%84%9C-%EA%B3%A0%EC%B9%98%EA%B8%B0">9장</a></li>
+<li><strong>미리보기</strong>는 프로젝트의 개발 서버 결과를 보여 줍니다. 프로젝트 도구(⋮) → <strong>미리보기</strong>를 누르고, 탭에 &quot;미리보기가 아직 실행 전입니다&quot;가 보이면 그 안의 <strong>미리보기 실행</strong> 버튼을 누릅니다. 새로고침(두 화살표)과 <strong>재시작</strong>(한 방향 회전 화살표) 버튼은 따로 있습니다.</li>
+<li>이미 띄워 둔 서버는 <strong>리슨 포트 감지</strong>가 찾아 줍니다. 목록에서 <strong>연결</strong>을 누르거나 포트 번호를 직접 입력하세요.</li>
+</ul>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>미리보기 탭에 &quot;미리보기가 아직 실행 전입니다&quot;만 보이면 프로젝트 설정 → <strong>개발</strong> → <strong>실행</strong>에 개발 서버 명령·포트가 저장되어 있지 않은 상태일 수 있습니다. 설정을 저장하거나, AI에게 서버를 켜 달라고 하거나 터미널에서 켠 뒤 <strong>브라우저</strong> 패널에 <code>http://localhost:&lt;포트&gt;</code>를 직접 열거나 <strong>리슨 포트 감지</strong>를 쓰세요.</p>
+</div>
+<p>프로젝트 설정 → <strong>개발</strong> → <strong>실행</strong>에 <strong>개발 서버 명령</strong>과 <strong>개발 서버 포트</strong>를 적고 <strong>실행 설정 저장</strong>을 누르면 미리보기가 그 값을 사용합니다.</p>
+<h3 id="86-pr-보기">8.6 PR 보기<a class="anchor" href="#86-pr-보기" aria-label="Link">#</a></h3>
+<p>[로그인] 대화 속 GitHub PR 링크를 누르면 오른쪽 작업 패널에서 PR의 설명·코멘트·리뷰·커밋을 시간순으로 읽습니다(Shift를 누른 채 클릭하면 외부 브라우저). <strong>파일</strong> 탭에서는 전체 diff를 보고 &quot;이 PC에서 읽음&quot;을 표시하며, <strong>리뷰 지적 고치기</strong>로 AI에게 수정을 맡기고, 조건이 맞으면 아래 머지 상태에서 <strong>머지</strong> → <strong>병합</strong>으로 합칩니다. 작업PC에 <code>gh</code>가 설치·로그인되어 있어야 하며 GitHub 저장소만 지원합니다.</p>
+<h2 id="9-보면서-고치기">9. 보면서 고치기<a class="anchor" href="#9-보면서-고치기" aria-label="Link">#</a></h2>
+<p><strong>실행 중인 화면에서 마음에 안 드는 요소를 직접 집어 AI에게 고쳐 달라고 요청합니다.</strong> 요소를 여러 개 골라 한 번에 보내고, 여백·간격·글자도 직접 조절할 수 있습니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 프로젝트 대화가 열려 있고, 고칠 앱이 작업PC에서 실행 중이어야 합니다(예: <code>http://localhost:5173</code>). 요소를 넣을 대화가 없으면(별도 창으로 띄운 브라우저 등) 주석 트레이에 담긴 채 이유가 안내됩니다. 컴포넌트와 소스 위치(파일·줄) 표시는 개발 서버 앱에서 React Source Locator 같은 확장이 켜져 있을 때만 붙습니다.</p>
+</div>
+<h3 id="91-요소를-집어-주석-트레이에-담기">9.1 요소를 집어 주석 트레이에 담기<a class="anchor" href="#91-요소를-집어-주석-트레이에-담기" aria-label="Link">#</a></h3>
+<figure class="fig"><div class="imgs"><img src="../../assets/annotation-tray.gif" alt="요소 두 개를 골라 주석 트레이에 담고 의도를 정한 뒤 디자인 조정, 모두 보내기, 전송 후 결과를 확인하는 과정" loading="lazy" decoding="async"></div><figcaption>요소 두 개를 골라 주석 트레이에 담고 의도를 정한 뒤 디자인 조정, 모두 보내기, 전송 후 결과를 확인하는 과정</figcaption></figure>
+<ol>
+<li><strong>도구 펼치기</strong> → <strong>작업 패널 추가</strong> → <strong>브라우저</strong>를 열고 주소창에 앱 주소를 입력합니다.</li>
+<li>브라우저 도구 막대의 <strong>요소를 골라 주석 트레이에 담기</strong>(요소 선택) 버튼을 누릅니다.</li>
+<li>페이지에서 고칠 요소를 클릭하면 <strong>아래 주석 트레이</strong>에 한 줄로 담깁니다. 한 번 누를 때마다 요소 하나만 고르므로, 더 담으려면 버튼을 다시 누르세요(고르는 중 Esc로 취소).</li>
+<li>각 줄에 요청 내용(<strong>코멘트</strong>, 2,000자까지)을 적고 <strong>의도</strong>를 고릅니다 — <strong>수정해 줘 / 질문 / 참고</strong>.</li>
+<li>스크린샷 <strong>썸네일</strong>을 누르면 표시 창이 열립니다. <strong>펜 · 사각형 · 지우개</strong>와 빨강·노랑·파랑으로 표시하고 <strong>적용</strong>을 누릅니다(⌘Z로 되돌리기, 원본으로 복원 가능). 적용하면 썸네일에 <strong>표시됨</strong>이 붙습니다.</li>
+<li><strong>모두 보내기</strong>를 누르면 번호별 요청 글(셀렉터·스타일·HTML 정보)과 스크린샷이 <strong>대화 입력창에 들어갑니다.</strong> 바로 전송되지는 않으니 내용을 확인하고 <strong>전송 버튼</strong>을 누르세요.</li>
+<li>AI가 코드를 고치면 개발 서버가 변경을 반영합니다. 화면이 그대로면 브라우저 패널의 <strong>새로고침</strong>을 누르세요.</li>
+</ol>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>트레이가 <strong>비어 있을 때</strong> <strong>Shift</strong>를 누른 채 요소를 클릭하면 트레이를 거치지 않고 그 요소 하나가 <strong>바로 입력창에</strong> 들어갑니다(빠르게 하나만 보낼 때).</p>
+</div>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>트레이는 브라우저 패널마다 따로 있고, 최대 <strong>20개</strong>까지 담깁니다. 패널을 닫거나 앱을 다시 시작하면 비워집니다. 새로고침해도 변경이 반영되지 않으면 개발 서버를 다시 시작하세요.</p>
+</div>
+<h3 id="92-디자인-조정--직접-값을-바꿔-보기">9.2 디자인 조정 — 직접 값을 바꿔 보기<a class="anchor" href="#92-디자인-조정--직접-값을-바꿔-보기" aria-label="Link">#</a></h3>
+<p>AI에게 글로 설명하기 어려운 미세 조정은 직접 값을 바꿔 보고 그 결과를 요청으로 보냅니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/browser-panel.png" alt="브라우저 패널 — localhost:5173 탭과 도구 아이콘, 주석 2개 트레이, 선택한 요소의 간격·배치·글자 값을 바꾸는 디자인 조정 영역과 변경 요청 보내기 버튼" loading="lazy" decoding="async"></div><figcaption>브라우저 패널 — localhost:5173 탭과 도구 아이콘, 주석 2개 트레이, 선택한 요소의 간격·배치·글자 값을 바꾸는 디자인 조정 영역과 변경 요청 보내기 버튼</figcaption></figure>
+<ol>
+<li>주석 트레이에 담은 요소 행의 <strong>조절 아이콘(디자인 조정)</strong> 을 누릅니다.</li>
+<li><strong>간격</strong>(안쪽 여백 padding, 바깥 여백 margin, 항목 간격 gap) · <strong>배치</strong>(방향·정렬·배분) · <strong>글자</strong>(크기·굵기·색) 항목에 값을 적고 Enter를 누르면 페이지에 바로 적용됩니다. 길이는 <strong>↑↓</strong>로 1씩(Shift와 함께 10씩) 바꾸고, 배치·굵기는 목록에서, 색은 색 선택기로 고릅니다.</li>
+<li>마음에 안 들면 항목 옆 되돌리기 또는 <strong>모두 되돌리기</strong>를 누릅니다.</li>
+<li><strong>변경 요청 보내기</strong>를 누르면 그 요소의 선택자·텍스트와 속성별 <strong>전 → 후</strong> 값이 입력창에 들어가고 트레이에서 빠집니다. 확인 후 보내면 AI가 소스 코드에 반영합니다.</li>
+</ol>
+<div class="callout callout-important"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M12 8v3M12 13.5h.01"/></svg><span>중요</span></p>
+<p>디자인 조정은 <strong>페이지에만 임시로</strong> 적용됩니다. 새로고침하거나 다른 주소로 이동하면 원래대로 돌아가고 트레이에 기록한 디자인 변경도 지워집니다. 반드시 <strong>변경 요청 보내기</strong>로 AI에게 반영을 맡기세요. 바꾼 항목이 없으면 보낼 수 없습니다.</p>
+</div>
+<h3 id="93-브라우저-도구-막대">9.3 브라우저 도구 막대<a class="anchor" href="#93-브라우저-도구-막대" aria-label="Link">#</a></h3>
+<p>도구 아이콘으로 <strong>요소 선택</strong>, <strong>콘솔·네트워크 오류 수집</strong>, <strong>뷰포트</strong>(데스크톱·태블릿·모바일 화면 크기), <strong>쿠키 가져오기</strong>(로그인 상태 이전), <strong>새 창에서 열기</strong>를 씁니다. 주소창의 <strong>주소 후보</strong>에서 감지된 로컬 서버 주소를 고르고, 새로고침은 Shift+클릭하면 캐시를 무시합니다. 새 창으로 띄운 브라우저에는 요소를 넣을 대화가 없을 수 있습니다.</p>
+<h2 id="10-대화-관리">10. 대화 관리<a class="anchor" href="#10-대화-관리" aria-label="Link">#</a></h2>
+<p><strong>대화가 많아져도 길을 잃지 않도록, 훑어보고, 정리하고, 찾고, 이어갑니다.</strong></p>
+<h3 id="101-대화-요약과-메시지-이동-레일">10.1 대화 요약과 메시지 이동 레일<a class="anchor" href="#101-대화-요약과-메시지-이동-레일" aria-label="Link">#</a></h3>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: <strong>내 메시지가 2개 이상</strong>인 프로젝트 대화에서 보입니다. Chat에는 아직 없습니다. 레일에는 지금 불러온 메시지만 보이며, 이전 기록은 대화 위쪽 이전 대화 버튼으로 불러옵니다.</p>
+</div>
+<figure class="fig"><div class="imgs"><img src="../../assets/conversation-summary.png" alt="대화 요약 패널(핀 고정) — 산출물·변경 파일·미리보기 항목과 각 항목의 n번째 요청" loading="lazy" decoding="async"></div><figcaption>대화 요약 패널(핀 고정) — 산출물·변경 파일·미리보기 항목과 각 항목의 n번째 요청</figcaption></figure>
+<ol>
+<li>대화 오른쪽 끝(스크롤바 왼쪽)의 <strong>레일</strong>에서 점에 마우스를 올리면 요청 앞부분과 만든 작업물이 보입니다. 점을 누르면 그 메시지로 이동합니다(키보드: Tab → 위/아래 화살표 → Enter).</li>
+<li>레일 맨 위 <strong>대화 요약</strong> 버튼을 누르면 패널이 열려 이 대화의 <strong>계획 · PR · 커밋 · 변경 파일 · 미리보기 · 리뷰 · 곁질문 · 백그라운드 작업</strong>을 한눈에 봅니다.</li>
+<li>패널 항목을 누르면 해당 작업물이 나온 메시지로 이동하고, PR 옆 아이콘은 PR 화면을 엽니다.</li>
+<li><strong>대화 옆에 고정</strong>을 누르면 대화 옆 고정 열로 열립니다. 다른 대화로 가거나 앱을 다시 열면 닫혀 있으니 <strong>대화 요약</strong> 버튼으로 다시 엽니다.</li>
+</ol>
+<h3 id="102-열린-대화-탭">10.2 열린 대화 탭<a class="anchor" href="#102-열린-대화-탭" aria-label="Link">#</a></h3>
+<ul>
+<li><strong>+ 새 대화</strong>(⌘T)로 새 탭을 열고, 탭을 끌어 순서를 바꾸며 <strong>⌘W</strong>로 닫습니다. <strong>⌘⇧T</strong>는 닫은 탭 다시 열기, <strong>⌘⇧J</strong>는 질문·승인을 기다리는 대화로 바로 이동입니다(전체 단축키는 <a href="#19-%EB%8B%A8%EC%B6%95%ED%82%A4-%EB%AA%A8%EC%9D%8C">19장</a>).</li>
+<li>백그라운드 작업(빌드·테스트 감시, 자식 AI도구)이 도는 동안에는 응답이 끝나도 완료로 표시하지 않고 대화 탭에 <strong>백그라운드 작업 중</strong> 배지가 붙습니다.</li>
+</ul>
+<h3 id="103-고정">10.3 고정<a class="anchor" href="#103-고정" aria-label="Link">#</a></h3>
+<ol>
+<li>대화 줄에 마우스를 올리고 오른쪽 <strong>핀 버튼</strong>을 누릅니다. 목록 맨 위 <strong>고정된 대화</strong> 영역에 모입니다.</li>
+<li>고정된 대화를 끌어 순서를 바꾸면 <strong>⌘1~9</strong>(Windows는 Ctrl+1~9)로 첫 아홉 대화를 바로 엽니다.</li>
+<li>풀 때는 같은 핀 버튼을 다시 누릅니다. [로그인] 로그인 계정에서는 다른 PC·웹에서도 같은 고정 목록이 보입니다.</li>
+</ol>
+<h3 id="104-보관하기--지금-안-보이게-정리">10.4 보관하기 — 지금 안 보이게 정리<a class="anchor" href="#104-보관하기--지금-안-보이게-정리" aria-label="Link">#</a></h3>
+<figure class="fig" style="--w:440px"><div class="imgs"><img src="../../assets/sidebar-conversation-menu-crop.png" alt="사이드바 대화 ⋮ 메뉴 — 보관하기, 잠시 숨기기(1시간·4시간·내일 오전 9시·다음 주 월요일 오전 9시), 이름 변경, 대화 내용 복사, 대화 ID 복사, 대화 삭제" data-w="440" loading="lazy" decoding="async"></div><figcaption>사이드바 대화 ⋮ 메뉴 — 보관하기, 잠시 숨기기(1시간·4시간·내일 오전 9시·다음 주 월요일 오전 9시), 이름 변경, 대화 내용 복사, 대화 ID 복사, 대화 삭제</figcaption></figure>
+<ol>
+<li>프로젝트를 눌러 대화 목록을 펼치고, 대화에 마우스를 올려 <strong>점 세 개(⋮)</strong> 를 누릅니다.</li>
+<li><strong>보관하기</strong>를 누릅니다. <strong>확인 창 없이 바로</strong> 목록에서 사라지고 &quot;대화를 보관했어요&quot; 알림이 <strong>10초</strong> 동안 나옵니다.</li>
+<li>실수라면 알림의 <strong>되돌리기</strong> 또는 <strong>⌘Z</strong>(Windows는 Ctrl+Z)를 누릅니다. 알림의 <strong>보관함으로 이동</strong>은 <a href="#106-%EB%8C%80%ED%99%94-%EB%B3%B4%EA%B4%80%ED%95%A8%EA%B3%BC-%EC%9E%90%EB%8F%99-%EB%B3%B4%EA%B4%80">대화 보관함</a>을 엽니다.</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/archive-undo-toast.png" alt="보관 직후 알림 — 대화를 보관했어요, 되돌리기, 보관함으로 이동" loading="lazy" decoding="async"></div><figcaption>보관 직후 알림 — 대화를 보관했어요, 되돌리기, 보관함으로 이동</figcaption></figure>
+<p>같은 ⋮ 메뉴에는 <strong>이름 변경</strong>, [로그인] <strong>조직에 공유</strong>, <strong>대화 내용 복사</strong>, <strong>대화 ID 복사</strong>, <strong>대화 삭제</strong>(확인 후 되돌릴 수 없음)도 있습니다.</p>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p><strong>여러 대화를 한 번에</strong>: <strong>Shift</strong>를 누른 채 대화를 하나씩 클릭해 고르고, 선택된 대화의 ⋮ → <strong>선택한 N개 보관</strong> 또는 <strong>선택한 N개 삭제</strong>를 고릅니다. 작업트리가 연결된 대화가 있으면 확인 창에서 <strong>보관</strong> 또는 <strong>보관 &amp; 작업트리 삭제</strong>를 고릅니다. 단일 대화 보관은 작업트리를 지우지 않습니다.</p>
+</div>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>작업트리에 연결된 <strong>PR이 병합된</strong> 대화는 사이드바에서 마우스를 올리면 뜨는 창에 <strong>병합됨</strong>이 보이고 그 아래 <strong>보관하기</strong> 버튼으로 바로 보관할 수 있습니다. 대화로 *&quot;이 대화 보관해줘&quot;*라고 말해도 응답이 끝난 뒤 보관됩니다.</p>
+</div>
+<h3 id="105-잠시-숨기기">10.5 잠시 숨기기<a class="anchor" href="#105-잠시-숨기기" aria-label="Link">#</a></h3>
+<p>당장은 신경 쓰지 않아도 되는 대화를 정한 시각까지 목록에서 치워 둡니다. 시각이 되거나 AI가 승인·질문으로 답을 기다리면 원래 자리로 돌아옵니다.</p>
+<ol>
+<li>대화 줄의 <strong>⋮</strong> → <strong>잠시 숨기기</strong>를 누릅니다.</li>
+<li><strong>1시간 / 4시간 / 내일 오전 9시 / 다음 주 월요일 오전 9시</strong> 중에서 고릅니다.</li>
+<li>숨긴 대화는 프로젝트 목록 아래 <strong>숨긴 대화 N</strong>을 눌러 펼치면 남은 시간과 함께 보입니다. 행을 누르면 그대로 열고, <strong>눈 버튼(다시 보이기)</strong> 을 누르면 바로 원래 목록으로 돌아옵니다.</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>프로젝트 대화에서만 쓸 수 있습니다(Chat·여러 대화 동시 숨기기는 미지원). 숨긴 상태는 <strong>이 컴퓨터에만</strong> 저장됩니다. 숨기는 동안에는 비활동 자동 보관 기간을 세지 않습니다. 숨긴 직후 <strong>되돌리기</strong>나 ⌘Z로 취소할 수 있습니다.</p>
+</div>
+<h3 id="106-대화-보관함과-자동-보관">10.6 대화 보관함과 자동 보관<a class="anchor" href="#106-대화-보관함과-자동-보관" aria-label="Link">#</a></h3>
+<p>보관한 대화는 사라지지 않고 <strong>내 설정 → 일반 → 대화 보관함</strong>에서 찾습니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/settings-archive.png" alt="내 설정 → 대화 보관함 — 자동 보관 스위치 2개, 보관한 대화 검색, 보관한 대화 줄의 복원 버튼" loading="lazy" decoding="async"></div><figcaption>내 설정 → 대화 보관함 — 자동 보관 스위치 2개, 보관한 대화 검색, 보관한 대화 줄의 복원 버튼</figcaption></figure>
+<ol>
+<li>맨 위에서 <strong>자동 보관</strong> 규칙을 확인하고, <strong>보관한 대화 검색</strong>으로 보관한 대화를 찾습니다. </li>
+<li>대화 줄 오른쪽의 <strong>복원</strong>을 누릅니다(Project 대화는 확인 창에서 한 번 더). 기존 제목과 기록이 유지된 채 열리고 AI는 자동으로 실행되지 않습니다.</li>
+</ol>
+<p><strong>자동 보관</strong>은 대화 보관함 맨 위에서 켭니다(기본은 꺼짐).</p>
+<ul>
+<li><strong>PR이 머지되거나 닫히면 자동 보관</strong></li>
+<li><strong>활동이 없으면 자동 보관</strong> + <strong>활동 없는 기간</strong>(1~90일, 기본 14일)</li>
+</ul>
+<p>응답 중·입력 대기·방금 활동한(10분 이내)·화면에 열린·고정된 대화는 보관이 미뤄지고, 사이드바 줄의 보관 아이콘이 이유를 알려 줍니다. 한 번에 최대 3개씩 보관하며 작업트리는 지우지 않습니다.</p>
+<h3 id="107-대화-이어가기와-갈래">10.7 대화 이어가기와 갈래<a class="anchor" href="#107-대화-이어가기와-갈래" aria-label="Link">#</a></h3>
+<p>프로젝트 도구(⋮) → <strong>대화 이어가기</strong>(엇갈린 화살표 아이콘)에서 지금 대화를 그대로 둔 채 새 대화를 시작합니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>메뉴</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>다른 AI도구로 이어가기</strong></td>
+<td>다른 AI(예: Claude → Codex)로 이어 갑니다. 모델·작업 강도도 고릅니다.</td>
+</tr>
+<tr>
+<td><strong>같은 AI로 갈래 만들기</strong></td>
+<td>같은 AI로 지금까지의 기록을 복제한 <strong>갈래 대화</strong>를 만들어 다른 방향을 시도합니다. 전체 또는 <em>특정 메시지까지</em>를 고르고 <strong>갈래 만들기</strong>를 누르면 새 탭이 열리고 헤더에 <strong>갈래 원본</strong> 링크가 생깁니다. 갈래는 원래 대화와 <strong>같은 작업 폴더</strong>를 공유합니다.</td>
+</tr>
+<tr>
+<td><strong>터미널에서 이어가기</strong></td>
+<td>이 컴퓨터의 Claude·Codex 대화를 터미널에서 이어 갈 명령을 복사합니다.</td>
+</tr>
+<tr>
+<td><strong>이 대화를 작업트리로 옮기기</strong> / <strong>이 대화를 본 폴더로 되돌리기</strong></td>
+<td>진행 중인 대화를 지금 변경사항과 함께 새 작업트리로 옮기거나 되돌립니다. 작업PC의 Saycode 실행기가 최신일 때만 선택할 수 있고, 회색이면 메뉴에 사유가 표시됩니다 (<a href="#116-%EC%9E%91%EC%97%85%ED%8A%B8%EB%A6%AC-%EC%95%88%EC%A0%84%EB%A7%9D">11.6</a>).</td>
+</tr>
+</tbody></table></div>
+<figure class="fig"><div class="imgs"><img src="../../assets/conversation-continue-menu.png" alt="프로젝트 도구 → 대화 이어가기 메뉴 — 다른 AI도구로 이어가기, 같은 AI로 갈래 만들기, 터미널에서 이어가기, 이 대화를 본 폴더로 되돌리기(비활성)" loading="lazy" decoding="async"></div><figcaption>프로젝트 도구 → 대화 이어가기 메뉴 — 다른 AI도구로 이어가기, 같은 AI로 갈래 만들기, 터미널에서 이어가기, 이 대화를 본 폴더로 되돌리기(비활성)</figcaption></figure>
+<p>그 밖에:</p>
+<ul>
+<li>[로그인] 내 메시지에 마우스를 올려 <strong>여기서 다시 쓰기</strong>(연필)를 누르면, 그 메시지 직전까지의 대화로 새 대화가 열리고 입력창에 원래 메시지가 채워집니다(Claude 대화). 원래 대화는 그대로 남습니다.</li>
+<li>입력창에서 <code>@</code>로 같은 프로젝트의 다른 대화를 칩으로 붙여 AI가 읽게 할 수 있습니다(<a href="#64-%EC%9E%85%EB%A0%A5%EC%B0%BD-%EB%A9%94%EB%89%B4%EC%99%80-%ED%8A%B9%EC%88%98-%EC%9E%85%EB%A0%A5">6.4</a>).</li>
+<li>프로젝트 도구 → <strong>앱 밖에서 시작한 대화 이어가기</strong>로 터미널 등 앱 밖에서 시작한 AI 대화를 가져옵니다.</li>
+</ul>
+<h3 id="108-찾기--대화-검색과-빠른-열기">10.8 찾기 — 대화 검색과 빠른 열기<a class="anchor" href="#108-찾기--대화-검색과-빠른-열기" aria-label="Link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>방법</th>
+<th>단축키</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>대화 내 검색</strong></td>
+<td>⌘F</td>
+<td>열린 대화 안에서 단어를 찾아 이동. <strong>전체 대화에서 검색</strong>으로 넘길 수 있습니다.</td>
+</tr>
+<tr>
+<td><strong>대화 검색</strong></td>
+<td>⌘⇧F</td>
+<td>모든 대화의 제목·내 요청·AI 응답에서 단어를 찾습니다. [로그인] <strong>시맨틱</strong> 탭은 뜻으로 지금 프로젝트의 기억을 찾습니다.</td>
+</tr>
+<tr>
+<td><strong>빠른 열기</strong></td>
+<td>⌘P</td>
+<td>프로젝트·대화·파일 이름을 입력해 바로 엽니다. <strong>&gt;</strong> 를 맨 앞에 입력하면 새 대화·응답 중단·터미널 열기·패널 분할·설정 열기·대화 고정/보관·작업보드 같은 <strong>명령</strong>만 보입니다(⌘⇧P로 바로 열림).</td>
+</tr>
+<tr>
+<td><strong>사이드바 검색</strong></td>
+<td>⌘K</td>
+<td>프로젝트 목록을 이름으로 거릅니다.</td>
+</tr>
+</tbody></table></div>
+<img src="../../assets/quick-open-commands.png" alt="" loading="lazy" decoding="async"> 를 입력해 연 명령 목록 — 새 대화, 터미널 열기, 대화 검색, 작업보드, 화면 분할 등" /><div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>대화 검색을 쓰려면 <strong>내 설정 → 일반 → 대화 검색 → 대화 검색 사용</strong>이 켜져 있어야 합니다. <strong>검색 인덱스 삭제</strong>로 저장된 검색 데이터를 지울 수 있습니다.</p>
+</div>
+<h2 id="11-작업-마무리">11. 작업 마무리<a class="anchor" href="#11-작업-마무리" aria-label="Link">#</a></h2>
+<p><strong>AI가 만든 변경을 점검하고, PR을 올리고, 대화를 정리하는 마지막 단계입니다.</strong> 입력창 위 줄의 <strong>작업 마무리</strong> 메뉴 하나에서 모두 시작합니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 이미 시작한 프로젝트 대화에서만 보입니다(입력창 위 줄을 접어 두었거나 AI 질문 화면이 떠 있으면 숨겨집니다). <strong>PR 올리기</strong>는 <strong>작업트리에서 연 대화</strong>여야 하고 원격 저장소가 필요합니다(없으면 <strong>변경기록 남기기</strong>로 바뀝니다).</p>
+</div>
+<h3 id="111-작업-마무리-메뉴">11.1 작업 마무리 메뉴<a class="anchor" href="#111-작업-마무리-메뉴" aria-label="Link">#</a></h3>
+<figure class="fig"><div class="imgs"><img src="../../assets/work-finish-menu.png" alt="작업 마무리 메뉴(원격 저장소가 없는 프로젝트) — 작업 리뷰하기, 변경기록 남기기, 보관&완료, 독립 리뷰 요청…, 고급 설정…" loading="lazy" decoding="async"></div><figcaption>작업 마무리 메뉴(원격 저장소가 없는 프로젝트) — 작업 리뷰하기, 변경기록 남기기, 보관&완료, 독립 리뷰 요청…, 고급 설정…</figcaption></figure>
+<ol>
+<li>프로젝트 대화를 엽니다.</li>
+<li>입력창 위 줄 <strong>오른쪽 끝</strong>의 로봇 아이콘 <strong>작업 마무리</strong> 버튼을 누릅니다.</li>
+<li>메뉴에서 원하는 항목을 고릅니다.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>메뉴</th>
+<th>한 줄 설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>작업 리뷰하기</strong></td>
+<td>지금 일하는 AI가 변경을 점검하고 문제를 직접 고칩니다.</td>
+</tr>
+<tr>
+<td><strong>독립 리뷰 요청…</strong></td>
+<td>다른 AI가 읽기 전용으로 검토하고 결과만 전달합니다.</td>
+</tr>
+<tr>
+<td><strong>PR 올리기</strong></td>
+<td>리뷰·테스트·커밋·push·PR 생성에 CI와 리뷰 봇 처리, 머지까지 맡깁니다. 원격 저장소가 있을 때 보입니다.</td>
+</tr>
+<tr>
+<td><strong>변경기록 남기기</strong></td>
+<td>원격 저장소가 없을 때 <strong>PR 올리기</strong> 대신 보입니다. 변경을 로컬 변경기록(커밋)으로 남깁니다.</td>
+</tr>
+<tr>
+<td><strong>보관&amp;완료</strong></td>
+<td>대화를 보관하고 마무리합니다.</td>
+</tr>
+<tr>
+<td><strong>고급 설정…</strong></td>
+<td>반복 횟수, 독립 리뷰어, 완료 전 확인을 정합니다.</td>
+</tr>
+</tbody></table></div>
+<p>AI가 응답 중이면 <strong>작업 리뷰하기 · PR 올리기</strong>를 누를 때 항목 아래 &quot;지금 작업이 끝나면 이어서 실행해요&quot;가 보이고, 누르면 입력창 위 <strong>대기열</strong>에 들어가 끝난 뒤 차례로 실행됩니다(끌어서 순서 변경·삭제).</p>
+<h3 id="112-작업-리뷰하기">11.2 작업 리뷰하기<a class="anchor" href="#112-작업-리뷰하기" aria-label="Link">#</a></h3>
+<ol>
+<li><strong>작업 마무리</strong> → <strong>작업 리뷰하기</strong>를 누릅니다.</li>
+<li>같은 AI가 변경을 점검하고 문제를 직접 고칩니다. <strong>medium 이상</strong> 지적이 나오면 정해 둔 <strong>반복 횟수</strong>만큼 리뷰를 이어 가고, 없으면 첫 회에서 끝납니다.</li>
+<li>도중에 멈추려면 <strong>작업 리뷰 중지</strong>를 누릅니다. 조회가 실패하면 <strong>작업 리뷰 상태 다시 확인</strong>, 종료 후 새로 시작하려면 <strong>작업 리뷰 다시 시작</strong>을 누릅니다.</li>
+</ol>
+<p>반복 횟수는 <strong>작업 마무리 → 고급 설정…</strong>의 <strong>작업 리뷰 반복 횟수</strong>에서 바꿉니다(기본 7).</p>
+<h3 id="113-독립-리뷰-요청">11.3 독립 리뷰 요청<a class="anchor" href="#113-독립-리뷰-요청" aria-label="Link">#</a></h3>
+<p>코드를 쓴 AI와 <strong>다른 AI</strong>에게 새 눈으로 검토시키고 싶을 때 씁니다. 리뷰어는 현재 대화와 분리된 새 대화에서 <strong>읽기 전용</strong>(파일 편집·commit·push 금지)으로 일합니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/independent-review-modal.png" alt="독립 리뷰 요청 창 — AI도구·모델·작업 강도·리뷰 초점 선택과 독립 리뷰 요청·리뷰 기록 탭" loading="lazy" decoding="async"></div><figcaption>독립 리뷰 요청 창 — AI도구·모델·작업 강도·리뷰 초점 선택과 독립 리뷰 요청·리뷰 기록 탭</figcaption></figure>
+<ol>
+<li><strong>작업 마무리</strong> → <strong>독립 리뷰 요청…</strong>을 누릅니다.</li>
+<li><strong>AI도구 · 모델 · 작업 강도 · 리뷰 초점</strong>을 고릅니다. 코드를 쓴 모델과 다른 리뷰어가 먼저 제안됩니다.</li>
+<li><strong>독립 리뷰 요청</strong> 버튼을 누릅니다. 성공하면 <strong>리뷰 기록</strong> 탭으로 이동합니다.</li>
+<li><strong>리뷰 기록</strong>에서 진행 상태와 결과를 보고 <strong>재시도 / 결과 전달 / 정리</strong>를 합니다.</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>읽기 전용 제한은 Claude 리뷰어에만 적용됩니다. 작업보드에서 이런 카드에는 <strong>읽기 전용</strong> 배지가 붙습니다.</p>
+</div>
+<h3 id="114-pr-올리기">11.4 PR 올리기<a class="anchor" href="#114-pr-올리기" aria-label="Link">#</a></h3>
+<ol>
+<li><strong>작업 마무리</strong> → <strong>PR 올리기</strong>를 누릅니다. 확인 창 없이 곧바로 요청됩니다.</li>
+<li>AI가 PR을 만든 뒤 <strong>CI 실패, 리뷰 봇 지적, 스택 PR, 충돌</strong>을 처리하고, 모두 통과하면 <strong>base 브랜치에 머지까지</strong> 합니다.</li>
+<li>봇 판정이 없거나 필수 승인 리뷰가 남는 등 조건이 남으면 <strong>머지하지 않고</strong> 남은 상태를 보고합니다.</li>
+<li>진행 상황은 입력창 위 <strong>PR 번호 칩</strong>(열림·병합됨·닫힘, CI 배지)과 <a href="#86-pr-%EB%B3%B4%EA%B8%B0">PR 보기</a>에서 확인합니다.</li>
+</ol>
+<div class="callout callout-important"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M12 8v3M12 13.5h.01"/></svg><span>중요</span></p>
+<p>원격 저장소가 연결되지 않은 프로젝트에서는 PR을 만들 수 없어 <strong>변경기록 남기기</strong>(로컬 커밋)까지만 요청합니다. [로그인] GitHub 연결과 작업PC의 <code>gh</code> 로그인이 필요한 부분이 있습니다.</p>
+</div>
+<h3 id="115-보관완료">11.5 보관&amp;완료<a class="anchor" href="#115-보관완료" aria-label="Link">#</a></h3>
+<ol>
+<li><strong>작업 마무리</strong> → <strong>보관&amp;완료</strong>를 누릅니다.</li>
+<li>대화가 보관되고 &quot;되돌리기&quot;가 나옵니다. 작업트리는 지우지 않습니다.</li>
+<li><strong>고급 설정…</strong>의 <strong>보관&amp;완료 전에 확인</strong>을 켜면 보관 전에 확인 창이 뜹니다.</li>
+</ol>
+<p>작업트리까지 정리하고 싶다면 사이드바에서 여러 대화를 골라 <strong>보관 &amp; 작업트리 삭제</strong>를 쓰거나 <a href="#116-%EC%9E%91%EC%97%85%ED%8A%B8%EB%A6%AC-%EC%95%88%EC%A0%84%EB%A7%9D">작업트리 목록</a>에서 삭제하세요.</p>
+<h3 id="116-작업트리-안전망">11.6 작업트리 안전망<a class="anchor" href="#116-작업트리-안전망" aria-label="Link">#</a></h3>
+<p><strong>작업트리</strong>는 대화마다 만들어지는 복사본 작업 폴더라서, 여러 대화를 동시에 돌려도 서로 부딪히지 않습니다. Saycode는 작업트리를 지워도 작업이 사라지지 않도록 안전장치를 둡니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/worktree-snapshots.png" alt="스냅샷 보관함 — 보관된 스냅샷이 없을 때의 빈 상태와 30일·50개 보관 안내" loading="lazy" decoding="async"></div><figcaption>스냅샷 보관함 — 보관된 스냅샷이 없을 때의 빈 상태와 30일·50개 보관 안내</figcaption></figure>
+<ul>
+<li><strong>새 작업트리는 원격 최신 기본 브랜치</strong>(<code>origin/main</code> 등)에서 시작합니다. 원격을 받지 못하면 이유와 함께 로컬 브랜치 기준으로 시작할지 묻습니다.</li>
+<li>삭제 전에는 이 작업트리에만 있는 <strong>로컬 전용 파일</strong>(<code>.env</code> 등)의 수와 폴더를 알려 줍니다.</li>
+<li>지우기 전에 <strong>스냅샷</strong>을 남깁니다(커밋하지 않은 변경·새 파일 포함, 무시 규칙에 걸린 파일은 제외).</li>
+</ul>
+<p><strong>작업트리 목록 열기</strong></p>
+<ol>
+<li>프로젝트 대화에서 <strong>프로젝트 도구(⋮)</strong> → <strong>Git 작업</strong>을 엽니다.</li>
+<li><strong>작업트리…</strong>를 누릅니다.</li>
+<li>위쪽에 <strong>새로고침 / 오래된 작업트리 일괄 정리 / 스냅샷 보관함</strong> 버튼이 있고, 작업트리 줄마다 경로 복사·가져오기·보내기·에디터 아이콘, <strong>이 작업트리에서 새 대화</strong>, 삭제(휴지통)가 있습니다. 지금 열린 대화가 쓰는 작업트리는 &quot;대화를 정리한 뒤 삭제할 수 있습니다&quot;라고 안내되며 삭제할 수 없습니다.</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/git-actions-dialog.png" alt="Git 작업 창 — 가져오기(pull)·보내기(push)·로컬 main 반영·브랜치 전환·작업트리…, Push & PR·머지·삭제, 변경기록 메시지" loading="lazy" decoding="async"></div><figcaption>Git 작업 창 — 가져오기(pull)·보내기(push)·로컬 main 반영·브랜치 전환·작업트리…, Push & PR·머지·삭제, 변경기록 메시지</figcaption></figure>
+<figure class="fig"><div class="imgs"><img src="../../assets/worktree-manager.png" alt="작업트리 관리 창 — 새로고침, 오래된 작업트리 일괄 정리, 스냅샷 보관함 버튼과 작업트리 항목" loading="lazy" decoding="async"></div><figcaption>작업트리 관리 창 — 새로고침, 오래된 작업트리 일괄 정리, 스냅샷 보관함 버튼과 작업트리 항목</figcaption></figure>
+<p><strong>지운 작업트리 되살리기</strong></p>
+<ol>
+<li>작업트리 창에서 <strong>스냅샷 보관함</strong>을 엽니다.</li>
+<li>되살릴 줄의 <strong>복원</strong>을 누릅니다. 원래 경로에 작업트리가 다시 생기고 커밋하지 않은 변경까지 돌아옵니다.</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>스냅샷은 만들 때 30일이 지난 것을 지우고 50개를 넘으면 오래된 것부터 지웁니다. Windows 작업PC에서는 아직 스냅샷을 만들지 않습니다. 앱 밖에서 만든 작업트리는 <strong>변경 가져오기</strong>(충돌 미리보기)로 가져옵니다.</p>
+</div>
+<h3 id="117-파일-복원지점과-변경기록">11.7 파일 복원지점과 변경기록<a class="anchor" href="#117-파일-복원지점과-변경기록" aria-label="Link">#</a></h3>
+<p><strong>파일 복원지점</strong> — Git이 없는 폴더나 작업트리를 쓰지 않는 대화에서도 AI가 바꾼 파일을 되돌릴 수 있습니다.</p>
+<ol>
+<li>새 대화에서 <strong>⋯</strong>(대화 추가 옵션) → <strong>파일 복원지점</strong>을 켭니다(macOS·Linux 작업PC).</li>
+<li>대화 중 입력창 위 오른쪽의 <strong>파일 복원지점</strong>을 눌러 펼칩니다.</li>
+<li>되돌릴 시점의 <strong>미리보기</strong>를 눌러 파일별 비교를 보고, <strong>이 미리보기의 파일 변경을 확인했습니다</strong>에 체크한 뒤 <strong>파일 상태 복원</strong>을 누릅니다.</li>
+</ol>
+<p><strong>변경기록 남기기</strong> — 작업 마무리 메뉴의 <strong>변경기록 남기기</strong>, 또는 입력창 위 브랜치 이름 버튼 → 담은 파일이 없으면 <strong>모든 변경을 변경기록에 담기</strong> → <strong>변경기록 메시지</strong> 입력 → <strong>변경기록 남기기</strong>를 누릅니다. 설정(<strong>개발 자동화</strong>)에서 AI 생성을 켜면 메시지를 AI가 써 주는 버튼이 나타납니다(자동으로 커밋하지는 않습니다).</p>
+<h2 id="12-작업보드">12. 작업보드<a class="anchor" href="#12-작업보드" aria-label="Link">#</a></h2>
+<p><strong>모든 프로젝트의 모든 대화를 칸반으로 펼쳐 놓고 여러 AI를 한 번에 지휘합니다.</strong> 대화가 여러 개 동시에 돌 때 &quot;지금 내 답을 기다리는 것&quot;부터 찾기에 좋습니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 개발자용 메뉴라 처음에는 <strong>숨겨져</strong> 있습니다. 프로필 메뉴 → <strong>개발자 기능 설정</strong> → <strong>작업보드 메뉴 보이기</strong>를 켜면 사이드바에 <strong>작업보드</strong>가 나타납니다(단축키 <strong>⌘⇧A</strong>는 켜지 않아도 동작). 가로 폭이 넓을수록(1720px 이상) 여섯 칸이 한 화면에 들어옵니다. 조직 정책이 오토파일럿을 끄면 &quot;오토파일럿 사용 불가 · 조직 정책&quot;이 보입니다.</p>
+</div>
+<figure class="fig"><div class="imgs"><img src="../../assets/agent-board.png" alt="작업보드 — 입력 대기·응답 중·대기·리뷰 중·완료·PR 병합됨 여섯 칸, 카드(프로젝트·제목·AI·오토파일럿·변경 검증), 검색창과 필터 버튼" loading="lazy" decoding="async"></div><figcaption>작업보드 — 입력 대기·응답 중·대기·리뷰 중·완료·PR 병합됨 여섯 칸, 카드(프로젝트·제목·AI·오토파일럿·변경 검증), 검색창과 필터 버튼</figcaption></figure>
+<h3 id="121-칸의-의미">12.1 칸의 의미<a class="anchor" href="#121-칸의-의미" aria-label="Link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>칸</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>입력 대기</strong></td>
+<td>질문·권한·계획 승인 응답이 필요한 대화 — 가장 먼저 볼 곳</td>
+</tr>
+<tr>
+<td><strong>응답 중</strong></td>
+<td>지금 일하는 중. 카드를 여기에 놓으면 지시를 보냅니다</td>
+</tr>
+<tr>
+<td><strong>대기</strong></td>
+<td>다음 지시를 기다리는 중</td>
+</tr>
+<tr>
+<td><strong>리뷰 중</strong></td>
+<td>카드를 놓으면 리뷰를 요청합니다(모델과 프롬프트가 채워진 확인 창이 열림)</td>
+</tr>
+<tr>
+<td><strong>완료</strong></td>
+<td>카드를 놓으면 대화를 완료로 옮깁니다</td>
+</tr>
+<tr>
+<td><strong>PR 병합됨</strong></td>
+<td>PR이 머지되어 끝난 대화</td>
+</tr>
+</tbody></table></div>
+<p>카드에는 프로젝트·제목·AI·경과 시간·브랜치(작업트리) 이름이 보입니다. 카드 제목을 누르면 마지막 요청과 최신 응답을 미리 보고 <strong>대화로 이동</strong>할 수 있고, 오른쪽 위 검색창으로 제목·프롬프트를 거릅니다. 카드를 <strong>리뷰 중</strong> 칸으로 끌어 놓으면 <strong>리뷰 요청 보내기</strong> 창(모델·기본 문구)이 열립니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/agent-board.gif" alt="작업보드에서 카드를 리뷰 중 칸으로 끌어 놓으면 리뷰 요청 보내기 창이 열리는 과정(취소로 닫음)" loading="lazy" decoding="async"></div><figcaption>작업보드에서 카드를 리뷰 중 칸으로 끌어 놓으면 리뷰 요청 보내기 창이 열리는 과정(취소로 닫음)</figcaption></figure>
+<h3 id="122-필터와-선행-작업">12.2 필터와 선행 작업<a class="anchor" href="#122-필터와-선행-작업" aria-label="Link">#</a></h3>
+<ol>
+<li><strong>필터</strong>를 눌러 <strong>작업PC</strong>, <strong>자동화로 만든 대화 숨기기</strong>, <strong>PR 상태</strong>(PR 없음·PR 열림·PR 머지됨)를 고릅니다. 버튼이 <strong>필터 N개 적용</strong>으로 바뀌고, 옆 X로 모두 풉니다.</li>
+<li><strong>선행 작업</strong>: 뒤에 할 카드를 눌러 상세를 열고 <strong>선행 작업 추가</strong> → 먼저 끝나야 하는 카드를 고르고 <strong>추가</strong>합니다. 선행이 끝나기 전에 시작하려 하면 막힌 카드 이름을 알려 주고, 오토파일럿 카드는 선행이 끝나는 대로 지시를 자동 전송합니다. 카드에는 <code>선행 1/2</code> 배지가 붙습니다.</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/agent-board-filter.png" alt="작업보드 필터 팝오버 — 작업PC, 자동화로 만든 대화 숨기기, PR 상태 선택과 필터 1개 적용 표시" loading="lazy" decoding="async"></div><figcaption>작업보드 필터 팝오버 — 작업PC, 자동화로 만든 대화 숨기기, PR 상태 선택과 필터 1개 적용 표시</figcaption></figure>
+<h3 id="123-카드의-도구">12.3 카드의 도구<a class="anchor" href="#123-카드의-도구" aria-label="Link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>버튼</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Commit &amp; PR</strong> (종이비행기)</td>
+<td>작업트리 카드에서 PR 작성을 요청합니다(작업 마무리의 <strong>PR 올리기</strong>와 같은 동작).</td>
+</tr>
+<tr>
+<td><strong>오토파일럿</strong></td>
+<td>AI 작업이 끝나면 리뷰하고, medium 이상 지적이 없고 요구사항마다 증거(테스트 결과·파일·커밋)가 있으면 Commit &amp; PR까지 자동 진행합니다. 같은 장애가 3번 반복되면 멈추고 답을 기다립니다. 옆 화살표의 <strong>독립 리뷰로 실행</strong>도 선택할 수 있습니다. <strong>작업트리 카드에서만</strong> 쓸 수 있으며 응답을 중단하면 꺼집니다.</td>
+</tr>
+<tr>
+<td><strong>PR 지킴이</strong></td>
+<td>PR이 열린 카드에서 CI 실패·리뷰 봇 수정·충돌을 대신 지시하고 머지 가능해지면 알립니다(머지는 하지 않음). [로그인] <code>gh</code> 로그인 필요</td>
+</tr>
+<tr>
+<td><strong>변경 검증</strong></td>
+<td>그 대화의 작업트리(없으면 프로젝트 폴더)에서 빌드·테스트·구동 레시피를 실행합니다. <code>package.json</code> 스크립트·Makefile·<code>.aplus/verify.json</code> 중 하나가 있어야 합니다.</td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>맨 위에 <strong>&quot;대화 N개가 같은 권한을 기다려요&quot;</strong> 카드가 보이면 <strong>전부 허용 (N)</strong> 또는 <strong>전부 거절</strong>로 한 번에 처리할 수 있습니다(<a href="#142-%EC%8A%B9%EC%9D%B8-%EC%B9%B4%EB%93%9C-%EB%8B%A4%EB%A3%A8%EA%B8%B0">14.2</a>).</p>
+</div>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>보관&amp;완료</strong>한 대화는 <strong>완료</strong> 칸에 카드로 남고, 카드의 <strong>완료 해제</strong>로 다시 이어 갈 수 있습니다(설정의 대화 보관함에서 <strong>복원</strong>해도 됩니다). PR이 병합된 대화는 <strong>PR 병합됨</strong> 칸으로 옮겨집니다. 개인 사용(로컬)에서도 보드·필터·선행 작업을 쓸 수 있으며, <strong>PR 지킴이</strong>는 GitHub 연결이 필요합니다.</p>
+</div>
+<h2 id="13-예약">13. 예약<a class="anchor" href="#13-예약" aria-label="Link">#</a></h2>
+<p><strong>정해진 시간마다 AI에게 일을 맡깁니다.</strong> 예: &quot;매일 오전 9시에 어제 PR을 요약해서 알려줘&quot;.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 사이드바 <strong>예약</strong> 메뉴는 모든 사용자에게 보이지만, [로그인] <strong>예약을 만들고 관리하려면 클라우드 계정으로 로그인</strong>해야 합니다. 예약 시각에는 <strong>실행 PC가 켜져 있고 AI가 연결</strong>되어 있어야 하며, 서버·CLI가 지원하는 버전이어야 합니다. 조직이 예약을 끄면 예약 화면에 &quot;조직 정책으로 예약을 쓸 수 없어요&quot;가 표시됩니다.</p>
+</div>
+<p>개인 사용에서는 예약 화면에 &quot;클라우드 계정으로 로그인하면 Chat 예약을 관리할 수 있습니다.&quot; 안내만 나옵니다. 아래 설명은 로그인한 계정 기준입니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/schedule-guest-empty.png" alt="개인 사용에서의 예약 화면 — 클라우드 계정으로 로그인하면 Chat 예약을 관리할 수 있다는 안내" loading="lazy" decoding="async"></div><figcaption>개인 사용에서의 예약 화면 — 클라우드 계정으로 로그인하면 Chat 예약을 관리할 수 있다는 안내</figcaption></figure>
+<h3 id="131-새-예약-만들기">13.1 새 예약 만들기<a class="anchor" href="#131-새-예약-만들기" aria-label="Link">#</a></h3>
+<ol>
+<li>사이드바 <strong>예약</strong>을 누르고 <strong>새 예약</strong>을 누릅니다. 예약이 하나도 없으면 예시 버튼으로 시작할 수도 있습니다.</li>
+<li><strong>할 일</strong>에 AI가 할 일을 적습니다.</li>
+<li><strong>반복</strong>을 고릅니다.<ul>
+<li><strong>매일</strong> — 정해진 시각에 실행합니다.</li>
+<li><strong>매주</strong> — 요일 버튼을 하나 이상 고르고 시각을 정합니다.</li>
+<li><strong>한 번</strong> — 날짜와 시각을 정합니다(지난 시각은 저장 불가).</li>
+<li>시간 간격 방식은 <strong>예약하고 시작</strong>을 눌러 첫 실행을 요청하고 같은 간격으로 반복합니다(15분 이상).</li>
+</ul>
+</li>
+<li>시각 옆에 표시된 <strong>시간대</strong>를 확인합니다. 예: <code>매일 09:00 · 대한민국 시간</code>과 그 아래 <code>내 시간(대한민국 시간)으로 다음 실행: …</code>. 시간대는 <strong>고급 → 시간대</strong>에서 바꿉니다.</li>
+<li><strong>예약하기</strong>를 누릅니다.</li>
+</ol>
+<h3 id="132-고급-설정">13.2 고급 설정<a class="anchor" href="#132-고급-설정" aria-label="Link">#</a></h3>
+<p><strong>고급</strong>을 펼치면 다음을 바꿀 수 있습니다.</p>
+<ul>
+<li><strong>이름</strong>, 연결할 <strong>대화</strong>, 실행할 <strong>PC</strong>, 사용할 <strong>AI</strong> (새 Chat은 마지막으로 선택한 AI·모델을 사용)</li>
+<li><strong>결과 보내기</strong> — 예약이 끝나면 답변 앞부분(최대 1,500자)을 페어링한 <strong>Telegram·Slack</strong> 개인 대화로 보냅니다.</li>
+<li><strong>실패 알림</strong> — 실패 이유 한 줄을 같은 곳 또는 다른 대화로 받습니다. 둘 다 처음에는 <em>보내지 않음</em>입니다.</li>
+<li><strong>코드 작업 추가</strong> — Node.js 스크립트를 예약으로 실행합니다.</li>
+</ul>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>메신저 전달은 [로그인] 메신저 채널이 연결된 계정에서 가능하고(<a href="#163-%EB%A9%94%EC%8B%A0%EC%A0%80-%EC%B1%84%EB%84%90">16.3</a>) Discord는 아직 선택할 수 없습니다. 같은 이유로 계속 실패하면 하루에 한 번만 알립니다.</p>
+</div>
+<h3 id="133-예약-확인과-관리">13.3 예약 확인과 관리<a class="anchor" href="#133-예약-확인과-관리" aria-label="Link">#</a></h3>
+<ul>
+<li>예약 결과는 <strong>일반 대화로 쌓이고</strong> 알림 카드에 요약됩니다. 승인 대기가 만료되면 만료 표시가 붙습니다.</li>
+<li>대화 상단의 요청·일정 버튼, 또는 대화 ⋮ → <strong>예약 작업</strong>에서 <strong>예약 내용</strong>(요청 전문·주기·상태·PC)을 봅니다. 예약 행의 <strong>더보기</strong>에서 <strong>실행 이력 · 편집 · 일시정지 · 삭제</strong>를 고릅니다.</li>
+<li>시각이 지난 <strong>한 번</strong> 예약은 <strong>다시 켜기</strong>로 새 시각에 다시 실행합니다. PC가 꺼져 있어 놓친 한 번 예약은 나중에 실행되지 않습니다.</li>
+<li>말로도 관리됩니다. Chat에서 <em>&quot;15분마다 접속 상태를 확인해줘&quot;</em>, <em>&quot;이 예약 그만해&quot;</em>, *&quot;이 예약 다시 시작해&quot;*라고 말하세요(간격은 최소 15분).</li>
+</ul>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>모든 예약을 한꺼번에 잠시 멈추려면 <strong>내 설정 → 일반 → 보안 → 자동 작업 일시정지</strong>를 켜세요(<a href="#146-%EC%9E%90%EB%8F%99-%EC%9E%91%EC%97%85-%EC%9D%BC%EC%8B%9C%EC%A0%95%EC%A7%80%EC%99%80-%EC%A1%B0%EC%A7%81-%EC%A0%95%EC%B1%85">14.6</a>).</p>
+</div>
+<h2 id="14-권한승인보안">14. 권한·승인·보안<a class="anchor" href="#14-권한승인보안" aria-label="Link">#</a></h2>
+<p><strong>AI가 컴퓨터에서 위험한 일을 하기 전에 내가 허락하고, 필요하면 규칙으로 미리 정해 둘 수 있습니다.</strong> 이 장은 승인 카드부터 보안 설정까지 순서대로 설명합니다.</p>
+<h3 id="141-데이터는-어디에-저장되나요">14.1 데이터는 어디에 저장되나요?<a class="anchor" href="#141-데이터는-어디에-저장되나요" aria-label="Link">#</a></h3>
+<p><strong>개인 사용</strong>에서는 대화·프로젝트·결과물이 모두 <strong>이 PC에만</strong> 저장되고(AI 응답은 연결한 AI 서비스와 주고받습니다), <strong>로그인</strong>하면 계정(조직)에 저장되며 신뢰 기기에서만 암호화 데이터를 열 수 있습니다. 앱 안 브라우저의 로그인·쿠키는 로그아웃하거나 계정·조직을 바꾸면 지워집니다.</p>
+<h3 id="142-승인-카드-다루기">14.2 승인 카드 다루기<a class="anchor" href="#142-승인-카드-다루기" aria-label="Link">#</a></h3>
+<p>AI가 명령 실행·파일 쓰기·네트워크·MCP 도구를 쓰려 할 때 대화에 <strong>승인 카드</strong>가 나타납니다.</p>
+<ol>
+<li>카드의 내용을 확인하고 <strong>허용</strong> 또는 <strong>거절</strong>을 누릅니다. 카드에 <strong>이 대화에서 허용</strong>이 있으면 그 대화에서만 허용됩니다. 단축키는 <strong>Enter(허용)</strong> / <strong>Esc(거절)</strong> 입니다. (<strong>내 설정 → 일반 → 단축키 → 권한 요청에 Enter·Esc로 응답</strong> 스위치로 끌 수 있습니다.)</li>
+<li>삭제·관리자 권한·원격 코드 실행·강제 push·비밀번호 파일 접근처럼 위험할 수 있으면 카드에 <strong>주의가 필요한 작업</strong>과 이유가 붙습니다. 이런 카드는 Enter로 바로 허용되지 않고 허용 버튼이 <strong>위험할 수 있어요 — 그래도 허용</strong>으로 바뀌어, 한 번 더 눌러야 합니다.</li>
+<li>거절 이유를 AI에게 전하려면 버튼 아래 <strong>이유를 적고 거절</strong>을 펼쳐 이유를 쓰고 <strong>이유와 함께 거절</strong>을 누릅니다(Claude 대화). 빈 칸이면 그냥 거절입니다.</li>
+<li>대화 여러 개가 <strong>똑같은 권한</strong>을 기다리면 알림 센터나 작업보드 맨 위에 <strong>&quot;대화 N개가 같은 권한을 기다려요&quot;</strong> 카드로 묶입니다. 요청 내용을 펼쳐 확인하고 <strong>전부 허용 (N)</strong> 또는 <strong>전부 거절</strong>을 누르세요. 개별 확인은 <strong>개별 보기</strong>입니다.</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>질문·계획 승인·폴더 접근 요청, 위험 규칙에 걸린 요청은 묶이지 않고 해당 대화에서 하나씩 답합니다.</p>
+</div>
+<h3 id="143-알림과-플로팅-승인-패널">14.3 알림과 플로팅 승인 패널<a class="anchor" href="#143-알림과-플로팅-승인-패널" aria-label="Link">#</a></h3>
+<p><strong>내 설정 → 일반 → 알림</strong>에서 정합니다. 아래 표는 화면 위에서 아래 순서이며, 아래쪽 항목은 스크롤해야 보입니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/settings-notifications.png" alt="내 설정 → 알림(위쪽) — 알림 표시, 모바일 완료 푸시, 알림 소리 설정" loading="lazy" decoding="async"></div><figcaption>내 설정 → 알림(위쪽) — 알림 표시, 모바일 완료 푸시, 알림 소리 설정</figcaption></figure>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>알림 표시</strong></td>
+<td>데스크톱 알림을 <strong>항상 / 앱을 보고 있지 않을 때만 / 끄기</strong> 중에서 고릅니다. 지금 화면에 보이는 대화는 알림을 띄우지 않습니다. macOS 알림에서는 <strong>허용 / 이번 세션 허용 / 거절</strong>로 바로 답하고, 완료 알림에는 답장할 수 있습니다.</td>
+</tr>
+<tr>
+<td><strong>모바일 완료 푸시</strong></td>
+<td>작업이 끝나면 휴대폰으로 푸시를 받습니다(<a href="#17-%EC%9E%91%EC%97%85pc%EC%99%80-%EB%AA%A8%EB%B0%94%EC%9D%BC">17장</a>).</td>
+</tr>
+<tr>
+<td>알림 소리</td>
+<td><strong>입력 요청 소리 / 작업 완료 소리 / 알림 소리 전체 끄기</strong> (현재 macOS에서만 소리가 납니다).</td>
+</tr>
+<tr>
+<td><strong>플로팅 승인 패널</strong></td>
+<td>켜면 기다리는 승인·질문이 오른쪽 위 작은 패널에 카드로 모입니다(드래그로 이동). 지금 쓰는 앱의 포커스를 가져가지 않고 바로 허용·거절하거나 답할 수 있습니다. <strong>기본은 꺼짐</strong>입니다.</td>
+</tr>
+<tr>
+<td><strong>컴퓨터 사용 표시</strong></td>
+<td>AI가 이 컴퓨터의 화면·입력을 조작하는 동안 화면 가장자리 테두리와 안내를 띄웁니다. 조작 중 <strong>Esc</strong>를 누르면 바로 멈춥니다.</td>
+</tr>
+<tr>
+<td><strong>종료할 때 확인</strong></td>
+<td>응답 중인 대화·예약 작업·준비 중인 작업트리가 있으면 종료 전에 알려 줍니다(<strong>종료</strong> / <strong>취소</strong> / 다시 묻지 않기).</td>
+</tr>
+</tbody></table></div>
+<h3 id="144-ai-도구-사용-규칙">14.4 AI 도구 사용 규칙<a class="anchor" href="#144-ai-도구-사용-규칙" aria-label="Link">#</a></h3>
+<p><strong>내 설정 → 일반 → 보안 → AI 도구 사용 규칙</strong>에서 AI가 컴퓨터 화면을 조작하거나 MCP 도구를 쓰기 직전의 규칙을 미리 정합니다.</p>
+<ol>
+<li><strong>쓰기 도구도 실행 전에 묻기</strong> 스위치를 켜면 만들기·수정 같은 쓰기 MCP 도구도 확인을 받습니다.</li>
+<li><strong>내가 정한 앱</strong>에 앱 식별자(macOS 번들 ID 또는 Windows 실행 파일 이름)를 넣고 <strong>묻기 · 차단 · 허용</strong> 중 하나를 골라 <strong>추가</strong>합니다.</li>
+<li><strong>MCP 도구</strong>에서 열려 있는 대화가 받은 서버마다 <strong>기본값 · 묻기 · 차단 · 허용</strong>을 고릅니다. 이름에 보내기·삭제·결제가 들어간 도구는 <code>(항상 확인)</code>으로 표시됩니다.</li>
+<li>대화에서 허용한 앱·도구는 대화가 끝나거나 30분이 지나면 다시 확인하며, 이 창의 <strong>이 대화에서 허용한 앱·도구</strong>에서 미리 거둘 수도 있습니다.</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>이 PC가 작업PC로 연결되어 있어야 저장할 수 있고, 규칙은 다음 도구 호출부터 적용됩니다. <strong>허용</strong>으로 정해도 삭제·결제 같은 위험 동작은 매번 확인합니다.</p>
+</div>
+<h3 id="145-ai-심사로-권한-요청-처리">14.5 AI 심사로 권한 요청 처리<a class="anchor" href="#145-ai-심사로-권한-요청-처리" aria-label="Link">#</a></h3>
+<p>승인 카드를 일일이 누르기 번거롭다면 <strong>내 설정 → 개발 → 개발 자동화 → AI 심사로 권한 요청 처리</strong>를 켜 보세요. 저비용 AI가 프로젝트 지침에 비춰 허용·거절하고 판단하지 못한 요청만 사람에게 넘깁니다(판정은 대화에 한 줄로 남습니다).</p>
+<ul>
+<li><strong>기본은 꺼짐</strong>이며 내가 만든 Claude·Codex 프로젝트 대화에만 적용됩니다.</li>
+<li>루트 삭제·sudo·강제 push·자격증명 파일 같은 고위험 요청, 심사 실패·1분 초과는 <strong>자동으로 허용하지 않고</strong> 직접 확인합니다.</li>
+<li>거절된 요청을 한 번만 다시 허용하려면 그 대화에서 <code>/approve</code>를 보내고 <strong>한 번 허용</strong>을 누릅니다.</li>
+</ul>
+<p>같은 <strong>개발 자동화</strong> 화면에서 <strong>같은 일을 반복하면 세션 자동 중지</strong>, <strong>응답을 중단하면 자식 대화도 중단</strong>, <strong>절전·재시작으로 끊긴 작업을 자동으로 이어가기</strong>, <strong>오토파일럿 및 품질 검토</strong>(오토파일럿 독립 리뷰 AI, 자율 품질 게이트), 세션 이벤트 웹훅 등도 정합니다.</p>
+<h3 id="146-자동-작업-일시정지와-조직-정책">14.6 자동 작업 일시정지와 조직 정책<a class="anchor" href="#146-자동-작업-일시정지와-조직-정책" aria-label="Link">#</a></h3>
+<p><strong>내 설정 → 일반 → 보안</strong>에는 다음이 있습니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/settings-security.png" alt="내 설정 → 보안 — 자동 작업 일시정지, 익명 사용 통계 보내기, AI 도구 사용 규칙(앱 종류별 처리·내가 정한 앱·MCP 도구)" loading="lazy" decoding="async"></div><figcaption>내 설정 → 보안 — 자동 작업 일시정지, 익명 사용 통계 보내기, AI 도구 사용 규칙(앱 종류별 처리·내가 정한 앱·MCP 도구)</figcaption></figure>
+<ul>
+<li><strong>자동 작업 일시정지</strong> — 켜면 예약 작업·GitHub 자동 실행·작업보드의 다음 단계가 시작되지 않습니다. 끄면 이어서 진행되며, <strong>이미 진행 중인 대화는 중단되지 않습니다.</strong> 개인 사용에서도 쓸 수 있습니다.</li>
+<li><strong>조직 정책</strong> [조직] — 로그인한 조직 계정에서만 보입니다. 조직 관리자가 정한 제한(허용 모델, 도구 규칙, 오토파일럿 끄기 등)을 확인합니다. 여기서는 바꿀 수 없고 소유자·관리자는 웹 관리 콘솔에서 바꿉니다.</li>
+<li><strong>신뢰 기기</strong> [로그인] — 로그인 계정에서만 보입니다. 암호화 데이터를 열 수 있는 기기 목록. 모르는 기기는 <strong>신뢰 기기 폐기</strong>로 지웁니다.</li>
+<li>익명 사용 통계 보내기, 비밀번호, 로그인 정보 저장 방식도 이 탭에 있습니다.</li>
+</ul>
+<h2 id="15-메모리교훈시스템-프롬프트">15. 메모리·교훈·시스템 프롬프트<a class="anchor" href="#15-메모리교훈시스템-프롬프트" aria-label="Link">#</a></h2>
+<p><strong>AI가 내 방식을 기억하고, 프로젝트에서 얻은 방법을 교훈으로 쌓고, 항상 따를 기본 지시를 정합니다.</strong></p>
+<h3 id="151-시스템-프롬프트--항상-따를-기본-지시">15.1 시스템 프롬프트 — 항상 따를 기본 지시<a class="anchor" href="#151-시스템-프롬프트--항상-따를-기본-지시" aria-label="Link">#</a></h3>
+<p><strong>내 설정 → 일반 → 시스템 프롬프트</strong>에서 설정합니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/settings-system-prompt.png" alt="내 설정 → 시스템 프롬프트 — 내 지시문 입력칸과 프리셋 칩, Saycode 기본 지시 스위치" loading="lazy" decoding="async"></div><figcaption>내 설정 → 시스템 프롬프트 — 내 지시문 입력칸과 프리셋 칩, Saycode 기본 지시 스위치</figcaption></figure>
+<ol>
+<li><strong>지시문</strong> 칸에 AI가 항상 따를 지시를 적고 <strong>저장</strong>을 누릅니다. 저장하지 않고 닫으면 계속 편집할지, 변경을 버릴지 묻습니다.</li>
+<li><strong>TypeScript로 작성</strong>, <strong>한국어</strong> 같은 프리셋은 누르는 즉시 저장됩니다(작성 중인 지시문이 있으면 적용 전에 확인).</li>
+<li>아래 <strong>Saycode 기본 지시</strong> 스위치(기본 행동 지시 사용)로 Saycode가 제공하는 기본 지시를 통째로 켜고 끕니다. 세부 설정을 펼치면 항목별로 고를 수 있습니다 — 자식 AI도구 호출, 내부 작업 위임, 결과물 인라인 미리보기, <strong>Saycode 사용 안내</strong>, 브라우저·컴퓨터 사용 확인, 기획부터 시작 워크플로우, 커밋 크레딧 등.</li>
+</ol>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p><strong>Saycode 사용 안내</strong>를 켜 두면 &quot;이 기능 어디서 켜?&quot; 같은 사용법 질문에 AI가 앱 안내로 답하고 설정 화면 링크를 줍니다. <strong>다음 단계 카드</strong>(<a href="#68-%EB%8B%B5%EB%B3%80%EC%9D%B4-%EB%81%9D%EB%82%9C-%EB%92%A4">6.8</a>)도 이 기본 지시가 켜져 있어야 나옵니다.</p>
+</div>
+<h3 id="152-내-채팅-개인화">15.2 내 채팅 개인화<a class="anchor" href="#152-내-채팅-개인화" aria-label="Link">#</a></h3>
+<p>[로그인] <strong>내 설정 → 일반 → 내 채팅 개인화</strong>에서 <strong>내 채팅에서 이 정보 사용</strong>을 켜고 AI가 알아 두면 좋을 나에 대한 정보(직무, 선호하는 말투 등)를 적어 <strong>저장</strong>합니다. <strong>Chat에서만</strong> 쓰이고 프로젝트 대화에는 쓰이지 않습니다.</p>
+<h3 id="153-교훈--프로젝트에서-얻은-방법-쌓기">15.3 교훈 — 프로젝트에서 얻은 방법 쌓기<a class="anchor" href="#153-교훈--프로젝트에서-얻은-방법-쌓기" aria-label="Link">#</a></h3>
+<p>AI가 작업하다 확인한 방법(예: &quot;이 프로젝트는 테스트를 이 명령으로 돌린다&quot;)을 <strong>교훈 후보</strong>로 제안하면, 그 답변 아래에 <strong>교훈 승인 카드</strong>가 나타납니다.</p>
+<ol>
+<li>카드의 제안 내용을 읽습니다.</li>
+<li><strong>승인</strong>하면 그 교훈이 이후 같은 프로젝트의 대화에서 쓰입니다. <strong>거절</strong>하면 버려집니다.</li>
+<li>이미 있는 교훈을 고쳐 쓰자는 제안은 카드에 <strong>기존 교훈 갱신</strong>으로 표시되고 지금 교훈과 제안 내용이 나란히 보입니다. 비교한 뒤 승인하면 같은 자리에서 새 내용으로 바뀌고 이력은 남습니다.</li>
+</ol>
+<p>교훈과 후보 목록은 프로젝트 도구(⋮) → <strong>프로젝트 메모리</strong>에서 한 번에 봅니다.</p>
+<h3 id="154-메모리-설정">15.4 메모리 설정<a class="anchor" href="#154-메모리-설정" aria-label="Link">#</a></h3>
+<p><strong>내 설정 → 개발 → 메모리</strong>에서 AI의 기억을 관리합니다.</p>
+<ul>
+<li><strong>새 대화에서 유사 과거 대화 제안</strong> — 새 대화를 시작할 때 비슷한 과거 대화를 제안합니다(앱 전체 설정).</li>
+<li><strong>대상 프로젝트</strong>를 고르면 그 프로젝트의 메모리 설치 상태와 대시보드를 관리합니다.</li>
+<li><strong>기억 보호 규칙</strong> — 기억하지 말아야 할 항목을 <strong>새 금지 항목</strong> 칸에 적고 <strong>추가</strong>합니다.</li>
+<li><strong>메모리 기록 및 검색</strong>에서 남은 기억을 찾아 <strong>삭제</strong>합니다. 지운 직후 알림의 <strong>되돌리기</strong>를 <strong>10초 안에</strong> 누르면 취소됩니다.</li>
+<li><strong>MongoDB 메모리 동기화</strong>는 회사 MongoDB를 쓰는 조직용 선택 기능입니다.</li>
+</ul>
+<h2 id="16-외부-연동확장메신저-채널">16. 외부 연동·확장·메신저 채널<a class="anchor" href="#16-외부-연동확장메신저-채널" aria-label="Link">#</a></h2>
+<p><strong>Notion·Slack 같은 서비스와 연결하고, 필요한 기능을 확장으로 설치하고, 메신저에서 Saycode에게 일을 맡깁니다.</strong></p>
+<h3 id="161-외부-연동-화면">16.1 외부 연동 화면<a class="anchor" href="#161-외부-연동-화면" aria-label="Link">#</a></h3>
+<p>사이드바 <strong>외부 연동</strong>을 누릅니다. 화면은 로그인 여부에 따라 다릅니다.</p>
+<p>&lt;img src=&quot;assets/integrations.png&quot; alt=&quot;외부 연동(개인 사용) — 설치된 확장이 없는 확장 설치·관리 화면과 설치 가능한 확장 목록(화면 제목은 &quot;연동&quot;으로 표시됩니다)&quot; /&gt;</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>상태</th>
+<th>보이는 것</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>개인 사용</strong></td>
+<td>확장 설치·관리 화면(채널 어댑터, 플러그인 관리자 등)</td>
+</tr>
+<tr>
+<td>[로그인] <strong>로그인</strong></td>
+<td>서비스 목록(<strong>Notion · Slack · Google Drive · Gmail · KNOI · Figma · DirectCloud</strong>)과 <strong>커스텀 커넥터(+)</strong></td>
+</tr>
+</tbody></table></div>
+<p>[로그인] 서비스 연결: 목록에서 서비스 줄의 <strong>연결</strong>을 누르고, 열리는 브라우저에서 로그인해 허용합니다(KNOI는 API 키 입력). Google 서비스는 회사 계정으로만 연결됩니다. 연결한 서비스는 <strong>내 설정 → 일반 → 커넥터</strong>에서 <strong>연결 해제</strong>할 수 있습니다.</p>
+<p><strong>커스텀 커넥터</strong> — OAuth를 지원하는 MCP 서버를 주소로 직접 연결합니다. <strong>+</strong>를 눌러 <strong>이름</strong>과 <strong>MCP 주소</strong>를 넣고 추가한 뒤 그 행의 <strong>연결</strong>을 누르세요. 조직 관리자가 등록한 MCP는 행의 <strong>로그인</strong>을 누릅니다(+ 버튼은 서버가 커스텀 커넥터를 켰을 때만 보입니다).</p>
+<p><strong>Figma 디자인 편집</strong> — AI가 Figma에서 프레임과 화면을 직접 만들고 고치게 합니다. <strong>외부 연동</strong> → Figma 줄에서 이 컴퓨터의 상태를 확인하고 <strong>연결</strong>을 누른 뒤, 작업PC와 AI(<strong>Claude Code</strong> 또는 <strong>Codex</strong>)별로 <strong>연결하기</strong>를 누르고 브라우저에서 <strong>허용</strong>하세요. 상태가 <strong>사용 가능</strong>으로 바뀌면 새 대화에서 Figma 작업을 요청합니다.</p>
+<h3 id="162-확장-설치하기">16.2 확장 설치하기<a class="anchor" href="#162-확장-설치하기" aria-label="Link">#</a></h3>
+<p>확장은 필요한 기능만 골라 설치하는 부가 기능입니다. <strong>내 설정 → 개발 → 확장</strong>에서 관리합니다.</p>
+<ol>
+<li><strong>설치 가능한 확장</strong> 목록에서 목적을 확인하고 원하는 확장의 <strong>설치</strong>를 누릅니다.</li>
+<li><strong>활성화</strong>를 누릅니다. (설치만으로는 동작하지 않습니다.)</li>
+<li>요청 권한(예: <code>channels.receive</code>, <code>sessions.control</code>)이 보이면 하나씩 확인하고 <strong>권한 승인 및 활성화</strong>를 누릅니다.</li>
+<li>지우려면 <strong>제거</strong>를 누르고 확인에서 한 번 더 누릅니다. 상태는 <strong>비활성화됨 · 활성화됨 · 실행 중 · 격리됨</strong> 배지로 보입니다.</li>
+</ol>
+<p>공식 확장 예: <strong>Telegram·Slack·Discord 채널 어댑터</strong>(메신저에서 Saycode 사용), <strong>플러그인 관리자</strong>(스킬·플러그인 관리), <strong>Moai 작업 보드</strong>(작업 패널 ⋮ → <strong>Moai</strong>, macOS Apple Silicon·Linux x64), <strong>미디어 미리보기</strong>, <strong>React Source Locator</strong>(브라우저에서 고른 요소에 컴포넌트·소스 위치 부착, <a href="#9-%EB%B3%B4%EB%A9%B4%EC%84%9C-%EA%B3%A0%EC%B9%98%EA%B8%B0">9장</a>), <strong>공개 링크</strong>(확장 목록에서 설치하지 않아도 결과 파일 카드의 <strong>공개 링크</strong> → <strong>설치 진행</strong>으로 바로 설치됩니다).</p>
+<p>내려받은 확장 파일은 <strong>로컬 설치 및 개발</strong> → <strong>로컬 파일 설치</strong>로 설치합니다.</p>
+<h3 id="163-메신저-채널">16.3 메신저 채널<a class="anchor" href="#163-메신저-채널" aria-label="Link">#</a></h3>
+<p>[로그인] Slack·Telegram·Discord를 연결해 메신저에서 Saycode에게 일을 맡기고 진행 상황을 받습니다. <strong>로그인한 계정에서만</strong> 보입니다.</p>
+<ol>
+<li><strong>내 설정 → 일반 → 메신저 채널</strong>을 엽니다.</li>
+<li><strong>Slack 연결 / Telegram 연결 / Discord 연결</strong> 중 쓰려는 칸을 찾습니다. &quot;기능이 꺼져 있다&quot;는 안내가 보이면 먼저 <strong>설치하고 켜기</strong>를 누릅니다.</li>
+<li>칸의 안내 순서대로 봇을 만들고 토큰을 붙여 넣어 확인합니다(Slack은 4단계 안내와 <strong>Slack 앱 만들기</strong> 버튼이 있습니다).</li>
+<li>메신저에서 Saycode 연결을 허용합니다.</li>
+<li>첫 연결 때 <strong>어디서 실행할까요?</strong>가 나옵니다. 기본은 <em>Desktop을 꺼도 응답하는 다른 작업PC</em>로 옮겨 앱을 꺼도 수신이 유지되는 방식입니다.</li>
+<li>연결마다 사용할 AI·모델과 응답 수준을 정하고, 메신저에서는 <code>/settings</code>, <code>/stop</code> 같은 명령을 씁니다.</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>메신저에서는 허용한 프로젝트·작업PC·작업만 제어할 수 있습니다. 예약 결과 전달에도 이 연결을 씁니다(<a href="#132-%EA%B3%A0%EA%B8%89-%EC%84%A4%EC%A0%95">13.2</a>).</p>
+</div>
+<h2 id="17-작업pc와-모바일">17. 작업PC와 모바일<a class="anchor" href="#17-작업pc와-모바일" aria-label="Link">#</a></h2>
+<p><strong>AI가 일하는 컴퓨터를 등록·관리하고, 휴대폰으로 같은 작업공간을 지켜봅니다.</strong></p>
+<h3 id="171-작업pc">17.1 작업PC<a class="anchor" href="#171-작업pc" aria-label="Link">#</a></h3>
+<p>이 컴퓨터는 첫 실행(시작준비)에서 자동으로 작업PC가 됩니다. GPU 서버·빌드 서버·클라우드 VM 같은 다른 컴퓨터도 등록하면, 코드와 데이터 옆에서 AI가 일하게 할 수 있습니다.</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/settings-workpc.png" alt="내 설정 → 개발 → 작업PC — 이 컴퓨터 항목(온라인, CPU·Memory·Storage), 상세 정보·이름 변경·삭제 버튼과 작업PC 등록 버튼" loading="lazy" decoding="async"></div><figcaption>내 설정 → 개발 → 작업PC — 이 컴퓨터 항목(온라인, CPU·Memory·Storage), 상세 정보·이름 변경·삭제 버튼과 작업PC 등록 버튼</figcaption></figure>
+<p><strong>목록 보기</strong> — <strong>내 설정 → 개발 → 작업PC</strong>에서 <strong>내가 등록한 작업PC</strong>와 <strong>공용 PC</strong>로 나뉜 목록과 상태를 봅니다. 행을 눌러 상세를 열고 이름 변경·삭제, Saycode CLI 업데이트를 할 수 있습니다. 같은 이름의 PC는 구분되어 표시됩니다.</p>
+<p><strong>다른 컴퓨터 등록하기</strong></p>
+<ol>
+<li><strong>내 설정 → 개발 → 작업PC → 작업PC 등록</strong>을 누릅니다.</li>
+<li>작업PC 종류를 고릅니다. 로그인했다면 <strong>전용 작업PC</strong>나 <strong>공용 PC</strong>, 개인 사용 중이라면 <strong>개인</strong>입니다.</li>
+<li><strong>등록 코드 만들기</strong>를 누릅니다.</li>
+<li>등록할 컴퓨터에 CLI를 설치하고 화면에 나온 명령을 그 컴퓨터에서 실행합니다.</li>
+<li>몇 초 뒤 <strong>온라인</strong>으로 뜨면 완료입니다. 이제 프로젝트를 만들 때(<strong>작업PC 선택 창</strong>)나 프로필 메뉴 → <strong>작업PC</strong>에서 그 PC를 고를 수 있습니다.</li>
+</ol>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>로그인한 계정이라면 지금 쓰는 컴퓨터는 <strong>내 컴퓨터 등록</strong> 버튼으로 바로 등록합니다. 회사가 따로 운영하는 서버에서는 <strong>등록 코드</strong> 대신 새 PC에서 로그인 명령을 실행해 나온 연결 코드를 서버에서 승인합니다.</p>
+</div>
+<p><strong>PC 공유 설정</strong> [조직] — 조직 작업PC를 여럿이 쓰는 <strong>공용 PC</strong>로, 한 사람만 쓰는 <strong>전용 PC</strong>로 바꿉니다. 공용으로 바꾼 뒤 <strong>PC 사용 가능 사용자</strong>를 체크하고 <strong>저장</strong>합니다.</p>
+<p><strong>실행기 교대·재시작</strong> — 작업PC 상세의 <strong>지금 교대</strong>로 실행기를 교체할 수 있고, 재시작 중에 보낸 요청은 끝난 뒤 자동으로 시작됩니다(&quot;재시작 준비 중&quot;). [개발자] 입력창 아래의 <strong>CPU·메모리</strong>를 누르면 디스크·부하 같은 작업PC 상세도 볼 수 있습니다.</p>
+<h3 id="172-모바일-연결">17.2 모바일 연결<a class="anchor" href="#172-모바일-연결" aria-label="Link">#</a></h3>
+<figure class="fig"><div class="imgs"><img src="../../assets/mobile-companion-crop.png" alt="내 설정 → 일반 → 모바일 연결 — QR 코드(블러 처리), 같은 네트워크(LAN)에서만 접속 가능 배지, 연결 링크 복사" loading="lazy" decoding="async"></div><figcaption>내 설정 → 일반 → 모바일 연결 — QR 코드(블러 처리), 같은 네트워크(LAN)에서만 접속 가능 배지, 연결 링크 복사</figcaption></figure>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: Saycode 공식 서버의 계정으로 로그인했거나 이 컴퓨터에서 <strong>개인 사용</strong> 중일 때 보입니다. 회사가 따로 운영하는 서버에서는 보이지 않습니다.</p>
+</div>
+<ol>
+<li>휴대폰에 Saycode 모바일 앱을 설치하고 로그인(또는 연결)합니다.</li>
+<li>데스크톱에서 <strong>내 설정 → 일반 → 모바일 연결</strong>을 엽니다.</li>
+<li>화면의 <strong>QR 코드</strong>를 휴대폰 앱으로 스캔합니다. 계정으로 로그인한 경우 QR이 만료되었다면 <strong>새 QR 만들기</strong>를 누른 뒤 다시 스캔하세요.</li>
+<li>개인 사용에서는 <strong>접속 범위</strong>가 표시됩니다. 같은 네트워크에서는 바로 연결되고, 다른 네트워크에서는 <strong>링크 복사</strong>나 터널 버튼으로 연결합니다.</li>
+</ol>
+<p>연결하면 같은 작업공간의 대화를 실시간으로 지켜보고, 긴 작업이 끝나는 순간 <strong>모바일 완료 푸시</strong>(내 설정 → 알림)를 받습니다.</p>
+<h2 id="18-팀과-조직">18. 팀과 조직<a class="anchor" href="#18-팀과-조직" aria-label="Link">#</a></h2>
+<p><strong>로그인하면 팀과 함께 쓰는 기능이 열립니다.</strong> 이 장은 로그인(또는 조직)이 필요한 기능을 한눈에 정리합니다. 로컬 작업공간만으로도 Chat, 프로젝트, 작업트리, 작업 마무리, 작업 영역은 모두 쓸 수 있습니다.</p>
+<h3 id="181-로그인이-필요한-기능">18.1 로그인이 필요한 기능<a class="anchor" href="#181-로그인이-필요한-기능" aria-label="Link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>기능</th>
+<th>위치</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>조직 시작과 전환</td>
+<td>로그인 후 <strong>어느 조직에서 작업할까요?</strong>, 프로필 메뉴 → <strong>조직</strong></td>
+<td>작업할 조직을 고르고 이 컴퓨터를 조직 작업PC로 등록합니다.</td>
+</tr>
+<tr>
+<td>조직 만들기·참여</td>
+<td><strong>작업공간 만들기</strong>, <strong>초대 코드로 참여</strong>, <strong>내 설정 → 일반 → 다른 조직 참여</strong></td>
+<td>받은 초대는 수락/거절, 이메일 초대 링크로도 참여합니다.</td>
+</tr>
+<tr>
+<td><strong>조직 관리</strong></td>
+<td>프로필 메뉴 맨 위</td>
+<td>소유자·관리자 전용 웹 관리 콘솔 — 멤버·팀·권한·모델 정책·감사 로그, <strong>유저 초대</strong>, 보안 준비(2단계 인증, 복구 코드), 운영 → <strong>LLM 사용량·비용</strong> → <strong>사용 명세서</strong>(CSV/인쇄).</td>
+</tr>
+<tr>
+<td>프로젝트 공유·함께 작업</td>
+<td>프로젝트 설정 → <strong>프로젝트 공유</strong>, <strong>함께 작업</strong>(그 밖에 <strong>MCP 서버</strong>, <strong>SSO 로그인</strong>, <strong>환경 마운트</strong>)</td>
+<td>공개 범위·공유 팀 설정, 팀원 초대(프로젝트 소유자). 사이드바 목록은 <strong>전체 / 내 프로젝트 / 함께 작업 / 공유받은 프로젝트</strong>로 거릅니다.</td>
+</tr>
+<tr>
+<td>공용 PC·연동 기능</td>
+<td><strong>PC 공유 설정</strong>, 커넥터·메신저 채널·공개 링크·예약, <strong>사용 문의</strong></td>
+<td><a href="#13-%EC%98%88%EC%95%BD">13</a>, <a href="#16-%EC%99%B8%EB%B6%80-%EC%97%B0%EB%8F%99%ED%99%95%EC%9E%A5%EB%A9%94%EC%8B%A0%EC%A0%80-%EC%B1%84%EB%84%90">16</a>장 참고</td>
+</tr>
+<tr>
+<td>조직 AI 계정</td>
+<td>시작준비 AI 단계, <strong>AI Models</strong>, <strong>AI 사용량</strong> 창</td>
+<td>조직 Claude 계정 자동 선택·교체, 공용 PC 한도 시 다른 조직 계정으로 이어감, 개인 Claude 이어가기(<strong>이 컴퓨터에서 개인 Claude 계정 사용 허용</strong>)</td>
+</tr>
+<tr>
+<td><strong>조직 정책</strong></td>
+<td><strong>내 설정 → 일반 → 보안</strong></td>
+<td>관리자가 정한 제한을 확인합니다. 허용 모델만 선택 가능하고 정책에서도 <strong>AI 자동</strong>이 됩니다.</td>
+</tr>
+<tr>
+<td>종단간 암호화</td>
+<td>시작준비, <strong>보안 → 신뢰 기기</strong>, <strong>암호화키 확인</strong></td>
+<td>대화를 암호화해 신뢰 기기에서만 열 수 있게 합니다. 복구 키는 안전하게 보관하세요.</td>
+</tr>
+</tbody></table></div>
+<p>조직 관리 콘솔은 웹에서 열리며 멤버·팀·권한·모델 정책·감사 로그 메뉴로 구성됩니다.</p>
+<div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
+<p>로그인한 뒤에도 이 컴퓨터에서 개인 사용 프로젝트를 병행하고 싶다면 프로필 메뉴 → <strong>개발자 기능 설정</strong> → <strong>standalone 모드 같이 사용하기</strong>를 켜세요. 프로필 메뉴에 <strong>이 컴퓨터에서 개인 사용</strong>이 생기고, 돌아올 때는 <strong>계정으로 돌아가기</strong>를 누릅니다.</p>
+</div>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>배포된 앱·리포트 URL을 여는 최종 이용자에게는 좌석이 필요 없습니다. 로컬 프로젝트는 로그인한 뒤에도 그대로 남습니다.</p>
+</div>
+<h2 id="19-단축키-모음">19. 단축키 모음<a class="anchor" href="#19-단축키-모음" aria-label="Link">#</a></h2>
+<p><strong>⌘ 대신 Windows는 Ctrl을 씁니다.</strong> 모든 단축키는 <strong>내 설정 → 일반 → 단축키</strong>에서 검색하고 바꿀 수 있습니다. 동작 이름을 누르면 설명이 펼쳐지고, 오른쪽 키 버튼을 누른 뒤 새 조합을 누르면 바뀝니다(Esc로 취소, 바꾼 항목의 <strong>기본값</strong>으로 복원).</p>
+<figure class="fig"><div class="imgs"><img src="../../assets/settings-shortcuts.png" alt="내 설정 → 단축키 — 검색창과 용도별 단축키 목록" loading="lazy" decoding="async"></div><figcaption>내 설정 → 단축키 — 검색창과 용도별 단축키 목록</figcaption></figure>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>동작</th>
+<th>단축키</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>화면과 이동</td>
+<td>내 설정 열기 / 사이드바 접기·펼치기</td>
+<td>⌘, / ⌘B</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>빠른 열기</strong>(단축키 화면 이름: 빠른 찾기) / 명령 찾아 실행(기능 찾아 실행)</td>
+<td>⌘P / ⌘⇧P</td>
+</tr>
+<tr>
+<td></td>
+<td>프로젝트 검색(사이드바) / <strong>대화 검색</strong>(전체)</td>
+<td>⌘K / ⌘⇧F</td>
+</tr>
+<tr>
+<td></td>
+<td>대화 내 검색·터미널 찾기·diff 찾기</td>
+<td>⌘F</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>작업보드</strong> 열기 / 확인이 필요한 대화로 이동</td>
+<td>⌘⇧A / ⌘⇧J</td>
+</tr>
+<tr>
+<td></td>
+<td>새 창</td>
+<td>⌘N</td>
+</tr>
+<tr>
+<td>대화와 탭</td>
+<td>새 대화(탭) / 탭 닫기 / 닫은 탭 다시 열기</td>
+<td>⌘T / ⌘W / ⌘⇧T</td>
+</tr>
+<tr>
+<td></td>
+<td>다음·이전 대화 탭</td>
+<td>Ctrl+Tab / Ctrl+Shift+Tab</td>
+</tr>
+<tr>
+<td></td>
+<td>목록의 이전·다음 대화</td>
+<td>⌥⇧[ / ⌥⇧]</td>
+</tr>
+<tr>
+<td></td>
+<td>고정한 첫 아홉 대화로 이동</td>
+<td>⌘1 ~ ⌘9</td>
+</tr>
+<tr>
+<td></td>
+<td>보관·고정·숨기기 되돌리기</td>
+<td>⌘Z</td>
+</tr>
+<tr>
+<td>입력창과 AI</td>
+<td>파일·사진 추가 / 대기 요청 즉시 전송</td>
+<td>⌘U / ⌘Enter</td>
+</tr>
+<tr>
+<td></td>
+<td>빈 입력창에서 이전 요청 불러오기 / 프롬프트 검색(macOS)</td>
+<td>↑ / Ctrl+R</td>
+</tr>
+<tr>
+<td></td>
+<td>응답 중단</td>
+<td>⌘.</td>
+</tr>
+<tr>
+<td></td>
+<td>다음 모델 / 다음 작업 강도</td>
+<td>⌘⇧M / ⌘⇧E</td>
+</tr>
+<tr>
+<td></td>
+<td>권한 요청 허용·거절 / AI 질문 선택지</td>
+<td>Enter·Esc / 1 ~ 9</td>
+</tr>
+<tr>
+<td>작업 영역</td>
+<td>작업 패널 접기·펼치기 / 터미널 열기</td>
+<td>⌘⇧B / Ctrl+`</td>
+</tr>
+<tr>
+<td></td>
+<td>오른쪽·아래에 새 대화 / 터미널 / 브라우저</td>
+<td>⌘⌥C / ⌘⌥T / ⌘⌥B</td>
+</tr>
+<tr>
+<td></td>
+<td>파일 저장</td>
+<td>⌘S</td>
+</tr>
+</tbody></table></div>
+<h2 id="20-문제-해결과-faq">20. 문제 해결과 FAQ<a class="anchor" href="#20-문제-해결과-faq" aria-label="Link">#</a></h2>
+<h3 id="201-대화-상태-읽는-법">20.1 대화 상태 읽는 법<a class="anchor" href="#201-대화-상태-읽는-법" aria-label="Link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>표시</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>도는 아이콘 / <em>응답 중</em></td>
+<td>AI가 지금 일하는 중입니다. 응답이 끝나도 백그라운드 작업이 돌면 아이콘이 남습니다.</td>
+</tr>
+<tr>
+<td><em>대기</em></td>
+<td>다음 지시를 기다리는 중입니다.</td>
+</tr>
+<tr>
+<td>주황색 질문 아이콘 / <em>입력 대기</em></td>
+<td>질문·권한 응답을 기다리는 중입니다. <strong>AI가 멈춘 게 아니라 여러분을 기다리는 중</strong>입니다.</td>
+</tr>
+<tr>
+<td><em>완료</em>·보관됨</td>
+<td>보관&amp;완료로 정리된 대화입니다. 보관함에서 복원합니다.</td>
+</tr>
+</tbody></table></div>
+<h3 id="202-업데이트하기">20.2 업데이트하기<a class="anchor" href="#202-업데이트하기" aria-label="Link">#</a></h3>
+<ul>
+<li>새 버전이 나오면 <strong>알림 카드</strong>에서 다운로드 진행률과 <strong>재시작</strong>이 보입니다. 프로필 메뉴 → <strong>업데이트 확인</strong> → <strong>업데이트 내려받기</strong> → <strong>재시작해서 업데이트</strong>로 직접 해도 됩니다. <strong>내 설정 → 일반 → 정보 → 업데이트 확인</strong>도 같습니다.</li>
+<li>여러 버전이 밀렸다면 최신 버전으로 한 번에 설치합니다. 재시작 뒤 <strong>New Updated!</strong> 카드(영문 표시)의 <strong>Release notes</strong>에서 바뀐 내용을 앱 언어로 봅니다.</li>
+<li>앱을 끌 때 응답 중인 대화나 예약 작업이 있으면 알려 줍니다(<strong>종료 / 취소</strong>).</li>
+</ul>
+<h3 id="203-도움-요청하기">20.3 도움 요청하기<a class="anchor" href="#203-도움-요청하기" aria-label="Link">#</a></h3>
+<ul>
+<li><strong>진단 정보 저장</strong> — macOS 메뉴 막대 <strong>Help → 문제 해결 → 진단 정보 저장…</strong>, 또는 <strong>내 설정 → 일반 → 정보 → 문제 해결 → 진단 정보 저장…</strong>(Windows도 이 경로). 토큰·이메일·사용자 이름을 가린 zip이 저장됩니다. 보내기 전에 내용을 한 번 확인하세요. <strong>버전 정보 복사</strong>로 앱·OS·데몬 버전을 복사할 수 있습니다.</li>
+<li><strong>Help → 새 소식</strong>에서 릴리스 노트를 읽습니다.</li>
+<li>[로그인] 프로필 메뉴 → <strong>사용 문의</strong> / 개인 사용에서는 <strong>카카오톡 문의</strong>.</li>
+<li>문의: <a href="https://saycode.ai" target="_blank" rel="noopener">saycode.ai</a> · 기술 문의 <a href="mailto:ryan@buzzni.com">ryan@buzzni.com</a></li>
+</ul>
+<h3 id="204-자주-묻는-질문">20.4 자주 묻는 질문<a class="anchor" href="#204-자주-묻는-질문" aria-label="Link">#</a></h3>
+<p><strong>Q. 대화를 시작하려는데 입력창이 비활성이고 안내만 나옵니다.</strong>
+A. 온라인 작업PC나 연결된 AI가 없다는 뜻입니다. 안내의 <strong>작업PC 설정 열기</strong> / <strong>내 AI 연결</strong>을 누르거나 <a href="#2-%EC%8B%9C%EC%9E%91%EC%A4%80%EB%B9%84">시작준비</a>를 다시 여세요. 작성 중인 글과 첨부는 그대로 보존됩니다.</p>
+<p><strong>Q. AI 연결이 안 됩니다 / 유료 AI 계정이 없어요.</strong>
+A. <strong>내 설정 → 일반 → AI Models</strong>에서 <strong>연결하기</strong>로 Claude·ChatGPT를 연결하거나 <strong>무료 모델로 시작하기</strong>(Opencode)를 쓰세요. 로그아웃된 ChatGPT는 행의 <strong>… → 계정 풀에서 복원</strong>을 먼저 시도하세요.</p>
+<p><strong>Q. 작업보드·CPU·메모리 같은 메뉴가 안 보여요.</strong>
+A. 프로필 메뉴 → <strong>개발자 기능 설정</strong>에서 해당 스위치를 켜야 합니다(<a href="#34-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EA%B8%B0%EB%8A%A5-%EC%84%A4%EC%A0%95">3.4</a>).</p>
+<p><strong>Q. 예약 만들기, 메신저 채널, 커넥터, 공개 링크 만들기가 안 돼요.</strong>
+A. 로그인이 필요한 기능입니다. 메뉴나 버튼은 보여도 개인 사용에서는 쓸 수 없으니 프로필 메뉴 → <strong>로그인</strong>으로 로그인하세요(<a href="#18-%ED%8C%80%EA%B3%BC-%EC%A1%B0%EC%A7%81">18장</a>).</p>
+<p><strong>Q. 미리보기가 비어 있어요.</strong>
+A. 프로젝트 설정 → <strong>개발</strong> → <strong>실행</strong>에 개발 서버 명령·포트를 저장했는지 확인하세요. 없으면 AI에게 *&quot;개발 서버를 켜두고 미리보기로 볼 수 있게&quot;*라고 요청하거나 터미널에서 서버를 켠 뒤 <strong>브라우저</strong>에 <code>http://localhost:&lt;포트&gt;</code>를 입력하세요.</p>
+<p><strong>Q. 대화를 실수로 보관했어요.</strong>
+A. 보관 직후 10초 안에 <strong>되돌리기</strong> 또는 ⌘Z. 시간이 지났다면 <strong>내 설정 → 일반 → 대화 보관함</strong>에서 <strong>복원</strong>하세요.</p>
+<p><strong>Q. 답변이 중간에 끊겼어요.</strong>
+A. 끊긴 이유가 안내 줄에 나오고 <strong>이어서 하기</strong>(직접 중단했다면 <strong>다시 시도</strong>)를 누르면 이어집니다. 사용 한도에 걸렸다면 초기화 시각에 다시 시도하거나 다른 계정·AI로 이어가세요(<a href="#74-ai-%EC%82%AC%EC%9A%A9%EB%9F%89-%EC%B0%BD">7.4</a>).</p>
+<p><strong>Q. 작업트리를 지웠어요 / 같은 일을 반복하다 AI가 멈췄어요 / 막힌 것 같아요.</strong>
+A. 지운 작업트리는 작업트리 창의 <strong>스냅샷 보관함 → 복원</strong>(<a href="#116-%EC%9E%91%EC%97%85%ED%8A%B8%EB%A6%AC-%EC%95%88%EC%A0%84%EB%A7%9D">11.6</a>). 반복 감지로 멈췄다면(<strong>개발 자동화</strong>의 <strong>같은 일을 반복하면 세션 자동 중지</strong>) 요청을 더 작게 쪼개거나 <strong>독립 리뷰 요청…</strong>으로 다른 AI의 시각을 받아 보세요.</p>
+<h2 id="부록-a-바뀐-용어표">부록 A. 바뀐 용어표<a class="anchor" href="#부록-a-바뀐-용어표" aria-label="Link">#</a></h2>
+<p>v0.1.50 전후 화면에 익숙한 분을 위한 대응표입니다. (영어 화면은 그대로인 항목이 많습니다.)</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>옛 이름</th>
+<th>지금 이름</th>
+<th>위치·비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>환경설정</td>
+<td><strong>내 설정</strong> (일반 / 개발)</td>
+<td>프로필 메뉴 → 내 설정, <strong>⌘,</strong></td>
+</tr>
+<tr>
+<td>기획 시작(Build)</td>
+<td>Build 탭 입력창</td>
+<td>사이드바 Project → Build</td>
+</tr>
+<tr>
+<td>Review 패널</td>
+<td><strong>변경</strong></td>
+<td>작업 패널 추가</td>
+</tr>
+<tr>
+<td>Quick Open</td>
+<td><strong>빠른 열기</strong></td>
+<td>단축키 화면에서는 &quot;빠른 찾기&quot;</td>
+</tr>
+<tr>
+<td>온보딩 체크리스트</td>
+<td><strong>시작준비</strong></td>
+<td>내 설정 → 일반 → 시작준비</td>
+</tr>
+<tr>
+<td>머신 / 로컬 머신</td>
+<td><strong>작업PC</strong></td>
+<td>내 설정 → 개발 → 작업PC</td>
+</tr>
+<tr>
+<td>공유·공용 머신</td>
+<td><strong>공용 PC</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>에이전트 / Agent</td>
+<td><strong>AI도구</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Default (모델)</td>
+<td><strong>자동</strong> (<strong>AI 자동</strong>)</td>
+<td>입력창 아래 한 버튼</td>
+</tr>
+<tr>
+<td>AI 선택 + 모델 + 추론 강도</td>
+<td><strong>한 버튼 두 단계 메뉴</strong> (AI → 모델 / <strong>작업 강도</strong>)</td>
+<td>입력창 아래 줄</td>
+</tr>
+<tr>
+<td>대화 헤더 AI 잔량 칩 (<code>✱ 71%/17%…</code>)</td>
+<td>입력창 아래 <strong>AI 잔여량</strong> 버튼 → <strong>AI 사용량</strong> 창</td>
+<td>&quot;AI 잔여량 보이기&quot; 스위치는 사라지고 항상 표시</td>
+</tr>
+<tr>
+<td>AI 연결 설정</td>
+<td><strong>AI Models</strong></td>
+<td>내 설정 → 일반</td>
+</tr>
+<tr>
+<td>Saycode 홈 · 홈의 Chat/Build/Develop 탭</td>
+<td>사이드바 <strong>Chat</strong> / <strong>Project</strong>(안의 <strong>Build</strong> / <strong>Develop</strong>)</td>
+<td></td>
+</tr>
+<tr>
+<td>새 프로젝트 / 기존 폴더 열기 / Git URL에서 복제 / ZIP으로 가져오기</td>
+<td><strong>프로젝트 만들기</strong> 창의 <strong>새 프로젝트 / Git 저장소 / ZIP·파일 / 기존 폴더</strong> 탭</td>
+<td>Develop 카드는 <strong>코드 저장소 가져오기 / Zip/파일 가져오기 / 머신 폴더 사용하기</strong></td>
+</tr>
+<tr>
+<td>계정 영역 · ⋯ 메뉴 · 테마(라이트·다크·자동)</td>
+<td><strong>프로필 메뉴</strong> · <strong>다크 모드</strong> 스위치</td>
+<td>AI 잔여량·CPU 표시 스위치는 <strong>개발자 기능 설정</strong>으로</td>
+</tr>
+<tr>
+<td>작업 보드</td>
+<td><strong>작업보드</strong> (기본 숨김)</td>
+<td>개발자 기능 설정 → 작업보드 메뉴 보이기</td>
+</tr>
+<tr>
+<td>작업 마무리 허브 창</td>
+<td>입력창 위 줄 <strong>작업 마무리</strong> 메뉴</td>
+<td></td>
+</tr>
+<tr>
+<td>현재 에이전트로 점검 / 셀프 리뷰</td>
+<td><strong>작업 리뷰하기</strong></td>
+<td>반복 횟수는 <strong>고급 설정…</strong></td>
+</tr>
+<tr>
+<td>독립 리뷰어에게 맡기기</td>
+<td><strong>독립 리뷰 요청…</strong></td>
+<td><strong>리뷰 기록</strong> 탭</td>
+</tr>
+<tr>
+<td>Commit &amp; PR</td>
+<td><strong>PR 올리기</strong></td>
+<td>작업보드 카드·오토파일럿 쪽 표기는 <strong>Commit &amp; PR</strong> 그대로</td>
+</tr>
+<tr>
+<td>완료 처리 / 완료로 이동</td>
+<td><strong>보관&amp;완료</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>보관된 대화</td>
+<td><strong>대화 보관함</strong></td>
+<td>내 설정 → 일반 → 대화 보관함</td>
+</tr>
+<tr>
+<td>세션 ID 복사</td>
+<td><strong>대화 ID 복사</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>전역 일시정지</td>
+<td><strong>자동 작업 일시정지</strong></td>
+<td>내 설정 → 일반 → 보안</td>
+</tr>
+<tr>
+<td>자주 쓰는 프롬프트 / Quick Commands (핀 아이콘)</td>
+<td><strong>내 프롬프트</strong> (책갈피 아이콘, <strong>입력 저장</strong>)</td>
+<td></td>
+</tr>
+<tr>
+<td>작업 사본 (worktree)</td>
+<td><strong>작업트리</strong> (새 대화 체크박스는 <strong>워크트리</strong>)</td>
+<td></td>
+</tr>
+<tr>
+<td>파일 체크포인트 보호</td>
+<td><strong>파일 복원지점</strong></td>
+<td>새 대화 ⋯ 메뉴</td>
+</tr>
+<tr>
+<td>커밋</td>
+<td><strong>변경기록</strong></td>
+<td><strong>변경기록 남기기</strong></td>
+</tr>
+<tr>
+<td>산출물</td>
+<td><strong>작업물</strong></td>
+<td><strong>작업물 모아보기</strong></td>
+</tr>
+<tr>
+<td>요소를 선택해 채팅으로 보내기</td>
+<td><strong>요소를 골라 주석 트레이에 담기</strong> → <strong>모두 보내기</strong></td>
+<td>Shift+클릭은 즉시 전송</td>
+</tr>
+<tr>
+<td>헤더 ⋯ 다른 에이전트로 이어가기</td>
+<td>프로젝트 도구 → <strong>대화 이어가기</strong> → <strong>다른 AI도구로 이어가기</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>어떻게 사용하시겠어요? 개인 사용 / 조직 사용</td>
+<td>시작 화면의 <strong>개인 사용</strong> / <strong>로그인</strong></td>
+<td>조직 사용 = 로그인</td>
+</tr>
+<tr>
+<td>머신 등록</td>
+<td><strong>작업PC 등록</strong></td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h2 id="부록-b-메뉴설정-지도">부록 B. 메뉴·설정 지도<a class="anchor" href="#부록-b-메뉴설정-지도" aria-label="Link">#</a></h2>
+<p>본문에서 다루지 않은 메뉴·버튼 이름을 한곳에 모았습니다. 찾는 이름이 있을 때 사전처럼 쓰세요.</p>
+<h3 id="b1b2-내-설정의-메뉴">B.1~B.2 내 설정의 메뉴<a class="anchor" href="#b1b2-내-설정의-메뉴" aria-label="Link">#</a></h3>
+<p>내 설정(프로필 메뉴 → <strong>내 설정</strong>, ⌘,)의 왼쪽 메뉴입니다. [로그인] 표시가 있는 메뉴는 개인 사용에서는 보이지 않습니다.</p>
+<h4 id="b1-일반-영역-메뉴">B.1 일반 영역 메뉴<a class="anchor" href="#b1-일반-영역-메뉴" aria-label="Link">#</a></h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>묶음</th>
+<th>메뉴 (자세한 설명)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>계정</td>
+<td><strong>시작준비</strong>(<a href="#2-%EC%8B%9C%EC%9E%91%EC%A4%80%EB%B9%84">2장</a>) · <strong>프로필</strong>[로그인] (표시 이름, 소속 팀) · <strong>대화 보관함</strong>(<a href="#10-%EB%8C%80%ED%99%94-%EA%B4%80%EB%A6%AC">10장</a>) · <strong>모바일 연결</strong>(<a href="#17-%EC%9E%91%EC%97%85pc%EC%99%80-%EB%AA%A8%EB%B0%94%EC%9D%BC">17장</a>) · <strong>보안</strong>(<a href="#14-%EA%B6%8C%ED%95%9C%EC%8A%B9%EC%9D%B8%EB%B3%B4%EC%95%88">14장</a>) · <strong>다른 조직 참여</strong>[로그인] · <strong>토큰 사용량</strong>[로그인] (개요·프로젝트별·모델별·출처별 사용량과 예상 비용) · <strong>커넥터</strong>[로그인] · <strong>메신저 채널</strong>[로그인] (<a href="#16-%EC%99%B8%EB%B6%80-%EC%97%B0%EB%8F%99%ED%99%95%EC%9E%A5%EB%A9%94%EC%8B%A0%EC%A0%80-%EC%B1%84%EB%84%90">16장</a>) · <strong>스킬</strong>[로그인]</td>
+</tr>
+<tr>
+<td>환경설정</td>
+<td><strong>알림</strong>(<a href="#14-%EA%B6%8C%ED%95%9C%EC%8A%B9%EC%9D%B8%EB%B3%B4%EC%95%88">14장</a>) · <strong>시각 효과</strong>(다크 모드, 화면 효과 자동/전체 효과/효과 줄이기) · <strong>언어</strong></td>
+</tr>
+<tr>
+<td>AI</td>
+<td><strong>AI Models</strong>(<a href="#7-ai%EB%AA%A8%EB%8D%B8%EC%9E%91%EC%97%85-%EA%B0%95%EB%8F%84%EC%99%80-%EC%82%AC%EC%9A%A9%EB%9F%89">7장</a>) · <strong>시스템 프롬프트</strong>·<strong>내 채팅 개인화</strong>(<a href="#15-%EB%A9%94%EB%AA%A8%EB%A6%AC%EA%B5%90%ED%9B%88%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8">15장</a>) · <strong>대화 검색</strong>(<a href="#10-%EB%8C%80%ED%99%94-%EA%B4%80%EB%A6%AC">10장</a>)</td>
+</tr>
+<tr>
+<td>데스크톱 앱</td>
+<td><strong>단축키</strong>(<a href="#19-%EB%8B%A8%EC%B6%95%ED%82%A4-%EB%AA%A8%EC%9D%8C">19장</a>) · <strong>네트워크 데이터 절약</strong>(테더링·종량제에서 백그라운드 데이터 줄이기) · <strong>정보</strong>(버전, <strong>업데이트 확인</strong>, <strong>문제 해결</strong>, <a href="#20-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0%EA%B3%BC-faq">20장</a>)</td>
+</tr>
+</tbody></table></div>
+<h4 id="b2-개발-영역-메뉴">B.2 개발 영역 메뉴<a class="anchor" href="#b2-개발-영역-메뉴" aria-label="Link">#</a></h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>메뉴</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>작업PC</strong></td>
+<td>작업PC 목록·등록·공유(<a href="#17-%EC%9E%91%EC%97%85pc%EC%99%80-%EB%AA%A8%EB%B0%94%EC%9D%BC">17장</a>)</td>
+</tr>
+<tr>
+<td><strong>확장</strong></td>
+<td>공식 확장 설치·활성화, 로컬 파일 설치(<a href="#16-%EC%99%B8%EB%B6%80-%EC%97%B0%EB%8F%99%ED%99%95%EC%9E%A5%EB%A9%94%EC%8B%A0%EC%A0%80-%EC%B1%84%EB%84%90">16장</a>)</td>
+</tr>
+<tr>
+<td><strong>터미널</strong></td>
+<td>앱 안 터미널 글꼴·글자 크기, <strong>입력 미리 표시</strong></td>
+</tr>
+<tr>
+<td><strong>개발 자동화</strong></td>
+<td>오토파일럿·AI 심사·반복 감지 자동 중지 등(<a href="#11-%EC%9E%91%EC%97%85-%EB%A7%88%EB%AC%B4%EB%A6%AC">11</a>·<a href="#12-%EC%9E%91%EC%97%85%EB%B3%B4%EB%93%9C">12</a>·<a href="#14-%EA%B6%8C%ED%95%9C%EC%8A%B9%EC%9D%B8%EB%B3%B4%EC%95%88">14장</a>)</td>
+</tr>
+<tr>
+<td><strong>환경 변수</strong>[로그인] · <strong>저장소</strong>[로그인]</td>
+<td>환경 변수·비밀 값, GitHub·GitLab 계정 연결</td>
+</tr>
+<tr>
+<td><strong>메모리</strong></td>
+<td>AI의 기억 관리, 기억 보호 규칙(<a href="#15-%EB%A9%94%EB%AA%A8%EB%A6%AC%EA%B5%90%ED%9B%88%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8">15장</a>)</td>
+</tr>
+<tr>
+<td><strong>개발자 기능 설정</strong></td>
+<td>숨겨진 기능 스위치(<a href="#34-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EA%B8%B0%EB%8A%A5-%EC%84%A4%EC%A0%95">3.4</a>)</td>
+</tr>
+</tbody></table></div>
+<h3 id="b3-입력창-아래-줄과-위-줄">B.3 입력창 아래 줄과 위 줄<a class="anchor" href="#b3-입력창-아래-줄과-위-줄" aria-label="Link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>요소</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>AI 자동</strong> (또는 <code>Claude Code · 자동</code>처럼 고른 AI·모델 버튼)</td>
+<td>AI·모델·작업 강도를 <strong>한 버튼</strong>에서 고릅니다. 새 대화의 기본은 <strong>AI 자동</strong>입니다 → <a href="#7-ai%EB%AA%A8%EB%8D%B8%EC%9E%91%EC%97%85-%EA%B0%95%EB%8F%84%EC%99%80-%EC%82%AC%EC%9A%A9%EB%9F%89">7장</a></td>
+</tr>
+<tr>
+<td><strong>AI 잔여량</strong> (서비스별 남은 비율, 예: <code>86%/72%</code>)</td>
+<td>누르면 계정별 남은 사용량 창이 열립니다 → <a href="#74-ai-%EC%82%AC%EC%9A%A9%EB%9F%89-%EC%B0%BD">7.4</a></td>
+</tr>
+<tr>
+<td><code>컨텍스트 N%</code></td>
+<td>Claude 대화가 컨텍스트 창을 얼마나 채웠는지. 80% 이상이면 새 대화나 <code>/compact</code>를 권합니다.</td>
+</tr>
+<tr>
+<td><strong>CPU·메모리</strong> [개발자]</td>
+<td>작업PC 상태 요약(개발자 기능 설정에서 켬)</td>
+</tr>
+<tr>
+<td>작업PC 이름</td>
+<td>이 대화가 실행되는 컴퓨터와 연결 상태</td>
+</tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>요소</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>저장소</strong></td>
+<td>입력창 위 오른쪽의 작은 <strong>저장소</strong> 버튼이 브랜치·워크트리 같은 저장소 도구 줄을 접고 펼칩니다. 원격 저장소가 없으면 브랜치 이름 옆에 <strong>저장소 연결하기</strong>가 나옵니다.</td>
+</tr>
+<tr>
+<td><strong>워크트리</strong> 체크박스(줄 오른쪽)</td>
+<td>새 대화에서 켜면 이 대화만의 <strong>작업트리</strong>(복사본 작업 폴더)에서 일합니다. 옆 방식 버튼에서 <strong>새로 만들기 / 기존 항목 사용 / PR에서 시작 / 이슈에서 시작</strong>을 고르고, <strong>Base</strong> 버튼으로 기준 브랜치를 정합니다.</td>
+</tr>
+<tr>
+<td><strong>지금 변경사항 가져가기</strong></td>
+<td>방식이 <strong>새로 만들기</strong>일 때, 프로젝트 폴더의 커밋하지 않은 변경과 새 파일을 새 작업트리로 한 번 복사합니다. 원래 폴더는 그대로입니다.</td>
+</tr>
+<tr>
+<td>브랜치 이름 + <strong>PR 번호 칩</strong></td>
+<td>누르면 <strong>가져오기 (pull)</strong>, <strong>보내기 (push)</strong> 와 Git 상태를 봅니다. PR 번호 옆 배지로 열림·병합됨·닫힘, CI 실패를 확인합니다.</td>
+</tr>
+<tr>
+<td><strong>목표</strong></td>
+<td><code>/goal</code>로 건 목표가 한 줄로 보이고 <strong>목표 바꾸기 / 목표 지우기</strong>를 쓸 수 있습니다.</td>
+</tr>
+<tr>
+<td><strong>자식 AI도구 실행 중</strong>(서브 에이전트)</td>
+<td>AI가 만든 자식 대화가 돌아가는 동안 작업 이름과 함께 표시됩니다.</td>
+</tr>
+<tr>
+<td><strong>작업 마무리</strong></td>
+<td>대화를 시작한 뒤 줄 오른쪽 끝에 나타나는 로봇 아이콘 버튼 → <a href="#11-%EC%9E%91%EC%97%85-%EB%A7%88%EB%AC%B4%EB%A6%AC">11장</a></td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>작업트리·<strong>지금 변경사항 가져가기</strong>는 <strong>Git 저장소 프로젝트</strong>에서만, 그리고 <strong>아직 보내지 않은 새 대화</strong>에서만 설정할 수 있습니다. 새 대화를 열 때 직전에 켰던 <strong>워크트리</strong> 체크가 그대로 켜져 있을 수 있으니 보내기 전에 확인하세요. Windows 작업PC에서는 스냅샷·변경 가져가기·대화 옮기기가 아직 지원되지 않습니다.</p>
+</div>
+<h3 id="b4-입력창의--메뉴와--메뉴">B.4 입력창의 + 메뉴와 ⋯ 메뉴<a class="anchor" href="#b4-입력창의--메뉴와--메뉴" aria-label="Link">#</a></h3>
+<p><strong>+ (추가)</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>메뉴</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>파일 또는 사진 추가</strong> (⌘U)</td>
+<td>파일·사진을 첨부합니다. 입력창으로 끌어다 놓아도 됩니다. 이 기기에 총 1GiB까지 저장되고, 보내기 전 첨부는 대화를 옮기거나 앱을 다시 켜도 복원됩니다.</td>
+</tr>
+<tr>
+<td><strong>폴더 추가</strong></td>
+<td>폴더를 통째로 첨부합니다.</td>
+</tr>
+<tr>
+<td><strong>이번 요청에 브라우저 사용</strong> [개발자]</td>
+<td><strong>AI 브라우저 메뉴 보이기</strong>를 켠 경우, 이번 요청에서 AI가 브라우저를 쓰게 합니다.</td>
+</tr>
+</tbody></table></div>
+<p><strong>⋯ (대화 추가 옵션)</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>메뉴</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>프롬프트 검색</strong></td>
+<td>전에 보낸 요청과 첨부 경로를 검색해 입력창에 넣습니다. macOS에서는 Ctrl+R도 됩니다.</td>
+</tr>
+<tr>
+<td><strong>Auto Router</strong></td>
+<td>모델 자동 지정이 켜져 있는지 보여 줍니다. <em>새 대화에서만</em></td>
+</tr>
+<tr>
+<td><strong>파일 복원지점</strong></td>
+<td>AI가 파일을 바꿀 때마다 상태를 기록해 되돌릴 수 있게 합니다 (<a href="#117-%ED%8C%8C%EC%9D%BC-%EB%B3%B5%EC%9B%90%EC%A7%80%EC%A0%90%EA%B3%BC-%EB%B3%80%EA%B2%BD%EA%B8%B0%EB%A1%9D">11.7</a>). <em>새 대화에서만, macOS·Linux 작업PC, 동시작업과 함께 쓸 수 없음</em></td>
+</tr>
+<tr>
+<td><strong>프로젝트 허브로 설정</strong></td>
+<td>이 대화가 같은 프로젝트의 다른 대화들이 끝났다는 소식·질문을 모아 받는 허브가 됩니다(프로젝트마다 하나). <em>새 대화에서만</em></td>
+</tr>
+<tr>
+<td><strong>동시작업</strong></td>
+<td>같은 요청을 여러 대화로 동시에 시작해 결과를 비교합니다. 후보 수와 함께 돌릴 AI를 정합니다. <em>Git 프로젝트 + 워크트리 새로 만들기 필요</em></td>
+</tr>
+</tbody></table></div>
+<hr>
+<div class="center">
+<p>더 궁금한 것이 있나요? <a href="https://saycode.ai" target="_blank" rel="noopener">saycode.ai</a> · 기술 문의 <a href="mailto:ryan@buzzni.com">ryan@buzzni.com</a></p>
+<p><strong>© 2026 <a href="https://buzzni.com" target="_blank" rel="noopener">Buzzni</a></strong></p>
+</div><!-- images: icon.png, start-screen.png, first-run.gif, personal-use-confirm.png, login-signup.png, login-selfhost.png, onboarding-checklist.png, ai-connect-picker.png, onboarding-free-model.png, settings-onboarding.png, sidebar-crop.png, profile-menu-crop.png, settings-search-alias.png, dev-features-toggle-on.png, home-chat.png, chat-plus-menu-crop.png, doc-templates.png, result-file-card.png, chat-result-html-panel.png, home-develop.png, home-build.png, create-project-modal-new.png, create-project-modal.png, project-new-chat.png, build-by-chat.gif, project-chat.png, composer-queue.png, composer-ai-menu.png, composer-ai-menu-effort.png, auto-route-badge.png, settings-ai-models.png, ai-usage-popover-crop.png, workspace-add-panel.png, files-panel.png, workspace-diff.png, workspace-diff-turns.png, annotation-tray.gif, browser-panel.png, conversation-summary.png, sidebar-conversation-menu-crop.png, archive-undo-toast.png, settings-archive.png, conversation-continue-menu.png, quick-open-commands.png, work-finish-menu.png, independent-review-modal.png, worktree-snapshots.png, git-actions-dialog.png, worktree-manager.png, agent-board.png, agent-board.gif, agent-board-filter.png, schedule-guest-empty.png, settings-notifications.png, settings-security.png, settings-system-prompt.png, integrations.png, settings-workpc.png, mobile-companion-crop.png, settings-shortcuts.png -->
+
+    </main>
+    <footer class="footer">
+      <span>Saycode Desktop 가이드북 · 버전 0.1.81 · 2026-11-01</span>
+      <a href="https://github.com/buzzni/saycode-desktop-releases" target="_blank" rel="noopener">GitHub 저장소 &rarr;</a>
+    </footer>
+  </div>
+</div>
+<script>
+(function () {
+  var doc = document, root = doc.documentElement, body = doc.body;
+  var KEY = 'saycode-guidebook-theme';
+
+  // Theme toggle (explicit choice overrides prefers-color-scheme)
+  function effectiveTheme() {
+    return root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  doc.querySelectorAll('.theme-toggle').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+    });
+  });
+
+  // Mobile menu
+  var menuBtn = doc.querySelector('.menu-toggle');
+  function setMenu(open) {
+    body.classList.toggle('menu-open', open);
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', String(open));
+  }
+  if (menuBtn) menuBtn.addEventListener('click', function () { setMenu(!body.classList.contains('menu-open')); });
+  doc.querySelectorAll('.toc a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+  // Scroll-spy
+  var links = {}, heads = [];
+  doc.querySelectorAll('.toc a[href^="#"]').forEach(function (a) { links[decodeURIComponent(a.getAttribute('href').slice(1))] = a; });
+  doc.querySelectorAll('.content h2[id], .content h3[id]').forEach(function (h) { heads.push(h); });
+  var toc = doc.querySelector('.toc'), current = null, ticking = false;
+  function spy() {
+    ticking = false;
+    var off = window.innerWidth <= 860 ? 90 : 60, active = null;
+    for (var i = 0; i < heads.length; i++) { if (heads[i].getBoundingClientRect().top <= off) active = heads[i]; else break; }
+    if (active === current) return;
+    current = active;
+    Object.keys(links).forEach(function (k) { links[k].classList.remove('active'); });
+    doc.querySelectorAll('.toc li.sub.show').forEach(function (li) { li.classList.remove('show'); });
+    if (!active) return;
+    var link = links[active.id];
+    if (!link) return;
+    link.classList.add('active');
+    var li = link.parentElement, parent = active.tagName === 'H3' ? li.previousElementSibling : li;
+    while (parent && parent.classList.contains('sub')) parent = parent.previousElementSibling;
+    if (parent) {
+      var n = parent.nextElementSibling;
+      while (n && n.classList.contains('sub')) { n.classList.add('show'); n = n.nextElementSibling; }
+    }
+    // keep the active entry visible inside the (scrollable) sidebar without moving the page
+    if (toc && toc.offsetParent && toc.scrollHeight > toc.clientHeight) {
+      var r = link.getBoundingClientRect(), t = toc.getBoundingClientRect();
+      if (r.top < t.top + 20 || r.bottom > t.bottom - 20) toc.scrollTop += r.top - t.top - t.height / 3;
+    }
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+  window.addEventListener('resize', spy);
+  spy();
+
+  // Click-to-zoom lightbox
+  var lb = doc.createElement('div');
+  lb.className = 'lightbox'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true');
+  lb.innerHTML = '<button type="button" aria-label="Close">&times;</button><img alt=""><p></p>';
+  body.appendChild(lb);
+  var lbImg = lb.querySelector('img'), lbCap = lb.querySelector('p');
+  function closeLb() { lb.classList.remove('open'); lbImg.removeAttribute('src'); }
+  doc.querySelectorAll('.content img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      var cap = img.closest('figure') && img.closest('figure').querySelector('figcaption');
+      lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt;
+      lbCap.textContent = cap ? cap.firstChild.textContent : img.alt;
+      lb.classList.add('open');
+    });
+  });
+  lb.addEventListener('click', closeLb);
+  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeLb(); setMenu(false); } });
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{lang}}" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>{{title}}</title>
+<meta name="author" content="Buzzni">
+<style>
+{{css}}
+</style>
+</head>
+<body>
+<section class="cover">
+  <img src="{{icon}}" alt="">
+  <h1>{{heading}}</h1>
+  <p class="subtitle">{{subtitle}}</p>
+  {{notes}}
+  <div class="rule"></div>
+  <div class="meta">{{meta}}</div>
+  <div class="url">{{repo}}</div>
+</section>
+<nav class="toc-page">
+  <h2>{{t.toc}}</h2>
+  <ul>
+{{toc}}
+  </ul>
+</nav>
+<main class="content">
+{{body}}
+</main>
+</body>
+</html>

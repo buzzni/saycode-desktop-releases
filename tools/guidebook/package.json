@@ -1,0 +1,16 @@
+{
+  "name": "saycode-guidebook",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Builds the Saycode Desktop HTML + PDF guidebook from docs/GUIDE*.md",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node build.mjs",
+    "build:html": "node build.mjs --no-pdf"
+  },
+  "dependencies": {
+    "marked": "18.1.2",
+    "playwright-core": "1.64.1"
+  }
+}

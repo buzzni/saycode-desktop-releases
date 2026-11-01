@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<link rel="icon" href="{{icon}}">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('saycode-guidebook-theme');if(t==='light'||t==='dark')r.dataset.theme=t;}catch(e){}})();</script>
+<style>
+{{css}}
+</style>
+</head>
+<body id="top">
+<header class="topbar">
+  <a class="brand" href="#top"><img src="{{icon}}" alt=""><span>{{shortTitle}}</span></a>
+  <button type="button" class="btn menu-toggle" aria-expanded="false" aria-controls="sidebar">{{icons.menu}}{{t.menu}}</button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#top"><img src="{{icon}}" alt=""><span>{{shortTitle}}</span></a>
+    <nav class="toc" aria-label="{{t.menu}}">
+      <ul>
+{{toc}}
+      </ul>
+    </nav>
+    <div class="sidebar-tools">
+      <a class="btn btn-primary" href="{{pdfHref}}" download>{{icons.download}}{{t.pdf}}</a>
+      <a class="btn" href="{{otherHref}}" hreflang="{{otherLang}}">{{t.otherLang}}</a>
+      <button type="button" class="btn theme-toggle" aria-label="{{t.theme}}" title="{{t.theme}}"><span class="i-moon">{{icons.moon}}</span><span class="i-sun">{{icons.sun}}</span></button>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="hero">
+      <img class="hero-icon" src="{{icon}}" alt="">
+      <h1>{{heading}}</h1>
+      <p class="subtitle">{{subtitle}}</p>
+      {{notes}}
+      <div class="chips">{{chips}}</div>
+      <div class="actions">
+        <a class="btn btn-primary" href="{{pdfHref}}" download>{{icons.download}}{{t.pdf}}</a>
+        <a class="btn" href="{{landingHref}}">{{t.home}}</a>
+      </div>
+    </header>
+    <main class="content">
+{{body}}
+    </main>
+    <footer class="footer">
+      <span>{{footerLeft}}</span>
+      <a href="{{repo}}" target="_blank" rel="noopener">{{t.repo}} &rarr;</a>
+    </footer>
+  </div>
+</div>
+<script>
+{{js}}
+</script>
+</body>
+</html>
