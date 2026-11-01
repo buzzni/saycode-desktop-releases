@@ -30,7 +30,7 @@
 
 <br/>
 
-https://github.com/user-attachments/assets/ac240d54-1df2-404f-9efe-c9954435b150
+https://github.com/user-attachments/assets/aa3e4f8b-3f24-48dc-ab8c-b8a4c19fee4b
 
 *🔊 소리를 켜고 보세요 — 실제 v0.1.81 화면으로 만든 92초 소개 영상(자막·배경음악)입니다 · [MP4 다운로드](docs/assets/saycode-intro-ko.mp4) · [자막 SRT](docs/assets/saycode-intro-ko.srt)*
 
@@ -54,6 +54,7 @@ https://github.com/user-attachments/assets/ac240d54-1df2-404f-9efe-c9954435b150
 > **v0.1.81 — 시작은 더 쉽게, 화면은 웹과 같은 구조로.** v0.1.50 이후 31개 릴리스에서 달라진 점:
 >
 > - **계정 없이 바로 시작** — 첫 화면에서 **개인 사용**을 한 번 누르면 **시작준비**가 자동으로 진행되고, 유료 AI 계정이 없어도 **무료 모델**로 대화를 시작합니다.
+> - **💸 유료 계정 없이 무료로 시작** — 유료 AI 계정 없이 **무료 모델(opencode)**로 바로 시작합니다. 무료 모델은 OpenCode가 기간을 정해 제공하며 모델마다 데이터 정책이 다릅니다([가이드북](https://buzzni.github.io/saycode-desktop-releases/guidebook/ko/#205-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%96%BC%EB%A7%88%EB%82%98-%EC%93%B8-%EC%88%98-%EC%9E%88%EB%82%98%EC%9A%94)).
 > - **새 사이드바와 내 설정** — 홈 탭 대신 **Chat · Project**, 프로필 메뉴, **내 설정(일반·개발)**, 하나로 합쳐진 **프로젝트 만들기** 창, **작업PC**·**작업보드** 같은 정돈된 용어.
 > - **더 똑똑해진 입력창** — **AI·모델·작업 강도 한 버튼(AI 자동)**, 입력창 아래 **AI 잔여량**, 응답 중 **대기열**, **대화 요약**과 보관·잠시 숨기기.
 > - **고치고 마무리하기까지** — 요소를 **주석 트레이**에 모아 보내는 브라우저, **브랜치 전체/턴별** 변경·파일 패널, 입력창 위 **작업 마무리** 메뉴, 필터·선행 작업이 생긴 **작업보드**, 로그인하면 **예약**.
@@ -272,6 +273,23 @@ Letterhead*, **내 템플릿 만들기**)을 고르면 같은 서식으로 계�
 <img src="docs/assets/composer-ai-menu.png" alt="입력창 아래 AI 자동 메뉴: Claude Code, Codex, Opencode, Grok과 모델 목록, AI 프로필" /><br/>
 <img src="docs/assets/auto-route-badge.png" alt="메시지 위 자동 선택 배지: 자동 · Sonnet 5.5 · medium" /><br/>
 <img src="docs/assets/ai-usage-popover.png" alt="AI 사용량 창: Claude 탭, 계정별 5시간·7일 사용률" />
+</td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 💸 유료 계정 없이 무료로 시작 — 무료 모델(opencode)
+
+Claude·ChatGPT 유료 계정이 없어도 **시작준비 → 무료 모델로 시작하기** 한 번이면 opencode를 이 PC에 설치하고
+바로 대화할 수 있습니다. 설치 전에 설치 위치와 무료 모델의 조건을 보여 주고, 확인한 뒤에만 설치합니다.
+입력창 아래 AI 메뉴에서 **Opencode**를 고르면 무료 모델에 `무료`·`추천 무료` 표시가 붙고, 모델을 고르지
+않으면 메시지마다 추천 무료 모델이 쓰입니다. 무료 모델은 OpenCode가 **기간을 정해 제공**하며 **모델마다
+데이터 보관·학습 정책이 다릅니다.** 회사·기밀 코드는 유료·조직 AI를 연결하거나 보관·학습을 하지 않는다고
+밝힌 모델만 쓰세요. → [가이드북 FAQ: 무료 모델로 얼마나 쓸 수 있나요?](https://buzzni.github.io/saycode-desktop-releases/guidebook/ko/#205-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%96%BC%EB%A7%88%EB%82%98-%EC%93%B8-%EC%88%98-%EC%9E%88%EB%82%98%EC%9A%94)
+
+</td>
+<td>
+<img src="docs/assets/composer-ai-menu-free.png" alt="입력창 아래 AI 메뉴의 Opencode 무료 모델 목록: 무료·추천 무료 표시" />
 </td>
 </tr>
 <tr>

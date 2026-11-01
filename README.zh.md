@@ -30,7 +30,7 @@
 
 <br/>
 
-https://github.com/user-attachments/assets/7cc4d7d2-a02c-433d-afc0-d6b6bf5c81e1
+https://github.com/user-attachments/assets/a323660d-93d9-45a6-ac1b-85dc2f664523
 
 *🔊 请打开声音 —— 使用真实 v0.1.81 界面制作的 92 秒介绍视频（英文字幕·背景音乐） · [下载 MP4](docs/assets/saycode-intro-en.mp4) · [字幕 SRT](docs/assets/saycode-intro-en.srt)*
 
@@ -54,6 +54,7 @@ https://github.com/user-attachments/assets/7cc4d7d2-a02c-433d-afc0-d6b6bf5c81e1
 > **v0.1.81 —— 上手更轻松，界面结构与网页版一致。** 自 v0.1.50 以来的 31 个版本带来了这些变化：
 >
 > - **无需账号即可开始** —— 在首屏点一次**个人使用**，**开始准备**就会自动进行；没有付费 AI 账号也能用**免费模型**开始对话。
+> - **💸 无需付费账号，免费开始** —— 没有付费 AI 账号，也能直接用**免费模型（opencode）**开始。免费模型由 OpenCode 限时提供，各模型的数据政策不同（[使用指南](https://buzzni.github.io/saycode-desktop-releases/guidebook/en/#205-how-much-can-i-use-free-models)，英文）。
 > - **全新侧边栏与我的设置** —— 用 **Chat · Project** 取代主页标签页，新增个人资料菜单、**我的设置（通用 · 开发）**、统一的**创建项目**窗口，术语也更清晰，如**工作电脑**、**工作看板**。
 > - **更聪明的输入框** —— **AI · 模型 · 工作强度合为一个按钮（AI 自动）**，输入框下方显示 **AI 剩余额度**，回答期间可排**队列**，还有**对话摘要**、归档与暂时隐藏。
 > - **从修改到收尾** —— 用**批注托盘**收集元素的浏览器、**整个分支 / 按轮次**的变更与文件面板、输入框上方的**完成工作**菜单、带筛选和前置任务的**工作看板**，登录后还有**计划**。
@@ -264,6 +265,22 @@ diff 展示**整个分支**（点某个提交只看该提交）或**按轮次**�
 <img src="docs/assets/composer-ai-menu.png" alt="输入框下方的 AI 自动菜单：Claude Code、Codex、Opencode、Grok、模型列表、AI 配置" /><br/>
 <img src="docs/assets/auto-route-badge.png" alt="消息上方的自动选择徽章：自动 · Sonnet 5.5 · medium" /><br/>
 <img src="docs/assets/ai-usage-popover.png" alt="AI 用量窗口：Claude 标签，各账号 5 小时 / 7 天用量" />
+</td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 💸 无需付费账号，免费开始 —— 免费模型（opencode）
+
+没有 Claude 或 ChatGPT 付费账号也没关系：点一下**开始准备 → 使用免费模型开始**，就会把 opencode 安装到这台电脑上，
+马上就能对话。安装前会显示安装位置和免费模型的使用条件，确认后才会安装。在输入框下方的 AI 菜单中选择
+**Opencode**，免费模型会带上“免费”“推荐免费”标记；不选模型时，每条消息会自动使用推荐的免费模型。免费模型由
+OpenCode **限时提供**，且**各模型对输入的保留与训练政策不同。** 公司或机密代码，请连接付费/组织 AI，或只使用提供方
+声明不保留、不用于训练的模型。→ [使用指南 FAQ: How much can I use free models?（英文）](https://buzzni.github.io/saycode-desktop-releases/guidebook/en/#205-how-much-can-i-use-free-models)
+
+</td>
+<td>
+<img src="docs/assets/composer-ai-menu-free.png" alt="输入框下方 AI 菜单中的 Opencode 免费模型列表，带有免费、推荐免费标记" />
 </td>
 </tr>
 <tr>

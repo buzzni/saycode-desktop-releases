@@ -289,6 +289,7 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
 <li class="sub"><a href="#72-ai-프로필--자주-쓰는-조합-저장">7.2 AI 프로필 — 자주 쓰는 조합 저장</a></li>
 <li class="sub"><a href="#73-ai-목록과-기본값-정하기">7.3 AI 목록과 기본값 정하기</a></li>
 <li class="sub"><a href="#74-ai-사용량-창">7.4 AI 사용량 창</a></li>
+<li class="sub"><a href="#75-무료-모델로-시작하기-opencode">7.5 무료 모델로 시작하기 (Opencode)</a></li>
 <li class="h2"><a href="#8-작업-영역">8. 작업 영역</a></li>
 <li class="sub"><a href="#81-열기와-패널-추가">8.1 열기와 패널 추가</a></li>
 <li class="sub"><a href="#82-파일-탭">8.2 파일 탭</a></li>
@@ -352,6 +353,7 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
 <li class="sub"><a href="#202-업데이트하기">20.2 업데이트하기</a></li>
 <li class="sub"><a href="#203-도움-요청하기">20.3 도움 요청하기</a></li>
 <li class="sub"><a href="#204-자주-묻는-질문">20.4 자주 묻는 질문</a></li>
+<li class="sub"><a href="#205-무료-모델로-얼마나-쓸-수-있나요">20.5 무료 모델로 얼마나 쓸 수 있나요?</a></li>
 <li class="h2"><a href="#부록-a-바뀐-용어표">부록 A. 바뀐 용어표</a></li>
 <li class="h2"><a href="#부록-b-메뉴설정-지도">부록 B. 메뉴·설정 지도</a></li>
 <li class="sub"><a href="#b1b2-내-설정의-메뉴">B.1~B.2 내 설정의 메뉴</a></li>
@@ -679,7 +681,7 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
 </ol>
 <figure class="fig"><div class="imgs"><img src="../../assets/ai-connect-picker.png" alt="연결할 AI를 선택해 주세요 — ChatGPT, Claude, 무료 모델(opencode) 선택 창" loading="lazy" decoding="async"></div><figcaption>연결할 AI를 선택해 주세요 — ChatGPT, Claude, 무료 모델(opencode) 선택 창</figcaption></figure>
 <p>이 선택 창은 <strong>내 설정 → 일반 → AI Models → 연결하기</strong>에서도 같은 모양으로 열립니다.</p>
-<p>유료 AI 계정이 없다면 <strong>무료 모델로 시작하기</strong>를 쓰세요.</p>
+<p>유료 AI 계정이 없다면 <strong>무료 모델로 시작하기</strong>를 쓰세요. 유료 계정 없이도 바로 대화를 시작할 수 있는 길입니다. (자세한 내용은 <a href="#75-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-opencode">7.5</a>에 있습니다.)</p>
 <ol>
 <li><strong>무료 모델로 시작하기</strong>를 누릅니다.</li>
 <li>확인 화면에서 설치 위치와 조건(기간 한정 제공, 모델마다 다른 보관·학습 정책, 유료 모델보다 낮을 수 있는 성능)을 읽습니다.</li>
@@ -689,6 +691,9 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
 <figure class="fig"><div class="imgs"><img src="../../assets/onboarding-free-model.png" alt="무료 모델로 시작하기 안내 — 알아 두세요 4항목과 뒤로·확인하고 시작하기 버튼(opencode가 이미 설치된 경우)" loading="lazy" decoding="async"></div><figcaption>무료 모델로 시작하기 안내 — 알아 두세요 4항목과 뒤로·확인하고 시작하기 버튼(opencode가 이미 설치된 경우)</figcaption></figure>
 <div class="callout callout-important"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M12 8v3M12 13.5h.01"/></svg><span>중요</span></p>
 <p><strong>무료 모델의 조건</strong>: 이 컴퓨터가 내 작업PC이고 온라인일 때만 설치할 수 있습니다. 조직이 쓸 AI를 제한했다면 설치가 막히고, Windows 시험판에서는 보이지 않습니다. 무료 모델 한도에 걸리면 다른 무료 모델로 최대 3번까지 자동 전환되며 유료 모델로는 절대 넘어가지 않습니다.</p>
+</div>
+<div class="callout callout-warning"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><span>주의</span></p>
+<p><strong>회사·고객 코드나 기밀 자료는 주의하세요.</strong> 무료 모델은 모델마다 입력(프롬프트·코드)의 보관·학습 정책이 다릅니다. 일부 모델은 무료 기간에 입력을 모델 개선에 쓸 수 있다고 밝히고 있습니다. 기밀 자료에는 제공사가 <strong>보관하지 않고 학습에도 쓰지 않는다</strong>고 밝힌 무료 모델만 쓰거나, 유료·조직 AI를 연결하세요(<a href="#75-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-opencode">7.5</a>).</p>
 </div>
 <p>같은 단계의 <strong>채팅에 표시할 AI</strong> 스위치로는 쓰지 않는 AI를 선택 목록에서 숨깁니다(최소 하나는 남습니다). 조직 계정이라면 AI 단계에 <strong>조직 계정 연결하기</strong>, <strong>암호화키 확인</strong>, <strong>메시지 테스트</strong> 버튼이 보이며 관리자와 함께 확인하세요.</p>
 <h3 id="23-나중에-다시-열기">2.3 나중에 다시 열기<a class="anchor" href="#23-나중에-다시-열기" aria-label="Link">#</a></h3>
@@ -702,7 +707,7 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
 <p>Windows에서는 Node.js·uv·Git을 자동으로 설치해 줍니다. 자동 설치가 어렵다면 <strong>직접 설치할게요</strong>를 고르세요. 오류가 나면 <strong>오류 상세 → 다음 조치 → 설치 안내</strong>를 누르고, 진단 로그가 필요하면 <strong>로그 복사</strong>로 복사해 관리자나 지원 담당자에게 전달하세요.</p>
 </div>
 <div class="callout callout-tip"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>팁</span></p>
-<p>AI 계정은 나중에 <strong>내 설정 → 일반 → AI Models</strong>에서 <strong>연결하기</strong>, 행의 <strong>…</strong> 메뉴 → <strong>연결 해제</strong> / <strong>Saycode에 다시 연결</strong> / <strong>계정 추가</strong>로 관리합니다. 무료 모델은 Opencode 행 <strong>…</strong> → <strong>설치하기</strong>입니다(<a href="#7-ai%EB%AA%A8%EB%8D%B8%EC%9E%91%EC%97%85-%EA%B0%95%EB%8F%84%EC%99%80-%EC%82%AC%EC%9A%A9%EB%9F%89">7장</a>).</p>
+<p>AI 계정은 나중에 <strong>내 설정 → 일반 → AI Models</strong>에서 <strong>연결하기</strong>, 행의 <strong>…</strong> 메뉴 → <strong>연결 해제</strong> / <strong>Saycode에 다시 연결</strong> / <strong>계정 추가</strong>로 관리합니다. 무료 모델은 Opencode 행 <strong>…</strong> → <strong>설치하기</strong>입니다(<a href="#75-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-opencode">7.5</a>).</p>
 </div>
 <h2 id="3-화면-둘러보기">3. 화면 둘러보기<a class="anchor" href="#3-화면-둘러보기" aria-label="Link">#</a></h2>
 <p><strong>Saycode는 왼쪽 사이드바에서 시작하고, 설정은 왼쪽 아래 프로필 버튼에서 엽니다.</strong> 이 장에서는 화면의 큰 길잡이 세 가지를 익힙니다.</p>
@@ -1101,7 +1106,7 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
 <ol>
 <li><p>새 대화에서 입력창 아래 줄의 <strong>AI 자동</strong>(또는 현재 모델명·강도가 보이는 버튼)을 누릅니다.</p>
 </li>
-<li><p><strong>AI 자동</strong>을 고르면 Saycode가 요청 난이도를 보고 AI와 모델·강도를 정합니다. 직접 고르려면 <strong>Claude Code / Codex / Opencode / Grok</strong> 중 하나에 마우스를 올려 하위 메뉴에서 <strong>모델</strong>을 고릅니다(<strong>자동</strong>을 고르면 모델만 자동입니다). 오래된 모델은 <strong>이전 모델</strong> 묶음에 있습니다.</p>
+<li><p><strong>AI 자동</strong>을 고르면 Saycode가 요청 난이도를 보고 AI와 모델·강도를 정합니다. 직접 고르려면 <strong>Claude Code / Codex / Opencode / Grok</strong> 중 하나에 마우스를 올려 하위 메뉴에서 <strong>모델</strong>을 고릅니다(<strong>자동</strong>을 고르면 모델만 자동입니다). 오래된 모델은 <strong>이전 모델</strong> 묶음에 있습니다. 유료 AI 없이 쓰려면 <strong>Opencode</strong>의 무료 모델을 고릅니다(<a href="#75-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-opencode">7.5</a>).</p>
 </li>
 <li><p>모델을 직접 고른 뒤 같은 버튼을 다시 열면 <strong>작업 강도</strong> 하위 메뉴가 나타납니다(AI 자동 상태에서는 보이지 않습니다). 모델에 따라 Low · Medium · High · Xhigh · Max(일부는 Ultra까지)가 있습니다.</p>
 </li>
@@ -1125,6 +1130,7 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
 <figure class="fig"><div class="imgs"><img src="../../assets/settings-ai-models.png" alt="내 설정 → AI Models — Claude·ChatGPT·opencode 연결 상태, 연결하기, 연결된 AI 확인하기" loading="lazy" decoding="async"></div><figcaption>내 설정 → AI Models — Claude·ChatGPT·opencode 연결 상태, 연결하기, 연결된 AI 확인하기</figcaption></figure>
 <ul>
 <li><strong>연결하기</strong> — 브라우저로 내 Claude·ChatGPT 계정을 연결합니다. 행의 <strong>…</strong> 메뉴에서 <strong>연결 해제</strong>, <strong>Saycode에 다시 연결</strong>, <strong>계정 추가</strong>를 고릅니다.</li>
+<li><strong>Opencode 행 … → 설치하기</strong> — 유료 계정 없이 쓰는 무료 모델을 설치합니다(<a href="#75-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-opencode">7.5</a>).</li>
 <li><strong>채팅에 표시할 AI</strong> — 안 쓰는 AI를 선택 목록에서 숨깁니다(최소 1개는 표시).</li>
 <li><strong>새 대화 기본값</strong> — Chat과 Project 새 대화의 AI도구·Model·Effort 기본값을 각각 정합니다.</li>
 </ul>
@@ -1143,6 +1149,29 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
 <p>작업PC가 온라인이어야 실제 값이 보입니다. 한도에 가까워지면 입력창 아래에 <strong>사용률과 초기화까지 남은 시간</strong>이 자동으로 표시되고, 전환할 수 있는 계정 수도 알려 줍니다. [로그인] 조직 계정 선택, 모든 PC 요약은 로그인·여러 PC 환경에서 보입니다.</p>
 </div>
 <p>사용 기록은 [로그인] <strong>내 설정 → 일반 → 토큰 사용량</strong>에서 개요·프로젝트별·모델별·출처별로 확인하고 최근 7·30·90일을 비교합니다.</p>
+<h3 id="75-무료-모델로-시작하기-opencode">7.5 무료 모델로 시작하기 (Opencode)<a class="anchor" href="#75-무료-모델로-시작하기-opencode" aria-label="Link">#</a></h3>
+<p><strong>Claude나 ChatGPT 유료 계정이 없어도</strong> opencode를 이 컴퓨터에 설치해 무료 모델로 바로 대화할 수 있습니다(v0.1.80 이상). 유료 AI가 있는 사용자도 함께 설치해 두고 대화마다 골라 쓸 수 있습니다.</p>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p><strong>조건</strong>: 이 컴퓨터가 내 작업PC이고 온라인일 때만 설치할 수 있습니다. 조직이 AI 모델을 제한했다면 설치할 수 없고, Windows 시험판에서는 보이지 않습니다.</p>
+</div>
+<ol>
+<li>다음 중 편한 곳에서 시작합니다.<ul>
+<li><a href="#22-ai-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0">시작준비</a>의 AI 단계에서 <strong>무료 모델로 시작하기</strong></li>
+<li><strong>내 AI 계정 연결하기</strong> 창(또는 <strong>내 설정 → 일반 → AI Models → 연결하기</strong>)에서 <strong>무료 모델 (opencode)</strong></li>
+<li><strong>내 설정 → 일반 → AI Models</strong>의 Opencode 행 <strong>…</strong> 메뉴 → <strong>설치하기</strong></li>
+</ul>
+</li>
+<li>설치 전에 Saycode가 <strong>설치 위치</strong>와 <strong>무료 모델의 조건</strong>(기간 한정 제공, 모델마다 다른 입력 보관·학습 정책, 유료 모델보다 낮을 수 있는 성능)을 보여 줍니다. 읽고 확인한 뒤에만 설치됩니다.</li>
+<li>&quot;무료 모델로 시작할 준비가 됐어요&quot;가 나오면 끝입니다. 새 대화의 입력창 아래 AI 버튼에서 <strong>Opencode</strong>를 고릅니다(유료 AI 없이 시작했다면 이미 골라져 있습니다).</li>
+<li>모델 목록에서 무료 모델은 <code>무료</code>, 추천하는 모델은 <code>추천 무료</code>로 표시됩니다. <strong>모델을 고르지 않으면</strong> 메시지마다 추천 무료 모델이 자동으로 쓰입니다.</li>
+</ol>
+<figure class="fig"><div class="imgs"><img src="../../assets/composer-ai-menu-free.png" alt="입력창 아래 AI 메뉴의 Opencode 모델 목록 — 무료·추천 무료 표시가 붙은 무료 모델들" loading="lazy" decoding="async"></div><figcaption>입력창 아래 AI 메뉴의 Opencode 모델 목록 — 무료·추천 무료 표시가 붙은 무료 모델들</figcaption></figure>
+<p>쓸 수 있는 무료 모델이 없으면 메시지를 보내지 않고 <strong>다시 확인</strong>하라고 안내합니다. 잠시 뒤 다시 확인하거나, 다른 AI를 연결하세요.</p>
+<div class="callout callout-warning"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><span>주의</span></p>
+<p><strong>무료 모델에 무엇을 보내는지 확인하세요.</strong> 무료 모델은 OpenCode가 기간을 정해 제공하며, <strong>모델마다 데이터 정책이 다릅니다</strong>. OpenCode Zen 문서(2026년 11월 1일 확인 기준)에는 GLM-5.3-Flash Free와 DeepSeek V4.1 Flash Free는 입력을 보관하지 않고 학습에 쓰지 않는다고, Big Pickle 등 일부 모델은 무료 기간에 입력이 모델 개선에 쓰일 수 있다고, NVIDIA Nemotron 계열은 체험용이라 개인정보·기밀을 보내지 말라고 적혀 있습니다. 목록과 정책은 바뀔 수 있으니 <a href="https://opencode.ai/docs/zen/" target="_blank" rel="noopener">OpenCode Zen 문서</a>에서 직접 확인하세요.
+회사·고객 코드나 기밀 자료는 제공사가 보관·학습을 하지 않는다고 밝힌 무료 모델만 쓰거나, 유료·조직 AI를 연결해 쓰세요.</p>
+</div>
+<p>하루에 얼마나 쓸 수 있는지는 <a href="#205-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%96%BC%EB%A7%88%EB%82%98-%EC%93%B8-%EC%88%98-%EC%9E%88%EB%82%98%EC%9A%94">20.5</a>에 정리했습니다.</p>
 <h2 id="8-작업-영역">8. 작업 영역<a class="anchor" href="#8-작업-영역" aria-label="Link">#</a></h2>
 <p><strong>프로젝트 화면의 오른쪽에서 파일·변경·터미널·브라우저·미리보기를 보며 AI의 작업을 확인합니다.</strong> 가운데 대화와 나란히 놓여 대화와 작업 결과를 함께 볼 수 있습니다.</p>
 <div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
@@ -2007,7 +2036,7 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
 <p><strong>Q. 대화를 시작하려는데 입력창이 비활성이고 안내만 나옵니다.</strong>
 A. 온라인 작업PC나 연결된 AI가 없다는 뜻입니다. 안내의 <strong>작업PC 설정 열기</strong> / <strong>내 AI 연결</strong>을 누르거나 <a href="#2-%EC%8B%9C%EC%9E%91%EC%A4%80%EB%B9%84">시작준비</a>를 다시 여세요. 작성 중인 글과 첨부는 그대로 보존됩니다.</p>
 <p><strong>Q. AI 연결이 안 됩니다 / 유료 AI 계정이 없어요.</strong>
-A. <strong>내 설정 → 일반 → AI Models</strong>에서 <strong>연결하기</strong>로 Claude·ChatGPT를 연결하거나 <strong>무료 모델로 시작하기</strong>(Opencode)를 쓰세요. 로그아웃된 ChatGPT는 행의 <strong>… → 계정 풀에서 복원</strong>을 먼저 시도하세요.</p>
+A. <strong>내 설정 → 일반 → AI Models</strong>에서 <strong>연결하기</strong>로 Claude·ChatGPT를 연결하거나 <strong>무료 모델로 시작하기</strong>(Opencode)를 쓰세요(<a href="#75-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-opencode">7.5</a>). 무료 모델의 사용 한도는 <a href="#205-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%96%BC%EB%A7%88%EB%82%98-%EC%93%B8-%EC%88%98-%EC%9E%88%EB%82%98%EC%9A%94">20.5</a>를 보세요. 로그아웃된 ChatGPT는 행의 <strong>… → 계정 풀에서 복원</strong>을 먼저 시도하세요.</p>
 <p><strong>Q. 작업보드·CPU·메모리 같은 메뉴가 안 보여요.</strong>
 A. 프로필 메뉴 → <strong>개발자 기능 설정</strong>에서 해당 스위치를 켜야 합니다(<a href="#34-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EA%B8%B0%EB%8A%A5-%EC%84%A4%EC%A0%95">3.4</a>).</p>
 <p><strong>Q. 예약 만들기, 메신저 채널, 커넥터, 공개 링크 만들기가 안 돼요.</strong>
@@ -2020,6 +2049,26 @@ A. 보관 직후 10초 안에 <strong>되돌리기</strong> 또는 ⌘Z. 시간�
 A. 끊긴 이유가 안내 줄에 나오고 <strong>이어서 하기</strong>(직접 중단했다면 <strong>다시 시도</strong>)를 누르면 이어집니다. 사용 한도에 걸렸다면 초기화 시각에 다시 시도하거나 다른 계정·AI로 이어가세요(<a href="#74-ai-%EC%82%AC%EC%9A%A9%EB%9F%89-%EC%B0%BD">7.4</a>).</p>
 <p><strong>Q. 작업트리를 지웠어요 / 같은 일을 반복하다 AI가 멈췄어요 / 막힌 것 같아요.</strong>
 A. 지운 작업트리는 작업트리 창의 <strong>스냅샷 보관함 → 복원</strong>(<a href="#116-%EC%9E%91%EC%97%85%ED%8A%B8%EB%A6%AC-%EC%95%88%EC%A0%84%EB%A7%9D">11.6</a>). 반복 감지로 멈췄다면(<strong>개발 자동화</strong>의 <strong>같은 일을 반복하면 세션 자동 중지</strong>) 요청을 더 작게 쪼개거나 <strong>독립 리뷰 요청…</strong>으로 다른 AI의 시각을 받아 보세요.</p>
+<h3 id="205-무료-모델로-얼마나-쓸-수-있나요">20.5 무료 모델로 얼마나 쓸 수 있나요?<a class="anchor" href="#205-무료-모델로-얼마나-쓸-수-있나요" aria-label="Link">#</a></h3>
+<p><strong>공식적으로 확인된 것</strong>: OpenCode Zen 문서(2026년 11월 1일 확인)는 무료 모델 대부분을 &quot;기간 한정&quot;으로 소개하며, <strong>하루 토큰 수나 요청 횟수 같은 한도를 공개하지 않습니다.</strong> 무료 모델은 OpenCode를 통해서만 쓸 수 있고, 어떤 모델이 얼마나 오래 무료일지는 바뀔 수 있습니다.</p>
+<p><strong>참고치 (비공식)</strong>: 사용자들이 GitHub 이슈(<a href="https://github.com/anomalyco/opencode/issues/15585" target="_blank" rel="noopener">anomalyco/opencode#15585</a> 등)에 남긴 관측은 대략 다음과 같습니다.</p>
+<ul>
+<li>한도는 <strong>하루 단위</strong>이고 <strong>현지 시간 자정에 초기화</strong>되는 것으로 보입니다.</li>
+<li>하루 사용량은 <strong>약 0.3달러어치(토큰으로 대략 30만~50만 개)</strong> 안팎이라는 추정이 많습니다.</li>
+<li>짧은 시간에 몰아 보내면 <strong>분당 15~20회 안팎</strong>에서 잠시 제한되는 경우가 보고됩니다.</li>
+</ul>
+<div class="callout callout-note"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>참고</span></p>
+<p>위 숫자는 <strong>사용자 관측과 추정일 뿐</strong>입니다. OpenCode는 공식 한도를 공개하지 않았고 확인해 주지도 않았으며, 모델과 시기에 따라 <strong>언제든 바뀔 수 있습니다.</strong> 이 가이드가 보장하는 값이 아니니 계획의 근거로 삼지 마세요.</p>
+</div>
+<p><strong>한도를 넘으면</strong>: 응답에 <code>Free usage exceeded</code>(무료 사용량 초과) 같은 안내가 나올 수 있습니다. Saycode는 무료 모델 한도에 걸리면 다른 무료 모델로 <strong>최대 3번까지 자동 전환</strong>하고, 유료 모델로는 절대 넘어가지 않습니다. 그래도 막히면 다음 중 하나를 고르세요.</p>
+<ol>
+<li><strong>초기화를 기다립니다.</strong> 다음 날 자정(현지 시간) 이후 다시 시도합니다.</li>
+<li><strong>다른 무료 모델로 바꿉니다.</strong> 입력창 아래 AI 메뉴에서 Opencode의 다른 <code>무료</code> 모델을 직접 고릅니다(<a href="#75-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-opencode">7.5</a>).</li>
+<li><strong>유료 AI를 연결합니다.</strong> <strong>내 설정 → 일반 → AI Models → 연결하기</strong>에서 Claude나 ChatGPT를 연결하면 한도 걱정 없이 이어 갈 수 있습니다(<a href="#22-ai-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0">2.2</a>).</li>
+</ol>
+<div class="callout callout-warning"><p class="callout-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><span>주의</span></p>
+<p>회사·고객 코드나 기밀 자료는 제공사가 <strong>입력을 보관하지 않고 학습에도 쓰지 않는다</strong>고 밝힌 무료 모델만 쓰거나, 유료·조직 AI를 연결해 쓰세요. 모델별 정책은 <a href="https://opencode.ai/docs/zen/" target="_blank" rel="noopener">OpenCode Zen 문서</a>에서 확인합니다.</p>
+</div>
 <h2 id="부록-a-바뀐-용어표">부록 A. 바뀐 용어표<a class="anchor" href="#부록-a-바뀐-용어표" aria-label="Link">#</a></h2>
 <p>v0.1.50 전후 화면에 익숙한 분을 위한 대응표입니다. (영어 화면은 그대로인 항목이 많습니다.)</p>
 <div class="table-wrap"><table>
@@ -2218,7 +2267,7 @@ A. 지운 작업트리는 작업트리 창의 <strong>스냅샷 보관함 → �
 </tr>
 <tr>
 <td>AI</td>
-<td><strong>AI Models</strong>(<a href="#7-ai%EB%AA%A8%EB%8D%B8%EC%9E%91%EC%97%85-%EA%B0%95%EB%8F%84%EC%99%80-%EC%82%AC%EC%9A%A9%EB%9F%89">7장</a>) · <strong>시스템 프롬프트</strong>·<strong>내 채팅 개인화</strong>(<a href="#15-%EB%A9%94%EB%AA%A8%EB%A6%AC%EA%B5%90%ED%9B%88%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8">15장</a>) · <strong>대화 검색</strong>(<a href="#10-%EB%8C%80%ED%99%94-%EA%B4%80%EB%A6%AC">10장</a>)</td>
+<td><strong>AI Models</strong>(<a href="#7-ai%EB%AA%A8%EB%8D%B8%EC%9E%91%EC%97%85-%EA%B0%95%EB%8F%84%EC%99%80-%EC%82%AC%EC%9A%A9%EB%9F%89">7장</a>, 무료 모델은 <a href="#75-%EB%AC%B4%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-opencode">7.5</a>) · <strong>시스템 프롬프트</strong>·<strong>내 채팅 개인화</strong>(<a href="#15-%EB%A9%94%EB%AA%A8%EB%A6%AC%EA%B5%90%ED%9B%88%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8">15장</a>) · <strong>대화 검색</strong>(<a href="#10-%EB%8C%80%ED%99%94-%EA%B4%80%EB%A6%AC">10장</a>)</td>
 </tr>
 <tr>
 <td>데스크톱 앱</td>

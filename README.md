@@ -30,7 +30,7 @@ and let the company manage accounts, permissions, model routing, cost and deploy
 
 <br/>
 
-https://github.com/user-attachments/assets/7cc4d7d2-a02c-433d-afc0-d6b6bf5c81e1
+https://github.com/user-attachments/assets/a323660d-93d9-45a6-ac1b-85dc2f664523
 
 *🔊 Sound on — a 92-second intro made from real v0.1.81 screens, with subtitles and music · [Download MP4](docs/assets/saycode-intro-en.mp4) · [Subtitles SRT](docs/assets/saycode-intro-en.srt)*
 
@@ -54,6 +54,7 @@ https://github.com/user-attachments/assets/7cc4d7d2-a02c-433d-afc0-d6b6bf5c81e1
 > **v0.1.81 — easier to start, with a screen that follows the web's structure.** What changed in the 31 releases since v0.1.50:
 >
 > - **Start with no account** — one click on **Personal use** on the first screen runs **Getting started** automatically, and with no paid AI account you can still begin chatting with a **free model**.
+> - **💸 Start free, no paid account** — begin right away with **free models (opencode)** and no paid AI account. Free models are offered by OpenCode for a limited time, and data policies vary by model ([guidebook](https://buzzni.github.io/saycode-desktop-releases/guidebook/en/#205-how-much-can-i-use-free-models)).
 > - **New sidebar and My settings** — **Chat · Project** instead of home tabs, a profile menu, **My settings (General · Development)**, a single **Create project** window, and tidier terms like **Work PC** and **Work board**.
 > - **A smarter composer** — **AI · model · effort on one button (AI Auto)**, **AI remaining usage** below the composer, a **queue** while the AI answers, **Conversation summary**, Archive and Snooze.
 > - **From fixing to finishing** — a browser that collects elements in an **annotation tray**, **whole-branch / by-turn** Changes and Files panels, a **Work completion** menu above the composer, a **Work board** with filters and prerequisites, and **Schedules** once you sign in.
@@ -280,6 +281,25 @@ limit.
 <img src="docs/assets/composer-ai-menu.png" alt="AI Auto menu below the composer: Claude Code, Codex, Opencode, Grok, model list, AI profiles" /><br/>
 <img src="docs/assets/auto-route-badge.png" alt="Auto-selection badge above a message: Auto · Sonnet 5.5 · medium" /><br/>
 <img src="docs/assets/ai-usage-popover.png" alt="AI usage window: Claude tab with per-account 5-hour and 7-day usage" />
+</td>
+</tr>
+<tr>
+<td width="42%" valign="middle">
+
+### 💸 Start free, no paid account — free models (opencode)
+
+No paid Claude or ChatGPT account? One click on **Getting started → Start with free models** installs opencode
+on this PC and you can chat right away. Before installing, Saycode shows the install location and the
+conditions of free models, and installs only after you confirm. Pick **Opencode** in the AI menu below the
+composer and free models are marked `Free` / `Recommended free`; if you choose no model, a recommended free
+model is used for each message. Free models are offered by OpenCode **for a limited time**, and **each model
+has its own data retention and training policy.** For company or confidential code, connect a paid or
+organization AI, or use only models whose provider states they do not retain or train on input.
+→ [Guidebook FAQ: How much can I use free models?](https://buzzni.github.io/saycode-desktop-releases/guidebook/en/#205-how-much-can-i-use-free-models)
+
+</td>
+<td>
+<img src="docs/assets/composer-ai-menu-free.png" alt="AI menu below the composer showing the Opencode free-model list with Free and Recommended free marks" />
 </td>
 </tr>
 <tr>
