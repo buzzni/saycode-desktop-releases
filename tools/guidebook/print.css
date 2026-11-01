@@ -39,3 +39,7 @@ pre code { white-space: pre-wrap; }
 a { color: var(--accent-strong); text-decoration: none; }
 .content a[href^="http"] { text-decoration: underline; text-decoration-color: rgba(91, 91, 246, 0.4); }
 video { display: none; }
+/* intro video poster (PDF) */
+.intro-print { margin: 0 0 1.5rem; break-inside: avoid; }
+.intro-print img { width: 100%; border-radius: 8px; border: 1px solid #ddd; }
+.intro-print figcaption { font-size: 9pt; color: #666; margin-top: 4pt; }

@@ -226,6 +226,11 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
   .footer { margin-top: 3rem; }
   figure.fig { margin: 1.6rem 0; padding: 0.4rem; border-radius: 12px; }
 }
+/* intro video (hero + landing) */
+.intro-video { margin: 1.8rem 0 0; text-align: left; }
+.intro-video video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #0b0b1a; border-radius: 14px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+.intro-video figcaption { margin-top: .6rem; font-size: .88rem; color: var(--muted); }
+.intro-video figcaption a { color: var(--muted); }
 
 </style>
 </head>
@@ -371,6 +376,7 @@ p > img, li > img, td > img { max-width: 100%; height: auto; vertical-align: mid
         <a class="btn btn-primary" href="../saycode-guidebook-en.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download PDF</a>
         <a class="btn" href="../index.html">Guidebook home</a>
       </div>
+      <figure class="intro-video" id="intro"><video controls playsinline preload="none" poster="../../guidebook/posters/intro-en.jpg" src="../../assets/saycode-intro-en.mp4"></video><figcaption>92-second intro — turn the sound on · <a href="../../assets/saycode-intro-en.mp4" download>MP4</a></figcaption></figure>
     </header>
     <main class="content">
 <!-- guidebook: version=v0.1.81 date=2026-11-01 --><h2 id="how-to-read-this-guide">How to read this guide<a class="anchor" href="#how-to-read-this-guide" aria-label="Link">#</a></h2>
