@@ -52,3 +52,13 @@ Images are referenced by relative path into `docs/assets/`, so pages work on Git
 
 `build.mjs` (all logic) · `base.css` (tokens, prose) · `web.css` (page layout) · `print.css` (PDF) ·
 `template.html` / `print.html` / `landing.html` · `guide.js` (theme toggle, scroll-spy, menu, lightbox).
+
+## Intro video
+
+If `docs/assets/saycode-intro-ko.mp4` / `saycode-intro-en.mp4` exist, the build adds them automatically:
+
+- Web guidebook: a player under the hero (`#intro`), `preload="none"` with a poster taken from the video's title card (`docs/guidebook/posters/intro-<lang>.jpg`, regenerated when the MP4 changes).
+- Landing page: one player with 한국어 자막 / English switch buttons.
+- PDF: the poster image below the first chapter's opening paragraph, linking to the web guidebook's `#intro`.
+
+Replace the MP4s and rebuild; no Markdown change is needed.

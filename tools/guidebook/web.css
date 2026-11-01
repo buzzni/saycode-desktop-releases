@@ -83,3 +83,8 @@
   .footer { margin-top: 3rem; }
   figure.fig { margin: 1.6rem 0; padding: 0.4rem; border-radius: 12px; }
 }
+/* intro video (hero + landing) */
+.intro-video { margin: 1.8rem 0 0; text-align: left; }
+.intro-video video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #0b0b1a; border-radius: 14px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+.intro-video figcaption { margin-top: .6rem; font-size: .88rem; color: var(--muted); }
+.intro-video figcaption a { color: var(--muted); }

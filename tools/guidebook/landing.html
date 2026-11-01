@@ -25,6 +25,11 @@
 .foot { margin-top: 3rem; color: var(--muted); font-size: 0.85rem; display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .foot a { color: var(--muted); }
 .theme-toggle { position: fixed; top: 1rem; right: 1rem; padding: 0.55rem; }
+.landing-video { margin: 2.2rem 0 0; }
+.landing-video figcaption { display: flex; justify-content: space-between; align-items: center; gap: .6rem; flex-wrap: wrap; text-align: left; }
+.sub-switch { display: inline-flex; gap: .4rem; }
+.sub-switch .btn { padding: .3rem .7rem; font-size: .82rem; }
+.sub-switch .btn.on { background: var(--accent); border-color: var(--accent); color: #fff; }
 @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -35,6 +40,7 @@
   <h1><em>Saycode</em> Desktop<br>Guidebook</h1>
   <p class="lead">Saycode Desktop 사용자 가이드 — 설치부터 에이전트 운영까지, 웹과 PDF로 읽어보세요.</p>
   <p class="lead sub">The Saycode Desktop user guide, from first launch to running your agents — read it on the web or as a PDF.</p>
+  {{video}}
   <div class="cards">
 {{cards}}
   </div>
@@ -46,6 +52,18 @@ document.querySelector('.theme-toggle').addEventListener('click', function () {
   var next = cur === 'dark' ? 'light' : 'dark'; r.dataset.theme = next;
   try { localStorage.setItem('saycode-guidebook-theme', next); } catch (e) {}
 });
+(function () {
+  var v = document.querySelector('.landing-video video'); if (!v) return;
+  document.querySelectorAll('.sub-switch .btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = b.dataset.sub; if (v.dataset.cur === k) return;
+      var t = v.currentTime, playing = !v.paused; v.dataset.cur = k;
+      v.src = v.dataset[k]; v.poster = v.dataset['poster' + (k === 'ko' ? 'Ko' : 'En')];
+      if (t) { v.addEventListener('loadedmetadata', function f() { v.removeEventListener('loadedmetadata', f); v.currentTime = t; if (playing) v.play(); }); }
+      document.querySelectorAll('.sub-switch .btn').forEach(function (x) { x.classList.toggle('on', x === b); });
+    });
+  });
+})();
 </script>
 </body>
 </html>

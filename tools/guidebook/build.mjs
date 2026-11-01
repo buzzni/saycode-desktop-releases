@@ -15,6 +15,8 @@ const DOCS = path.resolve(HERE, '../../docs');
 const OUT = path.join(DOCS, 'guidebook');
 const REPO = 'https://github.com/buzzni/saycode-desktop-releases';
 const POSTER_AT = 0.7; // fraction of the GIF used for the PDF poster frame
+const SITE = 'https://buzzni.github.io/saycode-desktop-releases'; // GitHub Pages root (docs/)
+const INTRO_POSTER_AT = '1.5'; // seconds into the intro video used for its poster (title card)
 
 const args = process.argv.slice(2);
 const flag = (n) => { const i = args.indexOf(`--${n}`); return i >= 0 ? args[i + 1] : undefined; };
@@ -24,10 +26,12 @@ const LANGS = [
   { code: 'ko', src: 'GUIDE.ko.md', other: 'en',
     t: { pdf: 'PDF 다운로드', toc: '목차', menu: '목차', theme: '테마 전환', otherLang: 'English', home: '가이드 홈', repo: 'GitHub 저장소', version: '버전', updated: '업데이트',
          anim: '애니메이션은 온라인 가이드에서 볼 수 있습니다', footer: 'Saycode Desktop 가이드북',
+         intro: '92초 소개 영상 — 소리를 켜고 보세요', introPdf: '92초 소개 영상은 웹 가이드북에서 볼 수 있습니다',
          callouts: { note: '참고', tip: '팁', important: '중요', warning: '주의', caution: '경고' } } },
   { code: 'en', src: 'GUIDE.md', other: 'ko',
     t: { pdf: 'Download PDF', toc: 'Contents', menu: 'Contents', theme: 'Toggle theme', otherLang: '한국어', home: 'Guidebook home', repo: 'GitHub repository', version: 'Version', updated: 'Updated',
          anim: 'Animated in the online guide', footer: 'Saycode Desktop Guidebook',
+         intro: '92-second intro — turn the sound on', introPdf: 'Watch the 92-second intro in the web guidebook',
          callouts: { note: 'Note', tip: 'Tip', important: 'Important', warning: 'Warning', caution: 'Caution' } } },
 ];
 
@@ -254,10 +258,23 @@ function makePosters(gifs) {
     if (r.status !== 0 || !fs.existsSync(out)) die(`ffmpeg failed for ${gif}: ${r.stderr}`);
     console.log(`  poster ${path.basename(out)} (frame ${n + 1}/${frames || '?'})`);
   }
-  for (const f of fs.readdirSync(dir)) if (!wanted.has(f)) fs.rmSync(path.join(dir, f));
+  for (const f of fs.readdirSync(dir)) if (!wanted.has(f) && !f.startsWith('intro-')) fs.rmSync(path.join(dir, f)); // intro-*.jpg: see introVideo()
 }
 
 // ---------- PDF ----------
+// intro video: docs/assets/saycode-intro-<lang>.mp4 (falls back to the English cut), poster from its title card
+function introVideo(code) {
+  const rel = ['ko', 'en'].map((c) => `assets/saycode-intro-${c}.mp4`).find((r, i) => (i === 0 ? code === 'ko' : true) && fs.existsSync(path.join(DOCS, r)));
+  if (!rel) return null;
+  const poster = path.join(OUT, 'posters', `intro-${code}.jpg`);
+  if (!fs.existsSync(poster) || fs.statSync(poster).mtimeMs < fs.statSync(path.join(DOCS, rel)).mtimeMs) {
+    fs.mkdirSync(path.dirname(poster), { recursive: true });
+    const r = spawnSync(ffmpegBin(), ['-loglevel', 'error', '-y', '-ss', INTRO_POSTER_AT, '-i', path.join(DOCS, rel), '-frames:v', '1', '-vf', 'scale=1280:-2', '-q:v', '3', poster], { encoding: 'utf8' });
+    if (r.status !== 0 || !fs.existsSync(poster)) die(`ffmpeg failed for intro poster ${rel}: ${r.stderr}`);
+  }
+  return { rel, poster: path.relative(DOCS, poster).split(path.sep).join('/') };
+}
+
 async function launch() {
   const opts = process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : { channel: 'chrome' };
   try { return await chromium.launch(opts); }
@@ -304,11 +321,14 @@ for (const g of guides) {
   const stampChips = [g.version && `v${g.version}`, g.date].filter(Boolean).map((c) => `<span class="chip">${esc(c)}</span>`).join('');
 
   const web = renderBody(g, 'web', ctx);
+  const intro = introVideo(g.code);
+  const introWeb = intro ? `<figure class="intro-video" id="intro"><video controls playsinline preload="none" poster="../../${intro.poster}" src="../../${intro.rel}"></video><figcaption>${esc(g.t.intro)} · <a href="../../${intro.rel}" download>MP4</a></figcaption></figure>` : '';
+  const introPrint = intro ? `<figure class="intro-print"><a href="${SITE}/guidebook/${g.code}/#intro"><img src="${pathToFileURL(DOCS).href}/${intro.poster}" alt=""></a><figcaption>${esc(g.t.introPdf)}: <a href="${SITE}/guidebook/${g.code}/#intro">${SITE.replace(/^https:\/\//, '')}/guidebook/${g.code}/</a></figcaption></figure>` : '';
   const vars = {
     lang: g.code, title: esc(g.head.title), shortTitle: esc(shortTitle), description: esc(stripTags(g.head.subtitle || g.head.title)),
     heading: esc(g.head.title), subtitle: g.head.subtitle || '', notes, chips: stampChips, t: g.t, icons: ICONS, repo: REPO,
     icon: `../../${icon}`, pdfHref: `../${pdfName(g.code)}`, otherHref: `../${other.code}/index.html`, otherLang: other.code, landingHref: '../index.html',
-    toc: tocHtml(web.headings), body: web.html, css: baseCss + '\n' + webCss, js,
+    toc: tocHtml(web.headings), body: web.html, css: baseCss + '\n' + webCss, js, intro: introWeb,
     footerLeft: esc(`${g.t.footer}${meta ? ' · ' + meta : ''}`),
   };
   fs.mkdirSync(path.join(OUT, g.code), { recursive: true });
@@ -318,7 +338,7 @@ for (const g of guides) {
   const print = renderBody(g, 'print', ctx);
   const fileUrl = pathToFileURL(DOCS).href + '/';
   g.print = fill(tplPrint, {
-    ...vars, icon: fileUrl + icon, toc: tocHtml(print.headings), body: print.html, meta: esc(meta), subtitle: g.head.subtitle || '',
+    ...vars, icon: fileUrl + icon, toc: tocHtml(print.headings), body: print.html.replace(/(<h2\b[\s\S]*?<\/p>)/, (m) => m + introPrint), meta: esc(meta), subtitle: g.head.subtitle || '',
     css: baseCss + '\n' + fill(read('print.css'), { footerText: `${g.t.footer}${g.version ? ' · v' + g.version : ''}`.replace(/["\\]/g, '') }),
   });
 }
@@ -344,8 +364,13 @@ const cards = guides.map((g) => {
       <div class="stamp">${esc([g.version && 'v' + g.version, g.date].filter(Boolean).join(' · '))}</div>
     </div>`;
 }).join('\n');
+const introKo = introVideo('ko'), introEn = introVideo('en');
+const landingVideo = introKo && introEn ? `<figure class="intro-video landing-video">
+    <video controls playsinline preload="none" poster="${introKo.poster.replace(/^guidebook\//, '')}" src="../${introKo.rel}" data-ko="../${introKo.rel}" data-en="../${introEn.rel}" data-poster-ko="${introKo.poster.replace(/^guidebook\//, '')}" data-poster-en="${introEn.poster.replace(/^guidebook\//, '')}"></video>
+    <figcaption><span>92초 소개 영상 · 92-second intro</span><span class="sub-switch"><button type="button" class="btn on" data-sub="ko">한국어 자막</button><button type="button" class="btn" data-sub="en">English</button></span></figcaption>
+  </figure>` : '';
 fs.writeFileSync(path.join(OUT, 'index.html'), fill(tplLanding, {
-  css: baseCss + '\n' + webCss, icons: ICONS, cards, repo: REPO,
+  css: baseCss + '\n' + webCss, icons: ICONS, cards, repo: REPO, video: landingVideo,
   stamp: `© Buzzni · ${guides[0].version ? 'v' + guides[0].version + ' · ' : ''}${guides[0].date}`,
 }));
 console.log('built guidebook/index.html');
