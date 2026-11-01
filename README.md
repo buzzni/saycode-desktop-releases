@@ -30,7 +30,7 @@ and let the company manage accounts, permissions, model routing, cost and deploy
 
 <br/>
 
-https://github.com/user-attachments/assets/7cc4d7d2-a02c-433d-afc0-d6b6bf5c81e1
+https://github.com/user-attachments/assets/a323660d-93d9-45a6-ac1b-85dc2f664523
 
 *🔊 Sound on — a 92-second intro made from real v0.1.81 screens, with subtitles and music · [Download MP4](docs/assets/saycode-intro-en.mp4) · [Subtitles SRT](docs/assets/saycode-intro-en.srt)*
 

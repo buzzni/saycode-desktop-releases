@@ -30,7 +30,7 @@
 
 <br/>
 
-https://github.com/user-attachments/assets/7cc4d7d2-a02c-433d-afc0-d6b6bf5c81e1
+https://github.com/user-attachments/assets/a323660d-93d9-45a6-ac1b-85dc2f664523
 
 *🔊 请打开声音 —— 使用真实 v0.1.81 界面制作的 92 秒介绍视频（英文字幕·背景音乐） · [下载 MP4](docs/assets/saycode-intro-en.mp4) · [字幕 SRT](docs/assets/saycode-intro-en.srt)*
 
