@@ -21,11 +21,13 @@ or `FFMPEG=/path`). The build exits with an error if an image or link target is 
 | `docs/guidebook/index.html` | landing page: language choice + PDF downloads |
 | `docs/guidebook/{ko,en}/index.html` | single-page guidebook (sticky TOC, dark/light, lightbox) |
 | `docs/guidebook/saycode-guidebook-{ko,en}.pdf` | A4 PDF: cover, contents, chapters, page numbers, bookmarks |
-| `docs/guidebook/posters/*.png` | one still frame (70% in) per referenced GIF, used **only** in the PDF |
+| `docs/guidebook/posters/*.png` | one still frame (70% in) per referenced GIF, used **only** in the PDF (`assets/en/x.gif` → `en-x.png`) |
 | `docs/.nojekyll` | lets GitHub Pages serve the files as-is |
 
 Images are referenced by relative path into `docs/assets/`, so pages work on GitHub Pages
 (serving `/docs`) and from a local clone via `file://`. Nothing in `docs/assets/` is modified.
+Korean-UI screenshots live in `docs/assets/`, English-UI ones under the same names in `docs/assets/en/`
+(`GUIDE.md` references `assets/en/…`).
 
 ## Authoring conventions (the build is generic: any headings / images work)
 
