@@ -175,7 +175,7 @@ function renderBody(guide, mode, ctx) {
     let src = path.relative(DOCS, abs).split(path.sep).map(encodeURIComponent).join('/');
     if (mode === 'print' && /\.gif$/i.test(abs)) {
       ctx.gifs.add(abs);
-      src = `guidebook/posters/${path.basename(abs, '.gif')}.png`;
+      src = `guidebook/posters/${posterName(abs)}`;
       a['data-anim'] = '1';
     }
     const base = mode === 'print' ? pathToFileURL(DOCS).href + '/' : '../../';
@@ -242,13 +242,17 @@ function ffmpegBin() {
   }
   die('ffmpeg not found (set FFMPEG=/path/to/ffmpeg)');
 }
+// assets/first-run.gif -> first-run.png, assets/en/first-run.gif -> en-first-run.png (per-language GIFs share a base name)
+function posterName(gif) {
+  return path.relative(path.join(DOCS, 'assets'), gif).replace(/\.gif$/i, '').split(path.sep).join('-') + '.png';
+}
 function makePosters(gifs) {
   const dir = path.join(OUT, 'posters');
   fs.mkdirSync(dir, { recursive: true });
   const wanted = new Set();
   const ff = ffmpegBin();
   for (const gif of gifs) {
-    const out = path.join(dir, path.basename(gif, '.gif') + '.png');
+    const out = path.join(dir, posterName(gif));
     wanted.add(path.basename(out));
     if (fs.existsSync(out) && fs.statSync(out).mtimeMs >= fs.statSync(gif).mtimeMs) continue;
     const probe = spawnSync(ff.replace(/ffmpeg$/, 'ffprobe'), ['-v', 'error', '-count_frames', '-select_streams', 'v:0', '-show_entries', 'stream=nb_read_frames', '-of', 'csv=p=0', gif], { encoding: 'utf8' });
